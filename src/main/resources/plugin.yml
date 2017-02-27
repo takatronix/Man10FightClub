@@ -1,0 +1,7 @@
+name: FightClub
+version: ${project.version}
+main: red.man10.fightclub.FightClub
+prefix: Man10FightClub
+authors: [takatornix]
+description: Man10 Fight Club Plugin
+website: http://man10.red
