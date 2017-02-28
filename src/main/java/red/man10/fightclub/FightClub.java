@@ -239,7 +239,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
-        p.sendMessage(ChatColor.YELLOW  + "Man10 Fight Club system .");
+        p.sendMessage(ChatColor.YELLOW  + "Man10 Fight Club System Started.");
     }
     /////////////////////////////////
     //      チャットイベント
@@ -248,7 +248,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void onChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
         String message = e.getMessage();
-//        p.sendMessage(ChatColor.RED + message);
+        p.sendMessage(ChatColor.RED + message + "testx");
 
     }
 

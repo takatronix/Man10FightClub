@@ -1,4 +1,4 @@
-name: FightClub
+name: Man10FightClub
 version: ${project.version}
 main: red.man10.fightclub.FightClub
 prefix: Man10FightClub
