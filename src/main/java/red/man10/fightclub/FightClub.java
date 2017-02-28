@@ -6,6 +6,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.server.ServerCommandEvent;
@@ -41,7 +43,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         double bet;             //  掛け金
     }
     double tax = 0;
-    Status  currentStatus = Entry;
+    Status  currentStatus = Closed;
 
     //      対戦者リスト
     ArrayList<FighterInformation> filghters = new ArrayList<FighterInformation>();
@@ -166,6 +168,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         return bets.size();
     }
+
     //////////////////////////////////////////////
     //      ゲームを中断する  払い戻し後ステータスを Closedへ
     //////////////////////////////////////////////
@@ -302,13 +305,31 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void onChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
         String message = e.getMessage();
-        p.sendMessage(ChatColor.YELLOW + message );
+        //p.sendMessage(ChatColor.YELLOW + message );
 
-        command("say "+message);
+        // command("say "+message);
 
     }
+    /////////////////////////////////
+    //      デスイベント
+    /////////////////////////////////
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent e) {
+        if (e.getEntity() instanceof Player){
+            Player p = (Player)e;
 
 
+        }
+    }
+    /////////////////////////////////
+    //      ダメージイベント
+    /////////////////////////////////
+    @EventHandler
+    public void onHit(EntityDamageEvent e){
+        if (e.getEntity() instanceof Player){
+            Player p = (Player)e;
+        }
+    }
     //////////////////////////////////////////
     //        Chatテーブル
     //////////////////////////////////////////
