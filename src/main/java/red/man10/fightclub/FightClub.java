@@ -1,15 +1,26 @@
 package red.man10.fightclub;
 
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import static red.man10.fightclub.FightClub.Status.Closed;
 import static red.man10.fightclub.FightClub.Status.Opened;
 import static red.man10.fightclub.FightClub.Status.Playing;
 
-public final class FightClub extends JavaPlugin {
+public final class FightClub extends JavaPlugin implements Listener {
 
     //   状態遷移 これらの状態遷移する
     public enum Status {
@@ -123,10 +134,12 @@ public final class FightClub extends JavaPlugin {
     //      募集開始
     public int openGame(){
         currentStatus = Opened;
+        return 0;
     }
     //      ゲーム開始
     public int startGame(){
         currentStatus = Playing;
+        return 0;
     }
 
     //      対戦終了　winPlayer = -1 終了
@@ -168,15 +181,120 @@ public final class FightClub extends JavaPlugin {
 
 
 
+    /////////////////////////////////
+    //     MySQL 設定値
+    /////////////////////////////////
+    String  mysql_ip;
+    String  mysql_port;
+    String  mysql_user;
+    String  mysql_pass;
+    String  mysql_db;
 
+    /////////////////////////////////
+    //       設定ファイル読み込み
+    /////////////////////////////////
+    public void loadConfig(){
+        this.reloadConfig();
+        mysql_ip = this.getConfig().getString("server_config.mysql_ip");
+        mysql_port = this.getConfig().getString("server_config.mysql_port");
+        mysql_user = this.getConfig().getString("server_config.mysql_user");
+        mysql_pass = this.getConfig().getString("server_config.mysql_pass");
+        mysql_db = this.getConfig().getString("server_config.mysql_db");
+        getLogger().info("Config loaded");
+    }
+    /////////////////////////////////
+    //      起動
+    /////////////////////////////////
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        getLogger().info("Enabled");
+        this.saveDefaultConfig();
+        loadConfig();
+        getServer().getPluginManager().registerEvents (this,this);
 
+        //   テーブル作成
+        createTables();
     }
 
+    /////////////////////////////////
+    //      終了
+    /////////////////////////////////
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        getLogger().info("Disabled");
     }
+
+    /////////////////////////////////
+    //      コマンド処理
+    /////////////////////////////////
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        Player p = (Player) sender;
+        return true;
+    }
+
+    /////////////////////////////////
+    //     ジョインイベント
+    /////////////////////////////////
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e){
+        Player p = e.getPlayer();
+        p.sendMessage(ChatColor.YELLOW  + "Man10 Fight Club system .");
+    }
+    /////////////////////////////////
+    //      チャットイベント
+    /////////////////////////////////
+    @EventHandler
+    public void onChat(AsyncPlayerChatEvent e) {
+        Player p = e.getPlayer();
+        String message = e.getMessage();
+//        p.sendMessage(ChatColor.RED + message);
+
+    }
+
+
+    //////////////////////////////////////////
+    //        Chatテーブル
+    //////////////////////////////////////////
+    String sqlCrateChatLogTable = "CREATE TABLE `mfc_chat` (\n" +
+            "  `id` int(11) NOT NULL AUTO_INCREMENT,\n" +
+            "  `server` varchar(100) DEFAULT NULL,\n" +
+            "  `name` varchar(100) DEFAULT NULL,\n" +
+            "  `message` varchar(400) DEFAULT NULL,\n" +
+            "  `timestamp` varchar(50) DEFAULT NULL,\n" +
+            "  PRIMARY KEY (`id`)\n" +
+            ") ENGINE=InnoDB AUTO_INCREMENT=104377 DEFAULT CHARSET=utf8;";
+
+    void createTables(){
+        executeSQL(sqlCrateChatLogTable);
+    }
+
+    ////////////////////////////////
+    //      SQL実行
+    ////////////////////////////////
+    Boolean executeSQL(String sql){
+        // getLogger().info("executing SQL" + sql);
+        Connection conn;
+        try {
+            //      データベース作成
+            Class.forName("com.mysql.jdbc.Driver");
+            String databaseURL =  "jdbc:mysql://" + mysql_ip + "/" + mysql_db ;
+            //getLogger().info(databaseURL);
+
+            conn = DriverManager.getConnection(databaseURL,mysql_user,mysql_pass);
+            Statement st = conn.createStatement();
+            st.execute(sql);
+
+            st.close();
+            conn.close();
+            //getLogger().info("SQL performed");
+            return true;
+        } catch(ClassNotFoundException e){
+            getLogger().warning("Could not read driver");
+        } catch(SQLException e){
+            getLogger().warning("Database connection error");
+        }
+        return false;
+    }
+
 }

@@ -5,3 +5,9 @@ prefix: Man10FightClub
 authors: [takatornix]
 description: Man10 Fight Club Plugin
 website: http://man10.red
+commands:
+   mfc:
+      description: This is a demo command.
+      usage: /<command> [player]
+      permission: man10.fightclub
+      permission-message: You don't have <permission>
