@@ -34,6 +34,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     class  FighterInformation{
         String UUID;
         String name;
+        Boolean isDeaad;
     }
     //      購入者情報
     class  BuyerInformation{
@@ -79,7 +80,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         playerInfo.UUID = uuid;
         playerInfo.name = name;
         filghters.add(playerInfo);
-
         return filghters.size();
     }
 
@@ -101,6 +101,17 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return -1;
     }
+    //      生存者数
+    int getAliveFighterCount() {
+        int ret = 0;
+        for(int i = 0;i < filghters.size();i++){
+            if(filghters.get(i).isDeaad == false){
+                ret ++;
+            }
+        }
+        return ret;
+    }
+
     double getFighterBetMoney(String uuid){
         int index = getFighterIndex(uuid);
         if(index == -1){
@@ -339,21 +350,50 @@ public final class FightClub extends JavaPlugin implements Listener {
     /////////////////////////////////
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
-        if (e.getEntity() instanceof Player){
-            Player p = (Player)e;
 
+       // getLogger().info("death :" +e.getDeathMessage());
+       // command("say death"+e.getDeathMessage());
+        //
+        Player p = (Player)e.getEntity();
 
+        log(p.getDisplayName());
+
+        return
+        //      死亡フラグを立てる
+        int index = getFighterIndex(p.getUniqueId().toString());
+        filghters.get(index).isDeaad = true;
+        serverMessage("死亡！！ "+p.getDisplayName());
+
+        if(getAliveFighterCount() <= 1){
+            serverMessage("ゲーム終了！！！");
+
+        }else{
+            String s = p.getDisplayName() + "は死亡した！！";
+            serverMessage(s);
+            s = "生存者/プレーヤ= " + getAliveFighterCount() + "/" + filghters.size();
+            serverMessage(s);
         }
+
+
     }
     /////////////////////////////////
     //      ダメージイベント
     /////////////////////////////////
     @EventHandler
     public void onHit(EntityDamageEvent e){
+        getLogger().info("damage :" +e.getDamage());
 
-        if (e.getEntity() instanceof Player){
-            Player p = (Player)e;
+        Player p = (Player)e.getEntity();
+        if(e.getEntity() instanceof Player)
+        {
+            command("say damage"+e.getDamage()+e.getCause()+e.getFinalDamage());
+
         }
+
+        //command("say damage"+e.getDamage()+e.getCause()+e.getFinalDamage());
+        //if (e.getEntity() instanceof Player){
+          //  Player p = (Player)e;
+       // }
     }
     //////////////////////////////////////////
     //        Chatテーブル
@@ -398,6 +438,20 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return false;
     }
+
+    //      ログメッセージ
+    void log(String text){
+        getLogger().info(text);
+    }
+    //     サーバーメッセージ
+    void serverMessage(String text){
+        command("say "+text);
+    }
+
+    void titleMessage(Player p,String title,String subTitle){
+
+    }
+
     //      コマンド実行　
     void command(String command){
         getServer().dispatchCommand(getServer().getConsoleSender(),command);

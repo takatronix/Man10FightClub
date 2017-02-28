@@ -79,6 +79,16 @@ public class FightClubCommand  implements CommandExecutor {
             showOdds(p);
             return true;
         }
+        ////////////////////////////////////
+        //        強制勝利
+        ////////////////////////////////////
+        if(args[0].equalsIgnoreCase("end")) {
+            if (args.length != 2) {
+                p.sendMessage("/mfc end [fighter]");
+                return false;
+            }
+            return false;
+        }
         //////////////////////////////////
         ///       キャンセル
         //////////////////////////////////
@@ -101,7 +111,10 @@ public class FightClubCommand  implements CommandExecutor {
             Player fighter = Bukkit.getPlayer(args[1]);
             String buyer = p.getDisplayName();
             p.sendMessage(buyer);
-            plugin.betFighter(fighter.getUniqueId().toString(),money,p.getUniqueId().toString(),buyer);
+            if(plugin.betFighter(fighter.getUniqueId().toString(),money,p.getUniqueId().toString(),buyer) == -1){
+                p.sendMessage("Error :" + args[1] +"is not on entry!");
+                return false;
+            }
 
             showOdds(p);
             return true;
