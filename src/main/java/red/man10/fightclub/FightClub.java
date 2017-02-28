@@ -35,6 +35,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         String UUID;
         String name;
     }
+    //      購入者情報
+    class  BuyerInformation{
+        String UUID;
+        String name;
+    }
     //      賭け情報
     class  BetInformation{
         String buyerUUID;       //  購入者のUUID
@@ -49,6 +54,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     ArrayList<FighterInformation> filghters = new ArrayList<FighterInformation>();
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
+    //      購入者リスト (通知用)
+    ArrayList<BuyerInformation> buyers = new ArrayList<BuyerInformation>();
 
     //////////////////////////////////
     //    公開API
@@ -75,12 +82,18 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         return filghters.size();
     }
-    //////////////////////////////////
-    //    プレーヤにかけれた金額
-    //////////////////////////////////
 
+    //////////////////////////////////
+    int getBuyerIndex(String uuid) {
+        for(int i = 0;i < buyers.size();i++){
+            if(buyers.get(i).UUID.equalsIgnoreCase(uuid)){
+                return i;
+            }
+        }
+        return -1;
+    }
     //
-    public int getFighterIndex(String uuid) {
+    int getFighterIndex(String uuid) {
         for(int i = 0;i < filghters.size();i++){
             if(filghters.get(i).UUID.equalsIgnoreCase(uuid)){
                 return i;
@@ -88,7 +101,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return -1;
     }
-    public double getFighterBetMoney(String uuid){
+    double getFighterBetMoney(String uuid){
         int index = getFighterIndex(uuid);
         if(index == -1){
             return 0;
@@ -96,7 +109,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         return getFighterBets(index);
     }
     //      購入された数
-    public int getFighterBetCount(String uuid){
+    int getFighterBetCount(String uuid){
         int index = getFighterIndex(uuid);
         if(index == -1){
             return 0;
@@ -115,7 +128,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     //////////////////////
     //      odds
     //////////////////////
-    public double getFighterOdds(String uuid){
+    double getFighterOdds(String uuid){
 
         //      購入された金額
         double bet = getFighterBetMoney(uuid);
@@ -128,7 +141,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         return odds;
     }
 
-    public double getFighterBets(int playerIndex){
+    double getFighterBets(int playerIndex){
         double totalBet = 0;
         for(int i = 0;i < bets.size();i++){
             BetInformation bet = bets.get(i);
@@ -142,7 +155,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     ///////////////////////////////////
     //      トータル掛け金
     ///////////////////////////////////
-    public double getTotalBets(){
+    double getTotalBets(){
         double totalBet = 0;
         for(int i = 0;i < filghters.size();i++){
             totalBet = getFighterBets(i);
@@ -152,7 +165,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     //////////////////////////////////////////////
     //     プレイーやに賭ける 成功なら掛け金テーブルindex
     //////////////////////////////////////////////
-    public int  betFighter(String fighterUUID,double price,String buyerUUID,String buyerName){
+    int  betFighter(String fighterUUID,double price,String buyerUUID,String buyerName){
 
         int index = getFighterIndex(fighterUUID);
         if(index == -1){
@@ -166,13 +179,24 @@ public final class FightClub extends JavaPlugin implements Listener {
         bet.buyerName = buyerName;
         bets.add(bet);
 
+
+        //      通知用に購入者のIDを保存
+        int buyerIndex = getBuyerIndex(buyerUUID);
+        if (buyerIndex == -1){
+            BuyerInformation buyer = new BuyerInformation();
+            buyer.name = buyerName;
+            buyer.UUID = buyerUUID;
+            buyers.add(buyer);
+        }
+
+
         return bets.size();
     }
 
     //////////////////////////////////////////////
     //      ゲームを中断する  払い戻し後ステータスを Closedへ
     //////////////////////////////////////////////
-    public int cancelGame(Player p){
+    int cancelGame(Player p){
 
         //   払い戻し処理
         for (int i = 0;i < bets.size();i++) {
@@ -326,6 +350,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     /////////////////////////////////
     @EventHandler
     public void onHit(EntityDamageEvent e){
+
         if (e.getEntity() instanceof Player){
             Player p = (Player)e;
         }
