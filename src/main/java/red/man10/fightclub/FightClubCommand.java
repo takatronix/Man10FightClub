@@ -83,7 +83,7 @@ public class FightClubCommand  implements CommandExecutor {
         ///       キャンセル
         //////////////////////////////////
         if(args[0].equalsIgnoreCase("cancel")){
-            plugin.cancelGame();
+            plugin.cancelGame(p);
             p.sendMessage("MFC Closed.");
             return true;
         }

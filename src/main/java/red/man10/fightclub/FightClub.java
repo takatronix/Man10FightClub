@@ -169,11 +169,13 @@ public final class FightClub extends JavaPlugin implements Listener {
     //////////////////////////////////////////////
     //      ゲームを中断する  払い戻し後ステータスを Closedへ
     //////////////////////////////////////////////
-    public int cancelGame(){
+    public int cancelGame(Player p){
 
         //   払い戻し処理
-
-
+        for (int i = 0;i < bets.size();i++) {
+            BetInformation bet = bets.get(i);
+            p.sendMessage("Back money to " + bet.buyerName + " $"+ bet.bet );
+        }
         bets.clear();
         filghters.clear();
         currentStatus = Closed;
@@ -191,9 +193,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     //      対戦終了　winPlayer = -1 終了
-    public int endGame(int winPlayer){
+    public int endGame(Player p,int winPlayer){
         if (winPlayer == -1){
-            return cancelGame();
+            return cancelGame(p);
         }
 
         //  掛け金の計算
