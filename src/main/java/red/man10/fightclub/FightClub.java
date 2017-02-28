@@ -17,9 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import static red.man10.fightclub.FightClub.Status.Closed;
-import static red.man10.fightclub.FightClub.Status.Opened;
-import static red.man10.fightclub.FightClub.Status.Fighting;
+import static red.man10.fightclub.FightClub.Status.*;
 
 public final class FightClub extends JavaPlugin implements Listener {
 
@@ -32,8 +30,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
     //      プレーヤ情報
     class  FighterInformation{
-        String UUID;       //  購入者のUUID
-        String Name;       //  購入者の名前
+        String UUID;
+        String name;
     }
     //      賭け情報
     class  BetInformation{
@@ -42,11 +40,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         int    playerIndex;     //  プレーヤ情報
         double bet;             //  掛け金
     }
-
-    Status  currentStatus;
+    double tax = 0;
+    Status  currentStatus = Entry;
 
     //      対戦者リスト
-    ArrayList<FighterInformation> players = new ArrayList<FighterInformation>();
+    ArrayList<FighterInformation> filghters = new ArrayList<FighterInformation>();
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
 
@@ -55,37 +53,86 @@ public final class FightClub extends JavaPlugin implements Listener {
     //////////////////////////////////
 
     //      対戦者登録
-    public int registerPlayer(String uuid){
-
-        //      開催前でなければ登録できない
-        if (currentStatus != Closed){
-            return -1;
-        }
+    public int registerFighter(String uuid,String name){
 
         ////////////////////////////////////
         //      すでに登録されてたらエラー
         ////////////////////////////////////
-        for(int i = 0;i < players.size();i++){
-            FighterInformation player = players.get(i);
-            if(player.UUID == uuid){
+        for(int i = 0;i < filghters.size();i++){
+            FighterInformation player = filghters.get(i);
+            if(player.UUID.equalsIgnoreCase(uuid)){
                 //  登録済みエラー表示
                 return -1;
             }
         }
         //      追加
         FighterInformation playerInfo = new FighterInformation();
-        players.add(playerInfo);
+        playerInfo.UUID = uuid;
+        playerInfo.name = name;
+        filghters.add(playerInfo);
 
-        return players.size();
+        return filghters.size();
     }
     //////////////////////////////////
     //    プレーヤにかけれた金額
     //////////////////////////////////
-    public double getPlayerBets(int playerIndex){
+
+    //
+    public int getFighterIndex(String uuid) {
+        for(int i = 0;i < filghters.size();i++){
+            if(filghters.get(i).UUID.equalsIgnoreCase(uuid)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    public double getFighterBetMoney(String uuid){
+        int index = getFighterIndex(uuid);
+        if(index == -1){
+            return 0;
+        }
+        return getFighterBets(index);
+    }
+    //      購入された数
+    public int getFighterBetCount(String uuid){
+        int index = getFighterIndex(uuid);
+        if(index == -1){
+            return 0;
+        }
+
+        int count = 0;
+        for(int i = 0;i < bets.size();i++){
+            BetInformation bet = bets.get(i);
+            if (bet.playerIndex == index){
+                count ++;
+            }
+        }
+        return count;
+    }
+
+    //////////////////////
+    //      odds
+    //////////////////////
+    public double getFighterOdds(String uuid){
+
+        //      購入された金額
+        double bet = getFighterBetMoney(uuid);
+        double total = getTotalBets();
+        if(bet == 0){
+            return 0;
+        }
+        //  （賭けられたお金の合計 － 手数料）÷【賭けに勝つ人達の勝ちに賭けた総合計金額】
+        double odds = (total - tax) / bet;
+        return odds;
+    }
+
+    public double getFighterBets(int playerIndex){
         double totalBet = 0;
         for(int i = 0;i < bets.size();i++){
             BetInformation bet = bets.get(i);
-            totalBet += bet.bet;
+            if (bet.playerIndex == playerIndex){
+                totalBet += bet.bet;
+            }
         }
         return totalBet;
     }
@@ -95,27 +142,26 @@ public final class FightClub extends JavaPlugin implements Listener {
     ///////////////////////////////////
     public double getTotalBets(){
         double totalBet = 0;
-        for(int i = 0;i < players.size();i++){
-            totalBet = getPlayerBets(i);
+        for(int i = 0;i < filghters.size();i++){
+            totalBet = getFighterBets(i);
         }
         return totalBet;
     }
     //////////////////////////////////////////////
     //     プレイーやに賭ける 成功なら掛け金テーブルindex
     //////////////////////////////////////////////
-    public int  betPlayer(int playerIndex,double price,String buyerUUID){
+    public int  betFighter(String fighterUUID,double price,String buyerUUID,String buyerName){
 
-        //     募集中でなければ投票できない
-        if (currentStatus != Opened){
+        int index = getFighterIndex(fighterUUID);
+        if(index == -1){
             return -1;
         }
-        //    buyerのお金がたらない　エラー
-
 
         BetInformation bet = new BetInformation();
         bet.bet = price;
-        bet.playerIndex = playerIndex;
+        bet.playerIndex = index;
         bet.buyerUUID = buyerUUID;
+        bet.buyerName = buyerName;
         bets.add(bet);
 
         return bets.size();
@@ -129,7 +175,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         bets.clear();
-        players.clear();
+        filghters.clear();
         currentStatus = Closed;
         return 0;
     }
@@ -152,8 +198,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //  掛け金の計算
         double total  = getTotalBets();
-        double winBet = getPlayerBets(winPlayer);
-        double tax = 0;
+        double winBet = getFighterBets(winPlayer);
+
 
         //    オッズとは
         //  （賭けられたお金の合計 － 手数料）÷【賭けに勝つ人達の勝ちに賭けた総合計金額】
@@ -173,7 +219,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      終了
         bets.clear();
-        players.clear();
+        filghters.clear();
         currentStatus = Closed;
         return 0;
     }

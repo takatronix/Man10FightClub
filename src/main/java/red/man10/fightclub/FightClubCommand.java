@@ -1,9 +1,13 @@
 package red.man10.fightclub;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.logging.Filter;
 
 /**
  * Created by takatronix on 2017/03/01.
@@ -15,18 +19,122 @@ public class FightClubCommand  implements CommandExecutor {
        this.plugin = plugin;
     }
 
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         Player p = (Player)sender;
 
-        showHelp(p);
 
-        return true;
+        //      引数がない場合
+        if(args.length < 1){
+            showHelp(p);
+            return true;
+        }
+
+        if(args[0].equalsIgnoreCase("help")){
+            showHelp(p);
+            return true;
+        }
+
+        ////////////////////////////////////
+        //          エントリー
+        ////////////////////////////////////
+        if(args[0].equalsIgnoreCase("entry")){
+            if(args.length < 1) {
+                p.sendMessage("/mfc entry [prize money]");
+                return false;
+            }
+
+            if (plugin.currentStatus != FightClub.Status.Closed){
+                p.sendMessage("You should cancel game!");
+                return false;
+            }
+
+            plugin.currentStatus = FightClub.Status.Entry;
+
+            p.sendMessage("Entry started");
+
+            return false;
+        }
+        ////////////////////////////////////
+        //        登録
+        ////////////////////////////////////
+        if(args[0].equalsIgnoreCase("register")){
+            if(args.length != 2) {
+                p.sendMessage("/mfc register [fighter]");
+                return false;
+            }
+            Player fighter = Bukkit.getPlayer(args[1]);
+            if (fighter == null) {
+                p.sendMessage(ChatColor.RED + "Error: " + args[1] +" is offline!!");
+                return false;
+            }
+
+            int ret = plugin.registerFighter(fighter.getUniqueId().toString(),args[1]);
+            if (ret == -1){
+                p.sendMessage(ChatColor.RED + "Error: " + args[1] +" is already registered!");
+                return false;
+            }
+            showOdds(p);
+            return true;
+        }
+        //////////////////////////////////
+        ///       キャンセル
+        //////////////////////////////////
+        if(args[0].equalsIgnoreCase("cancel")){
+            plugin.cancelGame();
+            p.sendMessage("MFC Closed.");
+            return true;
+        }
+
+        //////////////////////////////////
+        ///         Bet
+        //////////////////////////////////
+        if(args[0].equalsIgnoreCase("bet")){
+            if( args.length < 3){
+                p.sendMessage("/mfc bet [fighter] [money]");
+                return false;
+            }
+
+            double money = Double.parseDouble(args[2]);
+            Player fighter = Bukkit.getPlayer(args[1]);
+            String buyer = p.getDisplayName();
+            p.sendMessage(buyer);
+            plugin.betFighter(fighter.getUniqueId().toString(),money,p.getUniqueId().toString(),buyer);
+
+            showOdds(p);
+            return true;
+        }
+        //////////////////////////////////
+        //      オッズ表示
+        //////////////////////////////////
+        if(args[0].equalsIgnoreCase("odds")) {
+            showOdds(p);
+            return false;
+        }
+        p.sendMessage("invalid command");
+
+        return false;
     }
+    void showOdds(Player p){
 
+        p.sendMessage("§e=========== §d●§f●§a●§e Man10 Fight Club Odds §d●§f●§a● §e===============");
+        for(int i=0;i < plugin.filghters.size();i++){
+            FightClub.FighterInformation info = plugin.filghters.get(i);
+            Player fighter = Bukkit.getPlayer(info.UUID);
+
+            double price = plugin.getFighterBetMoney(info.UUID);
+            int count = plugin.getFighterBetCount(info.UUID);
+
+            double odds = plugin.getFighterOdds(info.UUID);
+
+            p.sendMessage("["+i+"]:" +info.name +"   Money:"+price +"  Count:"+count+"  Odds:"+odds);
+        }
+
+    }
     void showHelp(Player p){
-        p.sendMessage("§e============== §d●§f●§a●§e<Man10 Fight Club>§d●§f●§a● §e===============");
+        p.sendMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
         p.sendMessage("§e  by takatronix http://man10.red");
         p.sendMessage("§c* red commands for Admin");
         p.sendMessage("§c/mfc entry [prize money]     / Start entry");
