@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.Connection;
@@ -18,18 +19,19 @@ import java.util.ArrayList;
 
 import static red.man10.fightclub.FightClub.Status.Closed;
 import static red.man10.fightclub.FightClub.Status.Opened;
-import static red.man10.fightclub.FightClub.Status.Playing;
+import static red.man10.fightclub.FightClub.Status.Fighting;
 
 public final class FightClub extends JavaPlugin implements Listener {
 
     //   状態遷移 これらの状態遷移する
     public enum Status {
         Closed,                 //  開催前
-        Opened,                 //  募集中 予想の受付開始
-        Playing,                //  対戦中
+        Entry,                  //  募集中
+        Opened,                  // 予想の受付開
+        Fighting,                //  対戦中
     }
     //      プレーヤ情報
-    class  PlayerInformation{
+    class  FighterInformation{
         String UUID;       //  購入者のUUID
         String Name;       //  購入者の名前
     }
@@ -44,7 +46,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     Status  currentStatus;
 
     //      対戦者リスト
-    ArrayList<PlayerInformation> players = new ArrayList<PlayerInformation>();
+    ArrayList<FighterInformation> players = new ArrayList<FighterInformation>();
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
 
@@ -64,14 +66,14 @@ public final class FightClub extends JavaPlugin implements Listener {
         //      すでに登録されてたらエラー
         ////////////////////////////////////
         for(int i = 0;i < players.size();i++){
-            PlayerInformation player = players.get(i);
+            FighterInformation player = players.get(i);
             if(player.UUID == uuid){
                 //  登録済みエラー表示
                 return -1;
             }
         }
         //      追加
-        PlayerInformation playerInfo = new PlayerInformation();
+        FighterInformation playerInfo = new FighterInformation();
         players.add(playerInfo);
 
         return players.size();
@@ -138,7 +140,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
     //      ゲーム開始
     public int startGame(){
-        currentStatus = Playing;
+        currentStatus = Fighting;
         return 0;
     }
 
@@ -214,6 +216,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //   テーブル作成
         createTables();
+
+        //
+        getCommand("mfc").setExecutor(new FightClubCommand(this));
     }
 
     /////////////////////////////////
@@ -224,6 +229,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         getLogger().info("Disabled");
     }
 
+    /*
     /////////////////////////////////
     //      コマンド処理
     /////////////////////////////////
@@ -232,7 +238,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player p = (Player) sender;
         return true;
     }
-
+*/
     /////////////////////////////////
     //     ジョインイベント
     /////////////////////////////////
@@ -248,7 +254,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void onChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
         String message = e.getMessage();
-        p.sendMessage(ChatColor.RED + message + "testx");
+        p.sendMessage(ChatColor.YELLOW + message );
+
+        command("say "+message);
 
     }
 
@@ -296,5 +304,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return false;
     }
-
+    //      コマンド実行　
+    void command(String command){
+        getServer().dispatchCommand(getServer().getConsoleSender(),command);
+    }
 }
