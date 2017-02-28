@@ -1,10 +1,12 @@
 package red.man10.fightclub;
 
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 
 import static red.man10.fightclub.FightClub.Status.Closed;
+import static red.man10.fightclub.FightClub.Status.Playing;
 
 public final class FightClub extends JavaPlugin {
 
@@ -46,13 +48,21 @@ public final class FightClub extends JavaPlugin {
             return -1;
         }
 
-        //      すでに登録されていれエラー
-
+        ////////////////////////////////////
+        //      すでに登録されてたらエラー
+        ////////////////////////////////////
+        for(int i = 0;i < players.size();i++){
+            PlayerInformation player = players.get(i);
+            if(player.UUID == uuid){
+                //  登録済みエラー表示
+                return -1;
+            }
+        }
         //      追加
         PlayerInformation playerInfo = new PlayerInformation();
         players.add(playerInfo);
 
-        return -1;              //  エラー（すでに登録されているなど）
+        return players.size();
     }
     //////////////////////////////////
     //    プレーヤにかけれた金額
@@ -105,6 +115,12 @@ public final class FightClub extends JavaPlugin {
         currentStatus = Closed;
         return 0;
     }
+
+    //      ゲーム開始
+    public int startGame(){
+        currentStatus = Playing;
+    }
+
     //      対戦終了　winPlayer = -1 終了
     public int endGame(int winPlayer){
         if (winPlayer == -1){
