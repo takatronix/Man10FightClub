@@ -23,5 +23,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.persistence:persistence-api:1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.yaml:snakeyaml:1.17" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.md-5:bungeecord-chat:1.10-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="mysql:mysql-connector-java:6.0.5" level="project" />
   </component>
 </module>
