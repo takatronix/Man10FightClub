@@ -27,12 +27,13 @@ public class FightClubCommand  implements CommandExecutor {
 
     void showHelp(Player p){
         p.sendMessage("§e=========== <Man10 Fight Club> by takatronix http://man10.red===============");
+        p.sendMessage("§c* red commands for Admin");
         p.sendMessage("§c/mfc entry [prize money]     / Start entry");
         p.sendMessage("§c/mfc cancel                 / Cancel this game and pay money back");
         p.sendMessage("/mfc odds                   / Show Odds");
         p.sendMessage("-----------エントリー中有効コマンド-----------");
         p.sendMessage("§c/mfc register [Fighter]      / Register fighter(s)");
-        p.sendMessage("§c/mfc open :ゲームオープン");
+        p.sendMessage("§c/mfc open                  / Game Open");
         p.sendMessage("-----------オープン後有効コマンド-----------");
         p.sendMessage("/mfc bet [fighter] [money]   / Bet money on fighter");
         p.sendMessage("§c/mfc start                 / Start Fight!!");
