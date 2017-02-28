@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.ArrayList;
 
 import static red.man10.fightclub.FightClub.Status.Closed;
+import static red.man10.fightclub.FightClub.Status.Opened;
 import static red.man10.fightclub.FightClub.Status.Playing;
 
 public final class FightClub extends JavaPlugin {
@@ -91,6 +92,10 @@ public final class FightClub extends JavaPlugin {
     //////////////////////////////////////////////
     public int  betPlayer(int playerIndex,double price,String buyerUUID){
 
+        //     募集中でなければ投票できない
+        if (currentStatus != Opened){
+            return -1;
+        }
         //    buyerのお金がたらない　エラー
 
 
@@ -115,7 +120,10 @@ public final class FightClub extends JavaPlugin {
         currentStatus = Closed;
         return 0;
     }
-
+    //      募集開始
+    public int openGame(){
+        currentStatus = Opened;
+    }
     //      ゲーム開始
     public int startGame(){
         currentStatus = Playing;
