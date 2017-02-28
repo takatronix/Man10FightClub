@@ -129,7 +129,7 @@ public class FightClubCommand  implements CommandExecutor {
 
             double odds = plugin.getFighterOdds(info.UUID);
 
-            p.sendMessage("["+i+"]:" +info.name +"   $:"+price +"  Count:"+count+"  Odds:"+odds);
+            p.sendMessage("["+i+"]:" +info.name +"   $"+price +"  Count:"+count+"  Odds:"+odds);
         }
 
     }
