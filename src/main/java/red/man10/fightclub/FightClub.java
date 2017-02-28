@@ -119,7 +119,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         double bet = getFighterBetMoney(uuid);
         double total = getTotalBets();
         if(bet == 0){
-            return 0;
+            return 1.0;
         }
         //  （賭けられたお金の合計 － 手数料）÷【賭けに勝つ人達の勝ちに賭けた総合計金額】
         double odds = (total - tax) / bet;
