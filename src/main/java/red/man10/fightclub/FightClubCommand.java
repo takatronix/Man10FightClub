@@ -26,7 +26,8 @@ public class FightClubCommand  implements CommandExecutor {
     }
 
     void showHelp(Player p){
-        p.sendMessage("§e=========== <Man10 Fight Club> by takatronix http://man10.red===============");
+        p.sendMessage("§e============== §d●§f●§a●§e<Man10 Fight Club>§d●§f●§a● §e===============");
+        p.sendMessage("§e  by takatronix http://man10.red");
         p.sendMessage("§c* red commands for Admin");
         p.sendMessage("§c/mfc entry [prize money]     / Start entry");
         p.sendMessage("§c/mfc cancel                 / Cancel this game and pay money back");
