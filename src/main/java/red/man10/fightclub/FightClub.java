@@ -263,14 +263,14 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     //      対戦終了　winPlayer = -1 終了
-    public int endGame(Player p,int winPlayer){
-        if (winPlayer == -1){
+    public int endGame(Player p,int fighterIndex){
+        if (fighterIndex == -1){
             return cancelGame(p);
         }
 
         //  掛け金の計算
         double total  = getTotalBets();
-        double winBet = getFighterBets(winPlayer);
+        double winBet = getFighterBets(fighterIndex);
 
 
         //    オッズとは
@@ -279,13 +279,13 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         for (int i = 0;i < bets.size();i++){
             BetInformation bet = bets.get(i);
-            if (bet.fighterIndex != winPlayer){
+            if (bet.fighterIndex != fighterIndex){
                 continue;
             }
             //      プレイヤーへの支払い金額
             double playerPayout = bet.bet * odds;
             //      プレイヤーへ支払い
-            serverMessage(bet.buyerName+"は,$"+playerPayout+" 取得した！！！");
+            serverMessage(bet.buyerName+"は, 元金額:$" + bet.bet+"-> $"+playerPayout+"Odds x"+odds);
             //      通知
         }
 
