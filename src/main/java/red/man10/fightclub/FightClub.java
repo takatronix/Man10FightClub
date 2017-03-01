@@ -235,6 +235,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         bets.clear();
         filghters.clear();
+        buyers.clear();
         currentStatus = Closed;
         return 0;
     }
@@ -279,6 +280,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         //      終了
         bets.clear();
         filghters.clear();
+        buyers.clear();
         currentStatus = Closed;
         return 0;
     }
