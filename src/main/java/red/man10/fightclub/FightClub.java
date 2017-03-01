@@ -1,5 +1,6 @@
 package red.man10.fightclub;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -113,11 +114,14 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     double getFighterBetMoney(String uuid){
+
+
         int index = getFighterIndex(uuid);
         if(index == -1){
             return 0;
         }
         return getFighterBets(index);
+
     }
     //      購入された数
     int getFighterBetCount(String uuid){
@@ -168,8 +172,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     ///////////////////////////////////
     double getTotalBets(){
         double totalBet = 0;
-        for(int i = 0;i < filghters.size();i++){
-            totalBet = getFighterBets(i);
+        for(int i = 0;i < bets.size();i++){
+            totalBet += bets.get(i).bet;
         }
         return totalBet;
     }
@@ -356,9 +360,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         //
         Player p = (Player)e.getEntity();
 
-        log(p.getDisplayName());
+        serverMessage(p.getDisplayName());
 
-        return
+
         //      死亡フラグを立てる
         int index = getFighterIndex(p.getUniqueId().toString());
         filghters.get(index).isDeaad = true;
@@ -445,7 +449,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
     //     サーバーメッセージ
     void serverMessage(String text){
-        command("say "+text);
+        //command("say "+text);
+        Bukkit.getServer().broadcastMessage(text);
     }
 
     void titleMessage(Player p,String title,String subTitle){

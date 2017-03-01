@@ -144,6 +144,8 @@ public class FightClubCommand  implements CommandExecutor {
 
             p.sendMessage("["+i+"]:" +info.name +"   $"+price +"  Count:"+count+"  Odds:"+odds);
         }
+        p.sendMessage("-------------------------");
+        p.sendMessage("total: $"+plugin.getTotalBets());
 
     }
     void showHelp(Player p){
