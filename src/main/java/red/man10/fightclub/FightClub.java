@@ -80,6 +80,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         FighterInformation playerInfo = new FighterInformation();
         playerInfo.UUID = uuid;
         playerInfo.name = name;
+        playerInfo.isDead = false;
         filghters.add(playerInfo);
         return filghters.size();
     }
@@ -112,6 +113,17 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return ret;
     }
+    //      生存者数
+    int getLastFighter() {
+        int ret = 0;
+        for(int i = 0;i < filghters.size();i++){
+            if(filghters.get(i).isDead == false){
+                return i;
+            }
+        }
+        return -1;
+    }
+
 
     double getFighterBetMoney(String uuid){
 
@@ -273,7 +285,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             //      プレイヤーへの支払い金額
             double playerPayout = bet.bet * odds;
             //      プレイヤーへ支払い
-
+            serverMessage(bet.buyerName+"は,$"+playerPayout+" 取得した！！！");
             //      通知
         }
 
@@ -377,9 +389,32 @@ public final class FightClub extends JavaPlugin implements Listener {
         //
         Player p = (Player)e.getEntity();
 
-        serverMessage(p.getDisplayName());
+
+        //      死亡フラグを立てる
+        int index = getFighterIndex(p.getUniqueId().toString());
+        if(index != -1){
+            filghters.get(index).isDead = true;
+            serverMessage("死亡!!!:"+p.getDisplayName());
 
 
+            //      最後ならゲームを終了する
+            if(getAliveFighterCount() <= 1){
+                serverMessage("ゲーム終了！！！");
+
+                int lastIndex = getLastFighter();
+                endGame(p,lastIndex);
+                return;
+
+            }else{
+                String s = p.getDisplayName() + "は死亡した！！";
+                serverMessage(s);
+                s = "生存者/プレーヤ= " + getAliveFighterCount() + "/" + filghters.size();
+                serverMessage(s);
+            }
+        }
+        String s = "生存者/プレーヤ= " + getAliveFighterCount() + "/" + filghters.size();
+        serverMessage(s);
+/*
         //      死亡フラグを立てる
         int index = getFighterIndex(p.getUniqueId().toString());
         filghters.get(index).isDead = true;
@@ -394,7 +429,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             s = "生存者/プレーヤ= " + getAliveFighterCount() + "/" + filghters.size();
             serverMessage(s);
         }
-
+*/
 
     }
     /////////////////////////////////
@@ -410,7 +445,8 @@ public final class FightClub extends JavaPlugin implements Listener {
             command("say damage"+e.getDamage()+e.getCause()+e.getFinalDamage());
 
         }
-
+        String s = "生存者/プレーヤ= " + getAliveFighterCount() + "/" + filghters.size();
+        serverMessage(s);
         //command("say damage"+e.getDamage()+e.getCause()+e.getFinalDamage());
         //if (e.getEntity() instanceof Player){
           //  Player p = (Player)e;
