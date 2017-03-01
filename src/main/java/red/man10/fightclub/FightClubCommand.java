@@ -147,7 +147,7 @@ public class FightClubCommand  implements CommandExecutor {
            // Player fighter = Bukkit.getPlayer(info.UUID);
 
             double price = info.bet;
-            String fighter =   plugin.filghters.get(info.playerIndex).name;
+            String fighter =   plugin.filghters.get(info.fighterIndex).name;
 
 
             p.sendMessage("["+i+"]:" +info.buyerName +"   $"+price +" fighter:"+fighter);

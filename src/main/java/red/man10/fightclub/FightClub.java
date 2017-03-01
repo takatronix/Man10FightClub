@@ -35,7 +35,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     class  FighterInformation{
         String UUID;
         String name;
-        Boolean isDeaad;
+        Boolean isDead;
     }
     //      購入者情報
     class  BuyerInformation{
@@ -46,7 +46,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     class  BetInformation{
         String buyerUUID;       //  購入者のUUID
         String buyerName;       //  購入者の名前
-        int    playerIndex;     //  プレーヤ情報
+        int    fighterIndex;     //  プレーヤ情報
         double bet;             //  掛け金
     }
     double tax = 0;
@@ -106,7 +106,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     int getAliveFighterCount() {
         int ret = 0;
         for(int i = 0;i < filghters.size();i++){
-            if(filghters.get(i).isDeaad == false){
+            if(filghters.get(i).isDead == false){
                 ret ++;
             }
         }
@@ -133,7 +133,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         int count = 0;
         for(int i = 0;i < bets.size();i++){
             BetInformation bet = bets.get(i);
-            if (bet.playerIndex == index){
+            if (bet.fighterIndex == index){
                 count ++;
             }
         }
@@ -156,11 +156,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         return odds;
     }
 
-    double getFighterBets(int playerIndex){
+    double getFighterBets(int fighterIndex){
         double totalBet = 0;
         for(int i = 0;i < bets.size();i++){
             BetInformation bet = bets.get(i);
-            if (bet.playerIndex == playerIndex){
+            if (bet.fighterIndex == fighterIndex){
                 totalBet += bet.bet;
             }
         }
@@ -187,9 +187,24 @@ public final class FightClub extends JavaPlugin implements Listener {
             return -1;
         }
 
+        /////////////////////////////////////////
+        //     同じ相手への購入ならbetをマージ
+        /////////////////////////////////////////
+        for(int i = 0;i < bets.size();i++){
+            BetInformation bet = bets.get(i);
+            //      同じ購入IDのみ
+            if(bet.buyerUUID.equalsIgnoreCase(buyerUUID) == false){
+                continue;
+            }
+            if(bet.fighterIndex == index){
+                bets.get(i).bet += price;
+                return i;
+            }
+        }
+
         BetInformation bet = new BetInformation();
         bet.bet = price;
-        bet.playerIndex = index;
+        bet.fighterIndex = index;
         bet.buyerUUID = buyerUUID;
         bet.buyerName = buyerName;
         bets.add(bet);
@@ -251,7 +266,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         for (int i = 0;i < bets.size();i++){
             BetInformation bet = bets.get(i);
-            if (bet.playerIndex != winPlayer){
+            if (bet.fighterIndex != winPlayer){
                 continue;
             }
             //      プレイヤーへの支払い金額
@@ -365,7 +380,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      死亡フラグを立てる
         int index = getFighterIndex(p.getUniqueId().toString());
-        filghters.get(index).isDeaad = true;
+        filghters.get(index).isDead = true;
         serverMessage("死亡！！ "+p.getDisplayName());
 
         if(getAliveFighterCount() <= 1){
