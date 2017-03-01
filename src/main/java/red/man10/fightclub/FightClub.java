@@ -216,7 +216,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         //   払い戻し処理
         for (int i = 0;i < bets.size();i++) {
             BetInformation bet = bets.get(i);
-            p.sendMessage("Back money to " + bet.buyerName + " $"+ bet.bet );
+            p.sendMessage("Return money to " + bet.buyerName + " $"+ bet.bet );
         }
         bets.clear();
         filghters.clear();

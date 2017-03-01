@@ -126,10 +126,37 @@ public class FightClubCommand  implements CommandExecutor {
             showOdds(p);
             return false;
         }
+        //////////////////////////////////
+        //     bet表示
+        //////////////////////////////////
+        if(args[0].equalsIgnoreCase("bets")) {
+            showBets(p);
+            return false;
+        }
         p.sendMessage("invalid command");
 
         return false;
     }
+    void showBets(Player p){
+
+        p.sendMessage("§e=========== §d●§f●§a●§e Man10 Fight Club Buyer §d●§f●§a● §e===============");
+        for(int i=0;i < plugin.bets.size();i++){
+            FightClub.BetInformation info = plugin.bets.get(i);
+
+
+           // Player fighter = Bukkit.getPlayer(info.UUID);
+
+            double price = info.bet;
+            String fighter =   plugin.filghters.get(info.playerIndex).name;
+
+
+            p.sendMessage("["+i+"]:" +info.buyerName +"   $"+price +" fighter:"+fighter);
+        }
+        p.sendMessage("-------------------------");
+        p.sendMessage("total: $"+plugin.getTotalBets());
+
+    }
+
     void showOdds(Player p){
 
         p.sendMessage("§e=========== §d●§f●§a●§e Man10 Fight Club Odds §d●§f●§a● §e===============");
@@ -148,6 +175,7 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("total: $"+plugin.getTotalBets());
 
     }
+
     void showHelp(Player p){
         p.sendMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
         p.sendMessage("§e  by takatronix http://man10.red");
@@ -155,6 +183,7 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c/mfc entry [prize money]     / Start entry");
         p.sendMessage("§c/mfc cancel                 / Cancel this game and pay money back");
         p.sendMessage("/mfc odds                   / Show Odds");
+        p.sendMessage("/mfc bets                   / Show Bets");
         p.sendMessage("-----------エントリー中有効コマンド-----------");
         p.sendMessage("§c/mfc register [Fighter]      / Register fighter(s)");
         p.sendMessage("§c/mfc open                  / Game Open");
