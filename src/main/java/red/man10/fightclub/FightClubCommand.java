@@ -111,10 +111,25 @@ public class FightClubCommand  implements CommandExecutor {
             Player fighter = Bukkit.getPlayer(args[1]);
             String buyer = p.getDisplayName();
             p.sendMessage(buyer);
+
+            double balance = plugin.getBalance(p);
+            p.sendMessage("あなたの残額は $"+balance +"です");
+            if(plugin.getBalance(p) < money){
+                p.sendMessage(ChatColor.RED+ "残高が足りません！！");
+                return false;
+            }
+
+            if(plugin.withdraw(p,money) == false){
+                p.sendMessage(ChatColor.RED+ "お金の引き出しに失敗しました" );
+                return false;
+            }
+
             if(plugin.betFighter(fighter.getUniqueId().toString(),money,p.getUniqueId().toString(),buyer) == -1){
                 p.sendMessage("Error :" + args[1] +"is not on entry!");
                 return false;
             }
+            p.sendMessage(fighter.getName() +"へ、$" + money + "ベットしました！！");
+            p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.getBalance(p) +"です");
 
             showOdds(p);
             return true;

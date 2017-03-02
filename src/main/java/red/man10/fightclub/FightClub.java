@@ -230,14 +230,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         bets.add(bet);
 
 
-        //      通知用に購入者のIDを保存
-        int buyerIndex = getBuyerIndex(buyerUUID);
-        if (buyerIndex == -1){
-            BuyerInformation buyer = new BuyerInformation();
-            buyer.name = buyerName;
-            buyer.UUID = buyerUUID;
-            buyers.add(buyer);
-        }
 
 
         return bets.size();
@@ -252,6 +244,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         for (int i = 0;i < bets.size();i++) {
             BetInformation bet = bets.get(i);
             p.sendMessage("Return money to " + bet.buyerName + " $"+ bet.bet );
+
+            Player buyer = Bukkit.getPlayer(bet.buyerName);
+            buyer.sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
+            this.deposit(buyer,bet.bet);
         }
         bets.clear();
         filghters.clear();
@@ -294,7 +290,11 @@ public final class FightClub extends JavaPlugin implements Listener {
             double playerPayout = bet.bet * odds;
             //      プレイヤーへ支払い
             serverMessage(bet.buyerName+"は, 元金額:$" + bet.bet+"-> $"+playerPayout+"Odds x"+odds);
+
             //      通知
+            Player buyer = Bukkit.getPlayer(bet.buyerName);
+            this.deposit(buyer,playerPayout);
+
         }
 
         //      終了
@@ -394,6 +394,24 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
     }
+
+    double  getBalance(Player p){
+        return economy.getBalance(p);
+    }
+    Boolean  withdraw(Player p,double money){
+        EconomyResponse resp = economy.withdrawPlayer(p,money);
+        if(resp.transactionSuccess()){
+            return true;
+        }
+        return  false;
+    }
+    Boolean  deposit(Player p,double money){
+        EconomyResponse resp = economy.depositPlayer(p,money);
+        if(resp.transactionSuccess()){
+            return true;
+        }
+        return  false;
+    }
     /////////////////////////////////
     //      チャットイベント
     /////////////////////////////////
@@ -412,6 +430,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         } else {
             p.sendMessage(String.format("An error occured: %s", r.errorMessage));
         }
+
+        SidebarDisplay bar = new SidebarDisplay();
+        bar.setShowPlayer(p);
+        bar.setMainScoreboard(p);
+
+
         //return true;
         // command("say "+message);
       //  p.setScoreboard(setupScoreboard());
