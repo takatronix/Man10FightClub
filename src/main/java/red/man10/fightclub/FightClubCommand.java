@@ -109,7 +109,7 @@ public class FightClubCommand  implements CommandExecutor {
 
             double money = Double.parseDouble(args[2]);
             Player fighter = Bukkit.getPlayer(args[1]);
-            String buyer = p.getDisplayName();
+            String buyer = p.getName();
             p.sendMessage(buyer);
 
             double balance = plugin.getBalance(p);

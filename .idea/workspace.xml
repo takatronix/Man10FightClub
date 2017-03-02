@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -29,8 +28,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="295" column="30" lean-forward="false" selection-start-line="295" selection-start-column="30" selection-end-line="295" selection-end-column="30" />
+            <state relative-caret-position="345">
+              <caret line="265" column="17" lean-forward="false" selection-start-line="265" selection-start-column="17" selection-end-line="265" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1850#1870#0" expanded="true" />
@@ -107,8 +106,8 @@
       <file leaf-file-name="FightClubCommand.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="121" column="50" lean-forward="true" selection-start-line="121" selection-start-column="50" selection-end-line="121" selection-end-column="50" />
+            <state relative-caret-position="218">
+              <caret line="108" column="0" lean-forward="true" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -136,12 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>odd</find>
-      <find>getFighterBetMoney</find>
-      <find>getfighterBets</find>
-      <find>total</find>
-      <find>getTotalBetsgetTotalBets</find>
-      <find>back</find>
       <find>playerIndex</find>
       <find>clear</find>
       <find>getAliveFighterCountgetAliveFighterCount</find>
@@ -162,10 +155,16 @@
       <find>essenti</find>
       <find>onChat</find>
       <find>buy</find>
-      <find>bet</find>
       <find>balance</find>
       <find>endGame</find>
       <find>withD</find>
+      <find>deposit</find>
+      <find>cancelGame</find>
+      <find>buyerName</find>
+      <find>displayName</find>
+      <find>display</find>
+      <find>cancel</find>
+      <find>bet</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,8 +183,8 @@
         <option value="$PROJECT_DIR$/src/test/java/red/man10/fightclub/FightClubCommandTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/SidebarDisplay.java" />
-        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
       </list>
     </option>
   </component>
@@ -897,7 +896,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488486880104</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="お金の支払い処理">
+      <created>1488489243396</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1488489243396</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView">
@@ -916,14 +922,14 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.49145064" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32922536" sideWeight="0.49145064" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.30446774" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24600111" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32922536" sideWeight="0.69553226" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.69553226" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -997,7 +1003,8 @@
     <MESSAGE value="勝利したときのメッセージを修正" />
     <MESSAGE value="Vault API" />
     <MESSAGE value="Vault の初期化タイミングを修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="Vault の初期化タイミングを修正" />
+    <MESSAGE value="お金の支払い処理" />
+    <option name="LAST_COMMIT_MESSAGE" value="お金の支払い処理" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1408,8 +1415,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="295" column="30" lean-forward="false" selection-start-line="295" selection-start-column="30" selection-end-line="295" selection-end-column="30" />
+        <state relative-caret-position="345">
+          <caret line="265" column="17" lean-forward="false" selection-start-line="265" selection-start-column="17" selection-end-line="265" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1850#1870#0" expanded="true" />
@@ -1423,8 +1430,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="121" column="50" lean-forward="true" selection-start-line="121" selection-start-column="50" selection-end-line="121" selection-end-column="50" />
+        <state relative-caret-position="218">
+          <caret line="108" column="0" lean-forward="true" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
           <folding />
         </state>
       </provider>
