@@ -1,5 +1,10 @@
 package red.man10.fightclub;
 
+
+
+
+import net.milkbowl.vault.economy.Economy;
+import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -12,7 +17,9 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.server.ServerCommandEvent;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,6 +28,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import static red.man10.fightclub.FightClub.Status.*;
+import static sun.audio.AudioPlayer.player;
 
 public final class FightClub extends JavaPlugin implements Listener {
 
@@ -298,9 +306,23 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
 
+    public static Economy economy = null;
+    private boolean setupEconomy() {
 
-
-
+        serverMessage("setupEconomy");
+        if (getServer().getPluginManager().getPlugin("Essentials") == null) {
+            return false;
+        }
+        serverMessage("setupEconomy2");
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if (rsp == null) {
+            return false;
+        }
+        serverMessage("setupEconomy3");
+        economy = rsp.getProvider();
+        serverMessage("economy ok");
+        return economy != null;
+    }
 
     /////////////////////////////////
     //     MySQL 設定値
@@ -338,6 +360,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //
         getCommand("mfc").setExecutor(new FightClubCommand(this));
+
+        //setupEconomy();
     }
 
     /////////////////////////////////
@@ -365,18 +389,32 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
         p.sendMessage(ChatColor.YELLOW  + "Man10 Fight Club System Started.");
+
+
+
+
     }
     /////////////////////////////////
     //      チャットイベント
     /////////////////////////////////
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
+        setupEconomy();
         Player p = e.getPlayer();
         String message = e.getMessage();
         //p.sendMessage(ChatColor.YELLOW + message );
 
-        // command("say "+message);
 
+        p.sendMessage(String.format("You have %s", economy.format(economy.getBalance(p.getName()))));
+        EconomyResponse r = economy.depositPlayer(p, 100);
+        if(r.transactionSuccess()) {
+            p.sendMessage(String.format("You were given %s and now have %s", economy.format(r.amount), economy.format(r.balance)));
+        } else {
+            p.sendMessage(String.format("An error occured: %s", r.errorMessage));
+        }
+        //return true;
+        // command("say "+message);
+      //  p.setScoreboard(setupScoreboard());
     }
     /////////////////////////////////
     //      デスイベント
@@ -437,12 +475,19 @@ public final class FightClub extends JavaPlugin implements Listener {
     /////////////////////////////////
     @EventHandler
     public void onHit(EntityDamageEvent e){
-        getLogger().info("damage :" +e.getDamage());
+
+
+
+        serverMessage("damage :" +e.getDamage());
 
         Player p = (Player)e.getEntity();
+        serverMessage("entity get");
         if(e.getEntity() instanceof Player)
         {
+            serverMessage("instance player");
             command("say damage"+e.getDamage()+e.getCause()+e.getFinalDamage());
+
+           // p.setScoreboard(board);
 
         }
         String s = "生存者/プレーヤ= " + getAliveFighterCount() + "/" + filghters.size();

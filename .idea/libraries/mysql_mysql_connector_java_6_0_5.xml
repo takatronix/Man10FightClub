@@ -3,6 +3,7 @@
     <properties maven-id="mysql:mysql-connector-java:6.0.5" />
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-6.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../lib/VaultAPI-1.6.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
