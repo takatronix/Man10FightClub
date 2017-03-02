@@ -310,7 +310,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     private boolean setupEconomy() {
 
         serverMessage("setupEconomy");
-        if (getServer().getPluginManager().getPlugin("Essentials") == null) {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
             return false;
         }
         serverMessage("setupEconomy2");
@@ -361,7 +361,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         //
         getCommand("mfc").setExecutor(new FightClubCommand(this));
 
-        //setupEconomy();
+        setupEconomy();
     }
 
     /////////////////////////////////
@@ -399,7 +399,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     /////////////////////////////////
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
-        setupEconomy();
+
         Player p = e.getPlayer();
         String message = e.getMessage();
         //p.sendMessage(ChatColor.YELLOW + message );
