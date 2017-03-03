@@ -7,6 +7,7 @@ import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -26,9 +27,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import static red.man10.fightclub.FightClub.Status.*;
-import static sun.audio.AudioPlayer.player;
+
 
 public final class FightClub extends JavaPlugin implements Listener {
 
@@ -41,18 +43,18 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
     //      プレーヤ情報
     class  FighterInformation{
-        String UUID;
+        UUID   uuid;
         String name;
         Boolean isDead;
     }
     //      購入者情報
     class  BuyerInformation{
-        String UUID;
+        UUID    uuid;
         String name;
     }
     //      賭け情報
     class  BetInformation{
-        String buyerUUID;       //  購入者のUUID
+        UUID     buyerUUID;       //  購入者のUUID
         String buyerName;       //  購入者の名前
         int    fighterIndex;     //  プレーヤ情報
         double bet;             //  掛け金
@@ -72,21 +74,21 @@ public final class FightClub extends JavaPlugin implements Listener {
     //////////////////////////////////
 
     //      対戦者登録
-    public int registerFighter(String uuid,String name){
+    public int registerFighter(UUID uuid,String name){
 
         ////////////////////////////////////
         //      すでに登録されてたらエラー
         ////////////////////////////////////
         for(int i = 0;i < filghters.size();i++){
-            FighterInformation player = filghters.get(i);
-            if(player.UUID.equalsIgnoreCase(uuid)){
+            FighterInformation fighter = filghters.get(i);
+            if(fighter.uuid == uuid){
                 //  登録済みエラー表示
                 return -1;
             }
         }
         //      追加
         FighterInformation playerInfo = new FighterInformation();
-        playerInfo.UUID = uuid;
+        playerInfo.uuid = uuid;
         playerInfo.name = name;
         playerInfo.isDead = false;
         filghters.add(playerInfo);
@@ -94,18 +96,18 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     //////////////////////////////////
-    int getBuyerIndex(String uuid) {
+    int getBuyerIndex(UUID uuid) {
         for(int i = 0;i < buyers.size();i++){
-            if(buyers.get(i).UUID.equalsIgnoreCase(uuid)){
+            if(buyers.get(i).uuid == uuid){
                 return i;
             }
         }
         return -1;
     }
     //
-    int getFighterIndex(String uuid) {
+    int getFighterIndex(UUID uuid) {
         for(int i = 0;i < filghters.size();i++){
-            if(filghters.get(i).UUID.equalsIgnoreCase(uuid)){
+            if(filghters.get(i).uuid == uuid){
                 return i;
             }
         }
@@ -133,7 +135,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
 
-    double getFighterBetMoney(String uuid){
+    double getFighterBetMoney(UUID uuid){
 
 
         int index = getFighterIndex(uuid);
@@ -144,7 +146,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     }
     //      購入された数
-    int getFighterBetCount(String uuid){
+    int getFighterBetCount(UUID uuid){
         int index = getFighterIndex(uuid);
         if(index == -1){
             return 0;
@@ -163,7 +165,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     //////////////////////
     //      odds
     //////////////////////
-    double getFighterOdds(String uuid){
+    double getFighterOdds(UUID uuid){
 
         //      購入された金額
         double bet = getFighterBetMoney(uuid);
@@ -200,7 +202,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     //////////////////////////////////////////////
     //     プレイーやに賭ける 成功なら掛け金テーブルindex
     //////////////////////////////////////////////
-    int  betFighter(String fighterUUID,double price,String buyerUUID,String buyerName){
+    int  betFighter(UUID fighterUUID,double price,UUID buyerUUID,String buyerName){
 
         int index = getFighterIndex(fighterUUID);
         if(index == -1){
@@ -213,7 +215,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         for(int i = 0;i < bets.size();i++){
             BetInformation bet = bets.get(i);
             //      同じ購入IDのみ
-            if(bet.buyerUUID.equalsIgnoreCase(buyerUUID) == false){
+            if(bet.buyerUUID != buyerUUID){
                 continue;
             }
             if(bet.fighterIndex == index){
@@ -245,9 +247,8 @@ public final class FightClub extends JavaPlugin implements Listener {
             BetInformation bet = bets.get(i);
             p.sendMessage("Return money to " + bet.buyerName + " $"+ bet.bet );
 
-            Player buyer = Bukkit.getPlayer(bet.buyerName);
-            buyer.sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
-            this.deposit(buyer,bet.bet);
+            this.deposit(bet.buyerUUID,bet.bet);
+            Bukkit.getPlayer(bet.buyerName).sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
         }
         bets.clear();
         filghters.clear();
@@ -292,8 +293,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             serverMessage(bet.buyerName+"は, 元金額:$" + bet.bet+"-> $"+playerPayout+"Odds x"+odds);
 
             //      通知
-            Player buyer = Bukkit.getPlayer(bet.buyerName);
-            this.deposit(buyer,playerPayout);
+            this.deposit(bet.buyerUUID,playerPayout);
 
         }
 
@@ -395,21 +395,29 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     }
 
+    double  getBalance(UUID uuid){
+        return economy.getBalance(Bukkit.getOfflinePlayer(uuid).getPlayer());
+    }
     double  getBalance(Player p){
         return economy.getBalance(p);
     }
-    Boolean  withdraw(Player p,double money){
+    Boolean  withdraw(UUID uuid, double money){
+        OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
         EconomyResponse resp = economy.withdrawPlayer(p,money);
         if(resp.transactionSuccess()){
             return true;
         }
         return  false;
     }
-    Boolean  deposit(Player p,double money){
+    //      お金を入れる
+    Boolean  deposit(UUID uuid,double money){
+        OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
         EconomyResponse resp = economy.depositPlayer(p,money);
         if(resp.transactionSuccess()){
+            serverMessage("振込成功" + p.getName() + " $"+ money);
             return true;
         }
+        serverMessage("振込失敗" + p.getName() + " $"+ money);
         return  false;
     }
     /////////////////////////////////
@@ -453,7 +461,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         //      死亡フラグを立てる
-        int index = getFighterIndex(p.getUniqueId().toString());
+        int index = getFighterIndex(p.getUniqueId());
         if(index != -1){
             filghters.get(index).isDead = true;
             serverMessage("死亡!!!:"+p.getDisplayName());

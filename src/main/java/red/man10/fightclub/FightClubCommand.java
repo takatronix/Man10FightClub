@@ -71,7 +71,7 @@ public class FightClubCommand  implements CommandExecutor {
                 return false;
             }
 
-            int ret = plugin.registerFighter(fighter.getUniqueId().toString(),args[1]);
+            int ret = plugin.registerFighter(fighter.getUniqueId(),args[1]);
             if (ret == -1){
                 p.sendMessage(ChatColor.RED + "Error: " + args[1] +" is already registered!");
                 return false;
@@ -112,19 +112,19 @@ public class FightClubCommand  implements CommandExecutor {
             String buyer = p.getName();
             p.sendMessage(buyer);
 
-            double balance = plugin.getBalance(p);
+            double balance = plugin.getBalance(p.getUniqueId());
             p.sendMessage("あなたの残額は $"+balance +"です");
-            if(plugin.getBalance(p) < money){
+            if(balance < money){
                 p.sendMessage(ChatColor.RED+ "残高が足りません！！");
                 return false;
             }
 
-            if(plugin.withdraw(p,money) == false){
+            if(plugin.withdraw(p.getUniqueId(),money) == false){
                 p.sendMessage(ChatColor.RED+ "お金の引き出しに失敗しました" );
                 return false;
             }
 
-            if(plugin.betFighter(fighter.getUniqueId().toString(),money,p.getUniqueId().toString(),buyer) == -1){
+            if(plugin.betFighter(fighter.getUniqueId(),money,p.getUniqueId(),buyer) == -1){
                 p.sendMessage("Error :" + args[1] +"is not on entry!");
                 return false;
             }
@@ -177,12 +177,12 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§e=========== §d●§f●§a●§e Man10 Fight Club Odds §d●§f●§a● §e===============");
         for(int i=0;i < plugin.filghters.size();i++){
             FightClub.FighterInformation info = plugin.filghters.get(i);
-            Player fighter = Bukkit.getPlayer(info.UUID);
+            Player fighter = Bukkit.getPlayer(info.uuid);
 
-            double price = plugin.getFighterBetMoney(info.UUID);
-            int count = plugin.getFighterBetCount(info.UUID);
+            double price = plugin.getFighterBetMoney(info.uuid);
+            int count = plugin.getFighterBetCount(info.uuid);
 
-            double odds = plugin.getFighterOdds(info.UUID);
+            double odds = plugin.getFighterOdds(info.uuid);
 
             p.sendMessage("["+i+"]:" +info.name +" Death:"+ info.isDead +"   $"+price +"  Count:"+count+"  Odds:"+odds);
         }
