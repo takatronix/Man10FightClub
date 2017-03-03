@@ -398,9 +398,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     double  getBalance(UUID uuid){
         return economy.getBalance(Bukkit.getOfflinePlayer(uuid).getPlayer());
     }
-    double  getBalance(Player p){
-        return economy.getBalance(p);
-    }
+
     Boolean  withdraw(UUID uuid, double money){
         OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
         EconomyResponse resp = economy.withdrawPlayer(p,money);

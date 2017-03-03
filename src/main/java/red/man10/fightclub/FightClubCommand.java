@@ -129,7 +129,7 @@ public class FightClubCommand  implements CommandExecutor {
                 return false;
             }
             p.sendMessage(fighter.getName() +"へ、$" + money + "ベットしました！！");
-            p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.getBalance(p) +"です");
+            p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.getBalance(p.getUniqueId()) +"です");
 
             showOdds(p);
             return true;
