@@ -3,11 +3,11 @@ package red.man10.fightclub;
 
 
 
+import co.insou.skulls.SkullMaker;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.*;
+import org.bukkit.block.Skull;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -18,10 +18,12 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.server.ServerCommandEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scoreboard.*;
 
+import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -30,6 +32,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import static red.man10.fightclub.FightClub.Status.*;
+import static sun.audio.AudioPlayer.player;
 
 
 public final class FightClub extends JavaPlugin implements Listener {
@@ -395,10 +398,15 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     }
 
+    /////////////////////////////////////
+    //      残高確認
+    /////////////////////////////////////
     double  getBalance(UUID uuid){
         return economy.getBalance(Bukkit.getOfflinePlayer(uuid).getPlayer());
     }
-
+    /////////////////////////////////////
+    //      引き出し
+    /////////////////////////////////////
     Boolean  withdraw(UUID uuid, double money){
         OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
         EconomyResponse resp = economy.withdrawPlayer(p,money);
@@ -407,7 +415,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return  false;
     }
+    /////////////////////////////////////
     //      お金を入れる
+    /////////////////////////////////////
     Boolean  deposit(UUID uuid,double money){
         OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
         EconomyResponse resp = economy.depositPlayer(p,money);
@@ -426,9 +436,20 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         Player p = e.getPlayer();
         String message = e.getMessage();
+        serverMessage("test");
+
+
+        ItemStack head = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/0ebe7e5215169a699acc6cefa7b73fdb108db87bb6dae2849fbe24714b27").build();
+
+       // CustomSkullAPI.createSkull("http://textures.minecraft.net/texture/7c57f9192e81eb6897c24ecd4935cfb5a731a6f9a57abb51f2b35e8b4be7ebc");
+
+        //p.getInventory().addItem(Skull.getCustomSkull("http://textures.minecraft.net/texture/7c57f9192e81eb6897c24ecd4935cfb5a731a6f9a57abb51f2b35e8b4be7ebc");
+
+        p.getInventory().addItem(head);
+
         //p.sendMessage(ChatColor.YELLOW + message );
 
-
+/*
         p.sendMessage(String.format("You have %s", economy.format(economy.getBalance(p.getName()))));
         EconomyResponse r = economy.depositPlayer(p, 100);
         if(r.transactionSuccess()) {
@@ -440,7 +461,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         SidebarDisplay bar = new SidebarDisplay();
         bar.setShowPlayer(p);
         bar.setMainScoreboard(p);
-
+*/
 
         //return true;
         // command("say "+message);
@@ -508,20 +529,19 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
 
-        serverMessage("damage :" +e.getDamage());
+       // serverMessage("damage :" +e.getDamage());
 
         Player p = (Player)e.getEntity();
-        serverMessage("entity get");
-        if(e.getEntity() instanceof Player)
+       // if(e.getEntity() instanceof Player)
         {
-            serverMessage("instance player");
-            command("say damage"+e.getDamage()+e.getCause()+e.getFinalDamage());
+          //  serverMessage("instance player");
+        //    command("say damage"+e.getDamage()+e.getCause()+e.getFinalDamage());
 
            // p.setScoreboard(board);
 
         }
-        String s = "生存者/プレーヤ= " + getAliveFighterCount() + "/" + filghters.size();
-        serverMessage(s);
+     ///   String s = "生存者/プレーヤ= " + getAliveFighterCount() + "/" + filghters.size();
+      ///  serverMessage(s);
         //command("say damage"+e.getDamage()+e.getCause()+e.getFinalDamage());
         //if (e.getEntity() instanceof Player){
           //  Player p = (Player)e;

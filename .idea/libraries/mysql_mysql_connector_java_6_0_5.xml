@@ -3,13 +3,18 @@
     <properties maven-id="mysql:mysql-connector-java:6.0.5" />
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-6.0.5.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lib/VaultAPI-1.6.jar!/" />
       <root url="jar://$PROJECT_DIR$/../lib/mysql-connector-java-6.0.5.jar!/" />
       <root url="jar://$PROJECT_DIR$/../lib/mysql-connector-java-6.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../lib/mysql-connector-java-6.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../lib/mysql-connector-java-6.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../lib/mysql-connector-java-6.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/CustomSkullAPI_v1.0.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/../lib/mysql-connector-java-6.0.5.jar!/" />
       <root url="jar://$PROJECT_DIR$/../lib/mysql-connector-java-6.0.5.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/CustomSkullAPI_v1.0.1.jar!/doc" />
+    </JAVADOC>
     <SOURCES />
   </library>
 </component>
