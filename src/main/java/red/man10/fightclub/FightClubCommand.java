@@ -112,14 +112,14 @@ public class FightClubCommand  implements CommandExecutor {
             String buyer = p.getName();
             p.sendMessage(buyer);
 
-            double balance = plugin.getBalance(p.getUniqueId());
+            double balance = plugin.vault.getBalance(p.getUniqueId());
             p.sendMessage("あなたの残額は $"+balance +"です");
             if(balance < money){
                 p.sendMessage(ChatColor.RED+ "残高が足りません！！");
                 return false;
             }
 
-            if(plugin.withdraw(p.getUniqueId(),money) == false){
+            if(plugin.vault.withdraw(p.getUniqueId(),money) == false){
                 p.sendMessage(ChatColor.RED+ "お金の引き出しに失敗しました" );
                 return false;
             }
@@ -129,7 +129,7 @@ public class FightClubCommand  implements CommandExecutor {
                 return false;
             }
             p.sendMessage(fighter.getName() +"へ、$" + money + "ベットしました！！");
-            p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.getBalance(p.getUniqueId()) +"です");
+            p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.vault.getBalance(p.getUniqueId()) +"です");
 
             showOdds(p);
             return true;

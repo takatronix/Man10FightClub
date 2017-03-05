@@ -36,7 +36,8 @@ import static sun.audio.AudioPlayer.player;
 
 
 public final class FightClub extends JavaPlugin implements Listener {
-
+    VaultManager vault = null;
+    MySQLManager mysql = null;
     //   状態遷移 これらの状態遷移する
     public enum Status {
         Closed,                 //  開催前
@@ -250,7 +251,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             BetInformation bet = bets.get(i);
             p.sendMessage("Return money to " + bet.buyerName + " $"+ bet.bet );
 
-            this.deposit(bet.buyerUUID,bet.bet);
+            vault.deposit(bet.buyerUUID,bet.bet);
             Bukkit.getPlayer(bet.buyerName).sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
         }
         bets.clear();
@@ -296,7 +297,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             serverMessage(bet.buyerName+"は, 元金額:$" + bet.bet+"-> $"+playerPayout+"Odds x"+odds);
 
             //      通知
-            this.deposit(bet.buyerUUID,playerPayout);
+            vault.deposit(bet.buyerUUID,playerPayout);
 
         }
 
@@ -309,62 +310,24 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
 
-    public static Economy economy = null;
-    private boolean setupEconomy() {
 
-        serverMessage("setupEconomy");
-        if (getServer().getPluginManager().getPlugin("Vault") == null) {
-            return false;
-        }
-        serverMessage("setupEconomy2");
-        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
-        if (rsp == null) {
-            return false;
-        }
-        serverMessage("setupEconomy3");
-        economy = rsp.getProvider();
-        serverMessage("economy ok");
-        return economy != null;
-    }
-
-    /////////////////////////////////
-    //     MySQL 設定値
-    /////////////////////////////////
-    String  mysql_ip;
-    String  mysql_port;
-    String  mysql_user;
-    String  mysql_pass;
-    String  mysql_db;
-
-    /////////////////////////////////
-    //       設定ファイル読み込み
-    /////////////////////////////////
-    public void loadConfig(){
-        this.reloadConfig();
-        mysql_ip = this.getConfig().getString("server_config.mysql_ip");
-        mysql_port = this.getConfig().getString("server_config.mysql_port");
-        mysql_user = this.getConfig().getString("server_config.mysql_user");
-        mysql_pass = this.getConfig().getString("server_config.mysql_pass");
-        mysql_db = this.getConfig().getString("server_config.mysql_db");
-        getLogger().info("Config loaded");
-    }
     /////////////////////////////////
     //      起動
     /////////////////////////////////
     @Override
     public void onEnable() {
         getLogger().info("Enabled");
+
+        vault = new VaultManager(this);
+        mysql = new MySQLManager(this,"Man10Core");
+
         this.saveDefaultConfig();
-        loadConfig();
+
         getServer().getPluginManager().registerEvents (this,this);
 
-        //   テーブル作成
-        createTables();
 
         //
         getCommand("mfc").setExecutor(new FightClubCommand(this));
-
-        setupEconomy();
     }
 
     /////////////////////////////////
@@ -398,36 +361,6 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     }
 
-    /////////////////////////////////////
-    //      残高確認
-    /////////////////////////////////////
-    double  getBalance(UUID uuid){
-        return economy.getBalance(Bukkit.getOfflinePlayer(uuid).getPlayer());
-    }
-    /////////////////////////////////////
-    //      引き出し
-    /////////////////////////////////////
-    Boolean  withdraw(UUID uuid, double money){
-        OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
-        EconomyResponse resp = economy.withdrawPlayer(p,money);
-        if(resp.transactionSuccess()){
-            return true;
-        }
-        return  false;
-    }
-    /////////////////////////////////////
-    //      お金を入れる
-    /////////////////////////////////////
-    Boolean  deposit(UUID uuid,double money){
-        OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
-        EconomyResponse resp = economy.depositPlayer(p,money);
-        if(resp.transactionSuccess()){
-            serverMessage("振込成功" + p.getName() + " $"+ money);
-            return true;
-        }
-        serverMessage("振込失敗" + p.getName() + " $"+ money);
-        return  false;
-    }
     /////////////////////////////////
     //      チャットイベント
     /////////////////////////////////
@@ -439,14 +372,14 @@ public final class FightClub extends JavaPlugin implements Listener {
         serverMessage("test");
 
 
-        ItemStack head = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/7c57f9192e81eb6897c24ecd4935cfb5a731a6f9a57abb51f2b35e8b4be7ebc").build();
+      //  ItemStack head = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/7c57f9192e81eb6897c24ecd4935cfb5a731a6f9a57abb51f2b35e8b4be7ebc").build();
 
 
        // CustomSkullAPI.createSkull("http://textures.minecraft.net/texture/7c57f9192e81eb6897c24ecd4935cfb5a731a6f9a57abb51f2b35e8b4be7ebc");
 
         //p.getInventory().addItem(Skull.getCustomSkull("http://textures.minecraft.net/texture/7c57f9192e81eb6897c24ecd4935cfb5a731a6f9a57abb51f2b35e8b4be7ebc");
 
-        p.getInventory().addItem(head);
+       // p.getInventory().addItem(head);
 
         //p.sendMessage(ChatColor.YELLOW + message );
 
@@ -547,49 +480,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         //if (e.getEntity() instanceof Player){
           //  Player p = (Player)e;
        // }
-    }
-    //////////////////////////////////////////
-    //        Chatテーブル
-    //////////////////////////////////////////
-    String sqlCrateChatLogTable = "CREATE TABLE `mfc_chat` (\n" +
-            "  `id` int(11) NOT NULL AUTO_INCREMENT,\n" +
-            "  `server` varchar(100) DEFAULT NULL,\n" +
-            "  `name` varchar(100) DEFAULT NULL,\n" +
-            "  `message` varchar(400) DEFAULT NULL,\n" +
-            "  `timestamp` varchar(50) DEFAULT NULL,\n" +
-            "  PRIMARY KEY (`id`)\n" +
-            ") ENGINE=InnoDB AUTO_INCREMENT=104377 DEFAULT CHARSET=utf8;";
-
-    void createTables(){
-        executeSQL(sqlCrateChatLogTable);
-    }
-
-    ////////////////////////////////
-    //      SQL実行
-    ////////////////////////////////
-    Boolean executeSQL(String sql){
-        // getLogger().info("executing SQL" + sql);
-        Connection conn;
-        try {
-            //      データベース作成
-            Class.forName("com.mysql.jdbc.Driver");
-            String databaseURL =  "jdbc:mysql://" + mysql_ip + "/" + mysql_db ;
-            //getLogger().info(databaseURL);
-
-            conn = DriverManager.getConnection(databaseURL,mysql_user,mysql_pass);
-            Statement st = conn.createStatement();
-            st.execute(sql);
-
-            st.close();
-            conn.close();
-            //getLogger().info("SQL performed");
-            return true;
-        } catch(ClassNotFoundException e){
-            getLogger().warning("Could not read driver");
-        } catch(SQLException e){
-            getLogger().warning("Database connection error");
-        }
-        return false;
     }
 
     //      ログメッセージ
