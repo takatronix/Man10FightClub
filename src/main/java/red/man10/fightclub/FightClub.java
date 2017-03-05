@@ -328,7 +328,10 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //
         getCommand("mfc").setExecutor(new FightClubCommand(this));
+
+
     }
+    SidebarDisplay sideBar = new SidebarDisplay();
 
     /////////////////////////////////
     //      終了
@@ -371,6 +374,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         String message = e.getMessage();
         serverMessage("test");
 
+        showSideBar(p);
 
       //  ItemStack head = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/7c57f9192e81eb6897c24ecd4935cfb5a731a6f9a57abb51f2b35e8b4be7ebc").build();
 
@@ -493,6 +497,36 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     void titleMessage(Player p,String title,String subTitle){
+
+    }
+
+    void showSideBar(Player p){
+
+        sideBar.remove();
+        sideBar = new SidebarDisplay();
+
+
+        sideBar.setTitle("     Man10 Fight Club    ");
+        //sideBar.setScore("test",1);
+        if(currentStatus == Closed){
+
+        }
+
+        for(int i = 0;i < filghters.size();i++){
+            FighterInformation f = filghters.get(i);
+            String s = "["+i+"]" + f.name + " Odds: x"+ getFighterOdds(f.uuid);
+            sideBar.setScore(s,1);
+        }
+
+
+
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+            sideBar.setMainScoreboard(player);
+            sideBar.setShowPlayer(player);
+
+        }
+
+
 
     }
 
