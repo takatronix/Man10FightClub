@@ -102,10 +102,6 @@
             <artifactId>particleapi</artifactId>
             <version>2.1.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.inventivetalent.packetlistener</groupId>
-            <artifactId>api</artifactId>
-            <version>3.5.2-SNAPSHOT</version>
-        </dependency>
+
     </dependencies>
 </project>

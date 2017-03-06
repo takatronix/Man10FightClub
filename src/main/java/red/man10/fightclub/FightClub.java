@@ -262,6 +262,11 @@ public final class FightClub extends JavaPlugin implements Listener {
     //////////////////////////////////////////////
     int cancelGame(Player p){
 
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+            GlowAPI.setGlowing(player,false,Bukkit.getOnlinePlayers());
+
+        }
+
         //   払い戻し処理
         for (int i = 0;i < bets.size();i++) {
             BetInformation bet = bets.get(i);
@@ -400,8 +405,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         getLogger().info("Enabled");
         this.saveDefaultConfig();
 
-        vault = new VaultManager(this);
-        mysql = new MySQLManager(this,"MFC");
 
 
 
@@ -409,9 +412,11 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         //
-        getCommand("mfc").setExecutor(new FightClubCommand(this));
+       // getCommand("mfc").setExecutor(new FightClubCommand(this));
 
 
+        vault = new VaultManager(this);
+        mysql = new MySQLManager(this,"MFC");
     }
 
 
@@ -432,7 +437,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player p = e.getPlayer();
         p.sendMessage(ChatColor.YELLOW  + "Man10 Fight Club System Started.");
         updateSidebar();
-        GlowAPI.setGlowing(e.getPlayer(), GlowAPI.Color.AQUA, Bukkit.getOnlinePlayers());
     }
 
     /////////////////////////////////
@@ -443,6 +447,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         Player p = e.getPlayer();
         String message = e.getMessage();
+      //  GlowAPI.setGlowing(e.getPlayer(), GlowAPI.Color.AQUA, Bukkit.getOnlinePlayers());
 
     }
     /////////////////////////////////
