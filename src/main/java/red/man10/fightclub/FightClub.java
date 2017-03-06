@@ -529,6 +529,10 @@ public final class FightClub extends JavaPlugin implements Listener {
                 openGame();
                 return;
             }
+            if (s.getLine(1).equalsIgnoreCase("Fight")) {
+                startGame();
+                return;
+            }
 
 
         }
