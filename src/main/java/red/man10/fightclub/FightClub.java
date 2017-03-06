@@ -421,7 +421,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         vault = new VaultManager(this);
-        mysql = new MySQLManager(this,"MFC");
+       // mysql = new MySQLManager(this,"MFC");
     }
 
 

@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import red.man10.SidebarDisplay;
 
+import java.awt.*;
+
 import static red.man10.fightclub.FightClub.Status.*;
 
 /**
@@ -62,7 +64,13 @@ public class FightClubSideBar {
         sideBar.setTitle("Man10 Fight Club 対戦中");
         for(int i = 0;i < plugin.filghters.size();i++){
             FightClub.FighterInformation f = plugin.filghters.get(i);
-            String s = "["+i+"]" + f.name + " Odds: x"+ plugin.getFighterOdds(f.uuid);
+            String s = "";
+
+            if(i == 0){
+                s = Color.RED + "["+i+"]" + f.name + " Odds: x"+ plugin.getFighterOdds(f.uuid);
+            }else{
+                s = Color.BLUE + "["+i+"]" + f.name + " Odds: x"+ plugin.getFighterOdds(f.uuid);
+            }
             sideBar.setScore(s,plugin.getFighterBetCount(f.uuid));
         }
         showToAll();
