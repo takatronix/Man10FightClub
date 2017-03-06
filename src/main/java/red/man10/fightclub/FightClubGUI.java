@@ -117,15 +117,26 @@ public class FightClubGUI {
         String buyer = p.getName();
         p.sendMessage(buyer);
 
+
+
+
+        if(plugin.canBet(p.getUniqueId()) == false){
+            p.closeInventory();
+            return;
+        }
+
+
         double balance = plugin.vault.getBalance(p.getUniqueId());
         p.sendMessage("あなたの残額は $"+balance +"です");
         if(balance < money){
             p.sendMessage(ChatColor.RED+ "残高が足りません！！");
+            p.closeInventory();
             return;
         }
 
         if(plugin.vault.withdraw(p.getUniqueId(),money) == false){
             p.sendMessage(ChatColor.RED+ "お金の引き出しに失敗しました" );
+            p.closeInventory();
             return;
         }
 
@@ -134,6 +145,8 @@ public class FightClubGUI {
             p.closeInventory();
             return;
         }
+
+
         p.sendMessage(fighterName +"へ、$" + money + "ベットしました！！");
         p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.vault.getBalance(p.getUniqueId()) +"です");
         //  plugin.showSideBar(p);

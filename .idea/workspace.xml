@@ -29,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FightClubGUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FightClubGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="144" column="32" lean-forward="true" selection-start-line="144" selection-start-column="32" selection-end-line="144" selection-end-column="32" />
+            <state relative-caret-position="574">
+              <caret line="144" column="0" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -79,20 +79,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="209" column="19" lean-forward="false" selection-start-line="209" selection-start-column="9" selection-end-line="209" selection-end-column="19" />
+            <state relative-caret-position="409">
+              <caret line="222" column="50" lean-forward="true" selection-start-line="222" selection-start-column="50" selection-end-line="222" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1808#1828#0" expanded="true" />
                 <element signature="e#1911#1931#0" expanded="true" />
                 <element signature="e#2001#2017#0" expanded="true" />
                 <element signature="e#2100#2118#0" expanded="true" />
-                <element signature="e#12541#12542#0" expanded="true" />
-                <element signature="e#12582#12583#0" expanded="true" />
-                <element signature="e#15765#15773#0" expanded="true" />
+                <element signature="e#12683#12684#0" expanded="true" />
+                <element signature="e#12724#12725#0" expanded="true" />
+                <element signature="e#15907#15915#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,7 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GUIを</find>
       <find>endGame</find>
       <find>enable</find>
       <find>betFi</find>
@@ -167,7 +166,6 @@
       <find>cancelGame</find>
       <find>startGa</find>
       <find>cancelGa</find>
-      <find>startGame</find>
       <find>betTimer</find>
       <find>glowaPI</find>
       <find>GlowAPI</find>
@@ -179,7 +177,9 @@
       <find>openGame</find>
       <find>closeGame</find>
       <find>betFigh</find>
+      <find>startGame</find>
       <find>八百長</find>
+      <find>betFight</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -207,8 +207,8 @@
         <option value="$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" />
-        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
       </list>
     </option>
   </component>
@@ -799,13 +799,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00009" summary="Modified help messages">
-      <created>1488310502606</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1488310502606</updated>
-    </task>
     <task id="LOCAL-00010" summary="Modified help messages">
       <created>1488311138773</created>
       <option name="number" value="00010" />
@@ -1142,7 +1135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488841737712</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="八百長対策">
+      <created>1488843543489</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1488843543489</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1224,7 +1224,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ゲーム終了判断を追加" />
     <MESSAGE value="勝利したときのメッセージを修正" />
     <MESSAGE value="Vault API" />
     <MESSAGE value="Vault の初期化タイミングを修正" />
@@ -1249,7 +1248,8 @@
     <MESSAGE value="タイマー処理修正" />
     <MESSAGE value="メッセージ修正" />
     <MESSAGE value="キットの自動選択" />
-    <option name="LAST_COMMIT_MESSAGE" value="キットの自動選択" />
+    <MESSAGE value="八百長対策" />
+    <option name="LAST_COMMIT_MESSAGE" value="八百長対策" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1280,9 +1280,9 @@
             <element signature="e#1911#1931#0" expanded="true" />
             <element signature="e#2001#2017#0" expanded="true" />
             <element signature="e#2100#2118#0" expanded="true" />
-            <element signature="e#12541#12542#0" expanded="true" />
-            <element signature="e#12582#12583#0" expanded="true" />
-            <element signature="e#15765#15773#0" expanded="true" />
+            <element signature="e#12683#12684#0" expanded="true" />
+            <element signature="e#12724#12725#0" expanded="true" />
+            <element signature="e#15907#15915#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1304,9 +1304,9 @@
             <element signature="e#1911#1931#0" expanded="true" />
             <element signature="e#2001#2017#0" expanded="true" />
             <element signature="e#2100#2118#0" expanded="true" />
-            <element signature="e#12541#12542#0" expanded="true" />
-            <element signature="e#12582#12583#0" expanded="true" />
-            <element signature="e#15765#15773#0" expanded="true" />
+            <element signature="e#12683#12684#0" expanded="true" />
+            <element signature="e#12724#12725#0" expanded="true" />
+            <element signature="e#15907#15915#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1437,14 +1437,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="104" column="30" lean-forward="false" selection-start-line="104" selection-start-column="30" selection-end-line="104" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1461,28 +1453,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="104" column="30" lean-forward="false" selection-start-line="104" selection-start-column="30" selection-end-line="104" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="144" column="0" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="209" column="19" lean-forward="false" selection-start-line="209" selection-start-column="9" selection-end-line="209" selection-end-column="19" />
+        <state relative-caret-position="409">
+          <caret line="222" column="50" lean-forward="true" selection-start-line="222" selection-start-column="50" selection-end-line="222" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1808#1828#0" expanded="true" />
             <element signature="e#1911#1931#0" expanded="true" />
             <element signature="e#2001#2017#0" expanded="true" />
             <element signature="e#2100#2118#0" expanded="true" />
-            <element signature="e#12541#12542#0" expanded="true" />
-            <element signature="e#12582#12583#0" expanded="true" />
-            <element signature="e#15765#15773#0" expanded="true" />
+            <element signature="e#12683#12684#0" expanded="true" />
+            <element signature="e#12724#12725#0" expanded="true" />
+            <element signature="e#15907#15915#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="144" column="32" lean-forward="true" selection-start-line="144" selection-start-column="32" selection-end-line="144" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>

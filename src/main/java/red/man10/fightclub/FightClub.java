@@ -204,6 +204,20 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return totalBet;
     }
+
+
+    Boolean canBet(UUID buyerUUID){
+        //          ファイターは登録できません
+        for(int i=0;i< filghters.size();i++){
+            if(filghters.get(i).uuid == buyerUUID){
+                serverMessage( "§d八百長防止のため、選手はベットすることはできません");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     //////////////////////////////////////////////
     //     プレイーやに賭ける 成功なら掛け金テーブルindex
     //////////////////////////////////////////////
@@ -214,14 +228,9 @@ public final class FightClub extends JavaPlugin implements Listener {
             return -1;
         }
 
-        //          ファイターは登録できません
-        for(int i=0;i< filghters.size();i++){
-            if(filghters.get(i).uuid == buyerUUID){
-                serverMessage( "§d八百長防止のため、選手はベットすることはできません");
-                return -1;
-            }
+        if(canBet(buyerUUID) == false){
+            return -1;
         }
-
 
 
         /////////////////////////////////////////
