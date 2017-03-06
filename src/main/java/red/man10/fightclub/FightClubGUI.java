@@ -11,6 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by takatronix on 2017/03/06.
@@ -104,6 +105,9 @@ public class FightClubGUI {
     void placeBetGUI(Inventory i, Player p){
         int betMoney = Integer.parseInt(i.getItem(50).getItemMeta().getLore().get(1)); //設定したbal
         p.sendMessage("you bet " + betMoney + "!!!!");
+
+        UUID fighter = null; //    ShoへここへターゲットのUUID
+        plugin.betFighter(fighter,betMoney,p.getUniqueId(),p.getName());
         p.closeInventory();
         //確認処理
     }

@@ -428,6 +428,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
 
+        if(currentStatus != Fighting){
+            return;
+        }
 
         Player p = (Player)e.getEntity();
 
