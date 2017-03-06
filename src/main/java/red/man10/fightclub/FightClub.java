@@ -257,16 +257,18 @@ public final class FightClub extends JavaPlugin implements Listener {
         return bets.size();
     }
 
+    void disableGlow(){
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+            GlowAPI.setGlowing(player,false,Bukkit.getOnlinePlayers());
+        }
+    }
+
     //////////////////////////////////////////////
     //      ゲームを中断する  払い戻し後ステータスを Closedへ
     //////////////////////////////////////////////
     int cancelGame(Player p){
 
-        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-            GlowAPI.setGlowing(player,false,Bukkit.getOnlinePlayers());
-
-        }
-
+        disableGlow();
         //   払い戻し処理
         for (int i = 0;i < bets.size();i++) {
             BetInformation bet = bets.get(i);
@@ -360,6 +362,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         if (fighterIndex == -1){
             return cancelGame(p);
         }
+
+        disableGlow();
+
 
         //  掛け金の計算
         double total  = getTotalBets();
