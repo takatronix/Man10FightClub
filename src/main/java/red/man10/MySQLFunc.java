@@ -1,4 +1,4 @@
-package red.man10.fightclub;
+package red.man10;
 
 /**
  * Created by takatronix on 2017/03/05.

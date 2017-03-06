@@ -1,4 +1,4 @@
-package red.man10.fightclub;
+package red.man10;
 
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
@@ -41,14 +41,14 @@ public class VaultManager {
     /////////////////////////////////////
     //      残高確認
     /////////////////////////////////////
-    double  getBalance(UUID uuid){
+    public double  getBalance(UUID uuid){
         return economy.getBalance(Bukkit.getOfflinePlayer(uuid).getPlayer());
     }
 
     /////////////////////////////////////
     //      残高確認
     /////////////////////////////////////
-    void showBalance(UUID uuid){
+    public void showBalance(UUID uuid){
         OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
         double money = getBalance(uuid);
         p.getPlayer().sendMessage(ChatColor.YELLOW + "あなたの所持金は$" + money);
@@ -56,7 +56,7 @@ public class VaultManager {
     /////////////////////////////////////
     //      引き出し
     /////////////////////////////////////
-    Boolean  withdraw(UUID uuid, double money){
+    public Boolean  withdraw(UUID uuid, double money){
         OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
         EconomyResponse resp = economy.withdrawPlayer(p,money);
         if(resp.transactionSuccess()){
@@ -68,7 +68,7 @@ public class VaultManager {
     /////////////////////////////////////
     //      お金を入れる
     /////////////////////////////////////
-    Boolean  deposit(UUID uuid,double money){
+    public Boolean  deposit(UUID uuid,double money){
         OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
         EconomyResponse resp = economy.depositPlayer(p,money);
         if(resp.transactionSuccess()){

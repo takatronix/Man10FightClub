@@ -14,6 +14,9 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import red.man10.MySQLManager;
+import red.man10.VaultManager;
+
 import java.util.ArrayList;
 import java.util.UUID;
 

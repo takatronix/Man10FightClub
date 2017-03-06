@@ -1,4 +1,4 @@
-package red.man10.fightclub;
+package red.man10;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.*;

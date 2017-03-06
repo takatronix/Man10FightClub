@@ -2,6 +2,7 @@ package red.man10.fightclub;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import red.man10.SidebarDisplay;
 
 import static red.man10.fightclub.FightClub.Status.Closed;
 

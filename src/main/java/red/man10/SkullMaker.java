@@ -1,4 +1,4 @@
-package co.insou.skulls;
+package red.man10;
 
 import com.google.common.collect.ForwardingMultimap;
 import java.util.Base64;

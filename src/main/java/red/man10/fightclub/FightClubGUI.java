@@ -1,6 +1,6 @@
 package red.man10.fightclub;
 
-import co.insou.skulls.SkullMaker;
+import red.man10.SkullMaker;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
