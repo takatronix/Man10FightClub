@@ -332,16 +332,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         getLogger().info("Disabled");
     }
 
-    /*
-    /////////////////////////////////
-    //      コマンド処理
-    /////////////////////////////////
-    @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        Player p = (Player) sender;
-        return true;
-    }
-*/
+
     /////////////////////////////////
     //     ジョインイベント
     /////////////////////////////////
@@ -349,9 +340,6 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
         p.sendMessage(ChatColor.YELLOW  + "Man10 Fight Club System Started.");
-
-
-
 
     }
 
@@ -371,11 +359,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
 
-       // getLogger().info("death :" +e.getDeathMessage());
-       // command("say death"+e.getDeathMessage());
-        //
-        Player p = (Player)e.getEntity();
 
+        Player p = (Player)e.getEntity();
 
         //      死亡フラグを立てる
         int index = getFighterIndex(p.getUniqueId());
