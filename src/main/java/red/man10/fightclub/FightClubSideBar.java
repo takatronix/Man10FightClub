@@ -70,10 +70,13 @@ public class FightClubSideBar {
 
             if(i == 0){
                 Double h = Bukkit.getPlayer(f.uuid).getHealth();
-                s =  "§c§l["+i+"]" + f.name + " Health:"+h;
+                String hl = String.format("%.1f",h);
+
+                s =  "§c["+i+"]" + f.name + " Health:"+hl;
             }else{
                 Double h = Bukkit.getPlayer(f.uuid).getHealth();
-                s =  "§9§l["+i+"]" + f.name + " Health:"+ h;
+                String hl = String.format("%.1f",h);
+                s =  "§9["+i+"]" + f.name + " Health:"+ hl;
             }
             sideBar.setScore(s,plugin.getFighterBetCount(f.uuid));
         }
@@ -82,7 +85,7 @@ public class FightClubSideBar {
 
 
     void showWaiters(){
-        sideBar.setTitle("Man10 Fight Club 選手受付中 /mfc");
+        sideBar.setTitle("Man10 Fight Club 選手受付中 ");
         if(plugin.waiters.size() == 0){
             sideBar.setScore("/mfc register [name]で登録",0);
         }

@@ -27,10 +27,14 @@ public class FightClubCommand  implements CommandExecutor {
 
       //  plugin.showSideBar(p);
 
+        p.sendMessage(""+args.length);
+
         //      引数がない場合
-        if(args.length < 1){
+        if(args.length <= 1){
             showHelp(p);
-           // plugin.guiBetMenu(p);
+
+           // plugin.serverMessage("gui");
+           plugin.guiBetMenu(p);
             return true;
         }
 

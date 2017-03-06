@@ -259,7 +259,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     void disableGlow(){
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-            GlowAPI.setGlowing(player,false,Bukkit.getOnlinePlayers());
+           // GlowAPI.setGlowing(player,false,Bukkit.getOnlinePlayers());
         }
     }
 
@@ -332,7 +332,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             filghters.clear();
             return false;
         }
-
+/*
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
 
             if(player.getUniqueId() == filghters.get(0).uuid){
@@ -348,7 +348,8 @@ public final class FightClub extends JavaPlugin implements Listener {
                 GlowAPI.setGlowing(player,false,Bukkit.getOnlinePlayers());
 
             }
-        }
+        }*/
+
         //      ファイト開始
         currentStatus = Opened;
         updateSidebar();
@@ -417,7 +418,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         //
-       // getCommand("mfc").setExecutor(new FightClubCommand(this));
+       getCommand("mfc").setExecutor(new FightClubCommand(this));
 
 
         vault = new VaultManager(this);
@@ -535,9 +536,10 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     public void guiBetMenu(Player p){
 
+        //p.sendMessage("GUIを開いた");
         if(currentStatus == Opened){
             //
-            gui.betMenu(p.getPlayer());
+            gui.betMenu(p);
         }else{
             serverMessage("現在は投票できません");
         }
@@ -555,7 +557,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             if (s.getLine(1).equalsIgnoreCase("BET")) {
 
 
-                gui.betMenu(e.getPlayer());
+                guiBetMenu(e.getPlayer());
 
                 return;
             }
