@@ -360,15 +360,23 @@ public final class FightClub extends JavaPlugin implements Listener {
         List<String> kits = listKits();
         Collections.shuffle(kits);
         selectedKit = kits.get(0);
+
+        if(currentStatus == Entry){
 /*
         //      服装をバックアップ
         command("mkit push "+filghters.get(0).name);
         command("mkit push "+filghters.get(1).name);
 
-        command("mkit load "+filghters.get(0).name + " " + selectedKit);
-        command("mkit load "+filghters.get(1).name + " " + selectedKit);
-
 */
+        }
+
+        //      キットを選択
+
+
+        command("mkit set "+filghters.get(0).name + " " + selectedKit);
+        command("mkit set "+filghters.get(1).name + " " + selectedKit);
+
+
 
         resetBetTimer();
 

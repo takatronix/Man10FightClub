@@ -81,17 +81,17 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="354" column="25" lean-forward="true" selection-start-line="354" selection-start-column="25" selection-end-line="354" selection-end-column="25" />
+            <state relative-caret-position="559">
+              <caret line="370" column="9" lean-forward="true" selection-start-line="370" selection-start-column="9" selection-end-line="370" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1808#1828#0" expanded="true" />
                 <element signature="e#1911#1931#0" expanded="true" />
                 <element signature="e#2001#2017#0" expanded="true" />
                 <element signature="e#2100#2118#0" expanded="true" />
-                <element signature="e#12220#12221#0" expanded="true" />
-                <element signature="e#12261#12262#0" expanded="true" />
-                <element signature="e#15444#15452#0" expanded="true" />
+                <element signature="e#12292#12293#0" expanded="true" />
+                <element signature="e#12333#12334#0" expanded="true" />
+                <element signature="e#15516#15524#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -798,13 +798,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00007" summary="プロジェクト設定を修正">
-      <created>1488305503134</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1488305503134</updated>
-    </task>
     <task id="LOCAL-00008" summary="StatusにEntry追加&#10;Player-&gt;Fighterに修正&#10;Command用クラスに分類&#10;">
       <created>1488310294154</created>
       <option name="number" value="00008" />
@@ -1141,7 +1134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488840085273</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="キットの自動選択">
+      <created>1488840243414</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1488840243415</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1279,9 +1279,9 @@
             <element signature="e#1911#1931#0" expanded="true" />
             <element signature="e#2001#2017#0" expanded="true" />
             <element signature="e#2100#2118#0" expanded="true" />
-            <element signature="e#12220#12221#0" expanded="true" />
-            <element signature="e#12261#12262#0" expanded="true" />
-            <element signature="e#15444#15452#0" expanded="true" />
+            <element signature="e#12292#12293#0" expanded="true" />
+            <element signature="e#12333#12334#0" expanded="true" />
+            <element signature="e#15516#15524#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1303,9 +1303,9 @@
             <element signature="e#1911#1931#0" expanded="true" />
             <element signature="e#2001#2017#0" expanded="true" />
             <element signature="e#2100#2118#0" expanded="true" />
-            <element signature="e#12220#12221#0" expanded="true" />
-            <element signature="e#12261#12262#0" expanded="true" />
-            <element signature="e#15444#15452#0" expanded="true" />
+            <element signature="e#12292#12293#0" expanded="true" />
+            <element signature="e#12333#12334#0" expanded="true" />
+            <element signature="e#15516#15524#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1470,17 +1470,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="354" column="25" lean-forward="true" selection-start-line="354" selection-start-column="25" selection-end-line="354" selection-end-column="25" />
+        <state relative-caret-position="559">
+          <caret line="370" column="9" lean-forward="true" selection-start-line="370" selection-start-column="9" selection-end-line="370" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1808#1828#0" expanded="true" />
             <element signature="e#1911#1931#0" expanded="true" />
             <element signature="e#2001#2017#0" expanded="true" />
             <element signature="e#2100#2118#0" expanded="true" />
-            <element signature="e#12220#12221#0" expanded="true" />
-            <element signature="e#12261#12262#0" expanded="true" />
-            <element signature="e#15444#15452#0" expanded="true" />
+            <element signature="e#12292#12293#0" expanded="true" />
+            <element signature="e#12333#12334#0" expanded="true" />
+            <element signature="e#15516#15524#0" expanded="true" />
           </folding>
         </state>
       </provider>
