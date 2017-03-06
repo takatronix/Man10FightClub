@@ -1,5 +1,6 @@
 package red.man10.fightclub;
 
+import org.bukkit.ChatColor;
 import red.man10.SkullMaker;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -89,12 +90,14 @@ public class FightClubGUI {
                         clearCalc(e.getInventory());
                     }else if(e.getSlot() == 50){
                         placeBetGUI(e.getInventory(),p);
+
                     }else if(e.getSlot() == 52){
                         p.closeInventory();
+                    }else{
+                        e.setCancelled(true);
+                        p.sendMessage("上限！！！");
                     }
-
                     e.setCancelled(true);
-                    p.sendMessage("上限！！！");
                 }
             }
         }else{
@@ -103,13 +106,37 @@ public class FightClubGUI {
         //}catch (Exception ee){
     }
     void placeBetGUI(Inventory i, Player p){
-        int betMoney = Integer.parseInt(i.getItem(50).getItemMeta().getLore().get(1)); //設定したbal
-        p.sendMessage("you bet " + betMoney + "!!!!");
+        int money = Integer.parseInt(i.getItem(50).getItemMeta().getLore().get(1)); //設定したbal
 
-        UUID fighter = null; //    ShoへここへターゲットのUUID
-        plugin.betFighter(fighter,betMoney,p.getUniqueId(),p.getName());
+        String fighterName = i.getItem(33).getItemMeta().getDisplayName();
+        Player fighterPlayer = Bukkit.getPlayer(fighterName);
+
+        UUID fighter = fighterPlayer.getUniqueId(); //    ShoへここへターゲットのUUID
+
+
+        String buyer = p.getName();
+        p.sendMessage(buyer);
+
+        double balance = plugin.vault.getBalance(p.getUniqueId());
+        p.sendMessage("あなたの残額は $"+balance +"です");
+        if(balance < money){
+            p.sendMessage(ChatColor.RED+ "残高が足りません！！");
+            return;
+        }
+
+        if(plugin.vault.withdraw(p.getUniqueId(),money) == false){
+            p.sendMessage(ChatColor.RED+ "お金の引き出しに失敗しました" );
+            return;
+        }
+
+        if(plugin.betFighter(fighter,money,p.getUniqueId(),buyer) == -1){
+            p.sendMessage("Error: not on entry!");
+        }
+        p.sendMessage(fighterName +"へ、$" + money + "ベットしました！！");
+        p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.vault.getBalance(p.getUniqueId()) +"です");
+        //  plugin.showSideBar(p);
         p.closeInventory();
-        //確認処理
+        return;
     }
 
     void clearCalc(Inventory e){
@@ -348,6 +375,7 @@ public class FightClubGUI {
         ItemMeta bm = b.getItemMeta();
         bm.setDisplayName("§9§l" + info1.name + "にベットする");
         b.setItemMeta(bm);
+
 
         bet.setItem(0, r);
         bet.setItem(1, r);
