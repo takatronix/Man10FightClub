@@ -33,13 +33,13 @@ public class FightClubSideBar {
         showToAll();
         return;
     }if(plugin.currentStatus == Entry) {
-            plugin.log("showing sidebar Entry");
+         //   plugin.log("showing sidebar Entry");
             showWaiters();
             return;
         }
 
     if(plugin.currentStatus == Opened) {
-        plugin.log("showing sidebar closeOpen");
+       // plugin.log("showing sidebar closeOpen");
         showOdds();
         return;
     }
