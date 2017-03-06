@@ -67,7 +67,7 @@ public class FightClubSideBar {
         sideBar.setScore("§d合計かけ金額：$"+total,0);
 
 
-        sideBar.setScore("§a今回のゲームキット：(キット名)",0);
+        sideBar.setScore("§a今回のゲームキット：" + plugin.selectedKit,0);
 
         int   prize = (int)(total * 0.1);
         sideBar.setScore("§e勝者への賞金：$"+prize,0);

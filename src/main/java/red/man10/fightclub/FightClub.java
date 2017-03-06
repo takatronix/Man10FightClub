@@ -18,6 +18,7 @@ import red.man10.MySQLManager;
 import red.man10.SidebarDisplay;
 import red.man10.VaultManager;
 
+import java.io.File;
 import java.util.*;
 
 import static red.man10.fightclub.FightClub.Status.*;
@@ -260,6 +261,12 @@ public final class FightClub extends JavaPlugin implements Listener {
             Bukkit.getPlayer(bet.buyerName).sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
         }
 
+        if(filghters.size() >= 2){
+            //      服装をバックアップ
+            command("mkit pop "+filghters.get(0).name);
+            command("mkit pop "+filghters.get(1).name);
+        }
+
         startEntry();
 
         return 0;
@@ -314,6 +321,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         updateSidebar();
         return 0;
     }
+
+    String   selectedKit = "";
     //      ゲーム開始
     public boolean openGame(){
 
@@ -345,6 +354,19 @@ public final class FightClub extends JavaPlugin implements Listener {
             filghters.clear();
             return false;
         }
+
+
+        //      キットの自動選択処理
+        List<String> kits = listKits();
+        Collections.shuffle(kits);
+        selectedKit = kits.get(0);
+
+        //      服装をバックアップ
+        command("mkit push "+filghters.get(0).name);
+        command("mkit push "+filghters.get(1).name);
+
+        command("mkit load "+filghters.get(0).name + " " + selectedKit);
+        command("mkit load "+filghters.get(1).name + " " + selectedKit);
 
 
         resetBetTimer();
@@ -592,6 +614,34 @@ public final class FightClub extends JavaPlugin implements Listener {
             p.sendMessage("現在は投票できません");
         }
         updateSidebar();
+    }
+
+    //      キット
+    public List<String> listKits() {
+
+        List<String> ret  = new ArrayList<String>();
+
+        File folder = new File(Bukkit.getServer().getPluginManager().getPlugin("Man10Kit").getDataFolder(), File.separator + "Kits");
+
+        File[] files = folder.listFiles();  // (a)
+        for (File f : files) {
+            if (f.isFile()){  // (c)
+                String filename = f.getName();
+
+                if(filename.substring(0,1).equalsIgnoreCase(".")){
+                    continue;
+                }
+
+                int point = filename.lastIndexOf(".");
+                if (point != -1) {
+                    String kitName =  filename.substring(0, point);
+                    ret.add(kitName);
+                }
+             //   p.sendMessage(filename);
+            }
+        }
+
+        return ret;
     }
 
     @EventHandler
