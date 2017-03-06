@@ -388,36 +388,36 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
 
-    public class TimerJob extends TimerTask {
-        public void run() {
-            if (currentStatus == Entry) {
-                serverMessage("timer entry" +entryTimer);
+    public void onTimer(){
+      //  log("onTimer");
+        if (currentStatus == Entry) {
+            //               serverMessage("timer entry" +entryTimer);
 
-                if(waiters.size() >= 2){
+            if(waiters.size() >= 2){
 
-                    entryTimer --;
-                    if(entryTimer <= 0){
-                        openGame();
-                    }
+                entryTimer --;
+                if(entryTimer <= 0){
+                    openGame();
                 }
+            }
 
 
 
                 updateSidebar();
-            }
-            if (currentStatus == Opened) {
-                serverMessage("timer opened" + betTimer);
-                betTimer--;
-
-                if(betTimer <= 0){
-                    startGame();
-                }
-
-                updateSidebar();
-            }
         }
+        if (currentStatus == Opened) {
+            //             serverMessage("timer opened" + betTimer);
+            betTimer--;
 
+            if(betTimer <= 0){
+                startGame();
+            }
+
+                  updateSidebar();
+        }
     }
+
+
     /////////////////////////////////
     //      起動
     /////////////////////////////////
@@ -440,9 +440,14 @@ public final class FightClub extends JavaPlugin implements Listener {
         updateSidebar();
        // mysql = new MySQLManager(this,"MFC");
 
-        Timer timer = new Timer();
-        timer.schedule(new TimerJob(), 1000, 1000);
 
+
+        Bukkit.getScheduler().runTaskTimer(this, new Runnable() {
+            @Override
+            public void run() {
+                onTimer();
+            }
+        }, 0, 20);
 
     }
 
@@ -474,7 +479,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         Player p = e.getPlayer();
         String message = e.getMessage();
-      //  GlowAPI.setGlowing(e.getPlayer(), GlowAPI.Color.AQUA, Bukkit.getOnlinePlayers());
+      //  GlowAPI.setGlowing(e.getPlayer(), GlowAPI.Color.AQUA, Bukkit.getOnlinePlayers())
+        // ;
 
     }
     /////////////////////////////////

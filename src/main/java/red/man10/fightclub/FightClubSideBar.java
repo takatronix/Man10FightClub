@@ -21,14 +21,14 @@ public class FightClubSideBar {
     void show(){
 
 
-        plugin.log("showing sidebar");
+      //  plugin.log("showing sidebar");
     sideBar.remove();
     sideBar = new SidebarDisplay();
 
 
     //sideBar.setScore("test",1);
     if(plugin.currentStatus == Closed){
-        plugin.log("showing sidebar close");
+       // plugin.log("showing sidebar close");
 
         showToAll();
         return;
