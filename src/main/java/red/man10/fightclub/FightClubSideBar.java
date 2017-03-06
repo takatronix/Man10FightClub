@@ -52,12 +52,13 @@ public class FightClubSideBar {
 
 
     void showOdds(){
-        sideBar.setTitle("Man10 Fight Club 受付中!!! /mfc");
+        sideBar.setTitle("Man10 Fight Club ベット受付中!!-> /mfc");
         for(int i = 0;i < plugin.filghters.size();i++){
             FightClub.FighterInformation f = plugin.filghters.get(i);
-            String odds = String.format("%.1f",plugin.getFighterOdds(f.uuid));
-            String s = "["+i+"]" + f.name + " Odds: x"+ odds;
-            sideBar.setScore(s,plugin.getFighterBetCount(f.uuid));
+           // String odds = String.format("%.1f",plugin.getFighterOdds(f.uuid));
+            String tx = String.format("%10s x%3.1f",f.name,plugin.getFighterOdds(f.uuid));
+          //  String s = "["+i+"]" + f.name + " オッズ:x"+ odds;
+            sideBar.setScore(tx,plugin.getFighterBetCount(f.uuid));
         }
         showToAll();
     }

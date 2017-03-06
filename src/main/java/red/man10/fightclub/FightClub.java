@@ -314,7 +314,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
 
-        if(filghters.size() < 2){
+        if(waiters.size() < 2){
             serverMessage("二人以上いないと開催できません");
             return false;
         }
