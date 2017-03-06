@@ -938,7 +938,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         inv.setItem(33, skull);
 
         inv.setItem(48, clear);
-        //inv.setItem(38, removeone);
 
         p.openInventory(inv);
     }
