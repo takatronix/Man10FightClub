@@ -53,6 +53,9 @@ public class FightClubSideBar {
 
     void showOdds(){
         sideBar.setTitle("Man10 Fight Club ベット受付中!!-> /mfc");
+        sideBar.setScore("残り時間",plugin.betTimer
+        );
+
         for(int i = 0;i < plugin.filghters.size();i++){
             FightClub.FighterInformation f = plugin.filghters.get(i);
            // String odds = String.format("%.1f",plugin.getFighterOdds(f.uuid));
@@ -87,6 +90,7 @@ public class FightClubSideBar {
 
     void showWaiters(){
         sideBar.setTitle("Man10 Fight Club 選手受付中 ");
+        sideBar.setScore("残り時間",plugin.entryTimer);
         if(plugin.waiters.size() == 0){
             sideBar.setScore("/mfc register [name]で登録",0);
         }

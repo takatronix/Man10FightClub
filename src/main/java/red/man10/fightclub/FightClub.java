@@ -18,9 +18,7 @@ import red.man10.MySQLManager;
 import red.man10.SidebarDisplay;
 import red.man10.VaultManager;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.UUID;
+import java.util.*;
 
 import static red.man10.fightclub.FightClub.Status.*;
 
@@ -73,6 +71,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     //       対戦者登録
     public int registerFighter(UUID uuid,String name){
 
+        resetEnetryTimer();
+
         ////////////////////////////////////
         //      すでに登録されてたらエラー
         ////////////////////////////////////
@@ -95,25 +95,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         return waiters.size();
 
 
-        /*
-        ////////////////////////////////////
-        //      すでに登録されてたらエラー
-        ////////////////////////////////////
-        for(int i = 0;i < filghters.size();i++){
-            FighterInformation fighter = filghters.get(i);
-            if(fighter.uuid == uuid){
-                //  登録済みエラー表示
-                return -1;
-            }
-        }
-        //      追加
-        FighterInformation playerInfo = new
-        playerInfo.name = name;
-        playerInfo.isDead = false;
-        filghters.add(playerInfo);
-        return filghters.size();
-
-        */
     }
 
 
@@ -254,6 +235,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         bet.buyerName = buyerName;
         bets.add(bet);
 
+        resetBetTimer();
         return bets.size();
     }
 
@@ -342,23 +324,9 @@ public final class FightClub extends JavaPlugin implements Listener {
             filghters.clear();
             return false;
         }
-/*
-        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
 
-            if(player.getUniqueId() == filghters.get(0).uuid){
-                serverMessage("RED:" + player.getDisplayName());
-                GlowAPI.setGlowing(player, GlowAPI.Color.RED, Bukkit.getOnlinePlayers());
-            }else
 
-            if(player.getUniqueId() == filghters.get(1).uuid){
-                serverMessage("BLUE:" + player.getDisplayName());
-                GlowAPI.setGlowing(player, GlowAPI.Color.BLUE, Bukkit.getOnlinePlayers());
-
-            }else{
-                GlowAPI.setGlowing(player,false,Bukkit.getOnlinePlayers());
-
-            }
-        }*/
+        resetBetTimer();
 
         //      ファイト開始
         currentStatus = Opened;
@@ -402,17 +370,54 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         //      終了
-        bets.clear();
-        filghters.clear();
-        buyers.clear();
-        currentStatus = Closed;
+
+        startEntry();
         updateSidebar();
 
         return 0;
     }
 
+    int      entryTimer = 0;
+    int      betTimer = 0;
+
+    public void resetEnetryTimer(){
+        entryTimer = 60;
+    }
+    public void resetBetTimer(){
+        betTimer = 60;
+    }
 
 
+    public class TimerJob extends TimerTask {
+        public void run() {
+            if (currentStatus == Entry) {
+                serverMessage("timer entry" +entryTimer);
+
+                if(waiters.size() >= 2){
+
+                    entryTimer --;
+                    if(entryTimer <= 0){
+                        openGame();
+                    }
+                }
+
+
+
+                updateSidebar();
+            }
+            if (currentStatus == Opened) {
+                serverMessage("timer opened" + betTimer);
+                betTimer--;
+
+                if(betTimer <= 0){
+                    startGame();
+                }
+
+                updateSidebar();
+            }
+        }
+
+    }
     /////////////////////////////////
     //      起動
     /////////////////////////////////
@@ -434,6 +439,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         vault = new VaultManager(this);
         updateSidebar();
        // mysql = new MySQLManager(this,"MFC");
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerJob(), 1000, 1000);
+
+
     }
 
 
