@@ -30,7 +30,7 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage(""+args.length);
 
         //      引数がない場合
-        if(args.length <= 1){
+        if(args.length <= 0){
             showHelp(p);
 
            // plugin.serverMessage("gui");
@@ -97,12 +97,12 @@ public class FightClubCommand  implements CommandExecutor {
         ///       キャンセル
         //////////////////////////////////
         if(args[0].equalsIgnoreCase("cancel")){
-            plugin.cancelGame(p);
+            plugin.cancelGame();
             p.sendMessage("MFC Closed.");
             return true;
         }
         if(args[0].equalsIgnoreCase("close")){
-            plugin.cancelGame(p);
+            plugin.cancelGame();
             p.sendMessage("MFC Closed.");
             return true;
         }

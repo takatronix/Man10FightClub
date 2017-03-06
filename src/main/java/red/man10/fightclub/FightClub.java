@@ -241,35 +241,55 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     void disableGlow(){
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-           // GlowAPI.setGlowing(player,false,Bukkit.getOnlinePlayers());
+            GlowAPI.setGlowing(player,false,Bukkit.getOnlinePlayers());
         }
     }
 
     //////////////////////////////////////////////
     //      ゲームを中断する  払い戻し後ステータスを Closedへ
     //////////////////////////////////////////////
-    int cancelGame(Player p){
+    int cancelGame(){
 
         disableGlow();
         //   払い戻し処理
         for (int i = 0;i < bets.size();i++) {
             BetInformation bet = bets.get(i);
-            p.sendMessage("Return money to " + bet.buyerName + " $"+ bet.bet );
+           //p.sendMessage("Return money to " + bet.buyerName + " $"+ bet.bet );
 
             vault.deposit(bet.buyerUUID,bet.bet);
             Bukkit.getPlayer(bet.buyerName).sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
         }
 
         startEntry();
+
         return 0;
     }
     //      募集開始
     public int startGame(){
 
         if(filghters.size() < 2){
-            serverMessage("二人以上いないと開催できません");
+            serverMessage("二人以上いないと開催できませんキャンセルします");
+            cancelGame();
             return 0;
         }
+
+
+        double    limit = 10000;
+        //      双方にベットされているか
+        if(getFighterBetMoney(filghters.get(0).uuid) < limit){
+            serverMessage("ベットされた金額が足らないため試合をキャンセルします");
+            cancelGame();
+            return 0;
+        }
+        //      双方にベットされているか
+        if(getFighterBetMoney(filghters.get(1).uuid) < limit){
+            serverMessage("ベットされた金額が足らないため試合をキャンセルします");
+            cancelGame();
+            return 0;
+        }
+
+
+
 
         currentStatus = Fighting;
         serverMessage("ファイト！！！！");
@@ -291,10 +311,6 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
     //      ゲーム開始
     public boolean openGame(){
-
-
-
-
 
         if(waiters.size() < 2){
             serverMessage("二人以上いないと開催できません");
@@ -339,7 +355,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      対戦終了　winPlayer = -1 終了
     public int endGame(Player p,int fighterIndex){
         if (fighterIndex == -1){
-            return cancelGame(p);
+            return cancelGame();
         }
 
         disableGlow();
@@ -384,7 +400,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         entryTimer = 60;
     }
     public void resetBetTimer(){
-        betTimer = 60;
+        betTimer = 90;
     }
 
 
@@ -597,7 +613,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return;
             }
             if (s.getLine(1).equalsIgnoreCase("Cancel")) {
-                cancelGame(e.getPlayer());
+                cancelGame();
                 return;
             }
             if (s.getLine(1).equalsIgnoreCase("Open")) {

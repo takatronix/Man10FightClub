@@ -53,16 +53,28 @@ public class FightClubSideBar {
 
     void showOdds(){
         sideBar.setTitle("Man10 Fight Club ベット受付中!!-> /mfc");
-        sideBar.setScore("残り時間",plugin.betTimer
-        );
+        sideBar.setScore("§4残り時間",plugin.betTimer);
+
+        double total = plugin.getTotalBets();
 
         for(int i = 0;i < plugin.filghters.size();i++){
             FightClub.FighterInformation f = plugin.filghters.get(i);
-           // String odds = String.format("%.1f",plugin.getFighterOdds(f.uuid));
-            String tx = String.format("%10s x%3.1f",f.name,plugin.getFighterOdds(f.uuid));
-          //  String s = "["+i+"]" + f.name + " オッズ:x"+ odds;
+
+            String tx = String.format("%10s (オッズ)x%3.1f",f.name,plugin.getFighterOdds(f.uuid));
             sideBar.setScore(tx,plugin.getFighterBetCount(f.uuid));
         }
+
+        sideBar.setScore("§d合計かけ金額：$"+total,0);
+
+
+        sideBar.setScore("§a今回のゲームキット：(キット名)",0);
+
+        int   prize = (int)(total * 0.1);
+        sideBar.setScore("§e勝者への賞金：$"+prize,0);
+        sideBar.setScore("§b===========================",0);
+        sideBar.setScore("みなさんが、ベットしないと試合ははじまりません",0);
+        sideBar.setScore("§b/mfc§fで勝利者を予想しお金をかけよう！！",0);
+
         showToAll();
     }
     void showFighters(){
