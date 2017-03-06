@@ -270,6 +270,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         bets.clear();
         filghters.clear();
+        waiters.clear();
         buyers.clear();
         currentStatus = Closed;
         updateSidebar();
