@@ -25,7 +25,7 @@ public class FightClubCommand  implements CommandExecutor {
 
         Player p = (Player)sender;
 
-        plugin.showSideBar(p);
+      //  plugin.showSideBar(p);
 
         //      引数がない場合
         if(args.length < 1){
@@ -131,7 +131,7 @@ public class FightClubCommand  implements CommandExecutor {
             }
             p.sendMessage(fighter.getName() +"へ、$" + money + "ベットしました！！");
             p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.vault.getBalance(p.getUniqueId()) +"です");
-            plugin.showSideBar(p);
+          //  plugin.showSideBar(p);
             showOdds(p);
             return true;
         }
