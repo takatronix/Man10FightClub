@@ -7,22 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/co/insou/skulls/SkullExample.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/co/insou/skulls/SkullMaker$Reflection.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/co/insou/skulls/SkullMaker.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub$BetInformation.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub$BuyerInformation.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub$FighterInformation.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub$Status.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClubCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/SidebarDisplay.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/man10Fightclub/.idea/shelf/Uncommitted_changes_before_Update_at_2017_03_03_5_17__Default_.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/man10Fightclub/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/man10Fightclub/Man10FightClub.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_6_0_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_6_0_5.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -46,8 +30,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="691" column="51" lean-forward="true" selection-start-line="691" selection-start-column="51" selection-end-line="691" selection-end-column="51" />
+            <state relative-caret-position="493">
+              <caret line="674" column="55" lean-forward="true" selection-start-line="674" selection-start-column="55" selection-end-line="674" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#betMenu#0;class#FightClub#0" expanded="false" />
@@ -71,7 +55,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
               <caret line="37" column="27" lean-forward="false" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="27" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,7 +67,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
               <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#705#706#0" expanded="false" />
+                <element signature="e#753#754#0" expanded="false" />
+                <element signature="e#2386#2387#0" expanded="false" />
+                <element signature="e#2430#2431#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -320,7 +312,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30149597" />
@@ -863,7 +855,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488775625545</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="GUI追加 by sho">
+      <created>1488776064145</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1488776064145</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView">
@@ -885,7 +884,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11819887" sideWeight="0.38489583" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11819887" sideWeight="0.38489583" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33507308" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32834226" sideWeight="0.69553226" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1258,7 +1257,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="37" column="27" lean-forward="false" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1266,7 +1267,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#705#706#0" expanded="false" />
+            <element signature="e#753#754#0" expanded="false" />
+            <element signature="e#2386#2387#0" expanded="false" />
+            <element signature="e#2430#2431#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1280,8 +1287,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="691" column="51" lean-forward="true" selection-start-line="691" selection-start-column="51" selection-end-line="691" selection-end-column="51" />
+        <state relative-caret-position="493">
+          <caret line="674" column="55" lean-forward="true" selection-start-line="674" selection-start-column="55" selection-end-line="674" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#betMenu#0;class#FightClub#0" expanded="false" />
