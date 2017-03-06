@@ -7,12 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_craftbukkit_1_9_4_R0_1_SNAPSHOT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_inventivetalent_glowapi_1_4_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_inventivetalent_packetlistener_api_3_5_2_SNAPSHOT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_inventivetalent_particleapi_2_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_inventivetalent_playerversion_1_3_0_SNAPSHOT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_inventivetalent_titleapi_2_1_1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Man10FightClub.iml" afterPath="$PROJECT_DIR$/Man10FightClub.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
@@ -36,17 +30,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="335" column="54" lean-forward="false" selection-start-line="335" selection-start-column="54" selection-end-line="335" selection-end-column="54" />
+            <state relative-caret-position="239">
+              <caret line="121" column="34" lean-forward="true" selection-start-line="121" selection-start-column="34" selection-end-line="121" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1832#1852#0" expanded="true" />
-                <element signature="e#1935#1955#0" expanded="true" />
-                <element signature="e#2025#2041#0" expanded="true" />
-                <element signature="e#2124#2142#0" expanded="true" />
+                <element signature="e#1849#1869#0" expanded="true" />
+                <element signature="e#1952#1972#0" expanded="true" />
+                <element signature="e#2042#2058#0" expanded="true" />
+                <element signature="e#2141#2159#0" expanded="true" />
                 <element signature="method#startEntry#0;class#FightClub#0" expanded="false" />
               </folding>
             </state>
@@ -76,8 +70,18 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="51" column="23" lean-forward="false" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
+            <state relative-caret-position="285">
+              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -117,16 +121,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MySQLFunc.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLFunc.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="21" column="21" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="21" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FightClubCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -161,14 +155,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>betMenu</find>
       <find>side</find>
       <find>InventoryClickEvent</find>
       <find>mysql</find>
       <find>MySQLManagerMySQLManager</find>
       <find>sideBar</find>
       <find>&quot;entr</find>
-      <find>chat</find>
       <find>updateSidebarupdateSidebar</find>
       <find>cancel</find>
       <find>cancelGame</find>
@@ -191,6 +183,8 @@
       <find>star</find>
       <find>online</find>
       <find>startGame</find>
+      <find>Packet</find>
+      <find>chat</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -258,6 +252,24 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
+          <option name="myItemId" value="Dependencies" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="org.inventivetalent:titleapi:2.1.1" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependencyNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="FightClub" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
           <option name="myItemId" value="Run Configurations" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RunConfigurationsNode" />
         </PATH_ELEMENT>
@@ -296,8 +308,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="784" />
-    <option name="y" value="70" />
+    <option name="x" value="779" />
+    <option name="y" value="39" />
     <option name="width" value="1776" />
     <option name="height" value="1275" />
   </component>
@@ -1058,7 +1070,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488790922650</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Repo追加">
+      <created>1488791869875</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1488791869875</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1071,7 +1090,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="784" y="70" width="1776" height="1275" extended-state="0" />
+    <frame x="779" y="39" width="1776" height="1275" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1140,7 +1159,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="プロジェクト設定を修正" />
     <MESSAGE value="StatusにEntry追加&#10;Player-&gt;Fighterに修正&#10;Command用クラスに分類&#10;" />
     <MESSAGE value="Modified help messages" />
     <MESSAGE value="コマンドの実装と、oddsの計算等" />
@@ -1165,7 +1183,8 @@
     <MESSAGE value="maven設定を更新" />
     <MESSAGE value="SideBar表示修正" />
     <MESSAGE value="看板処理" />
-    <option name="LAST_COMMIT_MESSAGE" value="看板処理" />
+    <MESSAGE value="Repo追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="Repo追加" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1204,10 +1223,10 @@
           <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1832#1852#0" expanded="true" />
-            <element signature="e#1935#1955#0" expanded="true" />
-            <element signature="e#2025#2041#0" expanded="true" />
-            <element signature="e#2124#2142#0" expanded="true" />
+            <element signature="e#1849#1869#0" expanded="true" />
+            <element signature="e#1952#1972#0" expanded="true" />
+            <element signature="e#2042#2058#0" expanded="true" />
+            <element signature="e#2141#2159#0" expanded="true" />
             <element signature="method#startEntry#0;class#FightClub#0" expanded="false" />
           </folding>
         </state>
@@ -1234,10 +1253,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1832#1852#0" expanded="true" />
-            <element signature="e#1935#1955#0" expanded="true" />
-            <element signature="e#2025#2041#0" expanded="true" />
-            <element signature="e#2124#2142#0" expanded="true" />
+            <element signature="e#1849#1869#0" expanded="true" />
+            <element signature="e#1952#1972#0" expanded="true" />
+            <element signature="e#2042#2058#0" expanded="true" />
+            <element signature="e#2141#2159#0" expanded="true" />
             <element signature="method#startEntry#0;class#FightClub#0" expanded="false" />
           </folding>
         </state>
@@ -1256,10 +1275,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1832#1852#0" expanded="true" />
-            <element signature="e#1935#1955#0" expanded="true" />
-            <element signature="e#2025#2041#0" expanded="true" />
-            <element signature="e#2124#2142#0" expanded="true" />
+            <element signature="e#1849#1869#0" expanded="true" />
+            <element signature="e#1952#1972#0" expanded="true" />
+            <element signature="e#2042#2058#0" expanded="true" />
+            <element signature="e#2141#2159#0" expanded="true" />
             <element signature="method#startEntry#0;class#FightClub#0" expanded="false" />
           </folding>
         </state>
@@ -1318,14 +1337,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1391,26 +1402,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Man10FightClub.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="51" column="23" lean-forward="false" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1425,18 +1420,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="335" column="54" lean-forward="false" selection-start-line="335" selection-start-column="54" selection-end-line="335" selection-end-column="54" />
+        <state relative-caret-position="239">
+          <caret line="121" column="34" lean-forward="true" selection-start-line="121" selection-start-column="34" selection-end-line="121" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1832#1852#0" expanded="true" />
-            <element signature="e#1935#1955#0" expanded="true" />
-            <element signature="e#2025#2041#0" expanded="true" />
-            <element signature="e#2124#2142#0" expanded="true" />
+            <element signature="e#1849#1869#0" expanded="true" />
+            <element signature="e#1952#1972#0" expanded="true" />
+            <element signature="e#2042#2058#0" expanded="true" />
+            <element signature="e#2141#2159#0" expanded="true" />
             <element signature="method#startEntry#0;class#FightClub#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

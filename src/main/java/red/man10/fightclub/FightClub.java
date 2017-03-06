@@ -1,6 +1,5 @@
 package red.man10.fightclub;
 
-import com.mysql.cj.mysqlx.protobuf.Mysqlx;
 import org.bukkit.*;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
@@ -14,6 +13,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.inventivetalent.glow.GlowAPI;
+import org.inventivetalent.packetlistener.PacketListenerAPI;
 import red.man10.MySQLManager;
 import red.man10.SidebarDisplay;
 import red.man10.VaultManager;
@@ -432,7 +432,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player p = e.getPlayer();
         p.sendMessage(ChatColor.YELLOW  + "Man10 Fight Club System Started.");
         updateSidebar();
-
+        GlowAPI.setGlowing(e.getPlayer(), GlowAPI.Color.AQUA, Bukkit.getOnlinePlayers());
     }
 
     /////////////////////////////////
