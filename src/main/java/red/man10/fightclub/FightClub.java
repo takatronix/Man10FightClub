@@ -13,9 +13,11 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import red.man10.MySQLManager;
+import red.man10.SidebarDisplay;
 import red.man10.VaultManager;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.UUID;
 
 import static red.man10.fightclub.FightClub.Status.*;
@@ -55,6 +57,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     double tax = 0;
     Status  currentStatus = Closed;
 
+    //      対戦まちリスト
+    ArrayList<FighterInformation> waiters = new ArrayList<FighterInformation>();
+
     //      対戦者リスト
     ArrayList<FighterInformation> filghters = new ArrayList<FighterInformation>();
     //      掛け金
@@ -62,13 +67,33 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      購入者リスト (通知用)
     ArrayList<BuyerInformation> buyers = new ArrayList<BuyerInformation>();
 
-    //////////////////////////////////
-    //    公開API
-    //////////////////////////////////
 
-    //      対戦者登録
+    //       対戦者登録
     public int registerFighter(UUID uuid,String name){
 
+        ////////////////////////////////////
+        //      すでに登録されてたらエラー
+        ////////////////////////////////////
+        for(int i = 0;i < waiters.size();i++){
+            FighterInformation fighter = waiters.get(i);
+            if(fighter.uuid == uuid){
+                //  登録済みエラー表示
+                return -1;
+            }
+        }
+
+        //      追加
+        FighterInformation playerInfo = new FighterInformation();
+        playerInfo.uuid = uuid;
+        playerInfo.name = name;
+        playerInfo.isDead = false;
+        waiters.add(playerInfo);
+
+        updateSidebar();
+        return waiters.size();
+
+
+        /*
         ////////////////////////////////////
         //      すでに登録されてたらエラー
         ////////////////////////////////////
@@ -80,13 +105,16 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
         //      追加
-        FighterInformation playerInfo = new FighterInformation();
-        playerInfo.uuid = uuid;
+        FighterInformation playerInfo = new
         playerInfo.name = name;
         playerInfo.isDead = false;
         filghters.add(playerInfo);
         return filghters.size();
+
+        */
     }
+
+
 
     //////////////////////////////////
     int getBuyerIndex(UUID uuid) {
@@ -244,17 +272,59 @@ public final class FightClub extends JavaPlugin implements Listener {
         filghters.clear();
         buyers.clear();
         currentStatus = Closed;
+        updateSidebar();
         return 0;
     }
     //      募集開始
-    public int openGame(){
-        currentStatus = Opened;
+    public int startGame(){
+        currentStatus = Fighting;
+        updateSidebar();
+        return 0;
+    }
+    public int startEntry(){
+        currentStatus = Fighting;
+        updateSidebar();
         return 0;
     }
     //      ゲーム開始
-    public int startGame(){
-        currentStatus = Fighting;
-        return 0;
+    public boolean openGame(){
+
+
+        if(waiters.size() < 2){
+            return false;
+        }
+
+        //      シャッフルする
+        Collections.shuffle(waiters);
+
+
+        filghters.clear();
+
+        int    max = 2;         //  最大マッチ数
+        for(int i=0;i< waiters.size();i++){
+            FighterInformation f = waiters.get(i);
+            Player p = Bukkit.getPlayer(f.uuid);
+            if(p.isOnline() ){
+                filghters.add(f);
+                if(filghters.size() >= max){
+                    break;
+                }
+            }
+        }
+
+        if (filghters.size() < 2){
+            serverMessage("選手が足らないためMFC開始できません");
+            filghters.clear();
+            return false;
+        }
+
+
+        //      ファイト開始
+        currentStatus = Opened;
+        updateSidebar();
+
+
+        return true;
     }
 
     //      対戦終了　winPlayer = -1 終了
@@ -292,6 +362,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         filghters.clear();
         buyers.clear();
         currentStatus = Closed;
+        updateSidebar();
+
         return 0;
     }
 
@@ -336,6 +408,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
         p.sendMessage(ChatColor.YELLOW  + "Man10 Fight Club System Started.");
+        updateSidebar();
 
     }
 
@@ -448,6 +521,12 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         gui.clickItem(e);
 
+    }
+
+    //      サイドバー
+    FightClubSideBar sideBar = new FightClubSideBar(this);
+    void updateSidebar(){
+        sideBar.show();
     }
 
 

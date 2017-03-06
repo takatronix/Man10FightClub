@@ -42,10 +42,6 @@ public class FightClubCommand  implements CommandExecutor {
         //          エントリー
         ////////////////////////////////////
         if(args[0].equalsIgnoreCase("entry")){
-            if(args.length < 1) {
-                p.sendMessage("/mfc entry [prize money]");
-                return false;
-            }
 
             if (plugin.currentStatus != FightClub.Status.Closed){
                 p.sendMessage("You should cancel game!");
@@ -55,7 +51,7 @@ public class FightClubCommand  implements CommandExecutor {
             plugin.currentStatus = FightClub.Status.Entry;
 
             p.sendMessage("Entry started");
-
+            plugin.updateSidebar();
             return false;
         }
         ////////////////////////////////////
@@ -66,6 +62,7 @@ public class FightClubCommand  implements CommandExecutor {
                 p.sendMessage("/mfc register [fighter]");
                 return false;
             }
+
             Player fighter = Bukkit.getPlayer(args[1]);
             if (fighter == null) {
                 p.sendMessage(ChatColor.RED + "Error: " + args[1] +" is offline!!");
@@ -78,6 +75,7 @@ public class FightClubCommand  implements CommandExecutor {
                 return false;
             }
             showOdds(p);
+            plugin.updateSidebar();
             return true;
         }
         ////////////////////////////////////
@@ -98,7 +96,28 @@ public class FightClubCommand  implements CommandExecutor {
             p.sendMessage("MFC Closed.");
             return true;
         }
+        if(args[0].equalsIgnoreCase("close")){
+            plugin.cancelGame(p);
+            p.sendMessage("MFC Closed.");
+            return true;
+        }
+        //////////////////////////////////
+        ///       キャンセル
+        //////////////////////////////////
+        if(args[0].equalsIgnoreCase("open")){
+            plugin.openGame();
+            p.sendMessage("MFC Opened");
+            return true;
+        }
 
+        //////////////////////////////////
+        ///       キャンセル
+        //////////////////////////////////
+        if(args[0].equalsIgnoreCase("fight")){
+            plugin.startGame();
+            p.sendMessage("MFC Started");
+            return true;
+        }
         //////////////////////////////////
         ///         Bet
         //////////////////////////////////
@@ -205,6 +224,6 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c/mfc open                  / Game Open");
         p.sendMessage("-----------オープン後有効コマンド-----------");
         p.sendMessage("/mfc bet [fighter] [money]   / Bet money on fighter");
-        p.sendMessage("§c/mfc start                 / Start Fight!!");
+        p.sendMessage("§c/mfc fight                 / Start Fight!!");
     }
 }

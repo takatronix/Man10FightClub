@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import red.man10.SidebarDisplay;
 
-import static red.man10.fightclub.FightClub.Status.Closed;
+import static red.man10.fightclub.FightClub.Status.*;
 
 /**
  * Created by takatronix on 2017/03/06.
@@ -16,34 +16,78 @@ public class FightClubSideBar {
     public FightClubSideBar(FightClub plugin) {
         this.plugin = plugin;
     }
-    void show(Player p){
+    void show(){
 
+
+        plugin.log("showing sidebar");
     sideBar.remove();
     sideBar = new SidebarDisplay();
 
 
-    sideBar.setTitle("     Man10 Fight Club    ");
     //sideBar.setScore("test",1);
     if(plugin.currentStatus == Closed){
+        plugin.log("showing sidebar close");
 
+        showToAll();
+        return;
+    }if(plugin.currentStatus == Entry) {
+            plugin.log("showing sidebar Entry");
+            showWaiters();
+            return;
+        }
+
+    if(plugin.currentStatus == Opened) {
+        plugin.log("showing sidebar closeOpen");
+        showOdds();
+        return;
     }
 
-    for(int i = 0;i < plugin.filghters.size();i++){
-        FightClub.FighterInformation f = plugin.filghters.get(i);
-        String s = "["+i+"]" + f.name + " Odds: x"+ plugin.getFighterOdds(f.uuid);
-        sideBar.setScore(s,1);
+        if(plugin.currentStatus == Fighting) {
+            showFighters();
+            showToAll();
+        }
     }
 
 
-
-    for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-        sideBar.setMainScoreboard(player);
-        sideBar.setShowPlayer(player);
-
+    void showOdds(){
+        sideBar.setTitle("Man10 Fight Club 受付中!!! /mfc");
+        for(int i = 0;i < plugin.filghters.size();i++){
+            FightClub.FighterInformation f = plugin.filghters.get(i);
+            String s = "["+i+"]" + f.name + " Odds: x"+ plugin.getFighterOdds(f.uuid);
+            sideBar.setScore(s,plugin.getFighterBetCount(f.uuid));
+        }
+        showToAll();
+    }
+    void showFighters(){
+        sideBar.setTitle("Man10 Fight Club 対戦中");
+        for(int i = 0;i < plugin.filghters.size();i++){
+            FightClub.FighterInformation f = plugin.filghters.get(i);
+            String s = "["+i+"]" + f.name + " Odds: x"+ plugin.getFighterOdds(f.uuid);
+            sideBar.setScore(s,plugin.getFighterBetCount(f.uuid));
+        }
+        showToAll();
     }
 
 
+    void showWaiters(){
+        sideBar.setTitle("Man10 Fight Club 選手受付中 /mfc");
+        if(plugin.waiters.size() == 0){
+            sideBar.setScore("/mfc register [name]で登録",0);
+        }
+        for(int i = 0;i < plugin.waiters.size();i++){
+            FightClub.FighterInformation f = plugin.waiters.get(i);
+            String s = "["+i+"]" + f.name ;
+            sideBar.setScore(s,0);
+            Bukkit.getLogger().info("waiter" + s);
+        }
+        showToAll();
+    }
 
-}
+    void showToAll(){
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+            sideBar.setMainScoreboard(player);
+            sideBar.setShowPlayer(player);
 
+        }
+    }
 }
