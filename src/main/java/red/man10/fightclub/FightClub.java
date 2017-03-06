@@ -57,7 +57,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         double bet;             //  掛け金
     }
     double tax = 0;
-    Status  currentStatus = Closed;
+    Status  currentStatus = Entry;
 
     //      対戦まちリスト
     ArrayList<FighterInformation> waiters = new ArrayList<FighterInformation>();
@@ -277,16 +277,18 @@ public final class FightClub extends JavaPlugin implements Listener {
             vault.deposit(bet.buyerUUID,bet.bet);
             Bukkit.getPlayer(bet.buyerName).sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
         }
-        bets.clear();
-        filghters.clear();
-        waiters.clear();
-        buyers.clear();
-        currentStatus = Closed;
-        updateSidebar();
+
+        startEntry();
         return 0;
     }
     //      募集開始
     public int startGame(){
+
+        if(filghters.size() < 2){
+            serverMessage("二人以上いないと開催できません");
+            return 0;
+        }
+
         currentStatus = Fighting;
         serverMessage("ファイト！！！！");
 
@@ -297,6 +299,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         return 0;
     }
     public int startEntry(){
+        bets.clear();
+        filghters.clear();
+        waiters.clear();
+        buyers.clear();
         currentStatus = Entry;
         updateSidebar();
         return 0;
@@ -304,7 +310,11 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      ゲーム開始
     public boolean openGame(){
 
-        if(waiters.size() < 2){
+
+
+
+
+        if(filghters.size() < 2){
             serverMessage("二人以上いないと開催できません");
             return false;
         }
@@ -422,6 +432,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         vault = new VaultManager(this);
+        updateSidebar();
        // mysql = new MySQLManager(this,"MFC");
     }
 
