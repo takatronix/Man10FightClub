@@ -544,7 +544,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     @EventHandler
     public void clickItem(InventoryClickEvent e) {
 
-        gui.clickItem(e);
+        if(currentStatus == Entry || currentStatus == Opened){
+            gui.clickItem(e);
+        }
 
     }
 

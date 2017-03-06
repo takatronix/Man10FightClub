@@ -31,13 +31,13 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="272" column="24" lean-forward="false" selection-start-line="272" selection-start-column="24" selection-end-line="272" selection-end-column="24" />
+            <state relative-caret-position="452">
+              <caret line="543" column="17" lean-forward="true" selection-start-line="543" selection-start-column="17" selection-end-line="543" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#startEntry#0;class#FightClub#0" expanded="false" />
-                <element signature="e#14491#14492#0" expanded="true" />
-                <element signature="e#14521#14522#0" expanded="true" />
+                <element signature="e#14568#14569#0" expanded="true" />
+                <element signature="e#14598#14599#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1040,7 +1040,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488789476896</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="看板処理">
+      <created>1488789518950</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1488789518950</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1187,8 +1194,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#startEntry#0;class#FightClub#0" expanded="false" />
-            <element signature="e#14491#14492#0" expanded="true" />
-            <element signature="e#14521#14522#0" expanded="true" />
+            <element signature="e#14568#14569#0" expanded="true" />
+            <element signature="e#14598#14599#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1215,8 +1222,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#startEntry#0;class#FightClub#0" expanded="false" />
-            <element signature="e#14491#14492#0" expanded="true" />
-            <element signature="e#14521#14522#0" expanded="true" />
+            <element signature="e#14568#14569#0" expanded="true" />
+            <element signature="e#14598#14599#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1235,8 +1242,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#startEntry#0;class#FightClub#0" expanded="false" />
-            <element signature="e#14491#14492#0" expanded="true" />
-            <element signature="e#14521#14522#0" expanded="true" />
+            <element signature="e#14568#14569#0" expanded="true" />
+            <element signature="e#14598#14599#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1406,13 +1413,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="272" column="24" lean-forward="false" selection-start-line="272" selection-start-column="24" selection-end-line="272" selection-end-column="24" />
+        <state relative-caret-position="452">
+          <caret line="543" column="17" lean-forward="true" selection-start-line="543" selection-start-column="17" selection-end-line="543" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#startEntry#0;class#FightClub#0" expanded="false" />
-            <element signature="e#14491#14492#0" expanded="true" />
-            <element signature="e#14521#14522#0" expanded="true" />
+            <element signature="e#14568#14569#0" expanded="true" />
+            <element signature="e#14598#14599#0" expanded="true" />
           </folding>
         </state>
       </provider>
