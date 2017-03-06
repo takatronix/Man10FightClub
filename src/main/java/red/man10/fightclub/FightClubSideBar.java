@@ -72,7 +72,14 @@ public class FightClubSideBar {
         int   prize = (int)(total * 0.1);
         sideBar.setScore("§e勝者への賞金：$"+prize,0);
         sideBar.setScore("§b===========================",0);
-        sideBar.setScore("みなさんが、ベットしないと試合ははじまりません",0);
+
+        if(plugin.canStartGame()){
+            sideBar.setScore("§eまもなく試合が開催されます！！！！",0);
+
+        }else {
+            sideBar.setScore("§eみなさんが、ベットしないと試合ははじまりません",0);
+
+        }
         sideBar.setScore("§b/mfc§fで勝利者を予想しお金をかけよう！！",0);
 
         showToAll();

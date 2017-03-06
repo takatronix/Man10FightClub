@@ -264,6 +264,20 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         return 0;
     }
+
+    public boolean canStartGame(){
+
+        double    limit = 10000;
+        //      双方にベットされているか
+        if(getFighterBetMoney(filghters.get(0).uuid) < limit){
+            return false;
+        }
+        //      双方にベットされているか
+        if(getFighterBetMoney(filghters.get(1).uuid) < limit){
+            return false;
+        }
+        return true;
+    }
     //      募集開始
     public int startGame(){
 
@@ -274,20 +288,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
 
-        double    limit = 10000;
-        //      双方にベットされているか
-        if(getFighterBetMoney(filghters.get(0).uuid) < limit){
+        if(canStartGame() == false){
             serverMessage("ベットされた金額が足らないため試合をキャンセルします");
             cancelGame();
             return 0;
         }
-        //      双方にベットされているか
-        if(getFighterBetMoney(filghters.get(1).uuid) < limit){
-            serverMessage("ベットされた金額が足らないため試合をキャンセルします");
-            cancelGame();
-            return 0;
-        }
-
 
 
 
@@ -584,7 +589,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             //
             gui.betMenu(p);
         }else{
-            serverMessage("現在は投票できません");
+            p.sendMessage("現在は投票できません");
         }
         updateSidebar();
     }
