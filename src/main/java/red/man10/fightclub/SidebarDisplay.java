@@ -8,7 +8,7 @@ import org.bukkit.scoreboard.*;
  */
 public class SidebarDisplay {
 
-    private static final String OBJECTIVE_NAME = "fnafim";
+    private static final String OBJECTIVE_NAME = "MFC";
 
     private Scoreboard scoreboard;
 
