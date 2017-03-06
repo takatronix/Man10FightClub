@@ -1,12 +1,10 @@
 package red.man10.fightclub;
 
-
 import org.bukkit.*;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -36,7 +34,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         Opened,                  // 予想の受付開
         Fighting,                //  対戦中
     }
-    //      プレーヤ情報
+    //      ファイター情報
     class  FighterInformation{
         UUID   uuid;
         String name;
@@ -226,9 +224,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         bet.buyerName = buyerName;
         bets.add(bet);
 
-
-
-
         return bets.size();
     }
 
@@ -308,11 +303,12 @@ public final class FightClub extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         getLogger().info("Enabled");
+        this.saveDefaultConfig();
 
         vault = new VaultManager(this);
-        mysql = new MySQLManager(this,"Man10Core");
+        mysql = new MySQLManager(this,"MFC");
 
-        this.saveDefaultConfig();
+
 
         getServer().getPluginManager().registerEvents (this,this);
 
