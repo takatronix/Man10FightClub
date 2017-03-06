@@ -1,5 +1,6 @@
 package red.man10.fightclub;
 
+import com.mysql.cj.mysqlx.protobuf.Mysqlx;
 import org.bukkit.*;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
@@ -12,6 +13,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.inventivetalent.glow.GlowAPI;
 import red.man10.MySQLManager;
 import red.man10.SidebarDisplay;
 import red.man10.VaultManager;
@@ -279,6 +281,11 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      募集開始
     public int startGame(){
         currentStatus = Fighting;
+        serverMessage("ファイト！！！！");
+
+
+
+
         updateSidebar();
         return 0;
     }
@@ -319,7 +326,22 @@ public final class FightClub extends JavaPlugin implements Listener {
             return false;
         }
 
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
 
+            if(player.getUniqueId() == filghters.get(0).uuid){
+                serverMessage("RED:" + player.getDisplayName());
+                GlowAPI.setGlowing(player, GlowAPI.Color.RED, Bukkit.getOnlinePlayers());
+            }else
+
+            if(player.getUniqueId() == filghters.get(1).uuid){
+                serverMessage("BLUE:" + player.getDisplayName());
+                GlowAPI.setGlowing(player, GlowAPI.Color.BLUE, Bukkit.getOnlinePlayers());
+
+            }else{
+                GlowAPI.setGlowing(player,false,Bukkit.getOnlinePlayers());
+
+            }
+        }
         //      ファイト開始
         currentStatus = Opened;
         updateSidebar();
