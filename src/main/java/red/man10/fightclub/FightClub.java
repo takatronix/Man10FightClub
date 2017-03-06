@@ -282,15 +282,15 @@ public final class FightClub extends JavaPlugin implements Listener {
         return 0;
     }
     public int startEntry(){
-        currentStatus = Fighting;
+        currentStatus = Entry;
         updateSidebar();
         return 0;
     }
     //      ゲーム開始
     public boolean openGame(){
 
-
         if(waiters.size() < 2){
+            serverMessage("二人以上いないと開催できません");
             return false;
         }
 
@@ -511,8 +511,25 @@ public final class FightClub extends JavaPlugin implements Listener {
             if (s.getLine(1).equalsIgnoreCase("BET")) {
                 //
                 gui.betMenu(e.getPlayer());
-
+                return;
             }
+            if (s.getLine(1).equalsIgnoreCase("Register")) {
+                registerFighter(e.getPlayer().getUniqueId(),e.getPlayer().getName());
+                return;
+            }
+            if (s.getLine(1).equalsIgnoreCase("Entry")) {
+                startEntry();
+                return;
+            }
+            if (s.getLine(1).equalsIgnoreCase("Cancel")) {
+                cancelGame(e.getPlayer());
+                return;
+            }
+            if (s.getLine(1).equalsIgnoreCase("Open")) {
+                openGame();
+                return;
+            }
+
 
         }
 
