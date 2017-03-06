@@ -7,19 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub$BetInformation.class" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub$BetInformation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub$BuyerInformation.class" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub$BuyerInformation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub$FighterInformation.class" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub$FighterInformation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub$Status.class" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub$Status.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub.class" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClub.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClubCommand.class" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/FightClubCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/red/man10/fightclub/SidebarDisplay.class" afterPath="$PROJECT_DIR$/target/classes/red/man10/fightclub/SidebarDisplay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Man10FightClub_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Man10FightClub_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_6_0_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_6_0_5.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -42,8 +30,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="507" column="0" lean-forward="true" selection-start-line="507" selection-start-column="0" selection-end-line="873" selection-end-column="0" />
+            <state relative-caret-position="813">
+              <caret line="538" column="17" lean-forward="true" selection-start-line="538" selection-start-column="17" selection-end-line="538" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#19975#19983#0" expanded="true" />
@@ -928,7 +916,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488693541287</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="MySQLMangerとVaultManagerを更新">
+      <created>1488777945834</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1488777945834</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1367,8 +1362,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="507" column="0" lean-forward="true" selection-start-line="507" selection-start-column="0" selection-end-line="873" selection-end-column="0" />
+        <state relative-caret-position="813">
+          <caret line="538" column="17" lean-forward="true" selection-start-line="538" selection-start-column="17" selection-end-line="538" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#19975#19983#0" expanded="true" />
