@@ -214,6 +214,16 @@ public final class FightClub extends JavaPlugin implements Listener {
             return -1;
         }
 
+        //          ファイターは登録できません
+        for(int i=0;i< filghters.size();i++){
+            if(filghters.get(i).uuid == buyerUUID){
+                serverMessage( "§d八百長防止のため、選手はベットすることはできません");
+                return -1;
+            }
+        }
+
+
+
         /////////////////////////////////////////
         //     同じ相手への購入ならbetをマージ
         /////////////////////////////////////////

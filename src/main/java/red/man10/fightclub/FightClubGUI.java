@@ -130,7 +130,9 @@ public class FightClubGUI {
         }
 
         if(plugin.betFighter(fighter,money,p.getUniqueId(),buyer) == -1){
-            p.sendMessage("Error: not on entry!");
+            p.sendMessage("ベットできませんでした");
+            p.closeInventory();
+            return;
         }
         p.sendMessage(fighterName +"へ、$" + money + "ベットしました！！");
         p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.vault.getBalance(p.getUniqueId()) +"です");
