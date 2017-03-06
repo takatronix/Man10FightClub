@@ -488,6 +488,8 @@ public final class FightClub extends JavaPlugin implements Listener {
                 s = "生存者/プレーヤ= " + getAliveFighterCount() + "/" + filghters.size();
                 serverMessage(s);
             }
+            updateSidebar();
+
         }
 
 
@@ -498,25 +500,23 @@ public final class FightClub extends JavaPlugin implements Listener {
     @EventHandler
     public void onHit(EntityDamageEvent e){
 
-
-
+        if(currentStatus != Fighting){
+            return;
+        }
        // serverMessage("damage :" +e.getDamage());
 
-        Player p = (Player)e.getEntity();
-       // if(e.getEntity() instanceof Player)
+        if(e.getEntity() instanceof Player)
         {
-          //  serverMessage("instance player");
-        //    command("say damage"+e.getDamage()+e.getCause()+e.getFinalDamage());
-
-           // p.setScoreboard(board);
-
+            Player p = (Player)e.getEntity();
+            double d = e.getDamage();
+            if(d == 0){
+                return;
+            }
+            String dam = String.format("%.2f",d);
+           // serverMessage(p.getName()+"は、"+dam+"ダメージ を受けた！！！");
+            updateSidebar();
         }
-     ///   String s = "生存者/プレーヤ= " + getAliveFighterCount() + "/" + filghters.size();
-      ///  serverMessage(s);
-        //command("say damage"+e.getDamage()+e.getCause()+e.getFinalDamage());
-        //if (e.getEntity() instanceof Player){
-          //  Player p = (Player)e;
-       // }
+
     }
 
     //      ログメッセージ

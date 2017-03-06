@@ -61,15 +61,18 @@ public class FightClubSideBar {
         showToAll();
     }
     void showFighters(){
-        sideBar.setTitle("Man10 Fight Club 対戦中");
+        sideBar.setTitle("§l Man10 Fight Club 対戦中!!!!");
         for(int i = 0;i < plugin.filghters.size();i++){
             FightClub.FighterInformation f = plugin.filghters.get(i);
             String s = "";
 
+
             if(i == 0){
-                s = Color.RED + "["+i+"]" + f.name + " Odds: x"+ plugin.getFighterOdds(f.uuid);
+                Double h = Bukkit.getPlayer(f.uuid).getHealth();
+                s =  "§c§l["+i+"]" + f.name + " Health:"+h;
             }else{
-                s = Color.BLUE + "["+i+"]" + f.name + " Odds: x"+ plugin.getFighterOdds(f.uuid);
+                Double h = Bukkit.getPlayer(f.uuid).getHealth();
+                s =  "§9§l["+i+"]" + f.name + " Health:"+ h;
             }
             sideBar.setScore(s,plugin.getFighterBetCount(f.uuid));
         }
