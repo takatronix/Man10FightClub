@@ -60,7 +60,7 @@ public class FightClubSideBar {
         for(int i = 0;i < plugin.filghters.size();i++){
             FightClub.FighterInformation f = plugin.filghters.get(i);
 
-            String tx = String.format("%10s (オッズ)x%3.1f",f.name,plugin.getFighterOdds(f.uuid));
+            String tx = String.format("%10s Odds:§bx§l%3.1f",f.name,plugin.getFighterOdds(f.uuid));
             sideBar.setScore(tx,plugin.getFighterBetCount(f.uuid));
         }
 
