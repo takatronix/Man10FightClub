@@ -9,7 +9,6 @@
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -82,17 +81,17 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="254" column="19" lean-forward="true" selection-start-line="254" selection-start-column="19" selection-end-line="254" selection-end-column="19" />
+            <state relative-caret-position="124">
+              <caret line="354" column="25" lean-forward="true" selection-start-line="354" selection-start-column="25" selection-end-line="354" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1808#1828#0" expanded="true" />
                 <element signature="e#1911#1931#0" expanded="true" />
                 <element signature="e#2001#2017#0" expanded="true" />
                 <element signature="e#2100#2118#0" expanded="true" />
-                <element signature="e#12211#12212#0" expanded="true" />
-                <element signature="e#12252#12253#0" expanded="true" />
-                <element signature="e#15435#15443#0" expanded="true" />
+                <element signature="e#12220#12221#0" expanded="true" />
+                <element signature="e#12261#12262#0" expanded="true" />
+                <element signature="e#15444#15452#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -799,13 +798,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00006" summary="MySQLとartifact設定追加">
-      <created>1488297967915</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1488297967915</updated>
-    </task>
     <task id="LOCAL-00007" summary="プロジェクト設定を修正">
       <created>1488305503134</created>
       <option name="number" value="00007" />
@@ -1142,7 +1134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488838393777</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="キットの自動選択">
+      <created>1488840085273</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1488840085273</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1224,7 +1223,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="購入者情報リストのクリア処理を追加" />
     <MESSAGE value="ゲーム終了判断を追加" />
     <MESSAGE value="勝利したときのメッセージを修正" />
     <MESSAGE value="Vault API" />
@@ -1249,7 +1247,8 @@
     <MESSAGE value="タイマー処理" />
     <MESSAGE value="タイマー処理修正" />
     <MESSAGE value="メッセージ修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="メッセージ修正" />
+    <MESSAGE value="キットの自動選択" />
+    <option name="LAST_COMMIT_MESSAGE" value="キットの自動選択" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1280,9 +1279,9 @@
             <element signature="e#1911#1931#0" expanded="true" />
             <element signature="e#2001#2017#0" expanded="true" />
             <element signature="e#2100#2118#0" expanded="true" />
-            <element signature="e#12211#12212#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#15435#15443#0" expanded="true" />
+            <element signature="e#12220#12221#0" expanded="true" />
+            <element signature="e#12261#12262#0" expanded="true" />
+            <element signature="e#15444#15452#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1304,9 +1303,9 @@
             <element signature="e#1911#1931#0" expanded="true" />
             <element signature="e#2001#2017#0" expanded="true" />
             <element signature="e#2100#2118#0" expanded="true" />
-            <element signature="e#12211#12212#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#15435#15443#0" expanded="true" />
+            <element signature="e#12220#12221#0" expanded="true" />
+            <element signature="e#12261#12262#0" expanded="true" />
+            <element signature="e#15444#15452#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1471,17 +1470,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="254" column="19" lean-forward="true" selection-start-line="254" selection-start-column="19" selection-end-line="254" selection-end-column="19" />
+        <state relative-caret-position="124">
+          <caret line="354" column="25" lean-forward="true" selection-start-line="354" selection-start-column="25" selection-end-line="354" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1808#1828#0" expanded="true" />
             <element signature="e#1911#1931#0" expanded="true" />
             <element signature="e#2001#2017#0" expanded="true" />
             <element signature="e#2100#2118#0" expanded="true" />
-            <element signature="e#12211#12212#0" expanded="true" />
-            <element signature="e#12252#12253#0" expanded="true" />
-            <element signature="e#15435#15443#0" expanded="true" />
+            <element signature="e#12220#12221#0" expanded="true" />
+            <element signature="e#12261#12262#0" expanded="true" />
+            <element signature="e#15444#15452#0" expanded="true" />
           </folding>
         </state>
       </provider>

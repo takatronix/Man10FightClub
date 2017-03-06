@@ -263,8 +263,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         if(filghters.size() >= 2){
             //      服装をバックアップ
-            command("mkit pop "+filghters.get(0).name);
-            command("mkit pop "+filghters.get(1).name);
+           // command("mkit pop "+filghters.get(0).name);
+           // command("mkit pop "+filghters.get(1).name);
         }
 
         startEntry();
@@ -360,7 +360,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         List<String> kits = listKits();
         Collections.shuffle(kits);
         selectedKit = kits.get(0);
-
+/*
         //      服装をバックアップ
         command("mkit push "+filghters.get(0).name);
         command("mkit push "+filghters.get(1).name);
@@ -368,6 +368,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         command("mkit load "+filghters.get(0).name + " " + selectedKit);
         command("mkit load "+filghters.get(1).name + " " + selectedKit);
 
+*/
 
         resetBetTimer();
 
