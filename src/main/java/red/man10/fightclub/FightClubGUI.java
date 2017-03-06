@@ -135,6 +135,7 @@ public class FightClubGUI {
         p.sendMessage(fighterName +"へ、$" + money + "ベットしました！！");
         p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.vault.getBalance(p.getUniqueId()) +"です");
         //  plugin.showSideBar(p);
+        plugin.updateSidebar();;
         p.closeInventory();
         return;
     }

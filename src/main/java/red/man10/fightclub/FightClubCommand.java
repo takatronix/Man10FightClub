@@ -30,6 +30,7 @@ public class FightClubCommand  implements CommandExecutor {
         //      引数がない場合
         if(args.length < 1){
             showHelp(p);
+           // plugin.guiBetMenu(p);
             return true;
         }
 

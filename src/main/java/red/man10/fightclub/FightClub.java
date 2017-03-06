@@ -533,6 +533,17 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     }
 
+    public void guiBetMenu(Player p){
+
+        if(currentStatus == Opened){
+            //
+            gui.betMenu(p.getPlayer());
+        }else{
+            serverMessage("現在は投票できません");
+        }
+        updateSidebar();
+    }
+
     @EventHandler
     public void clickSignEvent(PlayerInteractEvent e) {
 
@@ -542,8 +553,10 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return;
             }
             if (s.getLine(1).equalsIgnoreCase("BET")) {
-                //
+
+
                 gui.betMenu(e.getPlayer());
+
                 return;
             }
             if (s.getLine(1).equalsIgnoreCase("Register")) {

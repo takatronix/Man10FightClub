@@ -55,7 +55,8 @@ public class FightClubSideBar {
         sideBar.setTitle("Man10 Fight Club 受付中!!! /mfc");
         for(int i = 0;i < plugin.filghters.size();i++){
             FightClub.FighterInformation f = plugin.filghters.get(i);
-            String s = "["+i+"]" + f.name + " Odds: x"+ plugin.getFighterOdds(f.uuid);
+            String odds = String.format("%.1f",plugin.getFighterOdds(f.uuid));
+            String s = "["+i+"]" + f.name + " Odds: x"+ odds;
             sideBar.setScore(s,plugin.getFighterBetCount(f.uuid));
         }
         showToAll();
