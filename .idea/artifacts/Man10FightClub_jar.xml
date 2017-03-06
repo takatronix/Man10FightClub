@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/../spigot/plugins/</output-path>
     <root id="archive" name="Man10FightClub.jar">
       <element id="module-output" name="Man10FightClub" />
-      <element id="library" level="project" name="mysql:mysql-connector-java:6.0.5" />
       <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/plugin.yml" />
     </root>
   </artifact>
