@@ -36,7 +36,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
     double      prize = 0.1;
-    double      tax   = 0.05;
+    double      tax   = 0.;
 
     //   状態遷移 これらの状態遷移する
     public enum Status {
@@ -319,9 +319,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         currentStatus = Fighting;
         serverMessage("ファイト！！！！");
-
-
-
+        fightTimer = 180;
 
         updateSidebar();
         return 0;
@@ -411,7 +409,19 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     //      賞金
     public double getPrize(){
-        return  getTotalBets() * prize;
+        if(filghters.size() < 2) {
+            return 0;
+        }
+        double t = getTotalBets() * prize;
+        double f1 = getFighterBetMoney(filghters.get(0).uuid);
+        double f2 = getFighterBetMoney(filghters.get(1).uuid);
+        if(t > f1){
+            t = f1;
+        }
+        if(t > f2){
+            t = f2;
+        }
+        return t;
     }
 
     //      対戦終了　winPlayer = -1 終了
@@ -457,6 +467,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     int      entryTimer = 0;
     int      betTimer = 0;
+    int      fightTimer = 0;
 
     public void resetEnetryTimer(){
         entryTimer = 60;
@@ -469,19 +480,13 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void onTimer(){
       //  log("onTimer");
         if (currentStatus == Entry) {
-            //               serverMessage("timer entry" +entryTimer);
-
             if(waiters.size() >= 2){
-
                 entryTimer --;
                 if(entryTimer <= 0){
                     openGame();
                 }
             }
-
-
-
-                updateSidebar();
+            updateSidebar();
         }
         if (currentStatus == Opened) {
             //             serverMessage("timer opened" + betTimer);
@@ -490,8 +495,17 @@ public final class FightClub extends JavaPlugin implements Listener {
             if(betTimer <= 0){
                 startGame();
             }
+            updateSidebar();
+        }
 
-                  updateSidebar();
+        if (currentStatus == Fighting) {
+            fightTimer--;
+            if(fightTimer <= 0){
+                serverMessage("タイムアウト！！！　");
+                cancelGame();
+            }
+
+            updateSidebar();
         }
     }
 

@@ -85,6 +85,8 @@ public class FightClubSideBar {
     }
     void showFighters(){
         sideBar.setTitle("§l Man10 Fight Club 対戦中!!!!");
+        sideBar.setScore("§4残り時間",plugin.fightTimer);
+
         for(int i = 0;i < plugin.filghters.size();i++){
             FightClub.FighterInformation f = plugin.filghters.get(i);
             String s = "";
