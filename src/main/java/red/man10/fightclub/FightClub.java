@@ -2,6 +2,7 @@ package red.man10.fightclub;
 
 import org.bukkit.*;
 import org.bukkit.block.Sign;
+import org.bukkit.boss.BarColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,6 +22,8 @@ import red.man10.VaultManager;
 import java.io.File;
 import java.util.*;
 
+import static org.bukkit.boss.BarFlag.CREATE_FOG;
+import static org.bukkit.boss.BarStyle.SEGMENTED_20;
 import static red.man10.fightclub.FightClub.Status.*;
 
 
@@ -30,12 +33,16 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     VaultManager vault = null;
     MySQLManager mysql = null;
+
+
+
+
     //   状態遷移 これらの状態遷移する
     public enum Status {
         Closed,                 //  開催前
         Entry,                  //  募集中
-        Opened,                  // 予想の受付開
-        Fighting,                //  対戦中
+        Opened,                 //  予想の受付開
+        Fighting,               //  対戦中
     }
     //      ファイター情報
     class  FighterInformation{
@@ -65,11 +72,11 @@ public final class FightClub extends JavaPlugin implements Listener {
     ArrayList<FighterInformation> filghters = new ArrayList<FighterInformation>();
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
-    //      購入者リスト (通知用)
-    ArrayList<BuyerInformation> buyers = new ArrayList<BuyerInformation>();
 
 
+    ////////////////////////////////
     //       対戦者登録
+    ////////////////////////////////
     public int registerFighter(UUID uuid,String name){
 
         resetEnetryTimer();
@@ -94,21 +101,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         updateSidebar();
         return waiters.size();
-
-
     }
 
-
-
-    //////////////////////////////////
-    int getBuyerIndex(UUID uuid) {
-        for(int i = 0;i < buyers.size();i++){
-            if(buyers.get(i).uuid == uuid){
-                return i;
-            }
-        }
-        return -1;
-    }
     //
     int getFighterIndex(UUID uuid) {
         for(int i = 0;i < filghters.size();i++){
@@ -335,7 +329,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         bets.clear();
         filghters.clear();
         waiters.clear();
-        buyers.clear();
         currentStatus = Entry;
         updateSidebar();
         return 0;
@@ -552,6 +545,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         String message = e.getMessage();
       //  GlowAPI.setGlowing(e.getPlayer(), GlowAPI.Color.AQUA, Bukkit.getOnlinePlayers())
         // ;
+
+
+        org.bukkit.boss.BossBar bossBar =  Bukkit.getServer().createBossBar("title", BarColor.RED,SEGMENTED_20,CREATE_FOG);
+    //    bossBar.set
 
     }
     /////////////////////////////////

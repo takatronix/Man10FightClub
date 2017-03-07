@@ -4,3 +4,6 @@ mysql:
   user: root
   pass: password
   db: man10
+money:
+  tax: 0
+  prize: 10
