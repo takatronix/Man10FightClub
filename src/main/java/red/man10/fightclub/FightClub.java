@@ -601,7 +601,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(index != -1){
             fighters.get(index).isDead = true;
             serverMessage("死亡!!!:"+p.getDisplayName());
-
+            command("man10 tpuser "+ p.getName() + " death");
 
             //      最後ならゲームを終了する
             if(getAliveFighterCount() <= 1){
