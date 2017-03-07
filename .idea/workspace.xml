@@ -31,7 +31,7 @@
       <file leaf-file-name="FightClubGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
+            <state relative-caret-position="480">
               <caret line="46" column="26" lean-forward="false" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
               <folding />
             </state>
@@ -51,7 +51,7 @@
       <file leaf-file-name="SidebarDisplay.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/SidebarDisplay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-404">
+            <state relative-caret-position="90">
               <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
             </state>
@@ -101,8 +101,8 @@
       <file leaf-file-name="FightClubSideBar.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="108" column="5" lean-forward="true" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
+            <state relative-caret-position="1500">
+              <caret line="108" column="5" lean-forward="false" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,21 +113,15 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="399" column="31" lean-forward="false" selection-start-line="399" selection-start-column="31" selection-end-line="399" selection-end-column="31" />
+            <state relative-caret-position="386">
+              <caret line="315" column="0" lean-forward="true" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2178#2198#0" expanded="true" />
                 <element signature="e#2280#2300#0" expanded="true" />
                 <element signature="e#2370#2386#0" expanded="true" />
-                <element signature="e#14687#14688#0" expanded="true" />
-                <element signature="e#14718#14719#0" expanded="true" />
-                <element signature="e#14753#14754#0" expanded="true" />
-                <element signature="e#14785#14786#0" expanded="true" />
-                <element signature="e#16413#16414#0" expanded="true" />
-                <element signature="e#16446#16447#0" expanded="true" />
-                <element signature="e#20683#20691#0" expanded="true" />
-                <element signature="e#24142#24150#0" expanded="true" />
+                <element signature="e#20713#20721#0" expanded="true" />
+                <element signature="e#24172#24180#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,7 +130,7 @@
       <file leaf-file-name="FightClubArenaCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
+            <state relative-caret-position="990">
               <caret line="71" column="23" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -159,7 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bet</find>
       <find>bets</find>
       <find>bets.clear</find>
       <find>endGame</find>
@@ -183,12 +176,13 @@
       <find>Closed</find>
       <find>guiBetMenu</find>
       <find>うごけません</find>
-      <find>tpa</find>
       <find>register</find>
       <find>startG</find>
       <find>startEntry</find>
-      <find>openGame</find>
       <find>cancelGame</find>
+      <find>startEntryv</find>
+      <find>openGame</find>
+      <find>tpa</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -281,8 +275,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="585" />
-    <option name="y" value="76" />
+    <option name="x" value="514" />
+    <option name="y" value="156" />
     <option name="width" value="1936" />
     <option name="height" value="1176" />
   </component>
@@ -470,8 +464,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -777,20 +771,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
-    </task>
-    <task id="LOCAL-00027" summary="お金の支払い処理">
-      <created>1488489243396</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1488489243396</updated>
-    </task>
-    <task id="LOCAL-00028" summary="お金の支払い処理修正">
-      <created>1488490028700</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1488490028700</updated>
     </task>
     <task id="LOCAL-00029" summary="UUID処理を文字列からUUID型へ修正&#10;お金の振込処理バグの修正">
       <created>1488534963198</created>
@@ -1121,7 +1101,21 @@
       <option name="project" value="LOCAL" />
       <updated>1488896009072</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="bgu">
+      <created>1488897153567</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1488897153567</updated>
+    </task>
+    <task id="LOCAL-00077" summary="bgu">
+      <created>1488897430096</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1488897430096</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1134,31 +1128,31 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="585" y="76" width="1936" height="1176" extended-state="0" />
+    <frame x="514" y="156" width="1936" height="1176" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10207939" sideWeight="0.48697916" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10207939" sideWeight="0.48697916" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3142589" sideWeight="0.5130208" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.059134107" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36200377" sideWeight="0.69261366" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37856388" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38225976" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25237593" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973601" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1250,14 +1244,8 @@
             <element signature="e#2178#2198#0" expanded="true" />
             <element signature="e#2280#2300#0" expanded="true" />
             <element signature="e#2370#2386#0" expanded="true" />
-            <element signature="e#14687#14688#0" expanded="true" />
-            <element signature="e#14718#14719#0" expanded="true" />
-            <element signature="e#14753#14754#0" expanded="true" />
-            <element signature="e#14785#14786#0" expanded="true" />
-            <element signature="e#16413#16414#0" expanded="true" />
-            <element signature="e#16446#16447#0" expanded="true" />
-            <element signature="e#20683#20691#0" expanded="true" />
-            <element signature="e#24142#24150#0" expanded="true" />
+            <element signature="e#20713#20721#0" expanded="true" />
+            <element signature="e#24172#24180#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1278,14 +1266,8 @@
             <element signature="e#2178#2198#0" expanded="true" />
             <element signature="e#2280#2300#0" expanded="true" />
             <element signature="e#2370#2386#0" expanded="true" />
-            <element signature="e#14687#14688#0" expanded="true" />
-            <element signature="e#14718#14719#0" expanded="true" />
-            <element signature="e#14753#14754#0" expanded="true" />
-            <element signature="e#14785#14786#0" expanded="true" />
-            <element signature="e#16413#16414#0" expanded="true" />
-            <element signature="e#16446#16447#0" expanded="true" />
-            <element signature="e#20683#20691#0" expanded="true" />
-            <element signature="e#24142#24150#0" expanded="true" />
+            <element signature="e#20713#20721#0" expanded="true" />
+            <element signature="e#24172#24180#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1397,7 +1379,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/SidebarDisplay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-404">
+        <state relative-caret-position="90">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
@@ -1429,7 +1411,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
+        <state relative-caret-position="480">
           <caret line="46" column="26" lean-forward="false" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
           <folding />
         </state>
@@ -1445,7 +1427,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
+        <state relative-caret-position="990">
           <caret line="71" column="23" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1465,8 +1447,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="108" column="5" lean-forward="true" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
+        <state relative-caret-position="1500">
+          <caret line="108" column="5" lean-forward="false" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1475,21 +1457,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="399" column="31" lean-forward="false" selection-start-line="399" selection-start-column="31" selection-end-line="399" selection-end-column="31" />
+        <state relative-caret-position="386">
+          <caret line="315" column="0" lean-forward="true" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2178#2198#0" expanded="true" />
             <element signature="e#2280#2300#0" expanded="true" />
             <element signature="e#2370#2386#0" expanded="true" />
-            <element signature="e#14687#14688#0" expanded="true" />
-            <element signature="e#14718#14719#0" expanded="true" />
-            <element signature="e#14753#14754#0" expanded="true" />
-            <element signature="e#14785#14786#0" expanded="true" />
-            <element signature="e#16413#16414#0" expanded="true" />
-            <element signature="e#16446#16447#0" expanded="true" />
-            <element signature="e#20683#20691#0" expanded="true" />
-            <element signature="e#24142#24150#0" expanded="true" />
+            <element signature="e#20713#20721#0" expanded="true" />
+            <element signature="e#24172#24180#0" expanded="true" />
           </folding>
         </state>
       </provider>

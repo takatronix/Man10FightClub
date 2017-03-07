@@ -309,7 +309,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         fighters.clear();
 
-        tpa(selectedArena,"spawn");
+        //     ファイター移動
+        tpf(selectedArena,"spawn");
         startEntry();
 
 
@@ -992,6 +993,20 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return;
     }
+    public void tpf(String arena,String name){
+        Object o =  getConfig().get(arena+ ".pos."+name);
+        if(o != null){
+            Location loc = (Location)o;
+//            p.teleport(loc);
+            for(FighterInformation f :fighters){
+                Player p = Bukkit.getPlayer(f.uuid);
+                p.teleport(loc);
+            }
+
+        }
+        return;
+    }
+
     public void tpa(String arena,String name){
         Object o =  getConfig().get(arena+ ".pos."+name);
         if(o != null){
