@@ -323,8 +323,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         serverMessage("ファイト！！！！");
         fightTimer = 180;
 
-        command("man10 usertp "+ fighters.get(0).name + " player1");
-        command("man10 usertp "+ fighters.get(1).name + " player1");
+        command("man10 tpuser "+ fighters.get(0).name + " player1");
+        command("man10 tpuser "+ fighters.get(1).name + " player2");
 
         updateSidebar();
         return 0;
