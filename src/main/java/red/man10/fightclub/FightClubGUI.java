@@ -47,6 +47,7 @@ public class FightClubGUI {
                 //観戦から戻る処理
             }
             e.setCancelled(true);
+            p.closeInventory();
             return;
         }
             if (e.getInventory().getTitle().equals("§c§l         ベットメニュー")) {
