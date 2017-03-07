@@ -7,25 +7,3 @@ mysql:
 money:
   tax: 0
   prize: 10
-point:
-  player1:
-    x:
-    y:
-    z:
-    vx:
-    vy:
-    vz:
-  player1:
-    x:
-    y:
-    z:
-    vx:
-    vy:
-    vz:
-  death:
-    x:
-    y:
-    z:
-    vx:
-    vy:
-    vz:

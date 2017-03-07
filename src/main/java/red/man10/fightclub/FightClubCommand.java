@@ -59,9 +59,7 @@ public class FightClubCommand  implements CommandExecutor {
             plugin.updateSidebar();
             return false;
         }
-        ////////////////////////////////////
-        //        登録
-        ////////////////////////////////////
+
         if(args[0].equalsIgnoreCase("register")){
             if(args.length != 2) {
                 p.sendMessage("/mfc register [fighter]");
@@ -216,19 +214,37 @@ public class FightClubCommand  implements CommandExecutor {
 
     }
 
-    void showHelp(Player p){
+    void showHelp(CommandSender p){
         p.sendMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
         p.sendMessage("§e  by takatronix http://man10.red");
         p.sendMessage("§c* red commands for Admin");
-        p.sendMessage("§c/mfc entry [prize money]     / Start entry");
-        p.sendMessage("§c/mfc cancel                 / Cancel this game and pay money back");
-        p.sendMessage("/mfc odds                   / Show Odds");
-        p.sendMessage("/mfc bets                   / Show Bets");
+        p.sendMessage("§c/mfc entry - エントリ開始");
+        p.sendMessage("§c/mfc cancel(close) - ゲームをキャンセルして返金->エントリへ");
+        p.sendMessage("§c*/mfc stop - 停止");
+        p.sendMessage("/mfc odds - Show Odds");
+        p.sendMessage("/mfc bets - Show Bets");
         p.sendMessage("-----------エントリー中有効コマンド-----------");
+        p.sendMessage("*mfcr - 自分を登録する");
         p.sendMessage("§c/mfc register [Fighter]      / Register fighter(s)");
-        p.sendMessage("§c/mfc open                  / Game Open");
+        p.sendMessage("§c/mfc open - 投票開始");
         p.sendMessage("-----------オープン後有効コマンド-----------");
         p.sendMessage("/mfc bet [fighter] [money]   / Bet money on fighter");
         p.sendMessage("§c/mfc fight                 / Start Fight!!");
+        p.sendMessage("-----------アリーナ-----------");
+        p.sendMessage("§c*/mfca create [アリーナ名]");
+        p.sendMessage("§c*/mfca select [アリーナ名]");
+        p.sendMessage("§c*/mfca delete [アリーナ名]");
+        p.sendMessage("§c*/mfca list");
+        p.sendMessage("§c*/mfca settp player1 - 選択中のPlayer1座標設定");
+        p.sendMessage("§c*/mfca settp player2 - 選択中のPlayer2座標設定");
+        p.sendMessage("§c*/mfca settp spawn - 選択中のPlayer1座標設定");
+        p.sendMessage("-----------アリーナ(Console)-----------");
+        p.sendMessage("§c*/mfca tpa - 登録者全員を選択中のアリーナ(spawn)へ移動");
+        p.sendMessage("§c*/mfca tpu [Player] player1");
+        p.sendMessage("§c*/mfca tpu [Player] player2");
+        p.sendMessage("§c*/mfca tpu [Player] spawn");
+
+
+
     }
 }

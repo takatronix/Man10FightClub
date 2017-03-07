@@ -3,6 +3,8 @@ package red.man10.fightclub;
 import org.bukkit.*;
 import org.bukkit.block.Sign;
 import org.bukkit.boss.BarColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -14,6 +16,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.*;
 import org.inventivetalent.glow.GlowAPI;
 import org.inventivetalent.packetlistener.PacketListenerAPI;
 import red.man10.MySQLManager;
@@ -22,6 +25,7 @@ import red.man10.VaultManager;
 
 import java.io.File;
 import java.util.*;
+import java.util.Vector;
 
 import static org.bukkit.boss.BarFlag.CREATE_FOG;
 import static org.bukkit.boss.BarStyle.SEGMENTED_20;
@@ -407,6 +411,18 @@ public final class FightClub extends JavaPlugin implements Listener {
         return true;
     }
 
+
+    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
+
+        //      本人登録
+        if(cmd.getName().equalsIgnoreCase("mfcr")){
+            Player p = (Player)sender;
+            registerFighter(p.getUniqueId(),p.getName());
+            return true;
+        }
+        return false;
+        // コマンドが実行されなかった場合は、falseを返して当メソッドを抜ける。
+    }
     boolean CheckFreezed(Player player){
         if(currentStatus == Opened){
             for(int i= 0;i < fighters.size();i++){
@@ -549,15 +565,15 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void onEnable() {
         getLogger().info("Enabled");
         this.saveDefaultConfig();
-
+        this.loadConfig();
 
 
 
         getServer().getPluginManager().registerEvents (this,this);
 
-
         //
        getCommand("mfc").setExecutor(new FightClubCommand(this));
+       getCommand("mfca").setExecutor(new FightClubArenaCommand(this));
 
 
         vault = new VaultManager(this);
@@ -573,6 +589,10 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }, 0, 20);
 
+    }
+
+    void loadConfig(){
+        loadArenaConfig();
     }
 
 
@@ -831,4 +851,109 @@ public final class FightClub extends JavaPlugin implements Listener {
     void command(String command){
         getServer().dispatchCommand(getServer().getConsoleSender(),command);
     }
+
+
+    //////////////////////////////////
+    //        アリーナ関係
+    //////////////////////////////////
+    ArrayList<String> arenas = new ArrayList<String>();
+    String            selectedArena = "";
+    public int createArena(CommandSender p,String arena){
+        if(getArenaIndex(arena) == -1){
+            arenas.add(arena);
+            getConfig().set("Arenas",arenas);
+            saveConfig();;
+            p.sendMessage(arena+" is created");
+            selectArena(p,arena);
+            return -1;
+        }
+        p.sendMessage(arena+" is already created");
+        return arenas.size();
+    }
+    public int getArenaIndex(String arena){
+        for(int i=0;i<arenas.size();i++){
+            if(arenas.get(i).equalsIgnoreCase(arena)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    public int deleteArena(CommandSender p,String arena){
+        for(int i=0;i<arenas.size();i++){
+            if(arenas.get(i).equalsIgnoreCase(arena)){
+                arenas.remove(i);
+                p.sendMessage(arena+" is deleted");
+                getConfig().set("Arenas",arenas);
+                saveConfig();
+                return i;
+            }
+        }
+        p.sendMessage(arena+" is already deleted");
+        return -1;
+    }
+    public int selectArena(CommandSender p,String arena){
+        for(int i=0;i<arenas.size();i++){
+            if(arenas.get(i).equalsIgnoreCase(arena)){
+                selectedArena = arena;
+                getConfig().set("selectedArena",selectedArena);
+                saveConfig();
+                p.sendMessage(arena+" selected");
+
+                tp(p,selectedArena,"spawn");
+                return i;
+            }
+        }
+        p.sendMessage(arena+" not found");
+        return -1;
+    }
+    public int listArena(CommandSender p) {
+        p.sendMessage("------arena list-----");
+        for (int i = 0; i < arenas.size(); i++) {
+            if(arenas.get(i).equalsIgnoreCase(selectedArena)){
+                p.sendMessage(arenas.get(i) +":(selected)");
+
+            }else{
+                p.sendMessage(arenas.get(i));
+
+            }
+        }
+        return arenas.size();
+    }
+    //
+    public void tp(Player p,String arena,String name){
+        Object o =  getConfig().get(arena+ ".pos."+name);
+        if(o != null){
+            Location loc = (Location)o;
+            p.teleport(loc);
+            p.sendMessage("§a§lTPしました。");
+        }
+        return;
+    }
+    public void tpa(Player p,String arena,String name){
+        Object o =  getConfig().get(arena+ ".pos."+name);
+        if(o != null){
+            Location loc = (Location)o;
+//            p.teleport(loc);
+
+
+            p.sendMessage("§a§l全員TPしました。");
+        }
+        return;
+    }
+    public void settp(Player p,String arena,String name){
+        getConfig().set(arena+ ".pos."+name , p.getLocation());
+        saveConfig();
+        p.sendMessage("§a§lTPロケーションを設定しました。:"+ name);
+    }
+    void loadArenaConfig(){
+        log("Arenaリストをよみこみちう");
+        selectedArena = getConfig().getString("selectedArena");
+        Object o =  getConfig().get("Arenas");
+        if(o != null){
+            arenas = (ArrayList<String>)o;
+            log("Arenaリストをよんだ");
+        }
+    }
+
+
 }
