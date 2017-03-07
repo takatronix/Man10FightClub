@@ -12,10 +12,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.inventivetalent.glow.GlowAPI;
 import org.inventivetalent.packetlistener.PacketListenerAPI;
@@ -334,9 +331,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         return 0;
     }
     public int startEntry(){
+        entryTimer = 90;
         bets.clear();
         fighters.clear();
-        waiters.clear();
+       // waiters.clear();
         currentStatus = Entry;
         updateSidebar();
         return 0;
@@ -396,7 +394,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         command("mkit set "+fighters.get(0).name + " " + selectedKit);
         command("mkit set "+fighters.get(1).name + " " + selectedKit);
 
-
+        command("man10 tpuser "+ fighters.get(0).name + " player1");
+        command("man10 tpuser "+ fighters.get(1).name + " player2");
 
         resetBetTimer();
 
@@ -408,6 +407,30 @@ public final class FightClub extends JavaPlugin implements Listener {
         return true;
     }
 
+    boolean CheckFreezed(Player player){
+        if(currentStatus == Opened){
+            for(int i= 0;i < fighters.size();i++){
+                if(fighters.get(i).uuid == player.getUniqueId()){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    @EventHandler(priority=EventPriority.MONITOR, ignoreCancelled = true)
+    public void freezePlayerMove (PlayerMoveEvent event) {
+        if (CheckFreezed(event.getPlayer())) {
+            Location loc = event.getFrom();
+            loc.setX(loc.getBlockX() + 0.5);
+            loc.setY(loc.getBlockY());
+            loc.setZ(loc.getBlockZ() + 0.5);
+            event.getPlayer().teleport(loc);
+            event.setCancelled(true);
+            event.getPlayer().sendMessage("試合開催するまでうごけません");
+        }
+    }
     //      経費
     public double getCost(){
         return getTax() + getPrize();
@@ -627,7 +650,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(index != -1){
             fighters.get(index).isDead = true;
             serverMessage("死亡!!!:"+p.getDisplayName());
-            command("man10 tpuser "+ p.getName() + " death");
+            command("man10 tpuser "+ fighters.get(0).name + " death");
+            command("man10 tpuser "+ fighters.get(1).name + " death");
 
             //      最後ならゲームを終了する
             if(getAliveFighterCount() <= 1){
@@ -650,30 +674,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     }
 
-    @EventHandler(priority = EventPriority.NORMAL)
-    public void PlayerDamageReceive(EntityDamageByEntityEvent e) {
-        if(e.getEntity() instanceof Player) {
-            Player damaged = (Player) e.getEntity();
 
-            if(e.getDamager() instanceof Player) {
-                Player damager = (Player) e.getDamager();
-                if((damaged.getHealth()-e.getDamage()) <= 0) {
-                    serverMessage("しんじゃった");
-                    //Killed
-                 //   e.setCancelled(true);
-                 //   damaged.teleport(plugin.spawn); // <---- plugin.spawn is the spawn-location that is defined in the main class.
-                   // damaged.setHealth(20);
-                }
-
-/*
-                if(damaged.getWorld().getName() == plugin.worldname) {
-
-                }
-                */
-
-            }
-        }
-    }
 
 
 
