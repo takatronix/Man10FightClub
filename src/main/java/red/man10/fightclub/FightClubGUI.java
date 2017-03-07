@@ -1,6 +1,7 @@
 package red.man10.fightclub;
 
 import org.bukkit.ChatColor;
+import org.bukkit.enchantments.Enchantment;
 import red.man10.SkullMaker;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -27,7 +28,6 @@ public class FightClubGUI {
     public void clickItem(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
         //try {
-
 
 
         if(e.getClickedInventory().getTitle().equals("      §cMan10 Fight Club menu")){
@@ -411,7 +411,7 @@ public class FightClubGUI {
 
         ItemStack b = new ItemStack(Material.STAINED_GLASS_PANE, 1,(short) 11);
         ItemMeta bm = b.getItemMeta();
-        bm.setDisplayName("9§l" + info1.name + "にベットする");
+        bm.setDisplayName("§9§l" + info1.name + "にベットする");
         b.setItemMeta(bm);
 
 
@@ -472,4 +472,6 @@ public class FightClubGUI {
         p.openInventory(i);
 
     }
+
+
 }
