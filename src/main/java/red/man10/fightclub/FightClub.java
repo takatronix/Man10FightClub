@@ -422,7 +422,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         Collections.shuffle(arenas);
         selectedArena = arenas.get(0);
 
-        tpa(selectedArena,"spawn");
+        tpf(selectedArena,"spawn");
 
         if(currentStatus == Entry){
 /*
@@ -981,7 +981,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
             }
         }
-        return arenas.size();
+        return arenas.size();t
     }
     //
     public void tp(Player p,String arena,String name){

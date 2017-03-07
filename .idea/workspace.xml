@@ -113,8 +113,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="315" column="0" lean-forward="true" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
+            <state relative-caret-position="49">
+              <caret line="982" column="9" lean-forward="true" selection-start-line="982" selection-start-column="9" selection-end-line="982" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2178#2198#0" expanded="true" />
@@ -772,13 +772,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00029" summary="UUID処理を文字列からUUID型へ修正&#10;お金の振込処理バグの修正">
-      <created>1488534963198</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1488534963198</updated>
-    </task>
     <task id="LOCAL-00030" summary="SkullをとるAPIを追加">
       <created>1488591608538</created>
       <option name="number" value="00030" />
@@ -1115,7 +1108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488897430096</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="全員移動からfighterのみ移動にした">
+      <created>1488920793364</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1488920793364</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1197,7 +1197,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="SideBar表示修正" />
     <MESSAGE value="看板処理" />
     <MESSAGE value="Repo追加" />
     <MESSAGE value="カラーを表示" />
@@ -1222,7 +1221,8 @@
     <MESSAGE value="GUI接続" />
     <MESSAGE value="GUI閉じる処理追加" />
     <MESSAGE value="bgu" />
-    <option name="LAST_COMMIT_MESSAGE" value="bgu" />
+    <MESSAGE value="全員移動からfighterのみ移動にした" />
+    <option name="LAST_COMMIT_MESSAGE" value="全員移動からfighterのみ移動にした" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1457,8 +1457,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="315" column="0" lean-forward="true" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
+        <state relative-caret-position="49">
+          <caret line="982" column="9" lean-forward="true" selection-start-line="982" selection-start-column="9" selection-end-line="982" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2178#2198#0" expanded="true" />
