@@ -54,7 +54,7 @@ public class FightClubArenaCommand  implements CommandExecutor {
                 return false;
             }
             plugin.deleteArena(sender,args[1]);
-            return true;s
+            return true;
         }
         if(args[0].equalsIgnoreCase("list")){
             plugin.listArena(sender);

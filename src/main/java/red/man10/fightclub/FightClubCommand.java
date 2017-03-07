@@ -30,11 +30,8 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage(""+args.length);
 
         //      引数がない場合
-        if(args.length <= 0){
-            showHelp(p);
-
-           // plugin.serverMessage("gui");
-           plugin.guiBetMenu(p);
+        if(args.length == 0){
+            plugin.openGUI(p);
             return true;
         }
 

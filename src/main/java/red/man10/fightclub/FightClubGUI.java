@@ -37,9 +37,11 @@ public class FightClubGUI {
             }
             if(e.getSlot() == 3){
                 //登録をキャンセル処理
+                plugin.unregisterFighter(e.getWhoClicked().getUniqueId());
             }
             if(e.getSlot() == 5){
                 //観戦処理
+                plugin.tp(p,plugin.selectedArena,"spawn");
             }
             if(e.getSlot() == 7){
                 //観戦から戻る処理

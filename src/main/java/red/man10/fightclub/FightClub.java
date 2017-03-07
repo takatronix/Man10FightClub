@@ -79,7 +79,21 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
 
+    public int unregisterFighter(UUID uuid){
+        ////////////////////////////////////
+        //      すでに登録されてたらエラー
+        ////////////////////////////////////
+        for(int i = 0;i < waiters.size();i++){
+            FighterInformation fighter = waiters.get(i);
+            if(fighter.uuid == uuid){
 
+                waiters.remove(i);
+                updateSidebar();;
+                return 0;
+            }
+        }
+        return 1;
+    }
     ////////////////////////////////
     //       対戦者登録
     ////////////////////////////////
@@ -398,8 +412,13 @@ public final class FightClub extends JavaPlugin implements Listener {
         command("mkit set "+fighters.get(0).name + " " + selectedKit);
         command("mkit set "+fighters.get(1).name + " " + selectedKit);
 
-        command("man10 tpuser "+ fighters.get(0).name + " player1");
-        command("man10 tpuser "+ fighters.get(1).name + " player2");
+     //   command("man10 tpuser "+ fighters.get(0).name + " player1");
+       // command("man10 tpuser "+ fighters.get(1).name + " player2");
+        Player player1 = Bukkit.getPlayer(fighters.get(0).uuid);
+        Player player2 = Bukkit.getPlayer(fighters.get(0).uuid);
+
+        tp(player1,selectedArena,"player1");
+        tp(player1,selectedArena,"player2");
 
         resetBetTimer();
 
@@ -829,6 +848,17 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
     }
 
+    public void openGUI(Player p){
+
+        if(currentStatus == Opened){
+            //
+            gui.betMenu(p);
+        }else{
+            gui.createJoinmenu(p);
+        }
+        updateSidebar();
+
+    }
 
     @EventHandler
     public void clickItem(InventoryClickEvent e) {
@@ -904,7 +934,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 saveConfig();
                 p.sendMessage(arena+" selected");
 
-                tp(p,selectedArena,"spawn");
+                tp((Player)p,selectedArena,"spawn");
                 return i;
             }
         }
@@ -939,9 +969,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(o != null){
             Location loc = (Location)o;
 //            p.teleport(loc);
+            for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+                player.teleport(loc);
+            }
 
-
-            p.sendMessage("§a§l全員TPしました。");
         }
         return;
     }
