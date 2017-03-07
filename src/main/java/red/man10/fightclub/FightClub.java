@@ -981,7 +981,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
             }
         }
-        return arenas.size();t
+        return arenas.size();
     }
     //
     public void tp(Player p,String arena,String name){

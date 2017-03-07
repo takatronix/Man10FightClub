@@ -24,14 +24,14 @@ public class FightClubArenaCommand  implements CommandExecutor {
             p.sendMessage("§c/mfca select [アリーナ名]");
             p.sendMessage("§c/mfca delete [アリーナ名]");
             p.sendMessage("§c/mfca list");
-            p.sendMessage("§c/mfca settp player1 - 選択中のPlayer1座標設定");
-            p.sendMessage("§c/mfca settp player2 - 選択中のPlayer2座標設定");
-            p.sendMessage("§c/mfca settp spawn - 選択中のPlayer1座標設定");
-            p.sendMessage("-----------アリーナ(Console)-----------");
-            p.sendMessage("§c/mfca tpa - 登録者全員を選択中のアリーナ(spawn)へ移動");
-            p.sendMessage("§c/mfca tpu [Player] player1");
-            p.sendMessage("§c/mfca tpu [Player] player2");
-            p.sendMessage("§c/mfca tpu [Player] spawn");
+            p.sendMessage("§c/mfca settp player1 - 選択中のアリーナ Player1座標設定");
+            p.sendMessage("§c/mfca settp player2 - 選択中のアリーナ Player2座標設定");
+            p.sendMessage("§c/mfca settp spawn - 選択中のアリーナ スポー座標設定");
+           // p.sendMessage("-----------アリーナ(Console)-----------");
+          //  p.sendMessage("§c/mfca tpf - 登録者全員を選択中のアリーナ(spawn)へ移動");
+           // p.sendMessage("§c/mfca tpu [Player] player1");
+            //p.sendMessage("§c/mfca tpu [Player] player2");
+           // p.sendMessage("§c/mfca tpu [Player] spawn");
             return false;
         }
 
