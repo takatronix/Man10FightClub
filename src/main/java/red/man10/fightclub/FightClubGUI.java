@@ -99,12 +99,16 @@ public class FightClubGUI {
                     }
                     e.setCancelled(true);
                 }
+            }else if(e.getClickedInventory().getName().equalsIgnoreCase("      §cMan10 Fight Club menu")){
+                e.getWhoClicked().sendMessage("ok");
             }
         }else{
             //その他のインベントリ
         }
         //}catch (Exception ee){
     }
+
+    //##################[MFC BET MENU]#####################
     void placeBetGUI(Inventory i, Player p){
         int money = Integer.parseInt(i.getItem(50).getItemMeta().getLore().get(1)); //設定したbal
 
@@ -389,7 +393,7 @@ public class FightClubGUI {
 
         ItemStack b = new ItemStack(Material.STAINED_GLASS_PANE, 1,(short) 11);
         ItemMeta bm = b.getItemMeta();
-        bm.setDisplayName("§9§l" + info1.name + "にベットする");
+        bm.setDisplayName("9§l" + info1.name + "にベットする");
         b.setItemMeta(bm);
 
 
@@ -417,5 +421,37 @@ public class FightClubGUI {
 
 
     }
+//#########################################################
 
+    public void createJoinmenu(Player p){
+        Inventory i = Bukkit.createInventory(null, 9, "      §cMan10 Fight Club menu");
+
+        ItemStack ticket = new ItemStack(Material.PAPER);
+        ItemMeta ticketmeta = ticket.getItemMeta();
+        ticketmeta.setDisplayName("§a§lMFC選手登録");
+        ticket.setItemMeta(ticketmeta);
+
+        ItemStack quit = new ItemStack(Material.TNT);
+        ItemMeta quitmeta = quit.getItemMeta();
+        quitmeta.setDisplayName("§c§l登録をキャンセル");
+        quit.setItemMeta(quitmeta);
+
+        ItemStack watch = new ItemStack(Material.EYE_OF_ENDER);
+        ItemMeta watchmeta = watch.getItemMeta();
+        watchmeta.setDisplayName("§5§l観戦");
+        watch.setItemMeta(watchmeta);
+
+        ItemStack watchback = new ItemStack(Material.MINECART);
+        ItemMeta watchbackmeta = watchback.getItemMeta();
+        watchbackmeta.setDisplayName("§7§l観戦から戻る");
+        watchback.setItemMeta(watchbackmeta);
+
+        i.setItem(1, ticket);
+        i.setItem(3, quit);
+        i.setItem(5, watch);
+        i.setItem(7, watchback);
+
+        p.openInventory(i);
+
+    }
 }

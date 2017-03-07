@@ -774,12 +774,19 @@ public final class FightClub extends JavaPlugin implements Listener {
                     startGame();
                     return;
                 }
+                if(s.getLine(1).equalsIgnoreCase("menu")){
+                    gui.createJoinmenu(e.getPlayer());
+                    return;
+                }
+
 
             }
 
 
         }
+        if(e.getClickedBlock().getType() == null){
 
+        }
     }
 
 
