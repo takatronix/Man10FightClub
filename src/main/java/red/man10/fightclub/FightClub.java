@@ -17,6 +17,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.*;
+import org.bukkit.util.io.BukkitObjectInputStream;
 import org.inventivetalent.glow.GlowAPI;
 import org.inventivetalent.packetlistener.PacketListenerAPI;
 import red.man10.MySQLManager;
@@ -295,14 +296,18 @@ public final class FightClub extends JavaPlugin implements Listener {
             vault.deposit(bet.buyerUUID,bet.bet);
             Bukkit.getPlayer(bet.buyerName).sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
         }
+        bets.clear();
 
         if(fighters.size() >= 2){
             //      服装をバックアップ
            // command("mkit pop "+fighters.get(0).name);
            // command("mkit pop "+fighters.get(1).name);
         }
+        fighters.clear();
 
+        tpa(selectedArena,"spawn");
         startEntry();
+
 
         return 0;
     }
@@ -342,8 +347,14 @@ public final class FightClub extends JavaPlugin implements Listener {
         serverMessage("ファイト！！！！");
         fightTimer = 180;
 
-        command("man10 tpuser "+ fighters.get(0).name + " player1");
-        command("man10 tpuser "+ fighters.get(1).name + " player2");
+        //      キットを選択
+
+
+        command("mkit set "+fighters.get(0).name + " " + selectedKit);
+        command("mkit set "+fighters.get(1).name + " " + selectedKit);
+
+        tp(Bukkit.getPlayer(fighters.get(0).uuid),selectedArena,"player1");
+        tp(Bukkit.getPlayer(fighters.get(1).uuid),selectedArena,"player2");
 
         updateSidebar();
         return 0;
@@ -397,6 +408,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         Collections.shuffle(kits);
         selectedKit = kits.get(0);
 
+        //      アリーナの自動選択
+        Collections.shuffle(arenas);
+        selectedArena = arenas.get(0);
+
+        tpa(selectedArena,"spawn");
+
         if(currentStatus == Entry){
 /*
         //      服装をバックアップ
@@ -406,19 +423,15 @@ public final class FightClub extends JavaPlugin implements Listener {
 */
         }
 
-        //      キットを選択
 
-
-        command("mkit set "+fighters.get(0).name + " " + selectedKit);
-        command("mkit set "+fighters.get(1).name + " " + selectedKit);
 
      //   command("man10 tpuser "+ fighters.get(0).name + " player1");
        // command("man10 tpuser "+ fighters.get(1).name + " player2");
         Player player1 = Bukkit.getPlayer(fighters.get(0).uuid);
         Player player2 = Bukkit.getPlayer(fighters.get(0).uuid);
 
-        tp(player1,selectedArena,"player1");
-        tp(player1,selectedArena,"player2");
+     //   tp(player1,selectedArena,"player1");
+     //   tp(player2,selectedArena,"player2");
 
         resetBetTimer();
 
@@ -443,6 +456,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         // コマンドが実行されなかった場合は、falseを返して当メソッドを抜ける。
     }
     boolean CheckFreezed(Player player){
+        return false;
+        /*
         if(currentStatus == Opened){
             for(int i= 0;i < fighters.size();i++){
                 if(fighters.get(i).uuid == player.getUniqueId()){
@@ -451,6 +466,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
         return false;
+        */
     }
 
 
@@ -463,7 +479,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             loc.setZ(loc.getBlockZ() + 0.5);
             event.getPlayer().teleport(loc);
             event.setCancelled(true);
-            event.getPlayer().sendMessage("試合開催するまでうごけません");
+           // event.getPlayer().sendMessage("試合開催するまでうごけません");
         }
     }
     //      経費
@@ -570,6 +586,9 @@ public final class FightClub extends JavaPlugin implements Listener {
             if(fightTimer <= 0){
                 serverMessage("タイムアウト！！！　");
                 cancelGame();
+                fightTimer = 180;
+                entryTimer = 90;
+
             }
 
             updateSidebar();
@@ -964,7 +983,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return;
     }
-    public void tpa(Player p,String arena,String name){
+    public void tpa(String arena,String name){
         Object o =  getConfig().get(arena+ ".pos."+name);
         if(o != null){
             Location loc = (Location)o;

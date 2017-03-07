@@ -69,7 +69,7 @@ public class FightClubArenaCommand  implements CommandExecutor {
         //
         if(args[0].equalsIgnoreCase("tpa")) {
 
-            plugin.tpa((Player)sender,plugin.selectedArena,args[1]);
+            plugin.tpa(plugin.selectedArena,args[1]);
         }
 
 
