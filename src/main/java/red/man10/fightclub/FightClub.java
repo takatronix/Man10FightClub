@@ -5,7 +5,9 @@ import org.bukkit.block.Sign;
 import org.bukkit.boss.BarColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -623,7 +625,35 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
     }
-    /////////////////////////////////
+
+    @EventHandler(priority = EventPriority.NORMAL)
+    public void PlayerDamageReceive(EntityDamageByEntityEvent e) {
+        if(e.getEntity() instanceof Player) {
+            Player damaged = (Player) e.getEntity();
+
+            if(e.getDamager() instanceof Player) {
+                Player damager = (Player) e.getDamager();
+                if((damaged.getHealth()-e.getDamage()) <= 0) {
+                    serverMessage("しんじゃった");
+                    //Killed
+                 //   e.setCancelled(true);
+                 //   damaged.teleport(plugin.spawn); // <---- plugin.spawn is the spawn-location that is defined in the main class.
+                   // damaged.setHealth(20);
+                }
+
+/*
+                if(damaged.getWorld().getName() == plugin.worldname) {
+
+                }
+                */
+
+            }
+        }
+    }
+
+
+
+    ////////////////////////////
     //      ダメージイベント
     /////////////////////////////////
     @EventHandler

@@ -91,14 +91,14 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="576" column="33" lean-forward="true" selection-start-line="576" selection-start-column="33" selection-end-line="576" selection-end-column="33" />
+            <state relative-caret-position="349">
+              <caret line="648" column="0" lean-forward="true" selection-start-line="648" selection-start-column="0" selection-end-line="648" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#10346#10347#0" expanded="true" />
-                <element signature="e#10390#10391#0" expanded="true" />
-                <element signature="e#10418#10419#0" expanded="true" />
-                <element signature="e#10462#10463#0" expanded="true" />
+                <element signature="e#10443#10444#0" expanded="true" />
+                <element signature="e#10487#10488#0" expanded="true" />
+                <element signature="e#10515#10516#0" expanded="true" />
+                <element signature="e#10559#10560#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,7 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cancelGame</find>
       <find>startGa</find>
       <find>cancelGa</find>
       <find>betTimer</find>
@@ -176,6 +175,7 @@
       <find>fighter</find>
       <find>usertp</find>
       <find>death</find>
+      <find>しぼんぬ</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -267,8 +267,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="920" />
-    <option name="y" value="23" />
+    <option name="x" value="600" />
+    <option name="y" value="100" />
     <option name="width" value="1776" />
     <option name="height" value="1275" />
   </component>
@@ -808,13 +808,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00017" summary="通知用に購入者情報も保存する">
-      <created>1488322225022</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1488322225022</updated>
-    </task>
     <task id="LOCAL-00018" summary="通知用に購入者情報も保存する">
       <created>1488325781429</created>
       <option name="number" value="00018" />
@@ -1151,7 +1144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488859931615</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="death point">
+      <created>1488860231750</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1488860231751</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1164,7 +1164,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="920" y="23" width="1776" height="1275" extended-state="0" />
+    <frame x="600" y="100" width="1776" height="1275" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1233,7 +1233,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="UUID処理を文字列からUUID型へ修正&#10;お金の振込処理バグの修正" />
     <MESSAGE value="SkullをとるAPIを追加" />
     <MESSAGE value="pom.xml追加" />
     <MESSAGE value="MySQLMangerとVaultManagerを更新" />
@@ -1258,11 +1257,12 @@
     <MESSAGE value="taxと賞金をオッズ計算に加味" />
     <MESSAGE value="ファイト時間タイマー追加" />
     <MESSAGE value="tp" />
-    <option name="LAST_COMMIT_MESSAGE" value="tp" />
+    <MESSAGE value="death point" />
+    <option name="LAST_COMMIT_MESSAGE" value="death point" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1285,10 +1285,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10346#10347#0" expanded="true" />
-            <element signature="e#10390#10391#0" expanded="true" />
-            <element signature="e#10418#10419#0" expanded="true" />
-            <element signature="e#10462#10463#0" expanded="true" />
+            <element signature="e#10443#10444#0" expanded="true" />
+            <element signature="e#10487#10488#0" expanded="true" />
+            <element signature="e#10515#10516#0" expanded="true" />
+            <element signature="e#10559#10560#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1306,10 +1306,10 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10346#10347#0" expanded="true" />
-            <element signature="e#10390#10391#0" expanded="true" />
-            <element signature="e#10418#10419#0" expanded="true" />
-            <element signature="e#10462#10463#0" expanded="true" />
+            <element signature="e#10443#10444#0" expanded="true" />
+            <element signature="e#10487#10488#0" expanded="true" />
+            <element signature="e#10515#10516#0" expanded="true" />
+            <element signature="e#10559#10560#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1476,14 +1476,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="576" column="33" lean-forward="true" selection-start-line="576" selection-start-column="33" selection-end-line="576" selection-end-column="33" />
+        <state relative-caret-position="349">
+          <caret line="648" column="0" lean-forward="true" selection-start-line="648" selection-start-column="0" selection-end-line="648" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#10346#10347#0" expanded="true" />
-            <element signature="e#10390#10391#0" expanded="true" />
-            <element signature="e#10418#10419#0" expanded="true" />
-            <element signature="e#10462#10463#0" expanded="true" />
+            <element signature="e#10443#10444#0" expanded="true" />
+            <element signature="e#10487#10488#0" expanded="true" />
+            <element signature="e#10515#10516#0" expanded="true" />
+            <element signature="e#10559#10560#0" expanded="true" />
           </folding>
         </state>
       </provider>
