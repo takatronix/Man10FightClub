@@ -35,7 +35,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     MySQLManager mysql = null;
 
 
-
+    double      prize = 0.1;
+    double      tax   = 0.05;
 
     //   状態遷移 これらの状態遷移する
     public enum Status {
@@ -62,7 +63,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         int    fighterIndex;     //  プレーヤ情報
         double bet;             //  掛け金
     }
-    double tax = 0;
+
     Status  currentStatus = Entry;
 
     //      対戦まちリスト
@@ -173,7 +174,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             return 1.0;
         }
         //  （賭けられたお金の合計 － 手数料）÷【賭けに勝つ人達の勝ちに賭けた総合計金額】
-        double odds = (total - tax) / bet;
+        double odds = (total - getCost()) / bet;
         return odds;
     }
 
@@ -400,8 +401,22 @@ public final class FightClub extends JavaPlugin implements Listener {
         return true;
     }
 
+    //      経費
+    public double getCost(){
+        return getTax() + getPrize();
+    }
+    public double getTax(){
+        return  getTotalBets() * tax;
+    }
+
+    //      賞金
+    public double getPrize(){
+        return  getTotalBets() * prize;
+    }
+
     //      対戦終了　winPlayer = -1 終了
     public int endGame(Player p,int fighterIndex){
+
         if (fighterIndex == -1){
             return cancelGame();
         }
@@ -413,10 +428,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         double total  = getTotalBets();
         double winBet = getFighterBets(fighterIndex);
 
-
         //    オッズとは
-        //  （賭けられたお金の合計 － 手数料）÷【賭けに勝つ人達の勝ちに賭けた総合計金額】
-        double odds = (total - tax) / winBet;
+        //  （賭けられたお金の合計 － 経費）÷【賭けに勝つ人達の勝ちに賭けた総合計金額】
+        double odds = (total - getCost()) / winBet;
 
         for (int i = 0;i < bets.size();i++){
             BetInformation bet = bets.get(i);

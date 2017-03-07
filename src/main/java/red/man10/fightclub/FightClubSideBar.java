@@ -69,9 +69,8 @@ public class FightClubSideBar {
 
         sideBar.setScore("§a今回のゲームキット：" + plugin.selectedKit,0);
 
-        int   prize = (int)(total * 0.1);
-        sideBar.setScore("§e勝者への賞金：$"+prize,0);
-        sideBar.setScore("§b===========================",0);
+        sideBar.setScore("§e勝者への賞金：$"+plugin.getPrize(),0);
+        sideBar.setScore("§b==========================",0);
 
         if(plugin.canStartGame()){
             sideBar.setScore("§eまもなく試合が開催されます！！！！",0);
