@@ -297,6 +297,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             Bukkit.getPlayer(bet.buyerName).sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
         }
         bets.clear();
+
         resetBetTimer();
         resetEnetryTimer();
         resetFightTimer();
@@ -382,7 +383,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         if(currentStatus == Opened){
             cancelGame();
-            return;
+            return false;
         }
 
 
