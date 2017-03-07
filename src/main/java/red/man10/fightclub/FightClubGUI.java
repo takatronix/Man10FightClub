@@ -25,12 +25,29 @@ public class FightClubGUI {
     }
 
     public void clickItem(InventoryClickEvent e) {
-
-
+        Player p = (Player) e.getWhoClicked();
         //try {
-        if (e.getClickedInventory() != null) {
-            if (e.getInventory().getName().equalsIgnoreCase("§c§l         ベットメニュー")) {
-                Player p = (Player) e.getWhoClicked();
+
+
+
+        if(e.getClickedInventory().getTitle().equals("      §cMan10 Fight Club menu")){
+            if(e.getSlot() == 1){
+                //選手登録処理
+                plugin.registerFighter(e.getWhoClicked().getUniqueId(), e.getWhoClicked().getName());
+            }
+            if(e.getSlot() == 3){
+                //登録をキャンセル処理
+            }
+            if(e.getSlot() == 5){
+                //観戦処理
+            }
+            if(e.getSlot() == 7){
+                //観戦から戻る処理
+            }
+            e.setCancelled(true);
+            return;
+        }
+            if (e.getInventory().getTitle().equals("§c§l         ベットメニュー")) {
                 FightClub.FighterInformation info = plugin.fighters.get(0);
                 FightClub.FighterInformation info1 = plugin.fighters.get(1);
                 if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
@@ -40,12 +57,12 @@ public class FightClubGUI {
                     e.setCancelled(true);
                 }
 
-            } else if (e.getInventory().getItem(52).getItemMeta().getDisplayName().equalsIgnoreCase("§c§lキャンセル")) {
-                Player p = (Player) e.getWhoClicked();
+            }
+            if (e.getInventory().getItem(52).getItemMeta().getDisplayName().equalsIgnoreCase("§c§lキャンセル")) {
                 String val = e.getClickedInventory().getItem(50).getItemMeta().getLore().get(1);
                 if (val.length() <= 8) {
                     if (e.getSlot() == 46) { //0
-                        if(e.getInventory().getItem(50).getItemMeta().getLore().get(1).length() > 0){
+                        if (e.getInventory().getItem(50).getItemMeta().getLore().get(1).length() > 0) {
                             moveD(e.getClickedInventory());
                             createDisplay(e.getClickedInventory(), p, 0);
                         }
@@ -81,32 +98,30 @@ public class FightClubGUI {
                     } else if (e.getSlot() == 52) {
                         p.closeInventory();
                     } else if (e.getSlot() == 50) {
-                        placeBetGUI(e.getInventory(),p);
+                        placeBetGUI(e.getInventory(), p);
                         //確認処理
                     }
                     e.setCancelled(true);
-                }else{
-                    if(e.getSlot() == 48){
+                } else {
+                    if (e.getSlot() == 48) {
                         clearCalc(e.getInventory());
-                    }else if(e.getSlot() == 50){
-                        placeBetGUI(e.getInventory(),p);
+                    } else if (e.getSlot() == 50) {
+                        placeBetGUI(e.getInventory(), p);
 
-                    }else if(e.getSlot() == 52){
+                    } else if (e.getSlot() == 52) {
                         p.closeInventory();
-                    }else{
+                    } else {
                         e.setCancelled(true);
-                        p.sendMessage("上限！！！");
+                        p.sendMessage("上限！！");
                     }
                     e.setCancelled(true);
                 }
-            }else if(e.getClickedInventory().getName().equalsIgnoreCase("      §cMan10 Fight Club menu")){
-                e.getWhoClicked().sendMessage("ok");
+
             }
-        }else{
-            //その他のインベントリ
+            return;
         }
-        //}catch (Exception ee){
-    }
+     // }catch (Exception ee){
+
 
     //##################[MFC BET MENU]#####################
     void placeBetGUI(Inventory i, Player p){

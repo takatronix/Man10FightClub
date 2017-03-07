@@ -833,7 +833,12 @@ public final class FightClub extends JavaPlugin implements Listener {
     @EventHandler
     public void clickItem(InventoryClickEvent e) {
 
-        if(currentStatus == Entry || currentStatus == Opened){
+        if(e.getClickedInventory() == null){
+            //例外インベントリの処理
+            //実は、インベントリの外枠（インベントリじゃないところ）　でもこのイベントは発動する
+            return;
+        }
+        if(currentStatus == Entry || currentStatus == Opened) {
             gui.clickItem(e);
         }
 
