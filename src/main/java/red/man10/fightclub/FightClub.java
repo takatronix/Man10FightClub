@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -736,36 +737,44 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void clickSignEvent(PlayerInteractEvent e) {
 
         if (e.getClickedBlock().getType() == Material.SIGN_POST || e.getClickedBlock().getType() == Material.WALL_SIGN) {
-            Sign s = (Sign) e.getClickedBlock().getState();
-            if (s.getLine(0).equalsIgnoreCase("[MFC]") == false){
-                return;
-            }
-            if (s.getLine(1).equalsIgnoreCase("BET")) {
+            if( e.getAction() == Action.RIGHT_CLICK_BLOCK  || e.getAction() == Action.LEFT_CLICK_BLOCK ) {
+                Object o = e.getClickedBlock().getState();
+                if((o instanceof  Sign) == false){
+                    return;
+                }
+
+                Sign s = (Sign) e.getClickedBlock().getState();
+                if (s.getLine(0).equalsIgnoreCase("[MFC]") == false){
+                    return;
+                }
+                if (s.getLine(1).equalsIgnoreCase("BET")) {
 
 
-                guiBetMenu(e.getPlayer());
+                    guiBetMenu(e.getPlayer());
 
-                return;
-            }
-            if (s.getLine(1).equalsIgnoreCase("Register")) {
-                registerFighter(e.getPlayer().getUniqueId(),e.getPlayer().getName());
-                return;
-            }
-            if (s.getLine(1).equalsIgnoreCase("Entry")) {
-                startEntry();
-                return;
-            }
-            if (s.getLine(1).equalsIgnoreCase("Cancel")) {
-                cancelGame();
-                return;
-            }
-            if (s.getLine(1).equalsIgnoreCase("Open")) {
-                openGame();
-                return;
-            }
-            if (s.getLine(1).equalsIgnoreCase("Fight")) {
-                startGame();
-                return;
+                    return;
+                }
+                if (s.getLine(1).equalsIgnoreCase("Register")) {
+                    registerFighter(e.getPlayer().getUniqueId(),e.getPlayer().getName());
+                    return;
+                }
+                if (s.getLine(1).equalsIgnoreCase("Entry")) {
+                    startEntry();
+                    return;
+                }
+                if (s.getLine(1).equalsIgnoreCase("Cancel")) {
+                    cancelGame();
+                    return;
+                }
+                if (s.getLine(1).equalsIgnoreCase("Open")) {
+                    openGame();
+                    return;
+                }
+                if (s.getLine(1).equalsIgnoreCase("Fight")) {
+                    startGame();
+                    return;
+                }
+
             }
 
 
