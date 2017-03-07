@@ -31,8 +31,8 @@ public class FightClubGUI {
         if (e.getClickedInventory() != null) {
             if (e.getInventory().getName().equalsIgnoreCase("§c§l         ベットメニュー")) {
                 Player p = (Player) e.getWhoClicked();
-                FightClub.FighterInformation info = plugin.filghters.get(0);
-                FightClub.FighterInformation info1 = plugin.filghters.get(1);
+                FightClub.FighterInformation info = plugin.fighters.get(0);
+                FightClub.FighterInformation info1 = plugin.fighters.get(1);
                 if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
                     priceMenu(p, e.getCurrentItem().getItemMeta().getDisplayName());
                     e.setCancelled(true);
@@ -366,8 +366,8 @@ public class FightClubGUI {
     void betMenu(Player p){
         Inventory bet = Bukkit.createInventory(null, 27, "§c§l         ベットメニュー");
 
-        FightClub.FighterInformation info = plugin.filghters.get(0);
-        FightClub.FighterInformation info1 = plugin.filghters.get(1);
+        FightClub.FighterInformation info = plugin.fighters.get(0);
+        FightClub.FighterInformation info1 = plugin.fighters.get(1);
 
         ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();

@@ -57,8 +57,8 @@ public class FightClubSideBar {
 
         double total = plugin.getTotalBets();
 
-        for(int i = 0;i < plugin.filghters.size();i++){
-            FightClub.FighterInformation f = plugin.filghters.get(i);
+        for(int i = 0;i < plugin.fighters.size();i++){
+            FightClub.FighterInformation f = plugin.fighters.get(i);
 
             String tx = String.format("%10s Odds:§bx§l%3.1f",f.name,plugin.getFighterOdds(f.uuid));
             sideBar.setScore(tx,plugin.getFighterBetCount(f.uuid));
@@ -87,8 +87,8 @@ public class FightClubSideBar {
         sideBar.setTitle("§l Man10 Fight Club 対戦中!!!!");
         sideBar.setScore("§4残り時間",plugin.fightTimer);
 
-        for(int i = 0;i < plugin.filghters.size();i++){
-            FightClub.FighterInformation f = plugin.filghters.get(i);
+        for(int i = 0;i < plugin.fighters.size();i++){
+            FightClub.FighterInformation f = plugin.fighters.get(i);
             String s = "";
 
 

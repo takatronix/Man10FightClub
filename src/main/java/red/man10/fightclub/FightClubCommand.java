@@ -187,7 +187,7 @@ public class FightClubCommand  implements CommandExecutor {
            // Player fighter = Bukkit.getPlayer(info.UUID);
 
             double price = info.bet;
-            String fighter =   plugin.filghters.get(info.fighterIndex).name;
+            String fighter =   plugin.fighters.get(info.fighterIndex).name;
 
 
             p.sendMessage("["+i+"]:" +info.buyerName +"   $"+price +" fighter:"+fighter);
@@ -200,8 +200,8 @@ public class FightClubCommand  implements CommandExecutor {
     void showOdds(Player p){
 
         p.sendMessage("§e=========== §d●§f●§a●§e Man10 Fight Club Odds §d●§f●§a● §e===============");
-        for(int i=0;i < plugin.filghters.size();i++){
-            FightClub.FighterInformation info = plugin.filghters.get(i);
+        for(int i=0;i < plugin.fighters.size();i++){
+            FightClub.FighterInformation info = plugin.fighters.get(i);
             Player fighter = Bukkit.getPlayer(info.uuid);
 
             double price = plugin.getFighterBetMoney(info.uuid);
