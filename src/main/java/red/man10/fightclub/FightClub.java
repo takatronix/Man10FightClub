@@ -297,6 +297,9 @@ public final class FightClub extends JavaPlugin implements Listener {
             Bukkit.getPlayer(bet.buyerName).sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
         }
         bets.clear();
+        resetBetTimer();
+        resetEnetryTimer();
+        resetFightTimer();
 
         if(fighters.size() >= 2){
             //      服装をバックアップ
@@ -377,6 +380,11 @@ public final class FightClub extends JavaPlugin implements Listener {
             serverMessage("二人以上いないと開催できません");
             return false;
         }
+        if(currentStatus == Opened){
+            cancelGame();
+            return;
+        }
+
 
         //      シャッフルする
         Collections.shuffle(waiters);
@@ -555,6 +563,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void resetEnetryTimer(){
         entryTimer = 60;
     }
+    public void resetFightTimer(){
+        entryTimer = 180;
+    }
     public void resetBetTimer(){
         betTimer = 90;
     }
@@ -586,9 +597,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             if(fightTimer <= 0){
                 serverMessage("タイムアウト！！！　");
                 cancelGame();
-                fightTimer = 180;
-                entryTimer = 90;
-
             }
 
             updateSidebar();
