@@ -735,9 +735,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     @EventHandler
     public void clickSignEvent(PlayerInteractEvent e) {
-
+        if( e.getAction() == Action.RIGHT_CLICK_BLOCK  || e.getAction() == Action.LEFT_CLICK_BLOCK ) {
         if (e.getClickedBlock().getType() == Material.SIGN_POST || e.getClickedBlock().getType() == Material.WALL_SIGN) {
-            if( e.getAction() == Action.RIGHT_CLICK_BLOCK  || e.getAction() == Action.LEFT_CLICK_BLOCK ) {
                 Object o = e.getClickedBlock().getState();
                 if((o instanceof  Sign) == false){
                     return;
@@ -782,9 +781,6 @@ public final class FightClub extends JavaPlugin implements Listener {
 
             }
 
-
-        }
-        if(e.getClickedBlock().getType() == null){
 
         }
     }
