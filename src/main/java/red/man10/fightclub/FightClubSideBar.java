@@ -118,7 +118,7 @@ public class FightClubSideBar {
             FightClub.FighterInformation f = plugin.waiters.get(i);
             String s = "["+i+"]" + f.name ;
             sideBar.setScore(s,0);
-            Bukkit.getLogger().info("waiter" + s);
+           // Bukkit.getLogger().info("waiter" + s);
         }
         showToAll();
     }

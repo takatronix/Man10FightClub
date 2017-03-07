@@ -15,6 +15,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.inventivetalent.glow.GlowAPI;
 import org.inventivetalent.packetlistener.PacketListenerAPI;
@@ -570,7 +571,29 @@ public final class FightClub extends JavaPlugin implements Listener {
         p.sendMessage(ChatColor.YELLOW  + "Man10 Fight Club System Started.");
         updateSidebar();
     }
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent e) {
+        Player p = e.getPlayer();
+        log(p.getName()+"ログアウト");
+        for(int i=0;i<waiters.size();i++){
+            if(waiters.get(i).uuid == p.getUniqueId()){
+                serverMessage(p.getName()+"はログアウトしたため、登録リストからはずされた");
+                waiters.remove(i);
+                updateSidebar();
+                break;
+            }
+        }
+        for(int i=0;i<fighters.size();i++) {
+            if(fighters.get(i).uuid == p.getUniqueId()){
+                serverMessage(p.getName()+"はログアウトしたため、試合をキャンセルします");
+                cancelGame();
+                break;
+            }
+        }
 
+        // You don't need a null check here, it will always be a valid player (afaik)
+ //       this.plugin.onQuit(p);
+    }
     /////////////////////////////////
     //      チャットイベント
     /////////////////////////////////
