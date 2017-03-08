@@ -447,6 +447,9 @@ public final class FightClub extends JavaPlugin implements Listener {
        // command("man10 tpuser "+ fighters.get(1).name + " player2");
         Player player1 = Bukkit.getPlayer(fighters.get(0).uuid);
         Player player2 = Bukkit.getPlayer(fighters.get(0).uuid);
+        player1.setGlowing(true);
+        player2.setGlowing(true);
+
 
      //   tp(player1,selectedArena,"player1");
      //   tp(player2,selectedArena,"player2");
@@ -534,7 +537,6 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         disableGlow();
 
-
         //  掛け金の計算
         double total  = getTotalBets();
         double winBet = getFighterBets(fighterIndex);
@@ -542,6 +544,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         //    オッズとは
         //  （賭けられたお金の合計 － 経費）÷【賭けに勝つ人達の勝ちに賭けた総合計金額】
         double odds = (total - getCost()) / winBet;
+
+
+        serverMessage("&l&e[Man10 Fight Club] =============ファイト結果 発表 ======================");
+        //      優勝
+        serverMessage("&l&e[Man10 Fight Club] " + p.getDisplayName() +"は、PvPに勝利し、優勝賞金 $"+(int)getPrize()+"をゲットした!!!!");
+        vault.deposit(p.getUniqueId(),getPrize());
 
         for (int i = 0;i < bets.size();i++){
             BetInformation bet = bets.get(i);
@@ -551,12 +559,15 @@ public final class FightClub extends JavaPlugin implements Listener {
             //      プレイヤーへの支払い金額
             double playerPayout = bet.bet * odds;
             //      プレイヤーへ支払い
-            serverMessage(bet.buyerName+"は, 元金額:$" + bet.bet+"-> $"+playerPayout+"Odds x"+odds);
+            String os = String.format("%.2f",odds);
+
+            serverMessage("&l&e[Man10 Fight Club] " +bet.buyerName+"は,予想を当て、賞金 $"+(int)playerPayout+"をゲットした！！！ Odds:x"+os);
 
             //      通知
             vault.deposit(bet.buyerUUID,playerPayout);
 
         }
+        serverMessage("&l&e[Man10 Fight Club] =============ファイト結果 ======================");
 
         //      終了
 
