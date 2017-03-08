@@ -111,10 +111,10 @@ public class FightClubCommand  implements CommandExecutor {
         }
 
         //////////////////////////////////
-        ///       キャンセル
+        ///       ファイト
         //////////////////////////////////
         if(args[0].equalsIgnoreCase("fight")){
-            plugin.startGame();
+            plugin.startFight();
             p.sendMessage("MFC Started");
             return true;
         }
@@ -220,8 +220,10 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c*/mfc stop - 停止");
         p.sendMessage("/mfc odds - Show Odds");
         p.sendMessage("/mfc bets - Show Bets");
+        p.sendMessage("§c*/mfc ban [User]");
+        p.sendMessage("§c*/mfc unban [User]");
+        p.sendMessage("§c*/mfc kick [User]");
         p.sendMessage("-----------エントリー中有効コマンド-----------");
-        p.sendMessage("*mfcr - 自分を登録する");
         p.sendMessage("§c/mfc register [Fighter]      / Register fighter(s)");
         p.sendMessage("§c/mfc open - 投票開始");
         p.sendMessage("-----------オープン後有効コマンド-----------");
