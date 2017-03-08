@@ -347,19 +347,19 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
 
-
         currentStatus = Fighting;
         serverMessage("ファイト！！！！");
         fightTimer = 180;
 
+        //    ファイターのインベントリをバックアップ
+        pushFightersInv();
         //      キットを選択
-
-
         command("mkit set "+fighters.get(0).name + " " + selectedKit);
         command("mkit set "+fighters.get(1).name + " " + selectedKit);
 
         tp(Bukkit.getPlayer(fighters.get(0).uuid),selectedArena,"player1");
         tp(Bukkit.getPlayer(fighters.get(1).uuid),selectedArena,"player2");
+
 
         updateSidebar();
         return 0;
@@ -916,6 +916,22 @@ public final class FightClub extends JavaPlugin implements Listener {
         getServer().dispatchCommand(getServer().getConsoleSender(),command);
     }
 
+
+    //      ファイターのインベントリを保存
+    public void pushFightersInv(){
+        for(FighterInformation f : fighters){
+            Player p = Bukkit.getPlayer(f.uuid);
+            command("mkit push " + p.getName());
+        }
+    }
+
+    //      ファイターのインベントリを復元
+    public void popFightersInv(){
+        for(FighterInformation f : fighters){
+            Player p = Bukkit.getPlayer(f.uuid);
+            command("mkit pop " + p.getName());
+        }
+    }
 
     //////////////////////////////////
     //        アリーナ関係
