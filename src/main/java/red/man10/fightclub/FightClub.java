@@ -3,6 +3,9 @@ package red.man10.fightclub;
 import org.bukkit.*;
 import org.bukkit.block.Sign;
 import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarFlag;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -865,10 +868,24 @@ public final class FightClub extends JavaPlugin implements Listener {
                     startGame();
                     return;
                 }
-                if(s.getLine(1).equalsIgnoreCase("menu")){
+                if(s.getLine(1).equalsIgnoreCase("Menu")){
                     gui.createJoinmenu(e.getPlayer());
                     return;
                 }
+                if(s.getLine(1).equalsIgnoreCase("Admin")){
+                    //gui.adminMenu(e.getPlayer());
+                    return;
+                }
+                /*if(s.getLine(1).equalsIgnoreCase("boss")){//ボスバーのサンプル
+                    BossBar b = Bukkit.createBossBar("Sho0", BarColor.BLUE, BarStyle.SOLID, new BarFlag[0]);
+                    BossBar r = Bukkit.createBossBar("hashing_bot", BarColor.RED, BarStyle.SOLID, new BarFlag[0]);
+
+                    b.addPlayer(e.getPlayer());
+                    r.addPlayer(e.getPlayer());
+
+                    b.setVisible(true);
+                    r.setVisible(true);
+                }*/
 
 
             }
