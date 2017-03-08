@@ -33,13 +33,15 @@ public class FightClubGUI {
             String pageNumberString = e.getClickedInventory().getItem(49).getItemMeta().getLore().get(0);
             int pageNumberInt = Integer.parseInt(pageNumberString);
             if(e.getSlot() == 48){
-                if(pageNumberInt == 0){
-                    //1ページ目なら何もしない
-                }else{
-                    //ちがければ-1ページ
-                    registerPlayerGUI(p,pageNumberInt-1);
+                    if (pageNumberInt == 0) {
+                        //1ページ目なら何もしない
+                        e.setCancelled(true);
+                        return;
+                    } else {
+                        //ちがければ-1ページ
+                        registerPlayerGUI(p, pageNumberInt - 1);
+                    //left
                 }
-                //left
             }
             if(e.getSlot() == 50){
                 registerPlayerGUI(p,pageNumberInt+1);
