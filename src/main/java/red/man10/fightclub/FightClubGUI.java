@@ -1,5 +1,6 @@
 package red.man10.fightclub;
 
+import net.milkbowl.vault.chat.Chat;
 import org.bukkit.ChatColor;
 import org.bukkit.enchantments.Enchantment;
 import red.man10.SkullMaker;
@@ -28,8 +29,60 @@ public class FightClubGUI {
     public void clickItem(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
         //try {
+        if(e.getClickedInventory().getTitle().equals("§9§lプレイヤーを登録する")){
+            String pageNumberString = e.getClickedInventory().getItem(49).getItemMeta().getLore().get(0);
+            int pageNumberInt = Integer.parseInt(pageNumberString);
+            if(e.getSlot() == 48){
+                if(pageNumberInt == 0){
+                    //1ページ目なら何もしない
+                }else{
+                    //ちがければ-1ページ
+                    registerPlayerGUI(p,pageNumberInt-1);
+                }
+                //left
+            }
+            if(e.getSlot() == 50){
+                registerPlayerGUI(p,pageNumberInt+1);
+                //right
+            }
+            if(e.getSlot() == 49){
+            }
+            if(e.getCurrentItem().getType() == Material.SKULL_ITEM){
+                String clickedFighter = e.getCurrentItem().getItemMeta().getDisplayName();
+                Player fighter = Bukkit.getPlayer(clickedFighter);
+                plugin.registerFighter(fighter.getUniqueId(), fighter.getName());
+            }
 
+            e.setCancelled(true);
+            return;
+        }
+        if(e.getClickedInventory().getTitle().equals("§c§lMFC Admin Console")) {
+            if(e.getSlot() == 10){
+                registerPlayerGUI(p,0);
+                return;
+            }
+            if(e.getSlot() == 12){
+                plugin.tp(p,plugin.selectedArena,"spawn");
+            }
+            if(e.getSlot() == 14){
 
+            }
+            if(e.getSlot() == 16){
+                plugin.cancelGame();
+            }
+            if(e.getSlot() == 29){
+                plugin.guiBetMenu((Player) e.getWhoClicked());
+            }
+            if(e.getSlot() == 31){
+
+            }
+            if(e.getSlot() == 33){
+                plugin.startGame();
+            }
+
+            e.setCancelled(true);
+            return;
+        }
         if(e.getClickedInventory().getTitle().equals("      §cMan10 Fight Club menu")){
             if(e.getSlot() == 1){
                 //選手登録処理
@@ -470,6 +523,112 @@ public class FightClubGUI {
         i.setItem(7, watchback);
 
         p.openInventory(i);
+
+    }
+
+    public void adminMenu(Player p){
+        Inventory i = Bukkit.createInventory(null, 45, "§c§lMFC Admin Console");
+        addServerPlayerList();
+
+        ItemStack reg = new ItemStack(Material.PAPER);
+        ItemMeta regmeta = reg.getItemMeta();
+        regmeta.setDisplayName("§a§l選手を登録");
+        regmeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        reg.setItemMeta(regmeta);
+
+        ItemStack bet = new ItemStack(Material.EMERALD);
+        ItemMeta betmeta = bet.getItemMeta();
+        betmeta.setDisplayName("§6§lベットする");
+        betmeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        bet.setItemMeta(betmeta);
+
+        ItemStack spec = new ItemStack(Material.EYE_OF_ENDER);
+        ItemMeta specmeta = spec.getItemMeta();
+        specmeta.setDisplayName("§7§l観戦する");
+        specmeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        spec.setItemMeta(specmeta);
+
+        ItemStack cancelreg = new ItemStack(Material.BARRIER);
+        ItemMeta cancelregmeta = cancelreg.getItemMeta();
+        cancelregmeta.setDisplayName("§c§l登録を取り消しする");
+        cancelregmeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        cancelreg.setItemMeta(cancelregmeta);
+
+        ItemStack sets = new ItemStack(Material.ANVIL);
+        ItemMeta setsmeta = sets.getItemMeta();
+        setsmeta.setDisplayName("§d§lゲームのステートを変更する");
+        setsmeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        sets.setItemMeta(setsmeta);
+
+        ItemStack cancelgame = new ItemStack(Material.TNT);
+        ItemMeta cancelgamemeta = cancelgame.getItemMeta();
+        cancelgamemeta.setDisplayName("§4§lゲームをキャンセルする");
+        cancelgamemeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        cancelgame.setItemMeta(cancelgamemeta);
+
+        ItemStack start = new ItemStack(Material.DIAMOND_SWORD);
+        ItemMeta startmeta = start.getItemMeta();
+        startmeta.setDisplayName("§b§lゲームを始める");
+        startmeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        start.setItemMeta(startmeta);
+
+        i.setItem(10, reg);
+        i.setItem(12, spec);
+        i.setItem(14, sets);
+        i.setItem(16, start);
+
+        i.setItem(29, bet);
+        i.setItem(31, cancelreg);
+        i.setItem(33, cancelgame);
+
+
+        p.openInventory(i);
+
+    }
+
+    ArrayList<UUID> serverPlayerList = new ArrayList<UUID>();
+
+    public void addServerPlayerList(){
+        serverPlayerList.clear();
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            serverPlayerList.add(player.getUniqueId());
+        }
+    }
+
+    public void registerPlayerGUI(Player p,int page){
+        Inventory i = Bukkit.createInventory(null, 54, "§9§lプレイヤーを登録する");
+        int c = 0;
+        int actualPage = page * 44;
+
+        ArrayList<String> sign = new ArrayList<String>();
+        sign.add(String.valueOf(page));
+        int slot = 0;
+
+        ItemStack pageitem = new ItemStack(Material.SIGN);
+        ItemMeta pageitemMeta = pageitem.getItemMeta();
+        pageitemMeta.setDisplayName("§2§l" +String.valueOf(page) + "ページ");
+        pageitemMeta.setLore(sign);
+        pageitem.setItemMeta(pageitemMeta);
+        ItemStack left = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/3ebf907494a935e955bfcadab81beafb90fb9be49c7026ba97d798d5f1a23").withName("前").build();
+        ItemStack right = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/1b6f1a25b6bc199946472aedb370522584ff6f4e83221e5946bd2e41b5ca13b").withName("次").build();
+
+        i.setItem(49, pageitem);
+        i.setItem(48, left);
+        i.setItem(50, right);
+        p.openInventory(i);
+
+        while(c <= 44){
+            Player pp = Bukkit.getPlayer(serverPlayerList.get(actualPage + c));
+            ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+            SkullMeta meta = (SkullMeta) skull.getItemMeta();
+            meta.setDisplayName(pp.getName());
+            meta.setOwner(pp.getName());
+            skull.setItemMeta(meta);
+            i.setItem(slot, skull);
+            slot++;
+            c++;
+        }
+
 
     }
 

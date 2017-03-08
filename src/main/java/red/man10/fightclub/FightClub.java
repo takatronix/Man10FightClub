@@ -642,6 +642,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     }
 
+
     void loadConfig(){
         loadArenaConfig();
     }
@@ -873,7 +874,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                     return;
                 }
                 if(s.getLine(1).equalsIgnoreCase("Admin")){
-                    //gui.adminMenu(e.getPlayer());
+                    gui.adminMenu(e.getPlayer());
                     return;
                 }
                 /*if(s.getLine(1).equalsIgnoreCase("boss")){//ボスバーのサンプル
