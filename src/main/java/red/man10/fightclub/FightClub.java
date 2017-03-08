@@ -224,17 +224,20 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
 
+    boolean canBetSelf = true;
     Boolean canBet(UUID buyerUUID){
 
-        /*
-        //          ファイターは登録できません
-        for(int i=0;i< fighters.size();i++){
-            if(fighters.get(i).uuid == buyerUUID){
-                serverMessage( "§d八百長防止のため、選手はベットすることはできません");
-                return false;
+        if (canBetSelf == false){
+            //          ファイターは登録できません
+            for(int i=0;i< fighters.size();i++){
+                if(fighters.get(i).uuid == buyerUUID){
+                    serverMessage( "§d八百長防止のため、選手はベットすることはできません");
+                    return false;
+                }
             }
+
         }
-*/
+
         return true;
     }
 
