@@ -111,10 +111,10 @@ public class FightClubCommand  implements CommandExecutor {
         }
 
         //////////////////////////////////
-        ///       キャンセル
+        ///       ファイト
         //////////////////////////////////
         if(args[0].equalsIgnoreCase("fight")){
-            plugin.startGame();
+            plugin.startFight();
             p.sendMessage("MFC Started");
             return true;
         }

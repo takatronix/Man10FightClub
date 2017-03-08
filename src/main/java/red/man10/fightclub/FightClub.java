@@ -333,8 +333,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return true;
     }
-    //      募集開始
-    public int startGame(){
+
+
+
+    public int startFight(){
 
         if(fighters.size() < 2){
             serverMessage("二人以上いないと開催できませんキャンセルします");
@@ -592,7 +594,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             betTimer--;
 
             if(betTimer <= 0){
-                startGame();
+                startFight();
             }
             updateSidebar();
         }
@@ -842,10 +844,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                     return;
                 }
                 if (s.getLine(1).equalsIgnoreCase("BET")) {
-
-
                     guiBetMenu(e.getPlayer());
-
                     return;
                 }
                 if (s.getLine(1).equalsIgnoreCase("Register")) {
@@ -865,27 +864,15 @@ public final class FightClub extends JavaPlugin implements Listener {
                     return;
                 }
                 if (s.getLine(1).equalsIgnoreCase("Fight")) {
-                    startGame();
+                    startFight();
                     return;
                 }
                 if(s.getLine(1).equalsIgnoreCase("Menu")){
                     gui.createJoinmenu(e.getPlayer());
                     return;
                 }
-                if(s.getLine(1).equalsIgnoreCase("Admin")){
-                    //gui.adminMenu(e.getPlayer());
-                    return;
-                }
-                /*if(s.getLine(1).equalsIgnoreCase("boss")){//ボスバーのサンプル
-                    BossBar b = Bukkit.createBossBar("Sho0", BarColor.BLUE, BarStyle.SOLID, new BarFlag[0]);
-                    BossBar r = Bukkit.createBossBar("hashing_bot", BarColor.RED, BarStyle.SOLID, new BarFlag[0]);
-
-                    b.addPlayer(e.getPlayer());
-                    r.addPlayer(e.getPlayer());
-
-                    b.setVisible(true);
-                    r.setVisible(true);
-                }*/
+                //      なにもないのはGUI
+                openGUI(e.getPlayer());
 
 
             }
