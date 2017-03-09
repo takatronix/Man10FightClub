@@ -1,8 +1,15 @@
 package red.man10.fightclub;
 
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.ChatColor;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarFlag;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.enchantments.Enchantment;
+import red.man10.LifeBar;
 import red.man10.SkullMaker;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -25,6 +32,7 @@ public class FightClubGUI {
     public FightClubGUI(FightClub plugin) {
         this.plugin = plugin;
     }
+
 
     public void clickItem(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
@@ -66,11 +74,8 @@ public class FightClubGUI {
             if(e.getSlot() == 12){
                 plugin.tp(p,plugin.selectedArena,"spawn");
             }
-            if(e.getSlot() == 14){
-
-            }
             if(e.getSlot() == 16){
-                plugin.cancelGame();
+
             }
             if(e.getSlot() == 29){
                 plugin.guiBetMenu((Player) e.getWhoClicked());
@@ -79,7 +84,6 @@ public class FightClubGUI {
 
             }
             if(e.getSlot() == 33){
-                plugin.startGame();
             }
 
             e.setCancelled(true);
@@ -633,6 +637,5 @@ public class FightClubGUI {
 
 
     }
-
 
 }

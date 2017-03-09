@@ -23,6 +23,7 @@ import org.bukkit.util.*;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.inventivetalent.glow.GlowAPI;
 import org.inventivetalent.packetlistener.PacketListenerAPI;
+import red.man10.LifeBar;
 import red.man10.MySQLManager;
 import red.man10.SidebarDisplay;
 import red.man10.VaultManager;
@@ -39,6 +40,7 @@ import static red.man10.fightclub.FightClub.Status.*;
 public final class FightClub extends JavaPlugin implements Listener {
 
     FightClubGUI gui = new FightClubGUI(this);
+    LifeBar lifebar = new LifeBar(this);
 
     VaultManager vault = null;
     MySQLManager mysql = null;
@@ -653,6 +655,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         getLogger().info("Disabled");
+        lifebar.clearBar();
     }
 
 
@@ -875,6 +878,38 @@ public final class FightClub extends JavaPlugin implements Listener {
                 if(s.getLine(1).equalsIgnoreCase("Admin")){
                     gui.adminMenu(e.getPlayer());
                     return;
+                }
+                if(s.getLine(1).equalsIgnoreCase("bar")){
+                    if(s.getLine(2).equalsIgnoreCase("addplayer")){
+                        lifebar.addPlayer(e.getPlayer());
+                    }
+                    if(s.getLine(2).equalsIgnoreCase("setvisible")){
+                            lifebar.setVisible(true);
+                    }
+                    if(s.getLine(2).equalsIgnoreCase("setrtitle")){
+                        lifebar.setRname(s.getLine(3));
+                    }
+                    if(s.getLine(2).equalsIgnoreCase("setbtitle")){
+                        lifebar.setBname(s.getLine(3));
+                    }
+                    if(s.getLine(2).equalsIgnoreCase("setbbar")){
+                        lifebar.setBBar(Double.parseDouble(s.getLine(3)));
+                    }
+                    if(s.getLine(2).equalsIgnoreCase("setrbar")){
+                        lifebar.setRBar(Double.parseDouble(s.getLine(3)));
+                    }
+                    if(s.getLine(2).equalsIgnoreCase("hide")){
+                        lifebar.clearBar();
+                    }
+                    if(s.getLine(2).equalsIgnoreCase("removebplayer")){
+                        lifebar.removeBPlayer(e.getPlayer());
+                    }
+                    if(s.getLine(2).equalsIgnoreCase("removerplayer")){
+                        lifebar.removeRPlayer(e.getPlayer());
+                    }
+                    if(s.getLine(2).equalsIgnoreCase("reset")){
+                        lifebar.resetBar();
+                    }
                 }
                 /*if(s.getLine(1).equalsIgnoreCase("boss")){//ボスバーのサンプル
                     BossBar b = Bukkit.createBossBar("Sho0", BarColor.BLUE, BarStyle.SOLID, new BarFlag[0]);
