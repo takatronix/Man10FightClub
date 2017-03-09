@@ -56,11 +56,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         Opened,                 //  予想の受付開
         Fighting,               //  対戦中
     }
-    //      ファイター情報
-    class  FighterInformation{
-        UUID   uuid;
-        String name;
-        Boolean isDead;
+    //     プレイヤー情報
+    class  PlayerInformation{
+        UUID        uuid;
+        String      name;
+        Location    returnLoc;          //  戻る場所
+        Boolean     isDead;
     }
     //      購入者情報
     class  BuyerInformation{
@@ -78,10 +79,14 @@ public final class FightClub extends JavaPlugin implements Listener {
     Status  currentStatus = Entry;
 
     //      対戦まちリスト
-    ArrayList<FighterInformation> waiters = new ArrayList<FighterInformation>();
+    ArrayList<PlayerInformation> waiters = new ArrayList<PlayerInformation>();
 
     //      対戦者リスト
-    ArrayList<FighterInformation> fighters = new ArrayList<FighterInformation>();
+    ArrayList<PlayerInformation> fighters = new ArrayList<PlayerInformation>();
+
+    //      観戦者リスト
+    ArrayList<PlayerInformation> spectators = new ArrayList<PlayerInformation>();
+
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
 
@@ -90,7 +95,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         //      すでに登録されてたらエラー
         ////////////////////////////////////
         for(int i = 0;i < waiters.size();i++){
-            FighterInformation fighter = waiters.get(i);
+            PlayerInformation fighter = waiters.get(i);
             if(fighter.uuid == uuid){
 
                 waiters.remove(i);
@@ -110,23 +115,91 @@ public final class FightClub extends JavaPlugin implements Listener {
         ////////////////////////////////////
         //      すでに登録されてたらエラー
         ////////////////////////////////////
-        for(int i = 0;i < waiters.size();i++){
-            FighterInformation fighter = waiters.get(i);
-            if(fighter.uuid == uuid){
+        for(PlayerInformation waiter : this.waiters){
+            if(waiter.uuid == uuid){
+                //  登録済みエラー表示
+                return -1;
+            }
+        }
+
+        ////////////////////////////////////
+        //      観戦者登録されてたらエラー
+        ////////////////////////////////////
+        for(PlayerInformation p : this.spectators){
+            if(p.uuid == uuid){
+                //  登録済みエラー表示
+                return -1;
+            }
+        }
+
+
+        //      追加
+        PlayerInformation playerInfo = new PlayerInformation();
+        playerInfo.uuid = uuid;
+        playerInfo.name = name;
+        playerInfo.isDead = false;
+        playerInfo.returnLoc = Bukkit.getPlayer(uuid).getLocation();
+        waiters.add(playerInfo);
+
+        updateSidebar();
+        return waiters.size();
+    }
+
+    //      観戦者
+    public int registerSpectator(UUID uuid){
+
+        ////////////////////////////////////////
+        //      ファイター登録登録されてたらエラー
+        ////////////////////////////////////////
+        for(PlayerInformation waiter : waiters){
+            if(waiter.uuid == uuid){
+                //  登録済みエラー表示
+                return -1;
+            }
+        }
+
+        ////////////////////////////////////////
+        //      ファイター登録登録されてたらエラー
+        ////////////////////////////////////////
+        for(PlayerInformation p : spectators){
+            if(p.uuid == uuid){
                 //  登録済みエラー表示
                 return -1;
             }
         }
 
         //      追加
-        FighterInformation playerInfo = new FighterInformation();
+        PlayerInformation playerInfo = new PlayerInformation();
         playerInfo.uuid = uuid;
-        playerInfo.name = name;
         playerInfo.isDead = false;
-        waiters.add(playerInfo);
+        playerInfo.returnLoc = Bukkit.getPlayer(uuid).getLocation();
+        spectators.add(playerInfo);
 
-        updateSidebar();
-        return waiters.size();
+        //      スポンへ移動
+        Player p = Bukkit.getPlayer(uuid);
+        tp(p,selectedArena,"spawn");
+        p.setGameMode(GameMode.SPECTATOR);
+
+   //     updateSidebar();
+        return spectators.size();
+    }
+
+    public int unregisterSpectator(UUID uuid){
+
+        PlayerInformation inf = null;
+        for(PlayerInformation p : spectators){
+            if(p.uuid == uuid){
+                inf = p;
+                break;
+            }
+        }
+
+        //      もとの場所にもどす
+        Player player = Bukkit.getPlayer(uuid);
+        player.teleport(inf.returnLoc);
+        player.setGameMode(GameMode.SURVIVAL);
+
+        return 0;
     }
 
     //
@@ -401,7 +474,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         int    max = 2;         //  最大マッチ数
         for(int i=0;i< waiters.size();i++){
-            FighterInformation f = waiters.get(i);
+            PlayerInformation f = waiters.get(i);
             Player p = Bukkit.getPlayer(f.uuid);
             if(p.isOnline() ){
                 fighters.add(f);
@@ -1083,7 +1156,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(o != null){
             Location loc = (Location)o;
 //            p.teleport(loc);
-            for(FighterInformation f :fighters){
+            for(PlayerInformation f :fighters){
                 Player p = Bukkit.getPlayer(f.uuid);
                 p.teleport(loc);
             }

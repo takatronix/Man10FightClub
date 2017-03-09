@@ -58,7 +58,7 @@ public class FightClubSideBar {
         double total = plugin.getTotalBets();
 
         for(int i = 0;i < plugin.fighters.size();i++){
-            FightClub.FighterInformation f = plugin.fighters.get(i);
+            FightClub.PlayerInformation f = plugin.fighters.get(i);
 
             String tx = String.format("%10s Odds:§bx§l%3.1f",f.name,plugin.getFighterOdds(f.uuid));
             sideBar.setScore(tx,plugin.getFighterBetCount(f.uuid));
@@ -89,7 +89,7 @@ public class FightClubSideBar {
         sideBar.setScore("§4残り時間",plugin.fightTimer);
 
         for(int i = 0;i < plugin.fighters.size();i++){
-            FightClub.FighterInformation f = plugin.fighters.get(i);
+            FightClub.PlayerInformation f = plugin.fighters.get(i);
             String s = "";
 
 
@@ -116,7 +116,7 @@ public class FightClubSideBar {
             sideBar.setScore("/mfc で登録",0);
         }
         for(int i = 0;i < plugin.waiters.size();i++){
-            FightClub.FighterInformation f = plugin.waiters.get(i);
+            FightClub.PlayerInformation f = plugin.waiters.get(i);
             String s = "["+i+"]" + f.name ;
             sideBar.setScore(s,0);
            // Bukkit.getLogger().info("waiter" + s);

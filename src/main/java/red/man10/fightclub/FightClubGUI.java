@@ -60,7 +60,9 @@ public class FightClubGUI {
             if(e.getCurrentItem().getType() == Material.SKULL_ITEM){
                 String clickedFighter = e.getCurrentItem().getItemMeta().getDisplayName();
                 Player fighter = Bukkit.getPlayer(clickedFighter);
-                plugin.registerFighter(fighter.getUniqueId(), fighter.getName());
+                if(plugin.registerFighter(fighter.getUniqueId(), fighter.getName()) == -1){
+                    fighter.sendMessage("プレイヤーは登録できません");
+                }
             }
 
             e.setCancelled(true);
@@ -99,19 +101,20 @@ public class FightClubGUI {
                 plugin.unregisterFighter(e.getWhoClicked().getUniqueId());
             }
             if(e.getSlot() == 5){
-                //観戦処理
-                plugin.tp(p,plugin.selectedArena,"spawn");
+                //  観戦者登録
+                plugin.registerSpectator(p.getUniqueId());
             }
             if(e.getSlot() == 7){
                 //観戦から戻る処理
+                plugin.unregisterSpectator(p.getUniqueId());
             }
             e.setCancelled(true);
             p.closeInventory();
             return;
         }
             if (e.getInventory().getTitle().equals("§c§l         ベットメニュー")) {
-                FightClub.FighterInformation info = plugin.fighters.get(0);
-                FightClub.FighterInformation info1 = plugin.fighters.get(1);
+                FightClub.PlayerInformation info = plugin.fighters.get(0);
+                FightClub.PlayerInformation info1 = plugin.fighters.get(1);
                 if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
                     priceMenu(p, e.getCurrentItem().getItemMeta().getDisplayName());
                     e.setCancelled(true);
@@ -447,8 +450,8 @@ public class FightClubGUI {
     void betMenu(Player p){
         Inventory bet = Bukkit.createInventory(null, 27, "§c§l         ベットメニュー");
 
-        FightClub.FighterInformation info = plugin.fighters.get(0);
-        FightClub.FighterInformation info1 = plugin.fighters.get(1);
+        FightClub.PlayerInformation info = plugin.fighters.get(0);
+        FightClub.PlayerInformation info1 = plugin.fighters.get(1);
 
         ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
