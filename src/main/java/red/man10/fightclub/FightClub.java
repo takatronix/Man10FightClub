@@ -510,9 +510,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
         Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
 
+        String f0o = String.format(" Odds:x%.2f",getFighterOdds(f0.getUniqueId()));
+        String f1o = String.format(" Odds:x%.2f",getFighterOdds(f0.getUniqueId()));
+
         //      init bar
-        lifebar.setRname(f0.getName());
-        lifebar.setBname(f1.getName());
+        lifebar.setRname(f0.getName() + f0o);
+        lifebar.setBname(f1.getName() + f1o);
         lifebar.setVisible(true);
 
 
