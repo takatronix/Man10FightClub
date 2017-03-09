@@ -90,6 +90,16 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
 
+
+
+    public boolean isFighter(UUID uuid){
+        for(PlayerInformation pi :fighters){
+            if(pi.uuid == uuid){
+                return true;
+            }
+        }
+        return false;
+    }
     public int unregisterFighter(UUID uuid){
         ////////////////////////////////////
         //      すでに登録されてたらエラー
@@ -440,6 +450,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      キットを選択
 
+        //      装備を保存
+        command("mkit push "+fighters.get(0).name );
+        command("mkit push "+fighters.get(1).name );
 
         command("mkit set "+fighters.get(0).name + " " + selectedKit);
         command("mkit set "+fighters.get(1).name + " " + selectedKit);
@@ -841,8 +854,11 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      デスイベント
     /////////////////////////////////
     @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent e) {
-
+    public void onPlayerDeath(PlayerDeathEvent e)
+    {
+        if(true){
+            return;
+        }
         if(currentStatus != Fighting){
             return;
         }
@@ -858,6 +874,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             fighters.get(index).isDead = true;
             serverMessage("死亡!!!:"+p.getDisplayName());
             p.sendMessage("あなたは、観戦者になりました。");
+
 
 
             //command("man10 tpuser "+ fighters.get(0).name + " death");
@@ -903,6 +920,51 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
 
+
+    @EventHandler
+    public void PlayerDamageReceive(EntityDamageByEntityEvent e) {
+
+        if(currentStatus != Fighting){
+            return;
+        }
+
+        if(e.getEntity() instanceof Player) {
+            Player damaged = (Player) e.getEntity();
+
+            //
+            if(!isFighter(damaged.getUniqueId())){
+                return;
+            }
+            //  死亡をキャンセル
+            if((damaged.getHealth()-e.getDamage()) <= 0) {
+                e.setCancelled(true);
+                serverMessage("[MFC]ゲーム終了:"+damaged.getDisplayName()+"は死亡した");
+                damaged.setHealth(20);
+                tpf(selectedArena,"spawn");
+                tps(selectedArena,"spawn");
+
+                //      装備を復元
+                command("mkit pop "+fighters.get(0).name );
+                command("mkit pop "+fighters.get(1).name );
+
+
+                int index = getFighterIndex(damaged.getUniqueId());
+                if(index == 0){
+                    endGame(1);
+                }
+                else if(index == 1){
+                    endGame(0);
+                }else{
+
+                    cancelGame();
+                }
+
+
+            }
+
+
+        }
+    }
 
 
     ////////////////////////////
