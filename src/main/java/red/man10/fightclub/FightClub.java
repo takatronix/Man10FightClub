@@ -570,6 +570,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
 
+
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 
         //      本人登録
@@ -1268,7 +1269,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(o != null){
             Location loc = (Location)o;
 //            p.teleport(loc);
-            for(PlayerInformation f :fighters){
+            for(PlayerInformation f :waiters){
                 Player p = Bukkit.getPlayer(f.uuid);
                 p.teleport(loc);
             }
@@ -1276,6 +1277,20 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return;
     }
+    public void tpw(String arena,String name){
+        Object o =  getConfig().get(arena+ ".pos."+name);
+        if(o != null){
+            Location loc = (Location)o;
+//            p.teleport(loc);
+            for(PlayerInformation f :waiters){
+                Player p = Bukkit.getPlayer(f.uuid);
+                p.teleport(loc);
+            }
+
+        }
+        return;
+    }
+
     public void tps(String arena,String name){
         Object o =  getConfig().get(arena+ ".pos."+name);
         if(o != null){

@@ -484,7 +484,7 @@ public class FightClubGUI {
 
         ItemStack r = new ItemStack(Material.STAINED_GLASS_PANE, 1,(short) 14);
         ItemMeta rm = r.getItemMeta();
-        rm.setDisplayName("§c§l" + info.name + "にベトする");
+        rm.setDisplayName("§c§l" + info.name + "にベットする");
         r.setItemMeta(rm);
 
 
