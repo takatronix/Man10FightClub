@@ -20,6 +20,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -94,7 +95,17 @@ public class FightClubGUI {
         if(e.getClickedInventory().getTitle().equals("      §cMan10 Fight Club menu")){
             if(e.getSlot() == 1){
                 //選手登録処理
-                plugin.registerFighter(e.getWhoClicked().getUniqueId(), e.getWhoClicked().getName());
+                int ret = plugin.registerFighter(e.getWhoClicked().getUniqueId(), e.getWhoClicked().getName());
+                if(ret == -1){
+                    p.sendMessage("対戦者リストにすでに登録されています");
+                }
+                else if(ret == -2){
+                    p.sendMessage("観戦者リストにすでに登録されています");
+                }else{
+                    p.sendMessage("選手登録しました");
+                }
+
+
             }
             if(e.getSlot() == 3){
                 //登録をキャンセル処理
@@ -102,7 +113,13 @@ public class FightClubGUI {
             }
             if(e.getSlot() == 5){
                 //  観戦者登録
-                plugin.registerSpectator(p.getUniqueId());
+                int ret = plugin.registerSpectator(p.getUniqueId());
+                if(ret == -1){
+                    p.sendMessage("対戦者リストにすでに登録されています");
+                }
+                if(ret == -2){
+                    p.sendMessage("観戦者リストにすでに登録されています");
+                }
             }
             if(e.getSlot() == 7){
                 //観戦から戻る処理

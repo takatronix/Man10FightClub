@@ -25,10 +25,6 @@ public class FightClubCommand  implements CommandExecutor {
 
         Player p = (Player)sender;
 
-      //  plugin.showSideBar(p);
-
-        p.sendMessage(""+args.length);
-
         //      引数がない場合
         if(args.length == 0){
             plugin.openGUI(p);

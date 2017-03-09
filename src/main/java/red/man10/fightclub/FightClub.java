@@ -128,7 +128,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         for(PlayerInformation p : this.spectators){
             if(p.uuid == uuid){
                 //  登録済みエラー表示
-                return -1;
+                return -2;
             }
         }
 
@@ -159,12 +159,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         ////////////////////////////////////////
-        //      ファイター登録登録されてたらエラー
+        //     観戦者登録登録されてたらエラー
         ////////////////////////////////////////
         for(PlayerInformation p : spectators){
             if(p.uuid == uuid){
                 //  登録済みエラー表示
-                return -1;
+                return -2;
             }
         }
 
@@ -187,9 +187,11 @@ public final class FightClub extends JavaPlugin implements Listener {
     public int unregisterSpectator(UUID uuid){
 
         PlayerInformation inf = null;
-        for(PlayerInformation p : spectators){
+        for(int i = 0;i < spectators.size();i++){
+            PlayerInformation p =  spectators.get(i);
             if(p.uuid == uuid){
                 inf = p;
+                spectators.remove(i);
                 break;
             }
         }
@@ -779,22 +781,26 @@ public final class FightClub extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
-        log(p.getName()+"ログアウト");
-        for(int i=0;i<waiters.size();i++){
-            if(waiters.get(i).uuid == p.getUniqueId()){
-                serverMessage(p.getName()+"はログアウトしたため、登録リストからはずされた");
-                waiters.remove(i);
-                updateSidebar();
-                break;
-            }
+        log(p.getName() + "ログアウト");
+
+        if(unregisterFighter(p.getUniqueId()) < 0){
+            serverMessage(p.getName() + "はログアウトしたため、登録リストからはずされた");
+            updateSidebar();
         }
-        for(int i=0;i<fighters.size();i++) {
-            if(fighters.get(i).uuid == p.getUniqueId()){
-                serverMessage(p.getName()+"はログアウトしたため、試合をキャンセルします");
+
+        for (int i = 0; i < fighters.size(); i++) {
+            if (fighters.get(i).uuid == p.getUniqueId()) {
+                serverMessage(p.getName() + "はログアウトしたため、試合をキャンセルします");
                 cancelGame();
                 break;
             }
         }
+
+        if (unregisterSpectator(p.getUniqueId()) != -1){
+            serverMessage(p.getName()+"はログアウトしたため、観戦をやめました");
+        }
+
+
 
         // You don't need a null check here, it will always be a valid player (afaik)
  //       this.plugin.onQuit(p);
