@@ -692,7 +692,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         entryTimer = 60;
     }
     public void resetFightTimer(){
-        entryTimer = 180
+        entryTimer = 60;
     }
     public void resetBetTimer(){
         betTimer = 60;
