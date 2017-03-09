@@ -441,6 +441,17 @@ public final class FightClub extends JavaPlugin implements Listener {
         tp(Bukkit.getPlayer(fighters.get(0).uuid),selectedArena,"player1");
         tp(Bukkit.getPlayer(fighters.get(1).uuid),selectedArena,"player2");
 
+        Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
+        Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
+
+        String f0o = String.format(" Odds:x%.2f",getFighterOdds(f0.getUniqueId()));
+        String f1o = String.format(" Odds:x%.2f",getFighterOdds(f1.getUniqueId()));
+
+        //      init bar
+        lifebar.setRname(f0.getName() + f0o);
+        lifebar.setBname(f1.getName() + f1o);
+        lifebar.setVisible(true);
+
         updateSidebar();
         return 0;
     }
@@ -507,16 +518,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         tps(selectedArena,"spawn");
         tpf(selectedArena,"spawn");
 
-        Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
-        Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
 
-        String f0o = String.format(" Odds:x%.2f",getFighterOdds(f0.getUniqueId()));
-        String f1o = String.format(" Odds:x%.2f",getFighterOdds(f1.getUniqueId()));
-
-        //      init bar
-        lifebar.setRname(f0.getName() + f0o);
-        lifebar.setBname(f1.getName() + f1o);
-        lifebar.setVisible(true);
 
 
         if(currentStatus == Entry){
