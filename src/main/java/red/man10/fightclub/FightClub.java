@@ -475,7 +475,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         return 0;
     }
     public int startEntry(){
-        entryTimer = 90;
+        resetEnetryTimer();
         bets.clear();
         fighters.clear();
         currentStatus = Entry;
@@ -691,10 +691,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         entryTimer = 60;
     }
     public void resetFightTimer(){
-        entryTimer = 180;
+        entryTimer = 180
     }
     public void resetBetTimer(){
-        betTimer = 90;
+        betTimer = 60;
     }
 
     void showLifeBarToAll(){

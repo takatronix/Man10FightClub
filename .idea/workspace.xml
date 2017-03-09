@@ -8,6 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -82,16 +83,16 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="946" column="34" lean-forward="false" selection-start-line="946" selection-start-column="34" selection-end-line="946" selection-end-column="34" />
+            <state relative-caret-position="194">
+              <caret line="693" column="10" lean-forward="false" selection-start-line="693" selection-start-column="10" selection-end-line="693" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2402#2421#0" expanded="true" />
                 <element signature="e#2502#2521#0" expanded="true" />
                 <element signature="e#2604#2623#0" expanded="true" />
                 <element signature="e#2694#2710#0" expanded="true" />
-                <element signature="e#26626#26634#0" expanded="true" />
-                <element signature="e#32293#32301#0" expanded="true" />
+                <element signature="e#26628#26636#0" expanded="true" />
+                <element signature="e#32295#32303#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,9 +160,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>updateD</find>
-      <find>updateLif</find>
-      <find>updateLi</find>
       <find>close</find>
       <find>&quot;hide&quot;</find>
       <find>closeLif</find>
@@ -189,6 +187,9 @@
       <find>死亡</find>
       <find>startGame</find>
       <find>death</find>
+      <find>90</find>
+      <find>60</find>
+      <find>180</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -284,8 +285,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="395" />
-    <option name="y" value="131" />
+    <option name="x" value="394" />
+    <option name="y" value="132" />
     <option name="width" value="2056" />
     <option name="height" value="1053" />
   </component>
@@ -775,13 +776,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00044" summary="カラーを表示">
-      <created>1488797627385</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1488797627385</updated>
-    </task>
     <task id="LOCAL-00045" summary="死亡時発光を消す">
       <created>1488798394655</created>
       <option name="number" value="00045" />
@@ -1118,7 +1112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489042885915</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="死亡キャンセル">
+      <created>1489043271801</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1489043271801</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1131,7 +1132,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="395" y="131" width="2056" height="1053" extended-state="0" />
+    <frame x="394" y="132" width="2056" height="1053" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1432,16 +1433,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="946" column="34" lean-forward="false" selection-start-line="946" selection-start-column="34" selection-end-line="946" selection-end-column="34" />
+        <state relative-caret-position="194">
+          <caret line="693" column="10" lean-forward="false" selection-start-line="693" selection-start-column="10" selection-end-line="693" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2402#2421#0" expanded="true" />
             <element signature="e#2502#2521#0" expanded="true" />
             <element signature="e#2604#2623#0" expanded="true" />
             <element signature="e#2694#2710#0" expanded="true" />
-            <element signature="e#26626#26634#0" expanded="true" />
-            <element signature="e#32293#32301#0" expanded="true" />
+            <element signature="e#26628#26636#0" expanded="true" />
+            <element signature="e#32295#32303#0" expanded="true" />
           </folding>
         </state>
       </provider>
