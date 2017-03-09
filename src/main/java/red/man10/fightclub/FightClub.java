@@ -1,6 +1,8 @@
 package red.man10.fightclub;
 
 import org.bukkit.*;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
@@ -13,6 +15,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPistonEvent;
+import org.bukkit.event.block.LeavesDecayEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -1237,6 +1242,32 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
     }
+
+
+    //      ブロックがこわれた
+    @EventHandler
+    public void onBlockBreakEvent(BlockBreakEvent e) {
+        signCheck(e.getBlock());
+    }
+
+
+
+    public boolean signCheck(Block b) {
+        for (BlockFace f : BlockFace.values()) {
+            if (b.getRelative(f).getType() == Material.WALL_SIGN) {
+                for(int i = 0;i < kitSigns.size();i++) {
+                    Location loc = kitSigns.get(i);
+                    if(loc.getX() == b.getX() && loc.getY() == b.getY() && loc.getZ() == b.getZ()){
+                        serverMessage("看板を削除しました");
+                        kitSigns.remove(i);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
 
 
     //      サイドバー

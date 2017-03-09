@@ -63,21 +63,23 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="803" column="21" lean-forward="true" selection-start-line="803" selection-start-column="21" selection-end-line="803" selection-end-column="21" />
+            <state relative-caret-position="47">
+              <caret line="1327" column="31" lean-forward="false" selection-start-line="1327" selection-start-column="31" selection-end-line="1327" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2402#2421#0" expanded="true" />
-                <element signature="e#2502#2521#0" expanded="true" />
-                <element signature="e#2604#2623#0" expanded="true" />
-                <element signature="e#2694#2710#0" expanded="true" />
-                <element signature="e#20695#20696#0" expanded="true" />
-                <element signature="e#20736#20737#0" expanded="true" />
-                <element signature="e#20876#20877#0" expanded="true" />
-                <element signature="e#20921#20922#0" expanded="true" />
-                <element signature="e#26897#26905#0" expanded="true" />
-                <element signature="e#32418#32428#0" expanded="true" />
-                <element signature="e#34194#34202#0" expanded="true" />
+                <element signature="e#2611#2630#0" expanded="true" />
+                <element signature="e#2711#2730#0" expanded="true" />
+                <element signature="e#2813#2832#0" expanded="true" />
+                <element signature="e#2903#2919#0" expanded="true" />
+                <element signature="e#20904#20905#0" expanded="true" />
+                <element signature="e#20945#20946#0" expanded="true" />
+                <element signature="e#21085#21086#0" expanded="true" />
+                <element signature="e#21130#21131#0" expanded="true" />
+                <element signature="e#27106#27114#0" expanded="true" />
+                <element signature="e#32627#32637#0" expanded="true" />
+                <element signature="e#34078#34079#0" expanded="true" />
+                <element signature="e#34117#34118#0" expanded="true" />
+                <element signature="e#35134#35142#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -810,13 +812,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00050" summary="bet処理修正">
-      <created>1488810042390</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1488810042391</updated>
-    </task>
     <task id="LOCAL-00051" summary="タイマー処理">
       <created>1488833354684</created>
       <option name="number" value="00051" />
@@ -1153,7 +1148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489049188890</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="看板に表示する仕組み">
+      <created>1489076635306</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1489076635307</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1235,7 +1237,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="メッセージ修正" />
     <MESSAGE value="キットの自動選択" />
     <MESSAGE value="八百長対策" />
     <MESSAGE value="ログけし" />
@@ -1260,7 +1261,8 @@
     <MESSAGE value="勝者判定のミス" />
     <MESSAGE value="死亡キャンセル" />
     <MESSAGE value="エントリ時間を修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="エントリ時間を修正" />
+    <MESSAGE value="看板に表示する仕組み" />
+    <option name="LAST_COMMIT_MESSAGE" value="看板に表示する仕組み" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1467,21 +1469,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="803" column="21" lean-forward="true" selection-start-line="803" selection-start-column="21" selection-end-line="803" selection-end-column="21" />
+        <state relative-caret-position="47">
+          <caret line="1327" column="31" lean-forward="false" selection-start-line="1327" selection-start-column="31" selection-end-line="1327" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2402#2421#0" expanded="true" />
-            <element signature="e#2502#2521#0" expanded="true" />
-            <element signature="e#2604#2623#0" expanded="true" />
-            <element signature="e#2694#2710#0" expanded="true" />
-            <element signature="e#20695#20696#0" expanded="true" />
-            <element signature="e#20736#20737#0" expanded="true" />
-            <element signature="e#20876#20877#0" expanded="true" />
-            <element signature="e#20921#20922#0" expanded="true" />
-            <element signature="e#26897#26905#0" expanded="true" />
-            <element signature="e#32418#32428#0" expanded="true" />
-            <element signature="e#34194#34202#0" expanded="true" />
+            <element signature="e#2611#2630#0" expanded="true" />
+            <element signature="e#2711#2730#0" expanded="true" />
+            <element signature="e#2813#2832#0" expanded="true" />
+            <element signature="e#2903#2919#0" expanded="true" />
+            <element signature="e#20904#20905#0" expanded="true" />
+            <element signature="e#20945#20946#0" expanded="true" />
+            <element signature="e#21085#21086#0" expanded="true" />
+            <element signature="e#21130#21131#0" expanded="true" />
+            <element signature="e#27106#27114#0" expanded="true" />
+            <element signature="e#32627#32637#0" expanded="true" />
+            <element signature="e#34078#34079#0" expanded="true" />
+            <element signature="e#34117#34118#0" expanded="true" />
+            <element signature="e#35134#35142#0" expanded="true" />
           </folding>
         </state>
       </provider>
