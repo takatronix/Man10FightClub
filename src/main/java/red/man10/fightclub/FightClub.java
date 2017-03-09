@@ -727,7 +727,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     }
     public void onTickTimer(){
-        updateSigns();
+        //updateSigns();
 
     }
     public void onTimer(){
@@ -1249,8 +1249,6 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void onBlockBreakEvent(BlockBreakEvent e) {
         signCheck(e.getBlock());
     }
-
-
 
     public boolean signCheck(Block b) {
         for (BlockFace f : BlockFace.values()) {
