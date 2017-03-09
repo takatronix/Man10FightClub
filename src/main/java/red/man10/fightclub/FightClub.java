@@ -226,13 +226,19 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      生存者数
     int getLastFighter() {
         int ret = 0;
-        for(int i = 0;i < fighters.size();i++){
-            if(fighters.get(i).isDead == false){
+
+        for(int i=0;i<fighters.size();i++){
+
+            Player p = Bukkit.getPlayer(fighters.get(i).uuid);
+            if(p.isDead()){
                 return i;
             }
         }
+
         return -1;
     }
+
+
 
 
     double getFighterBetMoney(UUID uuid){
@@ -615,7 +621,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     //      対戦終了　winPlayer = -1 終了
-    public int endGame(Player p,int fighterIndex){
+    public int endGame(int fighterIndex){
 
         if (fighterIndex == -1){
             return cancelGame();
@@ -623,12 +629,14 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         disableGlow();
 
+        PlayerInformation pf = fighters.get(fighterIndex);
+        Player winner = Bukkit.getPlayer(pf.uuid);
 
         double prize = getPrize();
         serverMessage("[MFC]==============結果発表============");
 
-        serverMessage("勝者："+p.getDisplayName() +"は優勝賞金 $"+(int)prize+"をゲットした！！！！");
-        vault.deposit(p.getUniqueId(),prize);
+        serverMessage("勝者："+winner.getDisplayName() +"は優勝賞金 $"+(int)prize+"をゲットした！！！！");
+        vault.deposit(winner.getUniqueId(),prize);
 
         //  掛け金の計算
         double total  = getTotalBets();
@@ -871,7 +879,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
                 int lastIndex = getLastFighter();
-                endGame(p,lastIndex);
+                endGame(lastIndex);
 
 
 
