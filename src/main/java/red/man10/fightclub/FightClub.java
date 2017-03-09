@@ -511,7 +511,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
 
         String f0o = String.format(" Odds:x%.2f",getFighterOdds(f0.getUniqueId()));
-        String f1o = String.format(" Odds:x%.2f",getFighterOdds(f0.getUniqueId()));
+        String f1o = String.format(" Odds:x%.2f",getFighterOdds(f1.getUniqueId()));
 
         //      init bar
         lifebar.setRname(f0.getName() + f0o);
@@ -622,6 +622,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         disableGlow();
 
 
+        double prize = getPrize();
+        serverMessage("[MFC]==============結果発表============");
+
+        serverMessage("勝者："+p.getDisplayName() +"は優勝賞金 $"+(int)prize+"をゲットした！！！！");
+        vault.deposit(p.getUniqueId(),prize);
+
         //  掛け金の計算
         double total  = getTotalBets();
         double winBet = getFighterBets(fighterIndex);
@@ -637,8 +643,9 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
             //      プレイヤーへの支払い金額
             double playerPayout = bet.bet * odds;
+
             //      プレイヤーへ支払い
-            serverMessage(bet.buyerName+"は, 元金額:$" + bet.bet+"-> $"+playerPayout+"Odds x"+odds);
+            serverMessage("[MFC]"+bet.buyerName+"は、予想があたり、$"+(int)playerPayout+"をゲットした！！ Odds:x"+String.format("%.2f",odds));
 
             //      通知
             vault.deposit(bet.buyerUUID,playerPayout);
