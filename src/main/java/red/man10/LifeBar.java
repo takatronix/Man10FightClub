@@ -27,8 +27,8 @@ public class LifeBar {
 
 
     public void addPlayer(Player p){
-        b.addPlayer(p);
         r.addPlayer(p);
+        b.addPlayer(p);
     }
 
     public void setVisible(Boolean bool){

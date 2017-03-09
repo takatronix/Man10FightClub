@@ -352,7 +352,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
 
-
+        showLifeBarToAll();
         currentStatus = Fighting;
         serverMessage("ファイト！！！！");
         fightTimer = 180;
@@ -373,8 +373,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         entryTimer = 90;
         bets.clear();
         fighters.clear();
-       // waiters.clear();
         currentStatus = Entry;
+        closeLifeBar();
         updateSidebar();
         return 0;
     }
@@ -427,7 +427,18 @@ public final class FightClub extends JavaPlugin implements Listener {
         Collections.shuffle(arenas);
         selectedArena = arenas.get(0);
 
+        //     選手全員をアリーナへ移動
         tpf(selectedArena,"spawn");
+
+
+        Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
+        Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
+
+        //      init bar
+        lifebar.setRname(f0.getName());
+        lifebar.setBname(f1.getName());
+        lifebar.setVisible(true);
+
 
         if(currentStatus == Entry){
 /*
@@ -577,6 +588,28 @@ public final class FightClub extends JavaPlugin implements Listener {
         betTimer = 90;
     }
 
+    void showLifeBarToAll(){
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+            lifebar.addPlayer(player);
+        }
+
+    }
+
+    void updateLifeBar(){
+        Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
+        Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
+        double h0 = f0.getHealth() / f0.getHealthScale();
+        double h1 = f1.getHealth() / f1.getHealthScale();
+
+       // serverMessage("scale :"+f0.getHealthScale());
+        //serverMessage("h1"+ h1);
+        lifebar.setRBar(h0);
+        lifebar.setBBar(h1);
+    }
+    void closeLifeBar(){
+        lifebar.clearBar();
+
+    }
 
     public void onTimer(){
       //  log("onTimer");
@@ -597,6 +630,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 startGame();
             }
             updateSidebar();
+           // updateLifeBar();
         }
 
         if (currentStatus == Fighting) {
@@ -607,6 +641,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
 
             updateSidebar();
+            updateLifeBar();
         }
     }
 
@@ -700,11 +735,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player p = e.getPlayer();
         String message = e.getMessage();
       //  GlowAPI.setGlowing(e.getPlayer(), GlowAPI.Color.AQUA, Bukkit.getOnlinePlayers())
-        // ;
-
-
-        org.bukkit.boss.BossBar bossBar =  Bukkit.getServer().createBossBar("title", BarColor.RED,SEGMENTED_20,CREATE_FOG);
-    //    bossBar.set
 
     }
     /////////////////////////////////
@@ -765,6 +795,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         if(e.getEntity() instanceof Player)
         {
+            updateSidebar();
+            updateLifeBar();
+
             Player p = (Player)e.getEntity();
             double d = e.getDamage();
             if(d == 0){
