@@ -230,7 +230,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         for(int i=0;i<fighters.size();i++){
 
             Player p = Bukkit.getPlayer(fighters.get(i).uuid);
-            if(p.isDead()){
+            if(p.isDead() == false){
                 return i;
             }
         }

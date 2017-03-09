@@ -83,8 +83,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="880" column="49" lean-forward="true" selection-start-line="880" selection-start-column="49" selection-end-line="880" selection-end-column="49" />
+            <state relative-caret-position="257">
+              <caret line="232" column="34" lean-forward="false" selection-start-line="232" selection-start-column="34" selection-end-line="232" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -154,7 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>startFigh</find>
       <find>time</find>
       <find>dame</find>
       <find>updateD</find>
@@ -184,6 +183,7 @@
       <find>getLast</find>
       <find>getLastFightergetLastFighter</find>
       <find>endGame</find>
+      <find>getLastFighter</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -770,13 +770,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00041" summary="看板処理">
-      <created>1488789518950</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1488789518950</updated>
-    </task>
     <task id="LOCAL-00042" summary="看板処理">
       <created>1488790922650</created>
       <option name="number" value="00042" />
@@ -1113,7 +1106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489036720289</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="勝者判定のミス">
+      <created>1489038058733</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1489038058733</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1195,7 +1195,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="bet処理修正" />
     <MESSAGE value="タイマー処理" />
     <MESSAGE value="タイマー処理修正" />
     <MESSAGE value="メッセージ修正" />
@@ -1220,7 +1219,8 @@
     <MESSAGE value="lifeバー表示" />
     <MESSAGE value="観戦者登録" />
     <MESSAGE value="titleba syuusei" />
-    <option name="LAST_COMMIT_MESSAGE" value="titleba syuusei" />
+    <MESSAGE value="勝者判定のミス" />
+    <option name="LAST_COMMIT_MESSAGE" value="勝者判定のミス" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1427,8 +1427,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="880" column="49" lean-forward="true" selection-start-line="880" selection-start-column="49" selection-end-line="880" selection-end-column="49" />
+        <state relative-caret-position="257">
+          <caret line="232" column="34" lean-forward="false" selection-start-line="232" selection-start-column="34" selection-end-line="232" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
