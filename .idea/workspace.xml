@@ -63,8 +63,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="707" column="25" lean-forward="true" selection-start-line="707" selection-start-column="25" selection-end-line="707" selection-end-column="25" />
+            <state relative-caret-position="197">
+              <caret line="741" column="28" lean-forward="true" selection-start-line="741" selection-start-column="28" selection-end-line="741" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2402#2421#0" expanded="true" />
@@ -72,9 +72,9 @@
                 <element signature="e#2604#2623#0" expanded="true" />
                 <element signature="e#2694#2710#0" expanded="true" />
                 <element signature="e#18371#18372#0" expanded="true" />
-                <element signature="e#18402#18403#0" expanded="true" />
-                <element signature="e#26630#26638#0" expanded="true" />
-                <element signature="e#32297#32305#0" expanded="true" />
+                <element signature="e#18403#18404#0" expanded="true" />
+                <element signature="e#26631#26639#0" expanded="true" />
+                <element signature="e#32298#32306#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -161,8 +161,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tp</find>
-      <find>tp(</find>
       <find>selectedArenaselectedArena</find>
       <find>registerFighter</find>
       <find>r</find>
@@ -191,6 +189,8 @@
       <find>tpftpf</find>
       <find>tpa</find>
       <find>tpf</find>
+      <find>タイムアウト</find>
+      <find>fightTimer</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -286,8 +286,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="394" />
-    <option name="y" value="132" />
+    <option name="x" value="250" />
+    <option name="y" value="204" />
     <option name="width" value="2056" />
     <option name="height" value="1053" />
   </component>
@@ -807,13 +807,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00048" summary="bet処理修正">
-      <created>1488807996410</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1488807996410</updated>
-    </task>
     <task id="LOCAL-00049" summary="bet処理修正">
       <created>1488808331488</created>
       <option name="number" value="00049" />
@@ -1150,7 +1143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489048665544</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="エントリ時間を修正">
+      <created>1489048709140</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1489048709141</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1163,7 +1163,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="394" y="132" width="2056" height="1053" extended-state="0" />
+    <frame x="250" y="204" width="2056" height="1053" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1465,8 +1465,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="707" column="25" lean-forward="true" selection-start-line="707" selection-start-column="25" selection-end-line="707" selection-end-column="25" />
+        <state relative-caret-position="197">
+          <caret line="741" column="28" lean-forward="true" selection-start-line="741" selection-start-column="28" selection-end-line="741" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2402#2421#0" expanded="true" />
@@ -1474,9 +1474,9 @@
             <element signature="e#2604#2623#0" expanded="true" />
             <element signature="e#2694#2710#0" expanded="true" />
             <element signature="e#18371#18372#0" expanded="true" />
-            <element signature="e#18402#18403#0" expanded="true" />
-            <element signature="e#26630#26638#0" expanded="true" />
-            <element signature="e#32297#32305#0" expanded="true" />
+            <element signature="e#18403#18404#0" expanded="true" />
+            <element signature="e#26631#26639#0" expanded="true" />
+            <element signature="e#32298#32306#0" expanded="true" />
           </folding>
         </state>
       </provider>
