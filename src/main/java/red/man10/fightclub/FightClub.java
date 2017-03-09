@@ -689,13 +689,13 @@ public final class FightClub extends JavaPlugin implements Listener {
     int      fightTimer = 0;
 
     public void resetEnetryTimer(){
-        entryTimer = 60;
+        entryTimer = 30;
     }
     public void resetFightTimer(){
-        fightTimer = 180;
+        fightTimer = 120;
     }
     public void resetBetTimer(){
-        betTimer = 60;
+        betTimer = 30;
     }
 
     void showLifeBarToAll(){
@@ -720,8 +720,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         lifebar.clearBar();
 
     }
+    public void onTickTimer(){
+        updateSigns();
 
+    }
     public void onTimer(){
+
       //  log("onTimer");
         if (currentStatus == Entry) {
             if(waiters.size() >= 2){
@@ -787,10 +791,17 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }, 0, 20);
 
+        Bukkit.getScheduler().runTaskTimer(this, new Runnable() {
+            @Override
+            public void run() {
+                onTickTimer();
+            }
+        }, 0, 1);
     }
 
     void loadConfig(){
         loadArenaConfig();
+        loadSignes();
     }
 
 
@@ -1098,7 +1109,12 @@ public final class FightClub extends JavaPlugin implements Listener {
                     gui.adminMenu(e.getPlayer());
                     return;
                 }
-                if(s.getLine(1).equalsIgnoreCase("bar")){
+                if(s.getLine(1).equalsIgnoreCase("Kit")){
+                    log("Kit");
+                    registerKitSign(e.getPlayer(),e.getClickedBlock().getLocation());
+                  }
+
+            if(s.getLine(1).equalsIgnoreCase("bar")){
                     if(s.getLine(2).equalsIgnoreCase("addplayer")){
                         lifebar.addPlayer(e.getPlayer());
                     }
@@ -1129,6 +1145,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                     if(s.getLine(2).equalsIgnoreCase("reset")){
                         lifebar.resetBar();
                     }
+
                 }
                 /*if(s.getLine(1).equalsIgnoreCase("boss")){//ボスバーのサンプル
                     BossBar b = Bukkit.createBossBar("Sho0", BarColor.BLUE, BarStyle.SOLID, new BarFlag[0]);
@@ -1173,6 +1190,54 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
     }
+
+    //      auto update signs
+    ArrayList<Location> kitSigns = new ArrayList<Location>();
+    boolean registerKitSign(Player p,Location loc){
+        for(Location s: kitSigns){
+            if(s.getX() == loc.getX() && s.getY() == loc.getY() && s.getZ() == loc.getZ()){
+                p.sendMessage("この座標は登録されいてる");
+                return false;
+            }
+
+        }
+        //      座標を保存
+        kitSigns.add(loc);
+        getConfig().set("KitSigns",kitSigns);
+        saveConfig();;
+        p.sendMessage("登録しました");
+        return true;
+    }
+    void loadSignes(){
+        log("signリストをよみこみちう");
+
+        Object o =  getConfig().get("KitSigns");
+        if(o != null){
+            kitSigns = (ArrayList<Location>)o;
+            log("KitSignsリストをよんだ");
+        }
+
+    }
+    int  tickCounter = 0;
+    void updateSigns(){
+        for(Location s: kitSigns){
+            Sign sign = (Sign)s.getBlock().getState();
+            if(sign instanceof  Sign){
+                if(sign.getLine(0).equalsIgnoreCase("[MFC]")){
+                    if(sign.getLine(1).equalsIgnoreCase("kit")){
+                        sign.setLine(2,""+tickCounter);
+                        sign.update();
+
+                        tickCounter++;
+                    }
+                    if(sign.getLine(1).equalsIgnoreCase("arena")){
+                        sign.setLine(2,selectedArena);
+                    }
+                }
+            }
+        }
+    }
+
 
     //      サイドバー
     FightClubSideBar sideBar = new FightClubSideBar(this);
