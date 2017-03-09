@@ -446,7 +446,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         showLifeBarToAll();
         currentStatus = Fighting;
         serverMessage("ファイト！！！！");
-        fightTimer = 180;
+        resetFightTimer();
 
         //      キットを選択
 

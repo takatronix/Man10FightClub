@@ -83,16 +83,16 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="693" column="10" lean-forward="false" selection-start-line="693" selection-start-column="10" selection-end-line="693" selection-end-column="10" />
+            <state relative-caret-position="249">
+              <caret line="448" column="26" lean-forward="false" selection-start-line="448" selection-start-column="26" selection-end-line="448" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2402#2421#0" expanded="true" />
                 <element signature="e#2502#2521#0" expanded="true" />
                 <element signature="e#2604#2623#0" expanded="true" />
                 <element signature="e#2694#2710#0" expanded="true" />
-                <element signature="e#26628#26636#0" expanded="true" />
-                <element signature="e#32295#32303#0" expanded="true" />
+                <element signature="e#26629#26637#0" expanded="true" />
+                <element signature="e#32296#32304#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -187,9 +187,9 @@
       <find>死亡</find>
       <find>startGame</find>
       <find>death</find>
-      <find>90</find>
       <find>60</find>
       <find>180</find>
+      <find>90</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -776,13 +776,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00045" summary="死亡時発光を消す">
-      <created>1488798394655</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1488798394655</updated>
-    </task>
     <task id="LOCAL-00046" summary="GUI bet後、サイドバー更新">
       <created>1488805632252</created>
       <option name="number" value="00046" />
@@ -1119,7 +1112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489043271801</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="エントリ時間を修正">
+      <created>1489044243417</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1489044243417</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1138,14 +1138,14 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.020320855" sideWeight="0.4770355" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.020320855" sideWeight="0.4770355" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.036585364" sideWeight="0.52296454" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09682225" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12851782" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37860963" sideWeight="0.69261366" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37860963" sideWeight="0.69261366" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1201,7 +1201,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="タイマー処理修正" />
     <MESSAGE value="メッセージ修正" />
     <MESSAGE value="キットの自動選択" />
     <MESSAGE value="八百長対策" />
@@ -1226,7 +1225,8 @@
     <MESSAGE value="titleba syuusei" />
     <MESSAGE value="勝者判定のミス" />
     <MESSAGE value="死亡キャンセル" />
-    <option name="LAST_COMMIT_MESSAGE" value="死亡キャンセル" />
+    <MESSAGE value="エントリ時間を修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="エントリ時間を修正" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1433,16 +1433,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="693" column="10" lean-forward="false" selection-start-line="693" selection-start-column="10" selection-end-line="693" selection-end-column="10" />
+        <state relative-caret-position="249">
+          <caret line="448" column="26" lean-forward="false" selection-start-line="448" selection-start-column="26" selection-end-line="448" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2402#2421#0" expanded="true" />
             <element signature="e#2502#2521#0" expanded="true" />
             <element signature="e#2604#2623#0" expanded="true" />
             <element signature="e#2694#2710#0" expanded="true" />
-            <element signature="e#26628#26636#0" expanded="true" />
-            <element signature="e#32295#32303#0" expanded="true" />
+            <element signature="e#26629#26637#0" expanded="true" />
+            <element signature="e#32296#32304#0" expanded="true" />
           </folding>
         </state>
       </provider>
