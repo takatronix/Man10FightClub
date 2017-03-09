@@ -1,5 +1,7 @@
 package red.man10.fightclub;
 
+import net.minecraft.server.v1_9_R2.IChatBaseComponent;
+import net.minecraft.server.v1_9_R2.PacketPlayOutTitle;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -10,6 +12,7 @@ import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -28,10 +31,7 @@ import org.bukkit.util.*;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.inventivetalent.glow.GlowAPI;
 import org.inventivetalent.packetlistener.PacketListenerAPI;
-import red.man10.LifeBar;
-import red.man10.MySQLManager;
-import red.man10.SidebarDisplay;
-import red.man10.VaultManager;
+import red.man10.*;
 
 import java.io.File;
 import java.util.*;
@@ -46,6 +46,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     FightClubGUI gui = new FightClubGUI(this);
     LifeBar lifebar = new LifeBar(this);
+    TitleBar titlebar = new TitleBar(this);
 
     VaultManager vault = null;
     MySQLManager mysql = null;
@@ -861,10 +862,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     /////////////////////////////////
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
-
         Player p = e.getPlayer();
         String message = e.getMessage();
-      //  GlowAPI.setGlowing(e.getPlayer(), GlowAPI.Color.AQUA, Bukkit.getOnlinePlayers())
+                //  GlowAPI.setGlowing(e.getPlayer(), GlowAPI.Color.AQUA, Bukkit.getOnlinePlayers())
 
     }
     /////////////////////////////////
