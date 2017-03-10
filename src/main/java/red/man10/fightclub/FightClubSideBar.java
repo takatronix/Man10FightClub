@@ -13,6 +13,7 @@ import static red.man10.fightclub.FightClub.Status.*;
  */
 public class FightClubSideBar {
     SidebarDisplay sideBar = new SidebarDisplay();
+    public boolean hidden = false;
 
     private final FightClub plugin;
     public FightClubSideBar(FightClub plugin) {
@@ -25,6 +26,9 @@ public class FightClubSideBar {
     sideBar.remove();
     sideBar = new SidebarDisplay();
 
+    if(hidden){
+        return;
+    }
 
     //sideBar.setScore("test",1);
     if(plugin.currentStatus == Closed){

@@ -36,6 +36,7 @@ import red.man10.*;
 import java.io.File;
 import java.util.*;
 import java.util.Vector;
+import java.util.logging.Handler;
 
 import static org.bukkit.boss.BarFlag.CREATE_FOG;
 import static org.bukkit.boss.BarStyle.SEGMENTED_20;
@@ -544,26 +545,49 @@ public final class FightClub extends JavaPlugin implements Listener {
         tpf(selectedArena,"spawn");
 
 
+        sideBar.hidden = true;
+        String title = "MFC 選手決定！!";
+        String subTitle = fighters.get(0).name + " vs "+fighters.get(1).name + " Stage:" + selectedArena + " Kit:"+selectedKit;
+        titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
+
+        sideBar.show();
+
+        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+            public void run() {
+                String title = fighters.get(0).name ;
+                String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
+                titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
 
-        if(currentStatus == Entry){
-/*
-        //      服装をバックアップ
-        command("mkit push "+fighters.get(0).name);
-        command("mkit push "+fighters.get(1).name);
+            }
+        }, 100);
 
-*/
-        }
+        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+            public void run() {
+                String title = fighters.get(1).name ;
+                String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
+                titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
+            }
+        }, 200);
 
+        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+            public void run() {
+                String title = "勝者を予想しベットしてください！ /MFC" ;
+                String subTitle = "予想オッズ: "+ fighters.get(0).name + "x1.25 vs " + fighters.get(1).name + "x1.55 ";
+                titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
+            }
+        }, 300);
 
-     //   command("man10 tpuser "+ fighters.get(0).name + " player1");
-       // command("man10 tpuser "+ fighters.get(1).name + " player2");
-        Player player1 = Bukkit.getPlayer(fighters.get(0).uuid);
-        Player player2 = Bukkit.getPlayer(fighters.get(0).uuid);
+        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+            public void run() {
 
-     //   tp(player1,selectedArena,"player1");
-     //   tp(player2,selectedArena,"player2");
+                sideBar.hidden = false;
+                sideBar.show();
+                resetBetTimer();
+            }
+        }, 500);
+
 
         resetBetTimer();
 

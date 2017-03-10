@@ -12,6 +12,7 @@ public class SidebarDisplay {
 
     private Scoreboard scoreboard;
 
+
     /**
      * コンストラクタ
      */
