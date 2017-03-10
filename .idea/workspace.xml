@@ -9,6 +9,7 @@
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -63,8 +64,8 @@
       <file leaf-file-name="TitleBar.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/TitleBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+            <state relative-caret-position="405">
+              <caret line="29" column="49" lean-forward="false" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,14 +73,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="562" column="16" lean-forward="true" selection-start-line="562" selection-start-column="16" selection-end-line="562" selection-end-column="16" />
+            <state relative-caret-position="67">
+              <caret line="1434" column="13" lean-forward="true" selection-start-line="1434" selection-start-column="13" selection-end-line="1434" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FightClubArenaCommand.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MySQLFunc.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLFunc.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="21" column="21" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="21" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SkullMaker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/SkullMaker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -135,9 +166,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>90</find>
       <find>ベト</find>
-      <find>cancel</find>
       <find>damage</find>
       <find>tpftpf</find>
       <find>tpa</find>
@@ -165,6 +194,8 @@
       <find>async</find>
       <find>update</find>
       <find>openGame</find>
+      <find>cancel</find>
+      <find>startEntry</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -193,7 +224,6 @@
         <option value="$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/BossBar.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" />
@@ -202,6 +232,7 @@
         <option value="$PROJECT_DIR$/src/main/java/red/man10/SidebarDisplay.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
+        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java" />
       </list>
     </option>
   </component>
@@ -261,8 +292,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="413" />
-    <option name="y" value="135" />
+    <option name="x" value="343" />
+    <option name="y" value="141" />
     <option name="width" value="2056" />
     <option name="height" value="1053" />
   </component>
@@ -730,13 +761,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00053" summary="タイマー処理修正">
-      <created>1488836991358</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1488836991358</updated>
-    </task>
     <task id="LOCAL-00054" summary="メッセージ修正">
       <created>1488838393777</created>
       <option name="number" value="00054" />
@@ -1073,7 +1097,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489115804938</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="タイトルに色を設定">
+      <created>1489116134155</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1489116134155</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1086,7 +1117,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="413" y="135" width="2056" height="1053" extended-state="0" />
+    <frame x="343" y="141" width="2056" height="1053" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1155,7 +1186,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ログけし" />
     <MESSAGE value="リファクタリング" />
     <MESSAGE value="taxと賞金をオッズ計算に加味" />
     <MESSAGE value="ファイト時間タイマー追加" />
@@ -1180,7 +1210,8 @@
     <MESSAGE value="看板に表示する仕組み" />
     <MESSAGE value="エラーがでるので看板更新は中止" />
     <MESSAGE value="タイトルの表示" />
-    <option name="LAST_COMMIT_MESSAGE" value="タイトルの表示" />
+    <MESSAGE value="タイトルに色を設定" />
+    <option name="LAST_COMMIT_MESSAGE" value="タイトルに色を設定" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1257,13 +1288,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="21" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1291,25 +1315,6 @@
         <state relative-caret-position="1005">
           <caret line="67" column="43" lean-forward="false" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/SkullMaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#384#385#0" expanded="false" />
-            <element signature="e#420#421#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1390,16 +1395,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/TitleBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/SidebarDisplay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
@@ -1416,13 +1411,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/SkullMaker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="562" column="16" lean-forward="true" selection-start-line="562" selection-start-column="16" selection-end-line="562" selection-end-column="16" />
+        <state relative-caret-position="60">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/TitleBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="29" column="49" lean-forward="false" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLFunc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="21" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="21" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="1434" column="13" lean-forward="true" selection-start-line="1434" selection-start-column="13" selection-end-line="1434" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>

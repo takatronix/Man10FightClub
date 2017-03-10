@@ -20,6 +20,7 @@ public class FightClubArenaCommand  implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(args.length == 0){
             CommandSender p = sender;
+            p.sendMessage("§c/mfca setlobby - ロビーを設定する");
             p.sendMessage("§c/mfca create [アリーナ名]");
             p.sendMessage("§c/mfca select [アリーナ名]");
             p.sendMessage("§c/mfca delete [アリーナ名]");
@@ -58,6 +59,11 @@ public class FightClubArenaCommand  implements CommandExecutor {
         }
         if(args[0].equalsIgnoreCase("list")){
             plugin.listArena(sender);
+            return true;
+        }
+        if(args[0].equalsIgnoreCase("setlobby")){
+            Player p = (Player)sender;
+            plugin.setlobby(p);
             return true;
         }
 

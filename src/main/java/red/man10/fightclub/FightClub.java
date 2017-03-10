@@ -412,8 +412,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         fighters.clear();
 
+
+        tpaLobby();
         //     ファイター移動
-        tpf(selectedArena,"spawn");
+        //tpf(selectedArena,"spawn");
         startEntry();
 
 
@@ -705,6 +707,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             vault.deposit(bet.buyerUUID,playerPayout);
 
         }
+        tpaLobby();
 
         //      終了
 
@@ -1438,6 +1441,33 @@ public final class FightClub extends JavaPlugin implements Listener {
         getConfig().set(arena+ ".pos."+name , p.getLocation());
         saveConfig();
         p.sendMessage("§a§lTPロケーションを設定しました。:"+ name);
+    }
+
+    public void setlobby(Player p){
+        getConfig().set("lobby" , p.getLocation());
+        saveConfig();
+        p.sendMessage("§a§lTPロケーションを設定しました。:");
+    }
+    public void tpaLobby(){
+        Object o =  getConfig().get("lobby");
+        if(o != null){
+            Location loc = (Location)o;
+            for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+                player.teleport(loc);
+            }
+
+            /*
+
+            for(PlayerInformation f :spectators){
+                Player p = Bukkit.getPlayer(f.uuid);
+                p.teleport(loc);
+            }
+            for(PlayerInformation f :waiters){
+                Player p = Bukkit.getPlayer(f.uuid);
+                p.teleport(loc);
+            }*/
+        }
+        return;
     }
     void loadArenaConfig(){
         log("Arenaリストをよみこみちう");
