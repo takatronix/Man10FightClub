@@ -115,7 +115,9 @@ public class FightClubSideBar {
 
     void showWaiters(){
         sideBar.setTitle("Man10 Fight Club 選手受付中 ");
+
         sideBar.setScore("残り時間",plugin.entryTimer);
+        sideBar.setScore("参加費: $"+(int)plugin.entryPrice,0);
         if(plugin.waiters.size() == 0){
             sideBar.setScore("/mfc で登録",0);
         }

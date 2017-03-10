@@ -53,7 +53,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     MySQLManager mysql = null;
 
 
-    double      prize = 0.1;
+    double      entryPrice = 10000;
+    double      prize = 0.05;
     double      tax   = 0.;
 
     //   状態遷移 これらの状態遷移する
@@ -735,6 +736,12 @@ public final class FightClub extends JavaPlugin implements Listener {
             vault.deposit(bet.buyerUUID,playerPayout);
 
         }
+
+        //
+        unregisterFighter(fighters.get(0).uuid);
+        unregisterFighter(fighters.get(1).uuid);
+
+
         tpaLobby();
 
         //      終了

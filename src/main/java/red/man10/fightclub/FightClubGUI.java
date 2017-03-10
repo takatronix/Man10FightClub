@@ -61,6 +61,14 @@ public class FightClubGUI {
             if(e.getCurrentItem().getType() == Material.SKULL_ITEM){
                 String clickedFighter = e.getCurrentItem().getItemMeta().getDisplayName();
                 Player fighter = Bukkit.getPlayer(clickedFighter);
+
+
+                if(plugin.vault.withdraw(fighter.getUniqueId(),plugin.entryPrice) == false){
+                    fighter.sendMessage("選手登録費用の支払いに失敗しました");
+                    e.setCancelled(true);
+                }
+
+
                 if(plugin.registerFighter(fighter.getUniqueId(), fighter.getName()) == -1){
                     fighter.sendMessage("プレイヤーは登録できません");
                 }
