@@ -390,6 +390,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     //////////////////////////////////////////////
     int cancelGame(){
 
+        showTitle("試合中断!","試合はキャンセルされ返金されます",3,0);
         disableGlow();
         //   払い戻し処理
         for (int i = 0;i < bets.size();i++) {
@@ -479,6 +480,15 @@ public final class FightClub extends JavaPlugin implements Listener {
         lifebar.setRname(f0.getName() + f0o);
         lifebar.setBname(f1.getName() + f1o);
         lifebar.setVisible(true);
+
+
+        String subStitle =  f0.getName() + " vs " + f1.getName();
+
+        showTitle("3",subStitle, 0.5,0);
+        showTitle("2",subStitle, 0.5,1);
+        showTitle("1",subStitle, 0.5,2);
+
+        showTitle("ファイト！！",subStitle, 1,3);
 
         updateSidebar();
         return 0;
@@ -602,6 +612,21 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
 
+    boolean broadcastTitle = true;
+    public void showTitle(String title,String subTitle,double stay,double delay){
+
+        int stayTick = (int)(stay * 20);
+        int delayTick = (int)(delay * 20);
+
+        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+            public void run() {
+                titlebar.sendTitleToAllWithSound(title,subTitle,20,stayTick,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+            }
+        }, delayTick);
+
+
+    }
+
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 
@@ -678,6 +703,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         PlayerInformation pf = fighters.get(fighterIndex);
         Player winner = Bukkit.getPlayer(pf.uuid);
 
+
+
         double prize = getPrize();
         serverMessage("[MFC]==============結果発表============");
 
@@ -688,6 +715,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         double total  = getTotalBets();
         double winBet = getFighterBets(fighterIndex);
 
+        showTitle("勝者: "+winner.getName(),"獲得賞金:$"+(int)prize,5,0);
         //    オッズとは
         //  （賭けられたお金の合計 － 経費）÷【賭けに勝つ人達の勝ちに賭けた総合計金額】
         double odds = (total - getCost()) / winBet;
