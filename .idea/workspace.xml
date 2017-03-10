@@ -8,8 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -76,8 +74,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="121" column="29" lean-forward="true" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
+            <state relative-caret-position="99">
+              <caret line="467" column="0" lean-forward="true" selection-start-line="467" selection-start-column="0" selection-end-line="467" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -176,7 +174,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sign</find>
       <find>detect</find>
       <find>&quot;Kit&quot;</find>
       <find>upate</find>
@@ -206,6 +203,7 @@
       <find>tpa</find>
       <find>c</find>
       <find>registerFight</find>
+      <find>tpA</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -771,13 +769,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00060" summary="ログけし">
-      <created>1488844039378</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1488844039378</updated>
-    </task>
     <task id="LOCAL-00061" summary="リファクタリング">
       <created>1488846166216</created>
       <option name="number" value="00061" />
@@ -1114,7 +1105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489127044325</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="参加費処理">
+      <created>1489129087284</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1489129087284</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1457,8 +1455,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="121" column="29" lean-forward="true" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
+        <state relative-caret-position="99">
+          <caret line="467" column="0" lean-forward="true" selection-start-line="467" selection-start-column="0" selection-end-line="467" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
