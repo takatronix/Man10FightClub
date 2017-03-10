@@ -1,45 +1,29 @@
 package red.man10.fightclub;
 
-import net.minecraft.server.v1_9_R2.IChatBaseComponent;
-import net.minecraft.server.v1_9_R2.PacketPlayOutTitle;
+
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
-import org.bukkit.boss.BarColor;
-import org.bukkit.boss.BarFlag;
-import org.bukkit.boss.BarStyle;
-import org.bukkit.boss.BossBar;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPistonEvent;
-import org.bukkit.event.block.LeavesDecayEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.*;
-import org.bukkit.util.io.BukkitObjectInputStream;
 import org.inventivetalent.glow.GlowAPI;
-import org.inventivetalent.packetlistener.PacketListenerAPI;
 import red.man10.*;
 
 import java.io.File;
 import java.util.*;
-import java.util.Vector;
-import java.util.logging.Handler;
-
-import static org.bukkit.boss.BarFlag.CREATE_FOG;
-import static org.bukkit.boss.BarStyle.SEGMENTED_20;
 import static red.man10.fightclub.FightClub.Status.*;
 
 
@@ -1467,6 +1451,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 //            p.teleport(loc);
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
                 player.teleport(loc);
+
+
             }
 
         }
@@ -1488,19 +1474,13 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(o != null){
             Location loc = (Location)o;
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                player.teleport(loc);
+
+                if(player.getLocation().getWorld().getName().equalsIgnoreCase("Arena")){
+                    player.teleport(loc);
+                }
             }
 
-            /*
 
-            for(PlayerInformation f :spectators){
-                Player p = Bukkit.getPlayer(f.uuid);
-                p.teleport(loc);
-            }
-            for(PlayerInformation f :waiters){
-                Player p = Bukkit.getPlayer(f.uuid);
-                p.teleport(loc);
-            }*/
         }
         return;
     }
