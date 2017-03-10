@@ -63,10 +63,6 @@ public class FightClubGUI {
                 Player fighter = Bukkit.getPlayer(clickedFighter);
 
 
-                if(plugin.vault.withdraw(fighter.getUniqueId(),plugin.entryPrice) == false){
-                    fighter.sendMessage("選手登録費用の支払いに失敗しました");
-                    e.setCancelled(true);
-                }
 
 
                 if(plugin.registerFighter(fighter.getUniqueId(), fighter.getName()) == -1){
@@ -102,6 +98,13 @@ public class FightClubGUI {
         }
         if(e.getClickedInventory().getTitle().equals("      §cMan10 Fight Club menu")){
             if(e.getSlot() == 1){
+
+                if(plugin.vault.withdraw(e.getWhoClicked().getUniqueId(),plugin.entryPrice) == false){
+                    p.sendMessage("参加費用がしはらえないためキャンセルします");
+                    e.setCancelled(true);
+                    p.closeInventory();
+                }
+
                 //選手登録処理
                 int ret = plugin.registerFighter(e.getWhoClicked().getUniqueId(), e.getWhoClicked().getName());
                 if(ret == -1){
@@ -118,6 +121,7 @@ public class FightClubGUI {
             if(e.getSlot() == 3){
                 //登録をキャンセル処理
                 plugin.unregisterFighter(e.getWhoClicked().getUniqueId());
+                p.sendMessage("参加をとりやめました");
             }
             if(e.getSlot() == 5){
                 //  観戦者登録

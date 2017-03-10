@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -84,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClubCommand.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FightClubCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="85" column="9" lean-forward="true" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
+            <state relative-caret-position="345">
+              <caret line="96" column="18" lean-forward="false" selection-start-line="96" selection-start-column="18" selection-end-line="96" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -144,11 +144,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClubGUI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FightClubGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="66" column="32" lean-forward="false" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+            <state relative-caret-position="252">
+              <caret line="101" column="102" lean-forward="true" selection-start-line="101" selection-start-column="102" selection-end-line="101" selection-end-column="102" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#placeBetGUI#0;class#FightClubGUI#0" expanded="false" />
@@ -200,11 +200,11 @@
       <find>cancelGame</find>
       <find>startGame</find>
       <find>prize</find>
-      <find>registerFight</find>
       <find>registerFighter</find>
       <find>showWaiters</find>
       <find>endGame</find>
       <find>tpa</find>
+      <find>registerFight</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -239,9 +239,9 @@
         <option value="$PROJECT_DIR$/src/main/java/red/man10/SidebarDisplay.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" />
-        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" />
       </list>
     </option>
   </component>
@@ -301,8 +301,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="425" />
-    <option name="y" value="126" />
+    <option name="x" value="295" />
+    <option name="y" value="125" />
     <option name="width" value="1856" />
     <option name="height" value="1097" />
   </component>
@@ -770,13 +770,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00058" summary="八百長対策">
-      <created>1488843543489</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1488843543489</updated>
-    </task>
     <task id="LOCAL-00059" summary="八百長対策">
       <created>1488843904584</created>
       <option name="number" value="00059" />
@@ -1113,7 +1106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489126639139</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="admin menuコマンド追加">
+      <created>1489126741194</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1489126741194</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1126,13 +1126,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="425" y="126" width="1856" height="1097" extended-state="0" />
+    <frame x="295" y="125" width="1856" height="1097" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.031016042" sideWeight="0.4770355" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.030643513" sideWeight="0.4770355" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1195,7 +1195,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="tp" />
     <MESSAGE value="death point" />
     <MESSAGE value="player interact バグ修正" />
     <MESSAGE value="ろぐあうとしょり" />
@@ -1220,7 +1219,8 @@
     <MESSAGE value="MFCロビー設定" />
     <MESSAGE value="タイトルテキスト" />
     <MESSAGE value="参加費を設定" />
-    <option name="LAST_COMMIT_MESSAGE" value="参加費を設定" />
+    <MESSAGE value="admin menuコマンド追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin menuコマンド追加" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1421,23 +1421,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="66" column="32" lean-forward="false" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#placeBetGUI#0;class#FightClubGUI#0" expanded="false" />
-            <element signature="method#clearCalc#0;class#FightClubGUI#0" expanded="false" />
-            <element signature="method#createDisplay#0;class#FightClubGUI#0" expanded="false" />
-            <element signature="method#setTextPrice#0;class#FightClubGUI#0" expanded="false" />
-            <element signature="method#moveD#0;class#FightClubGUI#0" expanded="false" />
-            <element signature="method#priceMenu#0;class#FightClubGUI#0" expanded="false" />
-            <element signature="method#createJoinmenu#0;class#FightClubGUI#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
@@ -1458,9 +1441,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="85" column="9" lean-forward="true" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
+        <state relative-caret-position="345">
+          <caret line="96" column="18" lean-forward="false" selection-start-line="96" selection-start-column="18" selection-end-line="96" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="101" column="102" lean-forward="true" selection-start-line="101" selection-start-column="102" selection-end-line="101" selection-end-column="102" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#placeBetGUI#0;class#FightClubGUI#0" expanded="false" />
+            <element signature="method#clearCalc#0;class#FightClubGUI#0" expanded="false" />
+            <element signature="method#createDisplay#0;class#FightClubGUI#0" expanded="false" />
+            <element signature="method#setTextPrice#0;class#FightClubGUI#0" expanded="false" />
+            <element signature="method#moveD#0;class#FightClubGUI#0" expanded="false" />
+            <element signature="method#priceMenu#0;class#FightClubGUI#0" expanded="false" />
+            <element signature="method#createJoinmenu#0;class#FightClubGUI#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
