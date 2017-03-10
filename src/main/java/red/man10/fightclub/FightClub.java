@@ -546,7 +546,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         sideBar.hidden = true;
-        String title = "MFC 選手決定！!";
+        String title = "§cMFC 選手決定！!";
         String subTitle = fighters.get(0).name + " vs "+fighters.get(1).name + " Stage:" + selectedArena + " Kit:"+selectedKit;
         titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
@@ -554,7 +554,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                String title = fighters.get(0).name ;
+                String title = "§4"+fighters.get(0).name ;
                 String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
@@ -564,7 +564,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                String title = fighters.get(1).name ;
+                String title = "§1"+fighters.get(1).name ;
                 String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 

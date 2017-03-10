@@ -8,9 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/SidebarDisplay.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/SidebarDisplay.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -77,8 +75,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="573" column="81" lean-forward="true" selection-start-line="573" selection-start-column="81" selection-end-line="574" selection-end-column="31" />
+            <state relative-caret-position="379">
+              <caret line="562" column="16" lean-forward="true" selection-start-line="562" selection-start-column="16" selection-end-line="562" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -732,13 +730,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00052" summary="タイマー処理修正">
-      <created>1488836839131</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1488836839131</updated>
-    </task>
     <task id="LOCAL-00053" summary="タイマー処理修正">
       <created>1488836991358</created>
       <option name="number" value="00053" />
@@ -1075,7 +1066,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489103056207</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="タイトルの表示">
+      <created>1489115804938</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1489115804938</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1157,7 +1155,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="八百長対策" />
     <MESSAGE value="ログけし" />
     <MESSAGE value="リファクタリング" />
     <MESSAGE value="taxと賞金をオッズ計算に加味" />
@@ -1182,7 +1179,8 @@
     <MESSAGE value="エントリ時間を修正" />
     <MESSAGE value="看板に表示する仕組み" />
     <MESSAGE value="エラーがでるので看板更新は中止" />
-    <option name="LAST_COMMIT_MESSAGE" value="エラーがでるので看板更新は中止" />
+    <MESSAGE value="タイトルの表示" />
+    <option name="LAST_COMMIT_MESSAGE" value="タイトルの表示" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1420,8 +1418,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="573" column="81" lean-forward="true" selection-start-line="573" selection-start-column="81" selection-end-line="574" selection-end-column="31" />
+        <state relative-caret-position="379">
+          <caret line="562" column="16" lean-forward="true" selection-start-line="562" selection-start-column="16" selection-end-line="562" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
