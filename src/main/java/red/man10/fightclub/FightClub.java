@@ -134,6 +134,11 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
 
+        //        登録費用
+        if(vault.withdraw(uuid,entryPrice) == false){
+            return -3;
+        }
+
 
         //      追加
         PlayerInformation playerInfo = new PlayerInformation();

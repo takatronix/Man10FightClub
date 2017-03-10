@@ -99,11 +99,6 @@ public class FightClubGUI {
         if(e.getClickedInventory().getTitle().equals("      §cMan10 Fight Club menu")){
             if(e.getSlot() == 1){
 
-                if(plugin.vault.withdraw(e.getWhoClicked().getUniqueId(),plugin.entryPrice) == false){
-                    p.sendMessage("参加費用がしはらえないためキャンセルします");
-                    e.setCancelled(true);
-                    p.closeInventory();
-                }
 
                 //選手登録処理
                 int ret = plugin.registerFighter(e.getWhoClicked().getUniqueId(), e.getWhoClicked().getName());
@@ -112,6 +107,9 @@ public class FightClubGUI {
                 }
                 else if(ret == -2){
                     p.sendMessage("観戦者リストにすでに登録されています");
+                }
+                else if(ret == -3){
+                    p.sendMessage("参加費がしはらえないため参加できません");
                 }else{
                     p.sendMessage("選手登録しました");
                 }
