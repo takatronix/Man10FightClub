@@ -17,6 +17,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
@@ -82,6 +83,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
+
+    //      なにかしらメニューを開いてる人
+    public ArrayList<Player> openingMenu = new ArrayList<Player>();
 
 
 
@@ -415,7 +419,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     public boolean canStartGame(){
-
+        closeInventory();
         double    limit = 10000;
         //      双方にベットされているか
         if(getFighterBetMoney(fighters.get(0).uuid) < limit){
@@ -571,7 +575,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     String   selectedKit = "";
     //      ゲーム開始
     public boolean openGame(){
-
+        closeInventory();
         if(waiters.size() < 2){
             serverMessage("二人以上いないと開催できません");
             return false;
@@ -1425,6 +1429,20 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         p.sendMessage(arena+" is already created");
         return arenas.size();
+    }
+
+    //インベントリ閉めたら消す
+    @EventHandler
+    public void onCloseInventory(InventoryCloseEvent e){
+        Player p = (Player) e.getPlayer();
+        if(openingMenu.contains(p)){
+            openingMenu.remove(p);
+        }
+    }
+    public void closeInventory(){
+        for(Player p : openingMenu){
+            p.closeInventory();
+        }
     }
     public int getArenaIndex(String arena){
         for(int i=0;i<arenas.size();i++){

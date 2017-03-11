@@ -475,6 +475,9 @@ public class FightClubGUI {
     }
 
     void betMenu(Player p){
+        if(!this.plugin.openingMenu.contains(p)){
+            this.plugin.openingMenu.add(p);
+        }
         Inventory bet = Bukkit.createInventory(null, 27, "§c§l         ベットメニュー");
 
         FightClub.PlayerInformation info = plugin.fighters.get(0);
@@ -531,6 +534,9 @@ public class FightClubGUI {
 //#########################################################
 
     public void createJoinmenu(Player p){
+        if(!this.plugin.openingMenu.contains(p)){
+            this.plugin.openingMenu.add(p);
+        }
         Inventory i = Bukkit.createInventory(null, 9, "      §cMan10 Fight Club menu");
 
         ItemStack ticket = new ItemStack(Material.PAPER);
