@@ -41,7 +41,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     VaultManager vault = null;
     MySQLManager mysql = null;
 
-    String      worldName = worldName;
+    String      worldName = "";
 
     double      entryPrice = 10000;
     double      prize = 0.05;
