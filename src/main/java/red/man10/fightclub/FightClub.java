@@ -172,7 +172,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         playerInfo.isDead = false;
         playerInfo.returnLoc = Bukkit.getPlayer(uuid).getLocation();
         playerInfo.kill = data.killCount(uuid);
-        playerInfo.death = data.killCount(uuid);
+        playerInfo.death = data.deathCount(uuid);
         playerInfo.prize = data.totalPrize(uuid);
 
         waiters.add(playerInfo);
