@@ -39,10 +39,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     TitleBar titlebar = new TitleBar(this);
 
     VaultManager vault = null;
-    FightClubData data = null;
-    int fightId = -1;
+    MySQLManager mysql = null;
 
-    String      worldName = "Arena";
+    String      worldName = worldName;
 
     double      entryPrice = 10000;
     double      prize = 0.05;
@@ -290,7 +289,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      購入された金額
         double bet = getFighterBetMoney(uuid);
-        double total = getTotalBet();
+        double total = getTotalBets();
         if(bet == 0){
             return 1.0;
         }
@@ -313,7 +312,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     ///////////////////////////////////
     //      トータル掛け金
     ///////////////////////////////////
-    double getTotalBet(){
+    double getTotalBets(){
         double totalBet = 0;
         for(int i = 0;i < bets.size();i++){
             totalBet += bets.get(i).bet;
@@ -470,15 +469,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
         Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
 
-        double o0 = getFighterOdds(f0.getUniqueId());
-        double o1 = getFighterOdds(f1.getUniqueId());
-        int     b0 = getFighterBetCount(f0.getUniqueId());
-        int     b1 = getFighterBetCount(f0.getUniqueId());
-
-
-
-        String f0o = String.format(" Odds:x%.2f",o0);
-        String f1o = String.format(" Odds:x%.2f",o1);
+        String f0o = String.format(" Odds:x%.2f",getFighterOdds(f0.getUniqueId()));
+        String f1o = String.format(" Odds:x%.2f",getFighterOdds(f1.getUniqueId()));
 
         //      init bar
         lifebar.setRname(f0.getName() + f0o);
@@ -488,18 +480,13 @@ public final class FightClub extends JavaPlugin implements Listener {
         resetPlayerStatus(f1);
 
 
-        this.fightId = data.createFight(selectedArena,selectedKit,f0.getUniqueId(),f1.getUniqueId(),o0,o1,b0,b1,getPrize(),getTotalBet());
-
-
         String subStitle =  f0.getName() + " vs " + f1.getName();
 
         showTitle("3",subStitle, 0.5,0);
         showTitle("2",subStitle, 0.5,1);
         showTitle("1",subStitle, 0.5,2);
 
-        showTitle("ファイト！！ #" + this.fightId,subStitle, 1,3);
-
-
+        showTitle("ファイト！！",subStitle, 1,3);
 
         updateSidebar();
         return 0;
@@ -755,7 +742,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         return getTax() + getPrize();
     }
     public double getTax(){
-        return  getTotalBet() * tax;
+        return  getTotalBets() * tax;
     }
 
     //      賞金
@@ -763,7 +750,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(fighters.size() < 2) {
             return 0;
         }
-        double t = getTotalBet() * prize;
+        double t = getTotalBets() * prize;
         double f1 = getFighterBetMoney(fighters.get(0).uuid);
         double f2 = getFighterBetMoney(fighters.get(1).uuid);
         if(t > f1){
@@ -787,13 +774,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         PlayerInformation pf = fighters.get(fighterIndex);
         Player winner = Bukkit.getPlayer(pf.uuid);
 
-        int loserIndex = -1;
-        if(fighterIndex ==0){
-            loserIndex =1;
-        }else{
-            loserIndex =0;
-        }
-        PlayerInformation loserInf = fighters.get(loserIndex);
 
 
         double prize = getPrize();
@@ -803,12 +783,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         vault.deposit(winner.getUniqueId(),prize);
 
         //  掛け金の計算
-        double total  = getTotalBet();
+        double total  = getTotalBets();
         double winBet = getFighterBets(fighterIndex);
 
-        double dr = 120 - fightTimer;
-
-        data.updateFight(this.fightId,fighterIndex,pf.uuid,loserInf.uuid,dr);
         showTitle("勝者: "+winner.getName(),"獲得賞金:$"+(int)prize,5,0);
         //    オッズとは
         //  （賭けられたお金の合計 － 経費）÷【賭けに勝つ人達の勝ちに賭けた総合計金額】
@@ -930,7 +907,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         this.saveDefaultConfig();
         this.loadConfig();
 
-        data = new FightClubData(this);
 
 
         getServer().getPluginManager().registerEvents (this,this);
@@ -1021,8 +997,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player p = e.getPlayer();
         String message = e.getMessage();
                 //  GlowAPI.setGlowing(e.getPlayer(), GlowAPI.Color.AQUA, Bukkit.getOnlinePlayers())
-
-      //  data.createFight(selectedArena,selectedKit,p.getUniqueId(),p.getUniqueId(),1,2,3,4,5);
 
     }
     /////////////////////////////////

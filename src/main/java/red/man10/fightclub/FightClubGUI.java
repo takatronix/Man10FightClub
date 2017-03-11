@@ -10,6 +10,7 @@ import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
 import red.man10.LifeBar;
 import red.man10.SkullMaker;
 import org.bukkit.Bukkit;
@@ -36,7 +37,7 @@ public class FightClubGUI {
 
 
     public void clickItem(InventoryClickEvent e) {
-        Player p = (Player) e.getWhoClicked();
+       Player p = (Player) e.getWhoClicked();
         //try {
         if(e.getClickedInventory().getTitle().equals("§9§lプレイヤーを登録する")){
             String pageNumberString = e.getClickedInventory().getItem(49).getItemMeta().getLore().get(0);
@@ -96,7 +97,7 @@ public class FightClubGUI {
             e.setCancelled(true);
             return;
         }
-        if(e.getClickedInventory().getTitle().equals("      §cMan10 Fight Club menu")){
+        if(e.getClickedInventory().getTitle().equals("     §cMan10 Fight Club menu")){
             if(e.getSlot() == 1){
 
 
@@ -116,12 +117,15 @@ public class FightClubGUI {
 
 
             }
-            if(e.getSlot() == 3){
+            if(e.getSlot() == 2){
                 //登録をキャンセル処理
                 plugin.unregisterFighter(e.getWhoClicked().getUniqueId());
                 p.sendMessage("参加をとりやめました");
             }
-            if(e.getSlot() == 5){
+            if(e.getSlot() == 4){
+                plugin.guiBetMenu((Player) e.getWhoClicked());
+            }
+            if(e.getSlot() == 6){
                 //  観戦者登録
                 int ret = plugin.registerSpectator(p.getUniqueId());
                 if(ret == -1){
@@ -135,8 +139,8 @@ public class FightClubGUI {
                 //観戦から戻る処理
                 plugin.unregisterSpectator(p.getUniqueId());
             }
+
             e.setCancelled(true);
-            p.closeInventory();
             return;
         }
             if (e.getInventory().getTitle().equals("§c§l         ベットメニュー")) {
@@ -215,6 +219,7 @@ public class FightClubGUI {
      // }catch (Exception ee){
 
 
+
     //##################[MFC BET MENU]#####################
     void placeBetGUI(Inventory i, Player p){
         int money = Integer.parseInt(i.getItem(50).getItemMeta().getLore().get(1)); //設定したbal
@@ -265,6 +270,7 @@ public class FightClubGUI {
         p.closeInventory();
         return;
     }
+
 
     void clearCalc(Inventory e){
         e.setItem(0, new ItemStack(Material.AIR));
@@ -531,7 +537,7 @@ public class FightClubGUI {
 //#########################################################
 
     public void createJoinmenu(Player p){
-        Inventory i = Bukkit.createInventory(null, 9, "      §cMan10 Fight Club menu");
+        Inventory i = Bukkit.createInventory(null, 9, "     §cMan10 Fight Club menu");
 
         ItemStack ticket = new ItemStack(Material.PAPER);
         ItemMeta ticketmeta = ticket.getItemMeta();
@@ -550,12 +556,19 @@ public class FightClubGUI {
 
         ItemStack watchback = new ItemStack(Material.MINECART);
         ItemMeta watchbackmeta = watchback.getItemMeta();
-        watchbackmeta.setDisplayName("§7§l観戦から戻る");
+        watchbackmeta.setDisplayName("§7§lロビーに戻る");
         watchback.setItemMeta(watchbackmeta);
 
+        ItemStack bet = new ItemStack(Material.FLOWER_POT_ITEM);
+        ItemMeta betmeta = bet.getItemMeta();
+        betmeta.addEnchant(Enchantment.ARROW_FIRE,1,true);
+        betmeta.setDisplayName("§c§lベットする");
+        bet.setItemMeta(betmeta);
+
         i.setItem(1, ticket);
-        i.setItem(3, quit);
-        i.setItem(5, watch);
+        i.setItem(2, quit);
+        i.setItem(4, bet);
+        i.setItem(6, watch);
         i.setItem(7, watchback);
 
         p.openInventory(i);
