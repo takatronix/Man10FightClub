@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -66,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
-              <caret line="174" column="43" lean-forward="false" selection-start-line="174" selection-start-column="43" selection-end-line="174" selection-end-column="43" />
+            <state relative-caret-position="-539">
+              <caret line="166" column="0" lean-forward="true" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
               <folding>
                 <element signature="e#2659#2678#0" expanded="true" />
                 <element signature="e#2759#2778#0" expanded="true" />
@@ -106,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClubSideBar.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FightClubSideBar.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1620">
-              <caret line="116" column="0" lean-forward="true" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="51" column="27" lean-forward="true" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -228,8 +228,8 @@
         <option value="$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
+        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" />
       </list>
     </option>
   </component>
@@ -758,13 +758,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00073" summary="GUI閉じる処理追加">
-      <created>1488893223595</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1488893223595</updated>
-    </task>
     <task id="LOCAL-00074" summary="bgu">
       <created>1488896001463</created>
       <option name="number" value="00074" />
@@ -1101,7 +1094,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489242778036</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="KDR等の表示">
+      <created>1489242873888</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1489242873888</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1886,18 +1886,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="116" column="0" lean-forward="true" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="174" column="43" lean-forward="false" selection-start-line="174" selection-start-column="43" selection-end-line="174" selection-end-column="43" />
+        <state relative-caret-position="-539">
+          <caret line="166" column="0" lean-forward="true" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
           <folding>
             <element signature="e#2659#2678#0" expanded="true" />
             <element signature="e#2759#2778#0" expanded="true" />
@@ -1929,6 +1921,14 @@
             <element signature="e#42220#42221#0" expanded="true" />
             <element signature="e#42367#42375#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="51" column="27" lean-forward="true" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
