@@ -98,6 +98,16 @@ public class FightClubCommand  implements CommandExecutor {
             p.sendMessage("MFC Closed.");
             return true;
         }
+
+        if(args[0].equalsIgnoreCase("lobby")){
+            plugin.tpLobby(p);
+            return true;
+        }
+        if(args[0].equalsIgnoreCase("watch")){
+            plugin.settp(p,plugin.selectedArena,"spawn");
+
+            return true;
+        }
         //////////////////////////////////
         ///       キャンセル
         //////////////////////////////////

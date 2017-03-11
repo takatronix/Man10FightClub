@@ -642,8 +642,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
             }
         }, 100);
-
-        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+       getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
                 String title = "§1"+fighters.get(1).name ;
                 String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
@@ -1037,6 +1036,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 tpaLobby();
 
 
+
                 int lastIndex = getLastFighter();
                 endGame(lastIndex);
 
@@ -1221,6 +1221,16 @@ public final class FightClub extends JavaPlugin implements Listener {
                     startEntry();
                     return;
                 }
+            if (s.getLine(1).equalsIgnoreCase("Lobby")) {
+                tpLobby(e.getPlayer());
+                return;
+            }
+
+            if (s.getLine(1).equalsIgnoreCase("Watch")) {
+                tp(e.getPlayer(),selectedArena,"spawn");
+                return;
+            }
+
                 if (s.getLine(1).equalsIgnoreCase("Cancel")) {
                     cancelGame();
                     return;
@@ -1581,6 +1591,14 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return;
     }
+    public void tpLobby(Player p){
+        Object o =  getConfig().get("lobby");
+        if(o != null){
+            Location loc = (Location)o;
+            p.teleport(loc);
+        }
+    }
+
     void loadArenaConfig(){
         log("Arenaリストをよみこみちう");
         selectedArena = getConfig().getString("selectedArena");
