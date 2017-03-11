@@ -108,6 +108,12 @@ public class FightClubCommand  implements CommandExecutor {
 
             return true;
         }
+        if(args[0].equalsIgnoreCase("clean")){
+            p.sendMessage("clean");
+            plugin.clearEntity();
+
+            return true;}
+
         //////////////////////////////////
         ///       キャンセル
         //////////////////////////////////

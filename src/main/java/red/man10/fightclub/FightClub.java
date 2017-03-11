@@ -7,6 +7,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -1303,6 +1304,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
     }
 
+
+
+
     public void openGUI(Player p){
 
         if(currentStatus == Opened){
@@ -1593,5 +1597,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
     }
 
+
+    //      エンティティを消す
+    void clearEntity(){
+        for(Entity en : Bukkit.getServer().getWorld("Arena").getEntities()){
+            en.remove();;
+        }
+    }
 
 }
