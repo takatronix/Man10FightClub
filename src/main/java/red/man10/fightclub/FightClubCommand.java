@@ -205,7 +205,7 @@ public class FightClubCommand  implements CommandExecutor {
             p.sendMessage("["+i+"]:" +info.buyerName +"   $"+price +" fighter:"+fighter);
         }
         p.sendMessage("-------------------------");
-        p.sendMessage("total: $"+plugin.getTotalBets());
+        p.sendMessage("total: $"+plugin.getTotalBet());
 
     }
 
@@ -224,7 +224,7 @@ public class FightClubCommand  implements CommandExecutor {
             p.sendMessage("["+i+"]:" +info.name +" Death:"+ info.isDead +"   $"+price +"  Count:"+count+"  Odds:"+odds);
         }
         p.sendMessage("-------------------------");
-        p.sendMessage("total: $"+plugin.getTotalBets());
+        p.sendMessage("total: $"+plugin.getTotalBet());
 
     }
 

@@ -59,7 +59,7 @@ public class FightClubSideBar {
         sideBar.setTitle("Man10 Fight Club ベット受付中!!-> /mfc");
         sideBar.setScore("§4残り時間",plugin.betTimer);
 
-        double total = plugin.getTotalBets();
+        double total = plugin.getTotalBet();
 
         for(int i = 0;i < plugin.fighters.size();i++){
             FightClub.PlayerInformation f = plugin.fighters.get(i);

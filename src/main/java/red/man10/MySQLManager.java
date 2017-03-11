@@ -47,6 +47,7 @@ public class MySQLManager {
     //       設定ファイル読み込み
     /////////////////////////////////
     public void loadConfig(){
+        plugin.getLogger().info("MYSQL Config loading");
         plugin.reloadConfig();
         HOST = plugin.getConfig().getString("mysql.host");
         USER = plugin.getConfig().getString("mysql.user");
@@ -117,10 +118,11 @@ public class MySQLManager {
     ////////////////////////////////
     //      実行
     ////////////////////////////////
-    public void execute(String query) {
+    public boolean execute(String query) {
         this.MySQL = new MySQLFunc(this.HOST, this.DB, this.USER, this.PASS,this.PORT);
         this.con = this.MySQL.open();
 
+        boolean ret = true;
         if (debugMode){
             plugin.getLogger().info("query:" + query);
         }
@@ -131,9 +133,12 @@ public class MySQLManager {
         } catch (SQLException var3) {
             this.plugin.getLogger().info("[" + this.conName + "] Error executing statement: " +var3.getErrorCode() +":"+ var3.getLocalizedMessage());
             this.plugin.getLogger().info(query);
+            ret = false;
+
         }
 
         this.MySQL.close(this.con);
+        return ret;
     }
 
     ////////////////////////////////
@@ -143,6 +148,11 @@ public class MySQLManager {
         this.MySQL = new  MySQLFunc(this.HOST, this.DB, this.USER, this.PASS,this.PORT);
         this.con = this.MySQL.open();
         ResultSet rs = null;
+
+
+        if (debugMode){
+            plugin.getLogger().info("query:" + query);
+        }
 
         try {
             this.st = this.con.createStatement();
