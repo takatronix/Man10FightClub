@@ -9,7 +9,6 @@
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -52,8 +51,18 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="1306" column="13" lean-forward="true" selection-start-line="1306" selection-start-column="13" selection-end-line="1307" selection-end-column="0" />
+            <state relative-caret-position="402">
+              <caret line="1037" column="0" lean-forward="true" selection-start-line="1037" selection-start-column="0" selection-end-line="1037" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FightClubGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="447">
+              <caret line="508" column="0" lean-forward="true" selection-start-line="508" selection-start-column="0" selection-end-line="508" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -71,7 +80,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>updateSigns(</find>
       <find>updateSigns</find>
       <find>timer</find>
       <find>onTimer</find>
@@ -101,6 +109,7 @@
       <find>mfc</find>
       <find>damage</find>
       <find>betMenu</find>
+      <find>death</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -666,13 +675,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00065" summary="tp">
-      <created>1488859931615</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1488859931615</updated>
-    </task>
     <task id="LOCAL-00066" summary="death point">
       <created>1488860231750</created>
       <option name="number" value="00066" />
@@ -1009,7 +1011,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489212412592</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="選手以外は戦闘ダメージをあたえらなくした">
+      <created>1489225319420</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1489225319421</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1091,7 +1100,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ろぐあうとしょり" />
     <MESSAGE value="Arena処理" />
     <MESSAGE value="GUI接続" />
     <MESSAGE value="GUI閉じる処理追加" />
@@ -1116,7 +1124,8 @@
     <MESSAGE value="admin menuコマンド追加" />
     <MESSAGE value="参加費処理" />
     <MESSAGE value="プレーヤーステータスリセット" />
-    <option name="LAST_COMMIT_MESSAGE" value="プレーヤーステータスリセット" />
+    <MESSAGE value="選手以外は戦闘ダメージをあたえらなくした" />
+    <option name="LAST_COMMIT_MESSAGE" value="選手以外は戦闘ダメージをあたえらなくした" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1193,10 +1202,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="508" column="0" lean-forward="true" selection-start-line="508" selection-start-column="0" selection-end-line="508" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="1306" column="13" lean-forward="true" selection-start-line="1306" selection-start-column="13" selection-end-line="1307" selection-end-column="0" />
+        <state relative-caret-position="402">
+          <caret line="1037" column="0" lean-forward="true" selection-start-line="1037" selection-start-column="0" selection-end-line="1037" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -1004,9 +1004,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e)
     {
-        if(true){
-            return;
-        }
+
         if(currentStatus != Fighting){
             return;
         }
@@ -1021,7 +1019,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
             fighters.get(index).isDead = true;
             serverMessage("死亡!!!:"+p.getDisplayName());
-            p.sendMessage("あなたは、観戦者になりました。");
+        //    p.sendMessage("あなたは、観戦者になりました。");
 
 
 
@@ -1032,15 +1030,11 @@ public final class FightClub extends JavaPlugin implements Listener {
             if(getAliveFighterCount() <= 1){
                 serverMessage("ゲーム終了！！！");
 
-                //      ファイターから移動
-                unregisterFighter(p.getUniqueId());
-//                registerSpectator(p.getUniqueId())
-                p.setGameMode(GameMode.SPECTATOR);
-                spectators.add(f);
 
-                //      ファイター観戦者ともに移動
-                tps(selectedArena,"spawn");
-                tpf(selectedArena,"spawn");
+
+                command("mkit pop "+fighters.get(0).name );
+                command("mkit pop "+fighters.get(1).name );
+                tpaLobby();
 
 
                 int lastIndex = getLastFighter();
@@ -1095,26 +1089,19 @@ public final class FightClub extends JavaPlugin implements Listener {
             //  死亡をキャンセル
             if((damaged.getHealth()-e.getDamage()) <= 0) {
                 e.setCancelled(true);
-                serverMessage("[MFC]ゲーム終了:"+damaged.getDisplayName()+"は死亡した");
-                damaged.setHealth(20);
-                tpf(selectedArena,"spawn");
-                tps(selectedArena,"spawn");
 
-                //      装備を復元
+                serverMessage("[MFC]ゲーム終了:"+damaged.getDisplayName()+"は死亡した");
+
+                resetPlayerStatus(damaged);
+
+
+                int index = getFighterIndex(damager.getUniqueId());
+                endGame(index);
+
+
                 command("mkit pop "+fighters.get(0).name );
                 command("mkit pop "+fighters.get(1).name );
-
-
-                int index = getFighterIndex(damaged.getUniqueId());
-                if(index == 0){
-                    endGame(1);
-                }
-                else if(index == 1){
-                    endGame(0);
-                }else{
-
-                    cancelGame();
-                }
+                tpaLobby();
 
 
             }
