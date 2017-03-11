@@ -9,6 +9,7 @@ import org.bukkit.boss.BarFlag;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Entity;
 import red.man10.LifeBar;
 import red.man10.SkullMaker;
 import org.bukkit.Bukkit;
@@ -20,7 +21,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -475,9 +475,6 @@ public class FightClubGUI {
     }
 
     void betMenu(Player p){
-        if(!this.plugin.openingMenu.contains(p)){
-            this.plugin.openingMenu.add(p);
-        }
         Inventory bet = Bukkit.createInventory(null, 27, "§c§l         ベットメニュー");
 
         FightClub.PlayerInformation info = plugin.fighters.get(0);
@@ -534,9 +531,6 @@ public class FightClubGUI {
 //#########################################################
 
     public void createJoinmenu(Player p){
-        if(!this.plugin.openingMenu.contains(p)){
-            this.plugin.openingMenu.add(p);
-        }
         Inventory i = Bukkit.createInventory(null, 9, "      §cMan10 Fight Club menu");
 
         ItemStack ticket = new ItemStack(Material.PAPER);
@@ -627,6 +621,10 @@ public class FightClubGUI {
         p.openInventory(i);
 
     }
+    public void changeState(Player p){
+        Inventory i = Bukkit.createInventory(null, 9, "ゲームステートを変更する");
+        
+    }
 
     ArrayList<UUID> serverPlayerList = new ArrayList<UUID>();
 
@@ -653,7 +651,6 @@ public class FightClubGUI {
         pageitem.setItemMeta(pageitemMeta);
         ItemStack left = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/3ebf907494a935e955bfcadab81beafb90fb9be49c7026ba97d798d5f1a23").withName("前").build();
         ItemStack right = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/1b6f1a25b6bc199946472aedb370522584ff6f4e83221e5946bd2e41b5ca13b").withName("次").build();
-
         i.setItem(49, pageitem);
         i.setItem(48, left);
         i.setItem(50, right);
