@@ -8,6 +8,7 @@ import org.bukkit.block.Sign;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -16,6 +17,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -39,6 +41,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     VaultManager vault = null;
     MySQLManager mysql = null;
 
+    String      worldName = worldName;
 
     double      entryPrice = 10000;
     double      prize = 0.05;
@@ -623,6 +626,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         tpf(selectedArena,"spawn");
 
 
+        clearEntity();
+
         sideBar.hidden = true;
         String title = "§cMFC 選手決定！!";
         String subTitle = fighters.get(0).name + " vs "+fighters.get(1).name + " Stage:" + selectedArena + " Kit:"+selectedKit;
@@ -1072,7 +1077,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             Player damaged = (Player) e.getEntity();
             Player damager = (Player) e.getDamager();
             /*
-            if(damaged.getLocation().getWorld().getName().equalsIgnoreCase("Arena")){
+            if(damaged.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
                 return;
             }
 */
@@ -1374,7 +1379,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
                         tickCounter++;
                     }
-                    if(sign.getLine(1).equalsIgnoreCase("arena")){
+                    if(sign.getLine(1).equalsIgnoreCase(worldName)){
                         sign.setLine(2,selectedArena);
                     }
                 }
@@ -1570,7 +1575,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             Location loc = (Location)o;
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
 
-                if(player.getLocation().getWorld().getName().equalsIgnoreCase("Arena")){
+                if(player.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
                     player.teleport(loc);
                 }
             }
@@ -1597,10 +1602,16 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
     }
 
+    @EventHandler
+    public void itemSpawn(ItemSpawnEvent e) {
+        if(e.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
+           // e.getEntity().remove();
 
+        }
+    }
     //      エンティティを消す
     void clearEntity(){
-        for(Entity en : Bukkit.getServer().getWorld("Arena").getEntities()){
+        for(Entity en : Bukkit.getServer().getWorld(worldName).getEntitiesByClass(Item.class)){
             en.remove();;
         }
     }
