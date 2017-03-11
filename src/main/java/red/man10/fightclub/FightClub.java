@@ -554,6 +554,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             {
                 p.removePotionEffect(PotionEffectType.WEAKNESS);
             }
+            p.setFoodLevel(20);
             p.setExhaustion(0);
             p.setHealth(p.getHealthScale());
     }
