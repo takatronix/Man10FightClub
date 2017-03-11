@@ -717,7 +717,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
                 String title = "勝者を予想しベットしてください！ /MFC" ;
-                String subTitle = "予想オッズ: "+ fighters.get(0).name + "x1.25 vs " + fighters.get(1).name + "x1.55 ";
+                String subTitle = ""+ fighters.get(0).name + " vs " + fighters.get(1).name + " ";
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
             }
         }, 300);
@@ -864,7 +864,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         for (int i = 0;i < bets.size();i++){
             BetInformation bet = bets.get(i);
+            PlayerInformation f = fighters.get(bet.fighterIndex);
             if (bet.fighterIndex != fighterIndex){
+                data.createBet(bet.fighterIndex,bet.buyerUUID,bet.bet,false,f.uuid,odds,bet.bet * -1);
                 continue;
             }
             //      プレイヤーへの支払い金額
@@ -876,6 +878,10 @@ public final class FightClub extends JavaPlugin implements Listener {
             //      通知
             vault.deposit(bet.buyerUUID,playerPayout);
 
+            //      データベース登録
+
+            double profit = playerPayout - bet.bet;
+            data.createBet(fightId,bet.buyerUUID,bet.bet,true,f.uuid,odds,profit);
         }
 
         //

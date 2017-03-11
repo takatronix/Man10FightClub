@@ -23,6 +23,7 @@ public class FightClubData {
         this.mysql.debugMode = true;
 
         mysql.execute(sqlCreateFightTable);
+        mysql.execute(sqlCreateBetTable);
     }
 
     public int killCount(UUID id){
@@ -153,6 +154,28 @@ public class FightClubData {
 
     }
 
+    public boolean createBet(int fightId,UUID uuid,double bet,boolean win,UUID fighterId,double odds,double profit){
+
+        String name = Bukkit.getPlayer(uuid).getName();
+        String fighterName = Bukkit.getPlayer(fighterId).getName();
+
+        boolean ret = mysql.execute("insert into mfc_bet values(0,"+fightId
+                +",'" + currentTime()
+                +"','" + name
+                +"','" + uuid.toString()
+                +"'," + bet
+                +"," + win
+                +",'" + fighterId
+                +"','" + fighterName
+                +"'," + odds
+                +"," + profit
+                +");");
+
+
+        return ret;
+    }
+
+
 
     public String currentTime(){
         Date date = new Date();
@@ -187,5 +210,20 @@ public class FightClubData {
             "  `duration` float DEFAULT NULL,\n" +
             "  PRIMARY KEY (`id`)\n" +
             ") ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;";
+
+    String sqlCreateBetTable = "CREATE TABLE `mfc_bet` (\n" +
+            "  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,\n" +
+            "  `fight_id` int(11) DEFAULT NULL,\n" +
+            "  `datetime` datetime NOT NULL COMMENT '日付',\n" +
+            "  `name` varchar(40) NOT NULL DEFAULT '' COMMENT 'ユーザー名',\n" +
+            "  `uuid` varchar(40) NOT NULL DEFAULT '' COMMENT 'UUID',\n" +
+            "  `bet` double DEFAULT NULL,\n" +
+            "  `win` tinyint(1) DEFAULT NULL COMMENT '勝敗',\n" +
+            "  `fighter_uuid` varchar(40) NOT NULL DEFAULT '' COMMENT 'UUID',\n" +
+            "  `fighter_name` varchar(40) NOT NULL DEFAULT '' COMMENT 'ユーザー名',\n" +
+            "  `odds` double DEFAULT NULL COMMENT 'オッズ',\n" +
+            "  `profit` double DEFAULT NULL COMMENT '収益',\n" +
+            "  PRIMARY KEY (`id`)\n" +
+            ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
 }
