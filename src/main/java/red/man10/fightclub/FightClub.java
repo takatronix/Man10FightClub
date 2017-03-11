@@ -1072,17 +1072,26 @@ public final class FightClub extends JavaPlugin implements Listener {
     @EventHandler
     public void PlayerDamageReceive(EntityDamageByEntityEvent e) {
 
-        if(currentStatus != Fighting){
-            return;
-        }
+//        if(currentStatus != Fighting){
+//            return;
+//        }
+
 
         if(e.getEntity() instanceof Player) {
             Player damaged = (Player) e.getEntity();
-
-            //
-            if(!isFighter(damaged.getUniqueId())){
+            Player damager = (Player) e.getDamager();
+            /*
+            if(damaged.getLocation().getWorld().getName().equalsIgnoreCase("Arena")){
                 return;
             }
+*/
+            //
+            if(!isFighter(damager.getUniqueId())){
+                damager.sendMessage("選手以外の戦闘行動は禁止されています");
+                e.setCancelled(true);
+                return;
+            }
+
             //  死亡をキャンセル
             if((damaged.getHealth()-e.getDamage()) <= 0) {
                 e.setCancelled(true);
@@ -1304,9 +1313,11 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void openGUI(Player p){
 
         if(currentStatus == Opened){
+            p.sendMessage("opend -> betmenu");
             //
             gui.betMenu(p);
         }else{
+            p.sendMessage("opend -> joinMenu");
             gui.createJoinmenu(p);
         }
         updateSidebar();
