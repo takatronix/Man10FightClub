@@ -39,10 +39,11 @@ public final class FightClub extends JavaPlugin implements Listener {
     TitleBar titlebar = new TitleBar(this);
 
     VaultManager vault = null;
-    MySQLManager mysql = null;
 
+    FightClubData data = null;
 
-    String      worldName = "";
+    int fightId = -1;
+    String      worldName = "Arena";
 
     double      entryPrice = 10000;
     double      prize = 0.05;
@@ -290,7 +291,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      購入された金額
         double bet = getFighterBetMoney(uuid);
-        double total = getTotalBets();
+        double total = getTotalBet();
         if(bet == 0){
             return 1.0;
         }
@@ -313,7 +314,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     ///////////////////////////////////
     //      トータル掛け金
     ///////////////////////////////////
-    double getTotalBets(){
+    double getTotalBet(){
         double totalBet = 0;
         for(int i = 0;i < bets.size();i++){
             totalBet += bets.get(i).bet;
@@ -470,8 +471,15 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
         Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
 
-        String f0o = String.format(" Odds:x%.2f",getFighterOdds(f0.getUniqueId()));
-        String f1o = String.format(" Odds:x%.2f",getFighterOdds(f1.getUniqueId()));
+        double o0 = getFighterOdds(f0.getUniqueId());
+        double o1 = getFighterOdds(f0.getUniqueId());
+        int b0 = getFighterBetCount(f0.getUniqueId());
+        int b1 = getFighterBetCount(f1.getUniqueId());
+
+        String f0o = String.format(" Odds:x%.2f",o0);
+        String f1o = String.format(" Odds:x%.2f",o1);
+
+        this.fightId = data.createFight(selectedArena,selectedKit,f0.getUniqueId(),f1.getUniqueId(),o0,o1,b0,b1,getPrize(),getTotalBet());
 
         //      init bar
         lifebar.setRname(f0.getName() + f0o);
@@ -487,7 +495,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         showTitle("2",subStitle, 0.5,1);
         showTitle("1",subStitle, 0.5,2);
 
-        showTitle("ファイト！！",subStitle, 1,3);
+        showTitle("ファイト！！ #"+fightId,subStitle, 1,3);
 
         updateSidebar();
         return 0;
@@ -743,7 +751,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         return getTax() + getPrize();
     }
     public double getTax(){
-        return  getTotalBets() * tax;
+        return  getTotalBet() * tax;
     }
 
     //      賞金
@@ -751,7 +759,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(fighters.size() < 2) {
             return 0;
         }
-        double t = getTotalBets() * prize;
+        double t = getTotalBet() * prize;
         double f1 = getFighterBetMoney(fighters.get(0).uuid);
         double f2 = getFighterBetMoney(fighters.get(1).uuid);
         if(t > f1){
@@ -775,6 +783,16 @@ public final class FightClub extends JavaPlugin implements Listener {
         PlayerInformation pf = fighters.get(fighterIndex);
         Player winner = Bukkit.getPlayer(pf.uuid);
 
+        int loserIndex = -1;
+        if (fighterIndex == 0){
+            loserIndex = 1;
+        }else{
+            loserIndex = 0;
+        }
+        PlayerInformation lf = fighters.get(loserIndex);
+        //      勝負結果を保存
+        double dr = 120 - fightTimer;
+        data.updateFight(fightId,fighterIndex,pf.uuid,lf.uuid,dr);
 
 
         double prize = getPrize();
@@ -784,7 +802,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         vault.deposit(winner.getUniqueId(),prize);
 
         //  掛け金の計算
-        double total  = getTotalBets();
+        double total  = getTotalBet();
         double winBet = getFighterBets(fighterIndex);
 
         showTitle("勝者: "+winner.getName(),"獲得賞金:$"+(int)prize,5,0);
@@ -921,6 +939,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         updateSidebar();
        // mysql = new MySQLManager(this,"MFC");
 
+        data = new FightClubData(this);
 
 
         Bukkit.getScheduler().runTaskTimer(this, new Runnable() {

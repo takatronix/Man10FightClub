@@ -49,13 +49,13 @@ public class FightClubData {
 
     public boolean updateFight(int fightId,int result,UUID winner,UUID loser,double duration){
 
-        String sql = "update mfc_fight set "
-                +"result="+result
-                +"winner="+winner.toString()
-                +"loser="+loser.toString()
-                +"duration="+duration
+        String sql = "update mfc_fight set"
+                +" result="+result
+                +" ,winner='"+winner.toString()
+                +"' ,loser='"+loser.toString()
+                +"' ,duration="+duration
                 +" where id="+fightId
-                +");";
+                +";";
 
         return mysql.execute(sql);
 
