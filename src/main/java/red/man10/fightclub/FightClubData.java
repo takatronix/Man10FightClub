@@ -25,8 +25,68 @@ public class FightClubData {
         mysql.execute(sqlCreateFightTable);
     }
 
+    public int killCount(UUID id){
+
+        int ret = -1;
+        String sql = "select count(*) from mfc_fight where winner='" + id.toString()+"';";
+
+        ResultSet rs = mysql.query(sql);
+        try
+        {
+            while(rs.next())
+            {
+                ret = rs.getInt("count(*)");
+            }
+        }
+        catch (SQLException e)
+        {
+            Bukkit.getLogger().info("Error executing a query: " + e.getErrorCode());
+        }
+
+        return ret;
+    }
+    public int deathCount(UUID id){
+
+        int ret = -1;
+        String sql = "select count(*) from mfc_fight where loser='" + id.toString()+"';";
+
+        ResultSet rs = mysql.query(sql);
+        try
+        {
+            while(rs.next())
+            {
+                ret = rs.getInt("count(*)");
+            }
+        }
+        catch (SQLException e)
+        {
+            Bukkit.getLogger().info("Error executing a query: " + e.getErrorCode());
+        }
+
+        return ret;
+    }
+
+    public double totalPrize(UUID id){
+        double ret = 0;
+        String sql = "select sum(prize) from mfc_fight where winner='" + id.toString()+"';";
+
+        ResultSet rs = mysql.query(sql);
+        try
+        {
+            while(rs.next())
+            {
+                ret = rs.getDouble("sum(prize)");
+            }
+        }
+        catch (SQLException e)
+        {
+            Bukkit.getLogger().info("Error executing a query: " + e.getErrorCode());
+        }
+
+        return ret;
+    }
+
     public int getLatestId(){
-        Bukkit.getLogger().info("last id");
 
         int ret = -1;
         String sql = "select * from mfc_fight order by id desc limit 1";
@@ -43,7 +103,7 @@ public class FightClubData {
         {
             Bukkit.getLogger().info("Error executing a query: " + e.getErrorCode());
         }
-        Bukkit.getLogger().info("id"+ret);
+
         return ret;
     }
 

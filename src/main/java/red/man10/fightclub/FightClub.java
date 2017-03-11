@@ -42,7 +42,20 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     FightClubData data = null;
 
+
     int fightId = -1;
+    int kill0 = 0;
+    int kill1 = 0;
+    int death0 = 0;
+    int death1 = 0;
+    double prize0 =0;
+    double prize1 =0;
+    double kdr0 =0;
+    double kdr1 =0;
+    String kdrs0 = "";
+    String kdrs1 = "";
+
+
     String      worldName = "Arena";
 
     double      entryPrice = 10000;
@@ -423,6 +436,10 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     public boolean canStartGame(){
+
+        UUID id0 = fighters.get(0).uuid;
+        UUID id1 = fighters.get(1).uuid;
+
         double    limit = 10000;
         //      双方にベットされているか
         if(getFighterBetMoney(fighters.get(0).uuid) < limit){
@@ -455,6 +472,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         currentStatus = Fighting;
 
         resetFightTimer();
+
+
+
 
         //      キットを選択
 
@@ -633,6 +653,25 @@ public final class FightClub extends JavaPlugin implements Listener {
         //      ファイター観戦者ともに移動
         tps(selectedArena,"spawn");
         tpf(selectedArena,"spawn");
+
+
+        //       KDRの算出
+        kill0 = data.killCount(fighters.get(0).uuid);
+        kill1 = data.killCount(fighters.get(1).uuid);
+        death0 = data.deathCount(fighters.get(0).uuid);
+        death1 = data.deathCount(fighters.get(1).uuid);
+        prize0 = data.totalPrize(fighters.get(0).uuid);
+        prize1 = data.totalPrize(fighters.get(1).uuid);
+        kdr0 = 0;
+        kdr1 = 0;
+        if(death0 > 0){
+            kdr0 = kill0 / death0;
+        }
+        if(death1 > 0){
+            kdr1 = kill1 / death1;
+        }
+
+
 
 
         clearEntity();
