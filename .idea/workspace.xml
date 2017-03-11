@@ -75,17 +75,17 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="668" column="0" lean-forward="false" selection-start-line="668" selection-start-column="0" selection-end-line="668" selection-end-column="0" />
+            <state relative-caret-position="372">
+              <caret line="539" column="13" lean-forward="true" selection-start-line="539" selection-start-column="13" selection-end-line="539" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2142#2161#0" expanded="true" />
                 <element signature="e#2242#2261#0" expanded="true" />
                 <element signature="e#2344#2363#0" expanded="true" />
                 <element signature="e#2434#2450#0" expanded="true" />
-                <element signature="e#31773#31781#0" expanded="true" />
-                <element signature="e#37294#37304#0" expanded="true" />
-                <element signature="e#39799#39807#0" expanded="true" />
+                <element signature="e#31815#31823#0" expanded="true" />
+                <element signature="e#37336#37346#0" expanded="true" />
+                <element signature="e#39841#39849#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -182,7 +182,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>detect</find>
       <find>&quot;Kit&quot;</find>
       <find>upate</find>
       <find>time</find>
@@ -212,6 +211,7 @@
       <find>tpA</find>
       <find>startGame</find>
       <find>openGame</find>
+      <find>resetPlayer</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -777,13 +777,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00062" summary="taxと賞金をオッズ計算に加味">
-      <created>1488850489304</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1488850489304</updated>
-    </task>
     <task id="LOCAL-00063" summary="ファイト時間タイマー追加">
       <created>1488852319134</created>
       <option name="number" value="00063" />
@@ -1120,7 +1113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489130484352</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="プレーヤーステータスリセット">
+      <created>1489211918669</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1489211918669</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1134,18 +1134,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="430" y="150" width="1856" height="1097" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.030643513" sideWeight="0.4770355" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.036585364" sideWeight="0.52296454" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.119625136" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12851782" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19101124" sideWeight="0.69261366" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19101124" sideWeight="0.69261366" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1162,7 +1163,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.030643513" sideWeight="0.4770355" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3315508" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1202,7 +1202,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="player interact バグ修正" />
     <MESSAGE value="ろぐあうとしょり" />
     <MESSAGE value="Arena処理" />
     <MESSAGE value="GUI接続" />
@@ -1227,7 +1226,8 @@
     <MESSAGE value="参加費を設定" />
     <MESSAGE value="admin menuコマンド追加" />
     <MESSAGE value="参加費処理" />
-    <option name="LAST_COMMIT_MESSAGE" value="参加費処理" />
+    <MESSAGE value="プレーヤーステータスリセット" />
+    <option name="LAST_COMMIT_MESSAGE" value="プレーヤーステータスリセット" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1463,17 +1463,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="668" column="0" lean-forward="false" selection-start-line="668" selection-start-column="0" selection-end-line="668" selection-end-column="0" />
+        <state relative-caret-position="372">
+          <caret line="539" column="13" lean-forward="true" selection-start-line="539" selection-start-column="13" selection-end-line="539" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2142#2161#0" expanded="true" />
             <element signature="e#2242#2261#0" expanded="true" />
             <element signature="e#2344#2363#0" expanded="true" />
             <element signature="e#2434#2450#0" expanded="true" />
-            <element signature="e#31773#31781#0" expanded="true" />
-            <element signature="e#37294#37304#0" expanded="true" />
-            <element signature="e#39799#39807#0" expanded="true" />
+            <element signature="e#31815#31823#0" expanded="true" />
+            <element signature="e#37336#37346#0" expanded="true" />
+            <element signature="e#39841#39849#0" expanded="true" />
           </folding>
         </state>
       </provider>
