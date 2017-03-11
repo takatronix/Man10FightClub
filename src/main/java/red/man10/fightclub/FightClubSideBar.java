@@ -77,6 +77,9 @@ public class FightClubSideBar {
         sideBar.setScore("§e勝者への賞金：$"+plugin.getPrize(),0);
         sideBar.setScore("§b==========================",0);
 
+        sideBar.setScore("§e 戦歴 "+plugin.fighters.get(0).name+" Kill:"+plugin.kill0 + " Death:"+plugin.death0+" $"+plugin.prize0 ,0);
+        sideBar.setScore("§e 戦歴 "+plugin.fighters.get(1).name+" Kill:"+plugin.kill1 + " Death:"+plugin.death1+" $"+plugin.prize1 ,0);
+
         if(plugin.canStartGame()){
             sideBar.setScore("§eまもなく試合が開催されます！！！！",0);
 
@@ -123,7 +126,10 @@ public class FightClubSideBar {
         }
         for(int i = 0;i < plugin.waiters.size();i++){
             FightClub.PlayerInformation f = plugin.waiters.get(i);
-            String s = "["+i+"]" + f.name ;
+            //String s = "["+i+"]" + f.name ;
+
+            String s= f.name + " Kill:"+f.kill+" Death:"+f.death+" $"+(int)f.prize;
+
             sideBar.setScore(s,0);
            // Bukkit.getLogger().info("waiter" + s);
         }

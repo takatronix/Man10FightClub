@@ -75,6 +75,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         String      name;
         Location    returnLoc;          //  戻る場所
         Boolean     isDead;
+        int         kill;
+        int         death;
+        double      prize;
     }
     //      購入者情報
     class  BuyerInformation{
@@ -168,6 +171,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         playerInfo.name = name;
         playerInfo.isDead = false;
         playerInfo.returnLoc = Bukkit.getPlayer(uuid).getLocation();
+        playerInfo.kill = data.killCount(uuid);
+        playerInfo.death = data.killCount(uuid);
+        playerInfo.prize = data.totalPrize(uuid);
+
         waiters.add(playerInfo);
 
         updateSidebar();
@@ -664,11 +671,15 @@ public final class FightClub extends JavaPlugin implements Listener {
         prize1 = data.totalPrize(fighters.get(1).uuid);
         kdr0 = 0;
         kdr1 = 0;
+        kdrs0 = "";
+        kdrs1 = "";
         if(death0 > 0){
             kdr0 = kill0 / death0;
+            kdrs0 = String.format("%.2f",kdr0);
         }
         if(death1 > 0){
             kdr1 = kill1 / death1;
+            kdrs1 = String.format("%.2f",kdr1);
         }
 
 
@@ -686,7 +697,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
                 String title = "§4"+fighters.get(0).name ;
-                String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
+                //String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
+                String subTitle = "Kill:"+kill0+" Death:"+death0+" KDR:"+kdrs0+"総獲得賞金 $"+(int)prize0;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
 
@@ -695,7 +707,8 @@ public final class FightClub extends JavaPlugin implements Listener {
        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
                 String title = "§1"+fighters.get(1).name ;
-                String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
+ //               String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
+                String subTitle = "Kill:"+kill1+" Death:"+death1+" KDR:"+kdrs1+"総獲得賞金 $"+(int)prize1;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
             }
