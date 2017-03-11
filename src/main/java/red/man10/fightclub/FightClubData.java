@@ -49,7 +49,7 @@ public class FightClubData {
 
     public boolean updateFight(int fightId,int result,UUID winner,UUID loser,double duration){
 
-        String sql = "update  mfc_fight set "
+        String sql = "update mfc_fight set "
                 +"result="+result
                 +"winner="+winner.toString()
                 +"loser="+loser.toString()
@@ -79,8 +79,8 @@ public class FightClubData {
                 +"," + odds2
                 +"," + bet1
                 +"," + bet2
-                +"," + prize
                 +"," + totalBet
+                +"," + prize
                 +",NULL,NULL,NULL,NULL"
 
                 +");");
