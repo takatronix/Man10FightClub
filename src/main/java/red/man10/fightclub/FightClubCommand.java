@@ -104,7 +104,7 @@ public class FightClubCommand  implements CommandExecutor {
             return true;
         }
         if(args[0].equalsIgnoreCase("watch")){
-            plugin.settp(p,plugin.selectedArena,"spawn");
+            plugin.tp(p,plugin.selectedArena,"spawn");
 
             return true;
         }
