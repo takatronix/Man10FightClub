@@ -19,6 +19,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffectType;
 import org.inventivetalent.glow.GlowAPI;
 import red.man10.*;
 
@@ -445,7 +446,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         showLifeBarToAll();
         currentStatus = Fighting;
-        serverMessage("ファイト！！！！");
+
         resetFightTimer();
 
         //      キットを選択
@@ -470,6 +471,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         lifebar.setRname(f0.getName() + f0o);
         lifebar.setBname(f1.getName() + f1o);
         lifebar.setVisible(true);
+        resetPlayerStatus(f0);
+        resetPlayerStatus(f1);
 
 
         String subStitle =  f0.getName() + " vs " + f1.getName();
@@ -482,6 +485,77 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         updateSidebar();
         return 0;
+    }
+    public void resetPlayerStatus(Player p)
+        {
+
+
+            if (p.hasPotionEffect(PotionEffectType.BLINDNESS) == true)
+            {
+                p.removePotionEffect(PotionEffectType.BLINDNESS);
+            }
+            if (p.hasPotionEffect(PotionEffectType.CONFUSION) == true)
+            {
+                p.removePotionEffect(PotionEffectType.CONFUSION);
+            }
+            if (p.hasPotionEffect(PotionEffectType.DAMAGE_RESISTANCE) == true)
+            {
+                p.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
+            }
+            if (p.hasPotionEffect(PotionEffectType.FAST_DIGGING) == true)
+            {
+                p.removePotionEffect(PotionEffectType.FAST_DIGGING);
+            }
+            if (p.hasPotionEffect(PotionEffectType.FIRE_RESISTANCE) == true)
+            {
+                p.removePotionEffect(PotionEffectType.FIRE_RESISTANCE);
+            }
+            if (p.hasPotionEffect(PotionEffectType.HEAL) == true)
+            {
+                p.removePotionEffect(PotionEffectType.HEAL);
+            }
+            if (p.hasPotionEffect(PotionEffectType.HUNGER) == true)
+            {
+                p.removePotionEffect(PotionEffectType.HUNGER);
+            }
+            if (p.hasPotionEffect(PotionEffectType.INCREASE_DAMAGE) == true)
+            {
+                p.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+            }
+            if (p.hasPotionEffect(PotionEffectType.JUMP) == true)
+            {
+                p.removePotionEffect(PotionEffectType.JUMP);
+            }
+            if (p.hasPotionEffect(PotionEffectType.POISON) == true)
+            {
+                p.removePotionEffect(PotionEffectType.POISON);
+            }
+            if (p.hasPotionEffect(PotionEffectType.REGENERATION) == true)
+            {
+                p.removePotionEffect(PotionEffectType.REGENERATION);
+            }
+            if (p.hasPotionEffect(PotionEffectType.SLOW) == true)
+            {
+                p.removePotionEffect(PotionEffectType.SLOW);
+            }
+            if(p.hasPotionEffect(PotionEffectType.SLOW_DIGGING) == true)
+            {
+                p.removePotionEffect(PotionEffectType.SLOW_DIGGING);
+            }
+            if (p.hasPotionEffect(PotionEffectType.SPEED) == true)
+            {
+                p.removePotionEffect(PotionEffectType.SPEED);
+            }
+            if (p.hasPotionEffect(PotionEffectType.WATER_BREATHING) == true)
+            {
+                p.removePotionEffect(PotionEffectType.WATER_BREATHING);
+            }
+            if (p.hasPotionEffect(PotionEffectType.WEAKNESS) == true)
+            {
+                p.removePotionEffect(PotionEffectType.WEAKNESS);
+            }
+
+            p.setHealthScale(20);
     }
     public int startEntry(){
         resetEnetryTimer();
@@ -592,6 +666,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         resetBetTimer();
+
 
         //      ファイト開始
         currentStatus = Opened;
