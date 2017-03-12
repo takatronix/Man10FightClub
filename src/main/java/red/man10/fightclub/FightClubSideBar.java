@@ -139,14 +139,11 @@ public class FightClubSideBar {
         String inf = "残り時間:"+plugin.entryTimer +" §e§l参加費:$"+(int)plugin.entryPrice;
         sideBar.setScore(inf,0);
 
-//        sideBar.setScore("残り時間",plugin.entryTimer);
-  //      sideBar.setScore("参加費: $"+(int)plugin.entryPrice,0);
         if(plugin.waiters.size() == 0){
             sideBar.setScore("§a/§lMFC§f で登録",0);
         }
         for(int i = 0;i < plugin.waiters.size();i++){
             FightClub.PlayerInformation f = plugin.waiters.get(i);
-            //String s = "["+i+"]" + f.name ;
 
             String s= f.name + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
             if(s.length() > 40){
@@ -154,7 +151,7 @@ public class FightClubSideBar {
             }
 
             sideBar.setScore(s,getScore(f));
-           // Bukkit.getLogger().info("waiter" + s);
+
         }
         showToAll();
     }
