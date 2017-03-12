@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -84,16 +83,16 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="1096" column="9" lean-forward="true" selection-start-line="1096" selection-start-column="9" selection-end-line="1096" selection-end-column="9" />
+            <state relative-caret-position="115">
+              <caret line="1471" column="5" lean-forward="true" selection-start-line="1471" selection-start-column="5" selection-end-line="1471" selection-end-column="5" />
               <folding>
                 <element signature="e#2764#2783#0" expanded="true" />
                 <element signature="e#2864#2883#0" expanded="true" />
                 <element signature="e#2966#2985#0" expanded="true" />
                 <element signature="e#3056#3072#0" expanded="true" />
-                <element signature="e#35711#35719#0" expanded="true" />
-                <element signature="e#41621#41631#0" expanded="true" />
-                <element signature="e#44128#44136#0" expanded="true" />
+                <element signature="e#35703#35711#0" expanded="true" />
+                <element signature="e#41818#41828#0" expanded="true" />
+                <element signature="e#44400#44408#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,7 +124,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="169" column="13" lean-forward="true" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
+              <caret line="169" column="13" lean-forward="false" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -761,13 +760,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00083" summary="lifeバー表示">
-      <created>1489025189165</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1489025189165</updated>
-    </task>
     <task id="LOCAL-00084" summary="観戦者登録">
       <created>1489032846412</created>
       <option name="number" value="00084" />
@@ -1104,7 +1096,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489299513801</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="MFC on/off状態の保存">
+      <created>1489301819144</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1489301819144</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1186,7 +1185,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="勝者判定のミス" />
     <MESSAGE value="死亡キャンセル" />
     <MESSAGE value="エントリ時間を修正" />
     <MESSAGE value="看板に表示する仕組み" />
@@ -1211,7 +1209,8 @@
     <MESSAGE value="サイドボードがでない問題" />
     <MESSAGE value="選手が投票ｄけいないようにした" />
     <MESSAGE value="added mfc on/off/reload  commands&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="added mfc on/off/reload  commands&#10;" />
+    <MESSAGE value="MFC on/off状態の保存" />
+    <option name="LAST_COMMIT_MESSAGE" value="MFC on/off状態の保存" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1241,9 +1240,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35711#35719#0" expanded="true" />
-            <element signature="e#41621#41631#0" expanded="true" />
-            <element signature="e#44128#44136#0" expanded="true" />
+            <element signature="e#35703#35711#0" expanded="true" />
+            <element signature="e#41818#41828#0" expanded="true" />
+            <element signature="e#44400#44408#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1296,9 +1295,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35711#35719#0" expanded="true" />
-            <element signature="e#41621#41631#0" expanded="true" />
-            <element signature="e#44128#44136#0" expanded="true" />
+            <element signature="e#35703#35711#0" expanded="true" />
+            <element signature="e#41818#41828#0" expanded="true" />
+            <element signature="e#44400#44408#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1351,9 +1350,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35711#35719#0" expanded="true" />
-            <element signature="e#41621#41631#0" expanded="true" />
-            <element signature="e#44128#44136#0" expanded="true" />
+            <element signature="e#35703#35711#0" expanded="true" />
+            <element signature="e#41818#41828#0" expanded="true" />
+            <element signature="e#44400#44408#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1458,9 +1457,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35711#35719#0" expanded="true" />
-            <element signature="e#41621#41631#0" expanded="true" />
-            <element signature="e#44128#44136#0" expanded="true" />
+            <element signature="e#35703#35711#0" expanded="true" />
+            <element signature="e#41818#41828#0" expanded="true" />
+            <element signature="e#44400#44408#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1505,9 +1504,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35711#35719#0" expanded="true" />
-            <element signature="e#41621#41631#0" expanded="true" />
-            <element signature="e#44128#44136#0" expanded="true" />
+            <element signature="e#35703#35711#0" expanded="true" />
+            <element signature="e#41818#41828#0" expanded="true" />
+            <element signature="e#44400#44408#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1560,9 +1559,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35711#35719#0" expanded="true" />
-            <element signature="e#41621#41631#0" expanded="true" />
-            <element signature="e#44128#44136#0" expanded="true" />
+            <element signature="e#35703#35711#0" expanded="true" />
+            <element signature="e#41818#41828#0" expanded="true" />
+            <element signature="e#44400#44408#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1615,9 +1614,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35711#35719#0" expanded="true" />
-            <element signature="e#41621#41631#0" expanded="true" />
-            <element signature="e#44128#44136#0" expanded="true" />
+            <element signature="e#35703#35711#0" expanded="true" />
+            <element signature="e#41818#41828#0" expanded="true" />
+            <element signature="e#44400#44408#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1734,23 +1733,23 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="169" column="13" lean-forward="true" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
+          <caret line="169" column="13" lean-forward="false" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="1096" column="9" lean-forward="true" selection-start-line="1096" selection-start-column="9" selection-end-line="1096" selection-end-column="9" />
+        <state relative-caret-position="115">
+          <caret line="1471" column="5" lean-forward="true" selection-start-line="1471" selection-start-column="5" selection-end-line="1471" selection-end-column="5" />
           <folding>
             <element signature="e#2764#2783#0" expanded="true" />
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35711#35719#0" expanded="true" />
-            <element signature="e#41621#41631#0" expanded="true" />
-            <element signature="e#44128#44136#0" expanded="true" />
+            <element signature="e#35703#35711#0" expanded="true" />
+            <element signature="e#41818#41828#0" expanded="true" />
+            <element signature="e#44400#44408#0" expanded="true" />
           </folding>
         </state>
       </provider>

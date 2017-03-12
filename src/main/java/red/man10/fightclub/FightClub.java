@@ -1224,10 +1224,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     @EventHandler
     public void PlayerDamageReceive(EntityDamageByEntityEvent e) {
-
-//        if(currentStatus != Fighting){
-//            return;
-//        }
+        if(currentStatus == Closed){
+            return ;
+        }
 
 
         if(e.getEntity() instanceof Player) {
@@ -1355,6 +1354,11 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     @EventHandler
     public void clickSignEvent(PlayerInteractEvent e) {
+
+        if(currentStatus == Closed){
+            return;
+        }
+
         if( e.getAction() == Action.RIGHT_CLICK_BLOCK  || e.getAction() == Action.LEFT_CLICK_BLOCK ) {
         if (e.getClickedBlock().getType() == Material.SIGN_POST || e.getClickedBlock().getType() == Material.WALL_SIGN) {
                 Object o = e.getClickedBlock().getState();
@@ -1471,6 +1475,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
     public void openGUI(Player p){
+        if(currentStatus == Closed){
+            return ;
+        }
 
         if(currentStatus == Opened){
             p.sendMessage("opend -> betmenu");
@@ -1486,6 +1493,10 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     @EventHandler
     public void clickItem(InventoryClickEvent e) {
+        if(currentStatus == Closed){
+            return;
+        }
+
 
         if(e.getClickedInventory() == null){
             //例外インベントリの処理
@@ -1553,6 +1564,11 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     public boolean signCheck(Block b) {
+        if(currentStatus == Closed){
+            return false;
+        }
+
+
         for (BlockFace f : BlockFace.values()) {
             if (b.getRelative(f).getType() == Material.WALL_SIGN) {
                 for(int i = 0;i < kitSigns.size();i++) {
