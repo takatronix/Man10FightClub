@@ -1232,7 +1232,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(e.getEntity() instanceof Player) {
             Player damaged = (Player) e.getEntity();
 
-            if((e.getEntity() instanceof  Player) == false){
+            if((e.getDamager() instanceof  Player) == false){
 
                 return ;
             }
