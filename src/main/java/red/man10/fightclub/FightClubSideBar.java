@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import red.man10.SidebarDisplay;
 
 import java.awt.*;
+import java.text.DecimalFormat;
 
 import static red.man10.fightclub.FightClub.Status.*;
 
@@ -112,26 +113,44 @@ public class FightClubSideBar {
     }
 
     int  getScore(FightClub.PlayerInformation inf){
-        double d = inf.prize /  (double)(inf.kill + inf.death) * 0.01;
+        double d = inf.prize /  (double)(inf.kill + inf.death) * 0.001;
         return (int)d;
     }
+
+
+    private static String[] suffix = new String[]{"","K", "M", "B", "T"};
+    private static int MAX_LENGTH = 4;
+
+    private static String money(double number) {
+        String r = new DecimalFormat("##0E0").format(number);
+        r = r.replaceAll("E[0-9]", suffix[Character.getNumericValue(r.charAt(r.length() - 1)) / 3]);
+        while(r.length() > MAX_LENGTH || r.matches("[0-9]+\\.[a-z]")){
+            r = r.substring(0, r.length()-2) + r.substring(r.length() - 1);
+        }
+        return r;
+    }
+
+
 
     void showWaiters(){
         sideBar.setTitle("Man10 Fight Club 選手受付中 ");
 
-        String inf = "残り時間:"+plugin.entryTimer +" 参加費:$"+(int)plugin.entryPrice;
+        String inf = "残り時間:"+plugin.entryTimer +" §e§l参加費:$"+(int)plugin.entryPrice;
         sideBar.setScore(inf,0);
 
 //        sideBar.setScore("残り時間",plugin.entryTimer);
   //      sideBar.setScore("参加費: $"+(int)plugin.entryPrice,0);
         if(plugin.waiters.size() == 0){
-            sideBar.setScore("/mfc で登録",0);
+            sideBar.setScore("§a/§lMFC§f で登録",0);
         }
         for(int i = 0;i < plugin.waiters.size();i++){
             FightClub.PlayerInformation f = plugin.waiters.get(i);
             //String s = "["+i+"]" + f.name ;
 
-            String s= f.name + " K:"+f.kill+"/D:"+f.death+"/$"+(int)f.prize;
+            String s= f.name + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
+            if(s.length() > 40){
+                s = s.substring(0,40);
+            }
 
             sideBar.setScore(s,getScore(f));
            // Bukkit.getLogger().info("waiter" + s);
