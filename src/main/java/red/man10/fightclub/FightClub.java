@@ -371,7 +371,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             return -1;
         }
         if( currentStatus != Opened){
-            return -1;
+            return -2;
         }
 
 

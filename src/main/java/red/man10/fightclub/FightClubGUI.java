@@ -257,11 +257,16 @@ public class FightClubGUI {
         }
 
         if(plugin.betFighter(fighter,money,p.getUniqueId(),buyer) == -1){
-            p.sendMessage("ベットできませんでした");
+            p.sendMessage(ChatColor.RED+"選手はベットできません");
             p.closeInventory();
             return;
         }
 
+        if(plugin.betFighter(fighter,money,p.getUniqueId(),buyer) == -2){
+            p.sendMessage(ChatColor.RED+"投票受付中しかベットできません");
+            p.closeInventory();
+            return;
+        }
 
         p.sendMessage(fighterName +"へ、$" + money + "ベットしました！！");
         p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.vault.getBalance(p.getUniqueId()) +"です");
