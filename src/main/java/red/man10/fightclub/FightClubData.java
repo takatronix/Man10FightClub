@@ -20,7 +20,7 @@ public class FightClubData {
     public FightClubData(FightClub plugin) {
         this.plugin = plugin;
         this.mysql = new MySQLManager(plugin,"MFC");
-        this.mysql.debugMode = true;
+        //this.mysql.debugMode = true;
 
         mysql.execute(sqlCreateFightTable);
         mysql.execute(sqlCreateBetTable);

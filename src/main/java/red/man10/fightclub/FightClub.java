@@ -24,7 +24,6 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
-import org.inventivetalent.glow.GlowAPI;
 import red.man10.*;
 
 import java.io.File;
@@ -406,11 +405,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         return bets.size();
     }
 
-    void disableGlow(){
-        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-            GlowAPI.setGlowing(player,false,Bukkit.getOnlinePlayers());
-        }
-    }
+
 
     //      MFC有効無効
     int enableMFC(CommandSender sender,boolean enable){
@@ -456,7 +451,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     int cancelGame(){
 
         showTitle("試合中断!","試合はキャンセルされ返金されます",3,0);
-        disableGlow();
+
         //   払い戻し処理
         for (int i = 0;i < bets.size();i++) {
             BetInformation bet = bets.get(i);
@@ -897,7 +892,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             return cancelGame();
         }
 
-        disableGlow();
+
 
         PlayerInformation pf = fighters.get(fighterIndex);
         Player winner = Bukkit.getPlayer(pf.uuid);
