@@ -111,12 +111,19 @@ public class FightClubSideBar {
         showToAll();
     }
 
+    int  getScore(FightClub.PlayerInformation inf){
+        double d = inf.prize /  (double)(inf.kill + inf.death) * 0.01;
+        return (int)d;
+    }
 
     void showWaiters(){
         sideBar.setTitle("Man10 Fight Club 選手受付中 ");
 
-        sideBar.setScore("残り時間",plugin.entryTimer);
-        sideBar.setScore("参加費: $"+(int)plugin.entryPrice,0);
+        String inf = "残り時間:$"+plugin.entryTimer +" 参加費:$"+(int)plugin.entryPrice;
+        sideBar.setScore(inf,0);
+
+//        sideBar.setScore("残り時間",plugin.entryTimer);
+  //      sideBar.setScore("参加費: $"+(int)plugin.entryPrice,0);
         if(plugin.waiters.size() == 0){
             sideBar.setScore("/mfc で登録",0);
         }
@@ -126,7 +133,7 @@ public class FightClubSideBar {
 
             String s= f.name + " Kill:"+f.kill+" Death:"+f.death+" $"+(int)f.prize;
 
-            sideBar.setScore(s,0);
+            sideBar.setScore(s,getScore(f));
            // Bukkit.getLogger().info("waiter" + s);
         }
         showToAll();

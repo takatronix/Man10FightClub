@@ -1,19 +1,10 @@
 package red.man10.fightclub;
 
-import jdk.internal.org.objectweb.asm.tree.IntInsnNode;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.TextComponent;
-import net.milkbowl.vault.chat.Chat;
+
 import org.bukkit.ChatColor;
-import org.bukkit.boss.BarColor;
-import org.bukkit.boss.BarFlag;
-import org.bukkit.boss.BarStyle;
-import org.bukkit.boss.BossBar;
+
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
-import org.bukkit.event.inventory.InventoryMoveItemEvent;
-import red.man10.LifeBar;
+
 import red.man10.SkullMaker;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
