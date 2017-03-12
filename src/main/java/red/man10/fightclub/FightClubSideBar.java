@@ -119,7 +119,7 @@ public class FightClubSideBar {
     void showWaiters(){
         sideBar.setTitle("Man10 Fight Club 選手受付中 ");
 
-        String inf = "残り時間:$"+plugin.entryTimer +" 参加費:$"+(int)plugin.entryPrice;
+        String inf = "残り時間:"+plugin.entryTimer +" 参加費:$"+(int)plugin.entryPrice;
         sideBar.setScore(inf,0);
 
 //        sideBar.setScore("残り時間",plugin.entryTimer);
