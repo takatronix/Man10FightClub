@@ -1044,9 +1044,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         vault = new VaultManager(this);
         updateSidebar();
-       // mysql = new MySQLManager(this,"MFC");
 
-        data = new FightClubData(this);
+        //data = new FightClubData(this);
 
 
         Bukkit.getScheduler().runTaskTimer(this, new Runnable() {
@@ -1065,8 +1064,15 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     void loadConfig(){
+
         loadArenaConfig();
         loadSignes();
+
+
+        //      MYSQL初期化
+        data = new FightClubData(this);
+
+
     }
 
 

@@ -7,12 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubHistoryCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -84,19 +80,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-674">
-              <caret line="998" column="17" lean-forward="true" selection-start-line="998" selection-start-column="17" selection-end-line="998" selection-end-column="17" />
+            <state relative-caret-position="286">
+              <caret line="1070" column="0" lean-forward="true" selection-start-line="1070" selection-start-column="0" selection-end-line="1070" selection-end-column="0" />
               <folding>
                 <element signature="e#2764#2783#0" expanded="true" />
                 <element signature="e#2864#2883#0" expanded="true" />
                 <element signature="e#2966#2985#0" expanded="true" />
                 <element signature="e#3056#3072#0" expanded="true" />
-                <element signature="e#35186#35194#0" expanded="true" />
-                <element signature="e#41096#41106#0" expanded="true" />
-                <element signature="e#43603#43611#0" expanded="true" />
+                <element signature="e#35210#35218#0" expanded="true" />
+                <element signature="e#41120#41130#0" expanded="true" />
+                <element signature="e#43627#43635#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,14 +108,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClubData.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FightClubData.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="212" column="0" lean-forward="false" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -156,9 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>enable</find>
-      <find>reco</find>
-      <find>loadConfig</find>
       <find>startFight</find>
       <find>chat</find>
       <find>execute</find>
@@ -186,6 +177,9 @@
       <find>cancelGame</find>
       <find>startEntry</find>
       <find>showToAll</find>
+      <find>loadConfigt</find>
+      <find>FightClub</find>
+      <find>loadConfig</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -778,13 +772,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00081" summary="admin menu 追加">
-      <created>1488938609231</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1488938609231</updated>
-    </task>
     <task id="LOCAL-00082" summary="admin menu 選手登録の左ボタンが取れるバグ修正">
       <created>1488942993187</created>
       <option name="number" value="00082" />
@@ -1121,7 +1108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489282577383</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="added mfc on/off/reload  commands&#10;">
+      <created>1489299188185</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1489299188186</updated>
+    </task>
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1203,7 +1197,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="titleba syuusei" />
     <MESSAGE value="勝者判定のミス" />
     <MESSAGE value="死亡キャンセル" />
     <MESSAGE value="エントリ時間を修正" />
@@ -1228,7 +1221,8 @@
     <MESSAGE value="ベット履歴の保存" />
     <MESSAGE value="サイドボードがでない問題" />
     <MESSAGE value="選手が投票ｄけいないようにした" />
-    <option name="LAST_COMMIT_MESSAGE" value="選手が投票ｄけいないようにした" />
+    <MESSAGE value="added mfc on/off/reload  commands&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="added mfc on/off/reload  commands&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1258,9 +1252,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35186#35194#0" expanded="true" />
-            <element signature="e#41096#41106#0" expanded="true" />
-            <element signature="e#43603#43611#0" expanded="true" />
+            <element signature="e#35210#35218#0" expanded="true" />
+            <element signature="e#41120#41130#0" expanded="true" />
+            <element signature="e#43627#43635#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1313,9 +1307,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35186#35194#0" expanded="true" />
-            <element signature="e#41096#41106#0" expanded="true" />
-            <element signature="e#43603#43611#0" expanded="true" />
+            <element signature="e#35210#35218#0" expanded="true" />
+            <element signature="e#41120#41130#0" expanded="true" />
+            <element signature="e#43627#43635#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1368,9 +1362,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35186#35194#0" expanded="true" />
-            <element signature="e#41096#41106#0" expanded="true" />
-            <element signature="e#43603#43611#0" expanded="true" />
+            <element signature="e#35210#35218#0" expanded="true" />
+            <element signature="e#41120#41130#0" expanded="true" />
+            <element signature="e#43627#43635#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1452,9 +1446,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
           <caret line="55" column="19" lean-forward="false" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1475,9 +1467,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35186#35194#0" expanded="true" />
-            <element signature="e#41096#41106#0" expanded="true" />
-            <element signature="e#43603#43611#0" expanded="true" />
+            <element signature="e#35210#35218#0" expanded="true" />
+            <element signature="e#41120#41130#0" expanded="true" />
+            <element signature="e#43627#43635#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1522,9 +1514,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35186#35194#0" expanded="true" />
-            <element signature="e#41096#41106#0" expanded="true" />
-            <element signature="e#43603#43611#0" expanded="true" />
+            <element signature="e#35210#35218#0" expanded="true" />
+            <element signature="e#41120#41130#0" expanded="true" />
+            <element signature="e#43627#43635#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1577,9 +1569,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35186#35194#0" expanded="true" />
-            <element signature="e#41096#41106#0" expanded="true" />
-            <element signature="e#43603#43611#0" expanded="true" />
+            <element signature="e#35210#35218#0" expanded="true" />
+            <element signature="e#41120#41130#0" expanded="true" />
+            <element signature="e#43627#43635#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1632,9 +1624,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35186#35194#0" expanded="true" />
-            <element signature="e#41096#41106#0" expanded="true" />
-            <element signature="e#43603#43611#0" expanded="true" />
+            <element signature="e#35210#35218#0" expanded="true" />
+            <element signature="e#41120#41130#0" expanded="true" />
+            <element signature="e#43627#43635#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1737,16 +1729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="212" column="0" lean-forward="false" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1757,17 +1739,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-674">
-          <caret line="998" column="17" lean-forward="true" selection-start-line="998" selection-start-column="17" selection-end-line="998" selection-end-column="17" />
+        <state relative-caret-position="286">
+          <caret line="1070" column="0" lean-forward="true" selection-start-line="1070" selection-start-column="0" selection-end-line="1070" selection-end-column="0" />
           <folding>
             <element signature="e#2764#2783#0" expanded="true" />
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35186#35194#0" expanded="true" />
-            <element signature="e#41096#41106#0" expanded="true" />
-            <element signature="e#43603#43611#0" expanded="true" />
+            <element signature="e#35210#35218#0" expanded="true" />
+            <element signature="e#41120#41130#0" expanded="true" />
+            <element signature="e#43627#43635#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
