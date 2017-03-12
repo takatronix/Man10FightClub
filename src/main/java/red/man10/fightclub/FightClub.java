@@ -345,7 +345,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     Boolean canBet(UUID buyerUUID){
 
-        /*
+
         //          ファイターは登録できません
         for(int i=0;i< fighters.size();i++){
             if(fighters.get(i).uuid == buyerUUID){
@@ -353,7 +353,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return false;
             }
         }
-*/
+
         return true;
     }
 
@@ -368,6 +368,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         if(canBet(buyerUUID) == false){
+            return -1;
+        }
+        if( currentStatus != Opened){
             return -1;
         }
 
