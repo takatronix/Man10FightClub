@@ -354,7 +354,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         //          ファイターは登録できません
         for(int i=0;i< fighters.size();i++){
             if(fighters.get(i).uuid == buyerUUID){
-                serverMessage( "§d八百長防止のため、選手はベットすることはできません");
+              // serverMessage( "§d八百長防止のため、選手はベットすることはできません");
                 return false;
             }
         }
@@ -933,7 +933,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             BetInformation bet = bets.get(i);
             PlayerInformation f = fighters.get(bet.fighterIndex);
             if (bet.fighterIndex != fighterIndex){
-                data.createBet(bet.fighterIndex,bet.buyerUUID,bet.bet,false,f.uuid,odds,bet.bet * -1);
+                data.createBet(fightId,bet.buyerUUID,bet.bet,false,f.uuid,odds,bet.bet * -1);
                 continue;
             }
             //      プレイヤーへの支払い金額
