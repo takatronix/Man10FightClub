@@ -1381,6 +1381,11 @@ public final class FightClub extends JavaPlugin implements Listener {
                     registerFighter(e.getPlayer().getUniqueId(),e.getPlayer().getName());
                     return;
                 }
+            if (s.getLine(1).equalsIgnoreCase("UnRegister")) {
+                unregisterFighter(e.getPlayer().getUniqueId());
+                return;
+            }
+
                 if (s.getLine(1).equalsIgnoreCase("Entry")) {
                     startEntry();
                     return;

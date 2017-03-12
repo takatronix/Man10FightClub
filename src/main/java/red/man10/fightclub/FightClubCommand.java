@@ -90,7 +90,27 @@ public class FightClubCommand  implements CommandExecutor {
             plugin.updateSidebar();
             return true;
         }
+        if(args[0].equalsIgnoreCase("unregister")){
+            if(args.length != 2) {
+                p.sendMessage("/mfc ungregister [fighter]");
+                return false;
+            }
 
+            Player fighter = Bukkit.getPlayer(args[1]);
+            if (fighter == null) {
+                p.sendMessage(ChatColor.RED + "Error: " + args[1] +" is offline!!");
+                return false;
+            }
+
+            int ret = plugin.unregisterFighter(fighter.getUniqueId());
+            if (ret == -1){
+                p.sendMessage(ChatColor.RED + "Error: " + args[1] +" is already unregistered!");
+                return false;
+            }
+         //   showOdds(p);
+            plugin.updateSidebar();
+            return true;
+        }
 
 
         ////////////////////////////////////

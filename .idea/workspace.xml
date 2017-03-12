@@ -9,6 +9,7 @@
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -41,7 +42,7 @@
       <file leaf-file-name="FightClubHistoryCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubHistoryCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="270">
               <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -53,8 +54,8 @@
       <file leaf-file-name="FightClubCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+            <state relative-caret-position="451">
+              <caret line="113" column="0" lean-forward="true" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -83,17 +84,9 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="1471" column="5" lean-forward="true" selection-start-line="1471" selection-start-column="5" selection-end-line="1471" selection-end-column="5" />
-              <folding>
-                <element signature="e#2764#2783#0" expanded="true" />
-                <element signature="e#2864#2883#0" expanded="true" />
-                <element signature="e#2966#2985#0" expanded="true" />
-                <element signature="e#3056#3072#0" expanded="true" />
-                <element signature="e#35703#35711#0" expanded="true" />
-                <element signature="e#41818#41828#0" expanded="true" />
-                <element signature="e#44400#44408#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="466">
+              <caret line="1396" column="0" lean-forward="true" selection-start-line="1396" selection-start-column="0" selection-end-line="1396" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,7 +94,7 @@
       <file leaf-file-name="FightClubSideBar.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
+            <state relative-caret-position="270">
               <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
               <folding />
             </state>
@@ -111,7 +104,7 @@
       <file leaf-file-name="FightClubData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
+            <state relative-caret-position="270">
               <caret line="25" column="41" lean-forward="false" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -123,7 +116,7 @@
       <file leaf-file-name="MySQLManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
+            <state relative-caret-position="2445">
               <caret line="169" column="13" lean-forward="false" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
               <folding />
             </state>
@@ -152,7 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>endGame</find>
       <find>&quot;watch&quot;</find>
       <find>予想</find>
       <find>cancel</find>
@@ -171,7 +163,6 @@
       <find>cance</find>
       <find>openGame</find>
       <find>startGame</find>
-      <find>register</find>
       <find>seva</find>
       <find>saveCurrentStatus</find>
       <find>getConfig</find>
@@ -182,6 +173,8 @@
       <find>saveCurre</find>
       <find>&quot;CurrentStatus</find>
       <find>loadConfig</find>
+      <find>register</find>
+      <find>&quot;register&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -220,8 +213,8 @@
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubHistoryCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
       </list>
     </option>
@@ -282,8 +275,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="255" />
-    <option name="y" value="68" />
+    <option name="x" value="211" />
+    <option name="y" value="109" />
     <option name="width" value="2333" />
     <option name="height" value="1032" />
   </component>
@@ -305,9 +298,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -450,6 +440,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -759,13 +752,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
-    </task>
-    <task id="LOCAL-00084" summary="観戦者登録">
-      <created>1489032846412</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1489032846413</updated>
     </task>
     <task id="LOCAL-00085" summary="観戦者登録">
       <created>1489033936609</created>
@@ -1103,7 +1089,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489301819144</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL-00133" summary="MFC無効時のイベントキャセンル処理">
+      <created>1489302279912</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1489302279912</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1116,7 +1109,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="255" y="68" width="2333" height="1032" extended-state="0" />
+    <frame x="211" y="109" width="2333" height="1032" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1134,7 +1127,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16412047" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16542995" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25223437" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973601" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1185,7 +1178,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="死亡キャンセル" />
     <MESSAGE value="エントリ時間を修正" />
     <MESSAGE value="看板に表示する仕組み" />
     <MESSAGE value="エラーがでるので看板更新は中止" />
@@ -1210,7 +1202,8 @@
     <MESSAGE value="選手が投票ｄけいないようにした" />
     <MESSAGE value="added mfc on/off/reload  commands&#10;" />
     <MESSAGE value="MFC on/off状態の保存" />
-    <option name="LAST_COMMIT_MESSAGE" value="MFC on/off状態の保存" />
+    <MESSAGE value="MFC無効時のイベントキャセンル処理" />
+    <option name="LAST_COMMIT_MESSAGE" value="MFC無効時のイベントキャセンル処理" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1235,15 +1228,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5895">
           <caret line="418" column="34" lean-forward="false" selection-start-line="418" selection-start-column="34" selection-end-line="418" selection-end-column="34" />
-          <folding>
-            <element signature="e#2764#2783#0" expanded="true" />
-            <element signature="e#2864#2883#0" expanded="true" />
-            <element signature="e#2966#2985#0" expanded="true" />
-            <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35703#35711#0" expanded="true" />
-            <element signature="e#41818#41828#0" expanded="true" />
-            <element signature="e#44400#44408#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1290,15 +1275,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5895">
           <caret line="418" column="34" lean-forward="false" selection-start-line="418" selection-start-column="34" selection-end-line="418" selection-end-column="34" />
-          <folding>
-            <element signature="e#2764#2783#0" expanded="true" />
-            <element signature="e#2864#2883#0" expanded="true" />
-            <element signature="e#2966#2985#0" expanded="true" />
-            <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35703#35711#0" expanded="true" />
-            <element signature="e#41818#41828#0" expanded="true" />
-            <element signature="e#44400#44408#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1345,15 +1322,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20060">
           <caret line="1221" column="27" lean-forward="true" selection-start-line="1221" selection-start-column="27" selection-end-line="1221" selection-end-column="27" />
-          <folding>
-            <element signature="e#2764#2783#0" expanded="true" />
-            <element signature="e#2864#2883#0" expanded="true" />
-            <element signature="e#2966#2985#0" expanded="true" />
-            <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35703#35711#0" expanded="true" />
-            <element signature="e#41818#41828#0" expanded="true" />
-            <element signature="e#44400#44408#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1452,15 +1421,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1">
           <caret line="766" column="22" lean-forward="false" selection-start-line="766" selection-start-column="15" selection-end-line="766" selection-end-column="22" />
-          <folding>
-            <element signature="e#2764#2783#0" expanded="true" />
-            <element signature="e#2864#2883#0" expanded="true" />
-            <element signature="e#2966#2985#0" expanded="true" />
-            <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35703#35711#0" expanded="true" />
-            <element signature="e#41818#41828#0" expanded="true" />
-            <element signature="e#44400#44408#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1499,15 +1460,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5895">
           <caret line="418" column="34" lean-forward="false" selection-start-line="418" selection-start-column="34" selection-end-line="418" selection-end-column="34" />
-          <folding>
-            <element signature="e#2764#2783#0" expanded="true" />
-            <element signature="e#2864#2883#0" expanded="true" />
-            <element signature="e#2966#2985#0" expanded="true" />
-            <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35703#35711#0" expanded="true" />
-            <element signature="e#41818#41828#0" expanded="true" />
-            <element signature="e#44400#44408#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1554,15 +1507,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5895">
           <caret line="418" column="34" lean-forward="false" selection-start-line="418" selection-start-column="34" selection-end-line="418" selection-end-column="34" />
-          <folding>
-            <element signature="e#2764#2783#0" expanded="true" />
-            <element signature="e#2864#2883#0" expanded="true" />
-            <element signature="e#2966#2985#0" expanded="true" />
-            <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35703#35711#0" expanded="true" />
-            <element signature="e#41818#41828#0" expanded="true" />
-            <element signature="e#44400#44408#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1609,15 +1554,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20060">
           <caret line="1221" column="27" lean-forward="true" selection-start-line="1221" selection-start-column="27" selection-end-line="1221" selection-end-column="27" />
-          <folding>
-            <element signature="e#2764#2783#0" expanded="true" />
-            <element signature="e#2864#2883#0" expanded="true" />
-            <element signature="e#2966#2985#0" expanded="true" />
-            <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35703#35711#0" expanded="true" />
-            <element signature="e#41818#41828#0" expanded="true" />
-            <element signature="e#44400#44408#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1680,7 +1617,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="270">
           <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
           <folding />
         </state>
@@ -1688,7 +1625,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
+        <state relative-caret-position="270">
           <caret line="25" column="41" lean-forward="false" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1698,7 +1635,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubHistoryCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
+        <state relative-caret-position="270">
           <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1714,14 +1651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLFunc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1732,25 +1661,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
+        <state relative-caret-position="2445">
           <caret line="169" column="13" lean-forward="false" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="113" column="0" lean-forward="true" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="1471" column="5" lean-forward="true" selection-start-line="1471" selection-start-column="5" selection-end-line="1471" selection-end-column="5" />
-          <folding>
-            <element signature="e#2764#2783#0" expanded="true" />
-            <element signature="e#2864#2883#0" expanded="true" />
-            <element signature="e#2966#2985#0" expanded="true" />
-            <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35703#35711#0" expanded="true" />
-            <element signature="e#41818#41828#0" expanded="true" />
-            <element signature="e#44400#44408#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="466">
+          <caret line="1396" column="0" lean-forward="true" selection-start-line="1396" selection-start-column="0" selection-end-line="1396" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
