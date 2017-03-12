@@ -759,12 +759,13 @@ public final class FightClub extends JavaPlugin implements Listener {
         titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
         sideBar.show();
+        //String s= f.name + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
 
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
                 String title = "§4"+fighters.get(0).name ;
                 //String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
-                String subTitle = "Kill:"+kill0+" Death:"+death0+" KDR:"+kdrs0+"総獲得賞金 $"+(int)prize0;
+                String subTitle = "§9§lKill:"+kill0+" §c§lDeath:"+death0+" §e§l総獲得賞金 $"+(int)prize0;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
 
@@ -774,7 +775,8 @@ public final class FightClub extends JavaPlugin implements Listener {
             public void run() {
                 String title = "§1"+fighters.get(1).name ;
  //               String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
-                String subTitle = "Kill:"+kill1+" Death:"+death1+" KDR:"+kdrs1+"総獲得賞金 $"+(int)prize1;
+//                String subTitle = "Kill:"+kill1+" Death:"+death1+" KDR:"+kdrs1+"総獲得賞金 $"+(int)prize1;
+                String subTitle = "§9§lKill:"+kill1+" §c§lDeath:"+death1+" §e§l総獲得賞金 $"+(int)prize1;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
             }

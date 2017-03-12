@@ -56,7 +56,7 @@ public class FightClubSideBar {
 
 
     void showOdds(){
-        sideBar.setTitle("Man10 Fight Club ベット受付中!!-> /mfc");
+        sideBar.setTitle("Man10 Fight Club ベット受付中!!-> §a/§lMFC");
         sideBar.setScore("§4残り時間",plugin.betTimer);
 
         double total = plugin.getTotalBet();
@@ -64,7 +64,7 @@ public class FightClubSideBar {
         for(int i = 0;i < plugin.fighters.size();i++){
             FightClub.PlayerInformation f = plugin.fighters.get(i);
 
-            String tx = String.format("%10s Odds:§bx§l%3.2f",f.name,plugin.getFighterOdds(f.uuid));
+            String tx = String.format("%10s Odds:§bx§l%3.3f",f.name,plugin.getFighterOdds(f.uuid));
             sideBar.setScore(tx,plugin.getFighterBetCount(f.uuid));
         }
 
@@ -87,7 +87,7 @@ public class FightClubSideBar {
             sideBar.setScore("§eみなさんが、ベットしないと試合ははじまりません",0);
 
         }
-        sideBar.setScore("§b/mfc§fで勝利者を予想しお金をかけよう！！",0);
+        sideBar.setScore("§a/§lMFC§fで勝利者を予想しお金をかけよう！！",0);
 
         showToAll();
     }
@@ -133,7 +133,7 @@ public class FightClubSideBar {
 
 
     void showWaiters(){
-        sideBar.setTitle("Man10 Fight Club 選手受付中 ");
+        sideBar.setTitle("Man10 Fight Club 選手受付中 §a/§lMFC");
 
         String inf = "残り時間:"+plugin.entryTimer +" §e§l参加費:$"+(int)plugin.entryPrice;
         sideBar.setScore(inf,0);
