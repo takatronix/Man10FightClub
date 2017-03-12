@@ -33,8 +33,7 @@ public class FightClubSideBar {
     //sideBar.setScore("test",1);
     if(plugin.currentStatus == Closed){
        // plugin.log("showing sidebar close");
-
-        showToAll();
+     //   showToAll();
         return;
     }if(plugin.currentStatus == Entry) {
          //   plugin.log("showing sidebar Entry");

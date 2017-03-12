@@ -37,6 +37,21 @@ public class FightClubCommand  implements CommandExecutor {
             return true;
         }
 
+        //      ON/OFFコマンド
+        if(args[0].equalsIgnoreCase("on")) {
+            plugin.enableMFC(sender,true);
+            return false;
+        }
+        if(args[0].equalsIgnoreCase("off")) {
+            plugin.enableMFC(sender,false);
+            return false;
+        }
+
+        if(args[0].equalsIgnoreCase("reload")) {
+            plugin.reload(sender);
+            return false;
+        }
+
         ////////////////////////////////////
         //          エントリー
         ////////////////////////////////////
@@ -75,6 +90,22 @@ public class FightClubCommand  implements CommandExecutor {
             plugin.updateSidebar();
             return true;
         }
+
+
+
+        ////////////////////////////////////
+        //        強制勝利
+        ////////////////////////////////////
+        if(args[0].equalsIgnoreCase("end")) {
+            if (args.length != 2) {
+                p.sendMessage("/mfc end [fighter]");
+                return false;
+            }
+            return false;
+        }
+
+
+
         ////////////////////////////////////
         //        強制勝利
         ////////////////////////////////////

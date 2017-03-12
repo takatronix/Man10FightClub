@@ -34,6 +34,8 @@ import static red.man10.fightclub.FightClub.Status.*;
 
 public final class FightClub extends JavaPlugin implements Listener {
 
+    String adminPermision = "man10.fightclub.admin";
+
     FightClubGUI gui = new FightClubGUI(this);
     LifeBar lifebar = new LifeBar(this);
     TitleBar titlebar = new TitleBar(this);
@@ -43,7 +45,10 @@ public final class FightClub extends JavaPlugin implements Listener {
     FightClubData data = null;
 
 
+    //    Fight ID （データベースキー）OpenFightでアップデートされる
     int fightId = -1;
+
+
     int kill0 = 0;
     int kill1 = 0;
     int death0 = 0;
@@ -407,6 +412,43 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
     }
 
+    //      MFC有効無効
+    int enableMFC(CommandSender sender,boolean enable){
+
+        //
+        if(!sender.hasPermission(adminPermision)){
+            sender.sendMessage("You don't have permission:" + adminPermision);
+            return 0;
+        }
+
+        if(enable){
+            sender.sendMessage("MFCを有効にしています");
+            startEntry();
+        }else{
+            sender.sendMessage("MFCを無効にしています");
+            cancelGame();
+            this.currentStatus = Closed;
+        }
+        updateSidebar();
+        updateLifeBar();
+        return 0;
+    }
+
+    //      MFC有効無効
+    int reload(CommandSender sender){
+        serverMessage("MFC Reloading...");
+
+        loadConfig();
+
+
+        updateSidebar();
+        updateLifeBar();
+
+
+        serverMessage("MFC Reloaded.");
+        return 0;
+    }
+
     //////////////////////////////////////////////
     //      ゲームを中断する  払い戻し後ステータスを Closedへ
     //////////////////////////////////////////////
@@ -444,6 +486,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         return 0;
     }
+
 
     public boolean canStartGame(){
 
@@ -926,15 +969,16 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     void updateLifeBar(){
-        Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
-        Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
-        double h0 = f0.getHealth() / f0.getHealthScale();
-        double h1 = f1.getHealth() / f1.getHealthScale();
 
-       // serverMessage("scale :"+f0.getHealthScale());
-        //serverMessage("h1"+ h1);
-        lifebar.setRBar(h0);
-        lifebar.setBBar(h1);
+        if(fighters.size() >= 2){
+            Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
+            Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
+            double h0 = f0.getHealth() / f0.getHealthScale();
+            double h1 = f1.getHealth() / f1.getHealthScale();
+
+            lifebar.setRBar(h0);
+            lifebar.setBBar(h1);
+        }
     }
     void closeLifeBar(){
         lifebar.clearBar();
@@ -1042,7 +1086,6 @@ public final class FightClub extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
-        p.sendMessage(ChatColor.YELLOW  + "Man10 Fight Club System Started.");
         updateSidebar();
     }
     @EventHandler
