@@ -131,7 +131,7 @@ public class FightClubSideBar {
             FightClub.PlayerInformation f = plugin.waiters.get(i);
             //String s = "["+i+"]" + f.name ;
 
-            String s= f.name + " Kill:"+f.kill+" Death:"+f.death+" $"+(int)f.prize;
+            String s= f.name + " K:"+f.kill+"/D:"+f.death+"/$"+(int)f.prize;
 
             sideBar.setScore(s,getScore(f));
            // Bukkit.getLogger().info("waiter" + s);
