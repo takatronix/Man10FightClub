@@ -63,7 +63,7 @@ public class FightClubSideBar {
         for(int i = 0;i < plugin.fighters.size();i++){
             FightClub.PlayerInformation f = plugin.fighters.get(i);
 
-            String tx = String.format("%10s Odds:§bx§l%3.1f",f.name,plugin.getFighterOdds(f.uuid));
+            String tx = String.format("%10s Odds:§bx§l%3.2f",f.name,plugin.getFighterOdds(f.uuid));
             sideBar.setScore(tx,plugin.getFighterBetCount(f.uuid));
         }
 
@@ -96,20 +96,17 @@ public class FightClubSideBar {
 
         for(int i = 0;i < plugin.fighters.size();i++){
             FightClub.PlayerInformation f = plugin.fighters.get(i);
-            String s = "";
 
 
-            if(i == 0){
-                Double h = Bukkit.getPlayer(f.uuid).getHealth();
-                String hl = String.format("%.1f",h);
+           // FightClub.PlayerInformation f = plugin.fighters.get(i);
+            //String s = "["+i+"]" + f.name ;
 
-                s =  "§c["+i+"]" + f.name + " Health:"+hl;
-            }else{
-                Double h = Bukkit.getPlayer(f.uuid).getHealth();
-                String hl = String.format("%.1f",h);
-                s =  "§9["+i+"]" + f.name + " Health:"+ hl;
-            }
-            sideBar.setScore(s,plugin.getFighterBetCount(f.uuid));
+            String s = String.format("%10s Odds:§bx§l%3.2f",f.name,plugin.getFighterOdds(f.uuid));
+
+
+            sideBar.setScore(s,0);
+
+ //           sideBar.setScore(s,plugin.getFighterBetCount(f.uuid));
         }
         showToAll();
     }

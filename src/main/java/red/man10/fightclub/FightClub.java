@@ -566,6 +566,12 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         showTitle("ファイト！！ #"+fightId,subStitle, 1,3);
 
+
+        f0.hidePlayer(f1);
+        f1.hidePlayer(f0);
+        f0.showPlayer(f1);
+        f1.showPlayer(f0);
+
         updateSidebar();
         saveCurrentStatus();
 
