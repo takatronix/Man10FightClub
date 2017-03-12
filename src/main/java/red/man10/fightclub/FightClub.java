@@ -601,6 +601,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
     public int startEntry(){
         resetEnetryTimer();
+        resetFightTimer();
+        resetBetTimer();
         bets.clear();
         fighters.clear();
         currentStatus = Entry;
