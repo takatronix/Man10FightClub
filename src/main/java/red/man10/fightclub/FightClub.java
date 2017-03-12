@@ -1798,8 +1798,12 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     @EventHandler
     public void itemSpawn(ItemSpawnEvent e) {
+        if(currentStatus == Closed){
+            return;
+        }
+
         if(e.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
-           // e.getEntity().remove();
+            e.getEntity().remove();
 
         }
     }
