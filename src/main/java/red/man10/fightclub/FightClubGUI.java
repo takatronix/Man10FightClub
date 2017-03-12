@@ -203,10 +203,11 @@ public class FightClubGUI {
                             p.sendMessage("掛け金を入力してください");
                             e.setCancelled(true);
                             return;
+                        }else{
+                            placeBetGUI(e.getInventory(), p);
+                            e.setCancelled(true);
+                            return;
                         }
-                        placeBetGUI(e.getInventory(), p);
-                        e.setCancelled(true);
-                        return;
                         //確認処理
                     }
                     e.setCancelled(true);
