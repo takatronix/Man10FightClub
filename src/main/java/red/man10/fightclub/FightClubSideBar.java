@@ -134,6 +134,7 @@ public class FightClubSideBar {
 
     void showWaiters(){
         sideBar.setTitle("Man10 Fight Club 選手受付中 §a/§lMFC");
+        sideBar.setScore("獲得金額: K=000/M=1000000",0);
 
         String inf = "残り時間:"+plugin.entryTimer +" §e§l参加費:$"+(int)plugin.entryPrice;
         sideBar.setScore(inf,0);
