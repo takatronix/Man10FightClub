@@ -63,8 +63,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="1706" column="55" lean-forward="false" selection-start-line="1706" selection-start-column="55" selection-end-line="1706" selection-end-column="55" />
+            <state relative-caret-position="196">
+              <caret line="1721" column="57" lean-forward="true" selection-start-line="1721" selection-start-column="57" selection-end-line="1722" selection-end-column="22" />
               <folding>
                 <element signature="e#2723#2742#0" expanded="true" />
                 <element signature="e#2823#2842#0" expanded="true" />
@@ -73,7 +73,7 @@
                 <element signature="e#35535#35543#0" expanded="true" />
                 <element signature="e#41816#41826#0" expanded="true" />
                 <element signature="e#44398#44406#0" expanded="true" />
-                <element signature="e#50115#50123#0" expanded="true" />
+                <element signature="e#50233#50241#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -283,8 +283,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2626" />
-    <option name="y" value="119" />
+    <option name="x" value="2686" />
+    <option name="y" value="91" />
     <option name="width" value="2333" />
     <option name="height" value="959" />
   </component>
@@ -761,13 +761,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00093" summary="死亡キャンセル">
-      <created>1489043271801</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1489043271801</updated>
-    </task>
     <task id="LOCAL-00094" summary="エントリ時間を修正">
       <created>1489044243417</created>
       <option name="number" value="00094" />
@@ -1104,7 +1097,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489315919495</updated>
     </task>
-    <option name="localTasksCounter" value="142" />
+    <task id="LOCAL-00142" summary="TP後みえなくなるバグ">
+      <created>1489317985480</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1489317985480</updated>
+    </task>
+    <option name="localTasksCounter" value="143" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1117,7 +1117,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2626" y="119" width="2333" height="959" extended-state="0" />
+    <frame x="2686" y="91" width="2333" height="959" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1186,7 +1186,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="タイトルテキスト" />
     <MESSAGE value="参加費を設定" />
     <MESSAGE value="admin menuコマンド追加" />
     <MESSAGE value="参加費処理" />
@@ -1211,7 +1210,8 @@
     <MESSAGE value="GlowAPI廃止" />
     <MESSAGE value="不要なログの排除" />
     <MESSAGE value="タイムアウトが連発する問題" />
-    <option name="LAST_COMMIT_MESSAGE" value="タイムアウトが連発する問題" />
+    <MESSAGE value="TP後みえなくなるバグ" />
+    <option name="LAST_COMMIT_MESSAGE" value="TP後みえなくなるバグ" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1244,7 +1244,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
-            <element signature="e#50115#50123#0" expanded="true" />
+            <element signature="e#50233#50241#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1300,7 +1300,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
-            <element signature="e#50115#50123#0" expanded="true" />
+            <element signature="e#50233#50241#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1356,7 +1356,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
-            <element signature="e#50115#50123#0" expanded="true" />
+            <element signature="e#50233#50241#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1464,7 +1464,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
-            <element signature="e#50115#50123#0" expanded="true" />
+            <element signature="e#50233#50241#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1512,7 +1512,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
-            <element signature="e#50115#50123#0" expanded="true" />
+            <element signature="e#50233#50241#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1568,7 +1568,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
-            <element signature="e#50115#50123#0" expanded="true" />
+            <element signature="e#50233#50241#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1624,7 +1624,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
-            <element signature="e#50115#50123#0" expanded="true" />
+            <element signature="e#50233#50241#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1755,8 +1755,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="1706" column="55" lean-forward="false" selection-start-line="1706" selection-start-column="55" selection-end-line="1706" selection-end-column="55" />
+        <state relative-caret-position="196">
+          <caret line="1721" column="57" lean-forward="true" selection-start-line="1721" selection-start-column="57" selection-end-line="1722" selection-end-column="22" />
           <folding>
             <element signature="e#2723#2742#0" expanded="true" />
             <element signature="e#2823#2842#0" expanded="true" />
@@ -1765,7 +1765,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
-            <element signature="e#50115#50123#0" expanded="true" />
+            <element signature="e#50233#50241#0" expanded="true" />
           </folding>
         </state>
       </provider>

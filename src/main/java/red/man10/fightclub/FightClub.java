@@ -1698,6 +1698,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             for(PlayerInformation f :waiters){
                 Player p = Bukkit.getPlayer(f.uuid);
                 p.teleport(loc);
+                updateEntities(p,getPlayersWithin(p,100),true);
             }
 
         }
@@ -1735,9 +1736,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(o != null){
             Location loc = (Location)o;
 //            p.teleport(loc);
-            for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                player.teleport(loc);
+            for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                p.teleport(loc);
 
+                updateEntities(p,getPlayersWithin(p,100),true);
 
             }
          //   Bukkit.getWorld(worldName).refreshChunk();
