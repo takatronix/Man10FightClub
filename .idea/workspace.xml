@@ -8,6 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -53,7 +54,7 @@
       <file leaf-file-name="FightClubCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2745">
+            <state relative-caret-position="76">
               <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
               <folding />
             </state>
@@ -80,19 +81,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="1070" column="0" lean-forward="true" selection-start-line="1070" selection-start-column="0" selection-end-line="1070" selection-end-column="0" />
+            <state relative-caret-position="391">
+              <caret line="1096" column="9" lean-forward="true" selection-start-line="1096" selection-start-column="9" selection-end-line="1096" selection-end-column="9" />
               <folding>
                 <element signature="e#2764#2783#0" expanded="true" />
                 <element signature="e#2864#2883#0" expanded="true" />
                 <element signature="e#2966#2985#0" expanded="true" />
                 <element signature="e#3056#3072#0" expanded="true" />
-                <element signature="e#35210#35218#0" expanded="true" />
-                <element signature="e#41120#41130#0" expanded="true" />
-                <element signature="e#43627#43635#0" expanded="true" />
+                <element signature="e#35711#35719#0" expanded="true" />
+                <element signature="e#41621#41631#0" expanded="true" />
+                <element signature="e#44128#44136#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,12 +109,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClubData.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FightClubData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="375">
+              <caret line="25" column="41" lean-forward="false" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,18 +124,18 @@
       <file leaf-file-name="MySQLManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2235">
-              <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+            <state relative-caret-position="391">
+              <caret line="169" column="13" lean-forward="true" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClubGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
+      <file leaf-file-name="MySQLFunc.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLFunc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3600">
-              <caret line="265" column="56" lean-forward="false" selection-start-line="265" selection-start-column="56" selection-end-line="265" selection-end-column="56" />
+            <state relative-caret-position="330">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -150,20 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>startFight</find>
-      <find>chat</find>
-      <find>execute</find>
-      <find>endGa</find>
-      <find>getTotalBets</find>
-      <find>worldName</find>
-      <find>totalBet</find>
-      <find>getTotalBet</find>
-      <find>data.inser</find>
-      <find>onEnag</find>
-      <find>prize</find>
-      <find>openGame</find>
-      <find>registerFight</find>
-      <find>register</find>
       <find>endGame</find>
       <find>&quot;watch&quot;</find>
       <find>予想</find>
@@ -171,7 +160,6 @@
       <find>タイムアウト</find>
       <find>canBet</find>
       <find>betFight</find>
-      <find>startGame</find>
       <find>enableMFC</find>
       <find>cancelGamecancelGame</find>
       <find>cancelGame</find>
@@ -179,6 +167,21 @@
       <find>showToAll</find>
       <find>loadConfigt</find>
       <find>FightClub</find>
+      <find>selectedArena</find>
+      <find>currentStatus =</find>
+      <find>cance</find>
+      <find>openGame</find>
+      <find>startGame</find>
+      <find>register</find>
+      <find>seva</find>
+      <find>saveCurrentStatus</find>
+      <find>getConfig</find>
+      <find>currentStatus</find>
+      <find>saveConfig</find>
+      <find>saveStatus</find>
+      <find>saveSta</find>
+      <find>saveCurre</find>
+      <find>&quot;CurrentStatus</find>
       <find>loadConfig</find>
     </findStrings>
     <replaceStrings>
@@ -213,13 +216,13 @@
         <option value="$PROJECT_DIR$/src/main/java/red/man10/TitleBar.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/SidebarDisplay.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubHistoryCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
       </list>
     </option>
@@ -245,10 +248,6 @@
           <option name="myItemId" value="FightClub" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
-        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -262,16 +261,6 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="Run Configurations" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RunConfigurationsNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="FightClub" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -772,13 +761,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00082" summary="admin menu 選手登録の左ボタンが取れるバグ修正">
-      <created>1488942993187</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1488942993188</updated>
-    </task>
     <task id="LOCAL-00083" summary="lifeバー表示">
       <created>1489025189165</created>
       <option name="number" value="00083" />
@@ -1115,7 +1097,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489299188186</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="added mfc on/off/reload  commands&#10;">
+      <created>1489299513801</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1489299513801</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1252,9 +1241,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35210#35218#0" expanded="true" />
-            <element signature="e#41120#41130#0" expanded="true" />
-            <element signature="e#43627#43635#0" expanded="true" />
+            <element signature="e#35711#35719#0" expanded="true" />
+            <element signature="e#41621#41631#0" expanded="true" />
+            <element signature="e#44128#44136#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1307,9 +1296,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35210#35218#0" expanded="true" />
-            <element signature="e#41120#41130#0" expanded="true" />
-            <element signature="e#43627#43635#0" expanded="true" />
+            <element signature="e#35711#35719#0" expanded="true" />
+            <element signature="e#41621#41631#0" expanded="true" />
+            <element signature="e#44128#44136#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1362,9 +1351,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35210#35218#0" expanded="true" />
-            <element signature="e#41120#41130#0" expanded="true" />
-            <element signature="e#43627#43635#0" expanded="true" />
+            <element signature="e#35711#35719#0" expanded="true" />
+            <element signature="e#41621#41631#0" expanded="true" />
+            <element signature="e#44128#44136#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1446,7 +1435,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
           <caret line="55" column="19" lean-forward="false" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1467,9 +1458,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35210#35218#0" expanded="true" />
-            <element signature="e#41120#41130#0" expanded="true" />
-            <element signature="e#43627#43635#0" expanded="true" />
+            <element signature="e#35711#35719#0" expanded="true" />
+            <element signature="e#41621#41631#0" expanded="true" />
+            <element signature="e#44128#44136#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1514,9 +1505,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35210#35218#0" expanded="true" />
-            <element signature="e#41120#41130#0" expanded="true" />
-            <element signature="e#43627#43635#0" expanded="true" />
+            <element signature="e#35711#35719#0" expanded="true" />
+            <element signature="e#41621#41631#0" expanded="true" />
+            <element signature="e#44128#44136#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1569,9 +1560,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35210#35218#0" expanded="true" />
-            <element signature="e#41120#41130#0" expanded="true" />
-            <element signature="e#43627#43635#0" expanded="true" />
+            <element signature="e#35711#35719#0" expanded="true" />
+            <element signature="e#41621#41631#0" expanded="true" />
+            <element signature="e#44128#44136#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1624,9 +1615,9 @@
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35210#35218#0" expanded="true" />
-            <element signature="e#41120#41130#0" expanded="true" />
-            <element signature="e#43627#43635#0" expanded="true" />
+            <element signature="e#35711#35719#0" expanded="true" />
+            <element signature="e#41621#41631#0" expanded="true" />
+            <element signature="e#44128#44136#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1649,13 +1640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="21" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/LifeBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1668,14 +1652,6 @@
             <element signature="method#clearBar#0;class#LifeBar#0" expanded="false" />
             <element signature="method#resetBar#0;class#LifeBar#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2235">
-          <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1692,6 +1668,32 @@
         <state relative-caret-position="135">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="41" lean-forward="false" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1713,51 +1715,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2745">
+        <state relative-caret-position="76">
           <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLFunc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        <state relative-caret-position="330">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="169" column="13" lean-forward="true" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="1070" column="0" lean-forward="true" selection-start-line="1070" selection-start-column="0" selection-end-line="1070" selection-end-column="0" />
+        <state relative-caret-position="391">
+          <caret line="1096" column="9" lean-forward="true" selection-start-line="1096" selection-start-column="9" selection-end-line="1096" selection-end-column="9" />
           <folding>
             <element signature="e#2764#2783#0" expanded="true" />
             <element signature="e#2864#2883#0" expanded="true" />
             <element signature="e#2966#2985#0" expanded="true" />
             <element signature="e#3056#3072#0" expanded="true" />
-            <element signature="e#35210#35218#0" expanded="true" />
-            <element signature="e#41120#41130#0" expanded="true" />
-            <element signature="e#43627#43635#0" expanded="true" />
+            <element signature="e#35711#35719#0" expanded="true" />
+            <element signature="e#41621#41631#0" expanded="true" />
+            <element signature="e#44128#44136#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>

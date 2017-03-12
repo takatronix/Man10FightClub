@@ -429,6 +429,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             cancelGame();
             this.currentStatus = Closed;
         }
+        saveCurrentStatus();
         updateSidebar();
         updateLifeBar();
         return 0;
@@ -571,6 +572,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         showTitle("ファイト！！ #"+fightId,subStitle, 1,3);
 
         updateSidebar();
+        saveCurrentStatus();
+
         return 0;
     }
     public void resetPlayerStatus(Player p)
@@ -654,8 +657,23 @@ public final class FightClub extends JavaPlugin implements Listener {
         currentStatus = Entry;
         closeLifeBar();
         updateSidebar();
+        saveCurrentStatus();
         return 0;
     }
+
+    public void saveCurrentStatus(){
+
+        if(currentStatus == Closed){
+            getConfig().set("Disabled",true);
+        }else{
+            getConfig().set("Disabled",false);
+
+        }
+
+
+        saveConfig();
+    }
+
 
     String   selectedKit = "";
     //      ゲーム開始
@@ -787,6 +805,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         currentStatus = Opened;
         updateSidebar();
 
+        saveCurrentStatus();
 
         return true;
     }
@@ -1072,6 +1091,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         //      MYSQL初期化
         data = new FightClubData(this);
 
+        boolean flag = getConfig().getBoolean("Disabled");
+        if(flag == true){
+            currentStatus = Closed;
+        }
+
+        updateSidebar();
 
     }
 
@@ -1243,6 +1268,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         }
     }
+
 
 
     ////////////////////////////

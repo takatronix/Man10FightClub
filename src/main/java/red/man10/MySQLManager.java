@@ -67,6 +67,10 @@ public class MySQLManager {
         this.PASS = pass;
         this.MySQL = new MySQLFunc(host, db, user, pass,port);
         this.con = this.MySQL.open();
+        if(this.con == null){
+            Bukkit.getLogger().info("failed to open MYSQL");
+            return false;
+        }
 
         try {
             this.st = this.con.createStatement();
@@ -121,7 +125,10 @@ public class MySQLManager {
     public boolean execute(String query) {
         this.MySQL = new MySQLFunc(this.HOST, this.DB, this.USER, this.PASS,this.PORT);
         this.con = this.MySQL.open();
-
+        if(this.con == null){
+            Bukkit.getLogger().info("failed to open MYSQL");
+            return false;
+        }
         boolean ret = true;
         if (debugMode){
             plugin.getLogger().info("query:" + query);
@@ -148,6 +155,12 @@ public class MySQLManager {
         this.MySQL = new  MySQLFunc(this.HOST, this.DB, this.USER, this.PASS,this.PORT);
         this.con = this.MySQL.open();
         ResultSet rs = null;
+        if(this.con == null){
+            Bukkit.getLogger().info("failed to open MYSQL");
+            return rs;
+        }
+
+
 
 
         if (debugMode){
