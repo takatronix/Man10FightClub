@@ -1241,12 +1241,6 @@ public final class FightClub extends JavaPlugin implements Listener {
 
             Player damager = (Player) e.getDamager();
 
-
-            /*
-            if(damaged.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
-                return;
-            }
-*/
             //
             if(!isFighter(damager.getUniqueId())){
                 damager.sendMessage("選手以外の戦闘行動は禁止されています");
