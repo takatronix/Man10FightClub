@@ -57,7 +57,11 @@ public class VaultManager {
     //      引き出し
     /////////////////////////////////////
     public Boolean  withdraw(UUID uuid, double money){
-        OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
+        OfflinePlayer p = Bukkit.getOfflinePlayer(uuid);
+        if(p == null){
+            Bukkit.getLogger().info(uuid.toString()+"は見つからない");
+            return false;
+        }
         EconomyResponse resp = economy.withdrawPlayer(p,money);
         if(resp.transactionSuccess()){
             p.getPlayer().sendMessage(ChatColor.YELLOW + "$"+(int)money+"支払いました");
@@ -69,7 +73,12 @@ public class VaultManager {
     //      お金を入れる
     /////////////////////////////////////
     public Boolean  deposit(UUID uuid,double money){
-        OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
+        OfflinePlayer p = Bukkit.getOfflinePlayer(uuid);
+        if(p == null){
+            Bukkit.getLogger().info(uuid.toString()+"は見つからない");
+
+            return false;
+        }
         EconomyResponse resp = economy.depositPlayer(p,money);
         if(resp.transactionSuccess()){
             p.getPlayer().sendMessage(ChatColor.YELLOW + "$"+(int)money+"受取りました");
