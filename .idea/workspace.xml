@@ -9,6 +9,7 @@
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,8 +32,8 @@
       <file leaf-file-name="FightClubArenaCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+            <state relative-caret-position="214">
+              <caret line="22" column="27" lean-forward="false" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -51,8 +52,8 @@
       <file leaf-file-name="FightClubCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-193">
-              <caret line="98" column="42" lean-forward="false" selection-start-line="98" selection-start-column="42" selection-end-line="98" selection-end-column="42" />
+            <state relative-caret-position="187">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -61,8 +62,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="1236" column="24" lean-forward="false" selection-start-line="1236" selection-start-column="24" selection-end-line="1236" selection-end-column="24" />
+            <state relative-caret-position="232">
+              <caret line="1495" column="9" lean-forward="true" selection-start-line="1495" selection-start-column="9" selection-end-line="1495" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -154,9 +155,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>openGame</find>
-      <find>seva</find>
-      <find>saveCurrentStatus</find>
       <find>getConfig</find>
       <find>currentStatus</find>
       <find>saveConfig</find>
@@ -184,6 +182,9 @@
       <find>cancelGame</find>
       <find>startGame</find>
       <find>x</find>
+      <find>&quot;GUI&quot;</find>
+      <find>&quot;GUI</find>
+      <find>&quot;opend&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -220,11 +221,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubHistoryCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
       </list>
     </option>
@@ -777,13 +778,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00110" summary="参加費処理">
-      <created>1489130484352</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1489130484352</updated>
-    </task>
     <task id="LOCAL-00111" summary="プレーヤーステータスリセット">
       <created>1489211918669</created>
       <option name="number" value="00111" />
@@ -1120,7 +1114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489342766466</updated>
     </task>
-    <option name="localTasksCounter" value="159" />
+    <task id="LOCAL-00159" summary="バグ修正">
+      <created>1489342853295</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1489342853295</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1703,14 +1704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-193">
-          <caret line="98" column="42" lean-forward="false" selection-start-line="98" selection-start-column="42" selection-end-line="98" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1029">
@@ -1719,18 +1712,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+        <state relative-caret-position="214">
+          <caret line="22" column="27" lean-forward="false" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="1236" column="24" lean-forward="false" selection-start-line="1236" selection-start-column="24" selection-end-line="1236" selection-end-column="24" />
+        <state relative-caret-position="232">
+          <caret line="1495" column="9" lean-forward="true" selection-start-line="1495" selection-start-column="9" selection-end-line="1495" selection-end-column="9" />
           <folding />
         </state>
       </provider>

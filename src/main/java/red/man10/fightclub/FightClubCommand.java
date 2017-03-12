@@ -27,7 +27,6 @@ public class FightClubCommand  implements CommandExecutor {
 
         //      引数がない場合
         if(args.length == 0){
-            sender.sendMessage("GUI");
             plugin.openGUI(p);
             return true;
         }

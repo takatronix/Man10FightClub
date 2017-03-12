@@ -1490,11 +1490,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         if(currentStatus == Opened){
-            p.sendMessage("opend -> betmenu");
-            //
             gui.betMenu(p);
         }else{
-            p.sendMessage("opend -> joinMenu");
             gui.createJoinmenu(p);
         }
         updateSidebar();
