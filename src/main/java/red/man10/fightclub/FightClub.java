@@ -1266,9 +1266,10 @@ public final class FightClub extends JavaPlugin implements Listener {
                 int index = getFighterIndex(damager.getUniqueId());
                 endGame(index);
 
+                for(PlayerInformation pf : fighters){
+                    command("mkit pop "+pf.name);
+                }
 
-                command("mkit pop "+fighters.get(0).name );
-                command("mkit pop "+fighters.get(1).name );
                 tpaLobby();
 
 
