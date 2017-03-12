@@ -95,8 +95,8 @@
       <file leaf-file-name="FightClubSideBar.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="66" column="18" lean-forward="false" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+            <state relative-caret-position="395">
+              <caret line="76" column="35" lean-forward="false" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -781,13 +781,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00107" summary="admin menuコマンド追加">
-      <created>1489126741194</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1489126741194</updated>
-    </task>
     <task id="LOCAL-00108" summary="参加費処理">
       <created>1489127044325</created>
       <option name="number" value="00108" />
@@ -1124,7 +1117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489342159949</updated>
     </task>
-    <option name="localTasksCounter" value="156" />
+    <task id="LOCAL-00156" summary="表示修正">
+      <created>1489342224423</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1489342224423</updated>
+    </task>
+    <option name="localTasksCounter" value="157" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1761,8 +1761,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="66" column="18" lean-forward="false" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+        <state relative-caret-position="395">
+          <caret line="76" column="35" lean-forward="false" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="35" />
           <folding />
         </state>
       </provider>

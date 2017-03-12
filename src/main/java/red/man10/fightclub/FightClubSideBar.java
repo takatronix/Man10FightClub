@@ -56,7 +56,7 @@ public class FightClubSideBar {
 
 
     void showOdds(){
-        sideBar.setTitle("Man10 Fight Club ベット受付中!! §a§l/MFC");
+        sideBar.setTitle("Man10 Fight Club ベット受付中! §a/MFC");
         sideBar.setScore("§4残り時間",plugin.betTimer);
 
         double total = plugin.getTotalBet();
