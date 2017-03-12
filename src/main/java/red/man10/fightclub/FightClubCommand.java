@@ -174,7 +174,7 @@ public class FightClubCommand  implements CommandExecutor {
             return true;
         }
         if(args[0].equalsIgnoreCase("admin")){
-            plugin.gui.adminMenu(p);
+            //plugin.gui.adminMenu(p);
          //   p.sendMessage("MFC Opened");
             return true;
         }

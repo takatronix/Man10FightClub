@@ -1,5 +1,6 @@
 package red.man10.fightclub;
 
+import jdk.internal.org.objectweb.asm.tree.IntInsnNode;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.milkbowl.vault.chat.Chat;
@@ -11,6 +12,7 @@ import org.bukkit.boss.BossBar;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import red.man10.LifeBar;
 import red.man10.SkullMaker;
 import org.bukkit.Bukkit;
@@ -39,6 +41,7 @@ public class FightClubGUI {
     public void clickItem(InventoryClickEvent e) {
        Player p = (Player) e.getWhoClicked();
         //try {
+        /*
         if(e.getClickedInventory().getTitle().equals("§9§lプレイヤーを登録する")){
             String pageNumberString = e.getClickedInventory().getItem(49).getItemMeta().getLore().get(0);
             int pageNumberInt = Integer.parseInt(pageNumberString);
@@ -97,6 +100,18 @@ public class FightClubGUI {
             e.setCancelled(true);
             return;
         }
+        */
+        if (e.getInventory().getTitle().equals("§c§l         ベットメニュー")) {
+            FightClub.PlayerInformation info = plugin.fighters.get(0);
+            FightClub.PlayerInformation info1 = plugin.fighters.get(1);
+            if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
+                priceMenu(p, e.getCurrentItem().getItemMeta().getDisplayName());
+                e.setCancelled(true);
+            } else {
+                e.setCancelled(true);
+            }
+
+        }
         if(e.getClickedInventory().getTitle().equals("     §cMan10 Fight Club menu")){
             if(e.getSlot() == 1){
 
@@ -117,6 +132,7 @@ public class FightClubGUI {
 
 
             }
+
             if(e.getSlot() == 2){
                 //登録をキャンセル処理
                 plugin.unregisterFighter(e.getWhoClicked().getUniqueId());
@@ -143,17 +159,6 @@ public class FightClubGUI {
             e.setCancelled(true);
             return;
         }
-            if (e.getInventory().getTitle().equals("§c§l         ベットメニュー")) {
-                FightClub.PlayerInformation info = plugin.fighters.get(0);
-                FightClub.PlayerInformation info1 = plugin.fighters.get(1);
-                if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
-                    priceMenu(p, e.getCurrentItem().getItemMeta().getDisplayName());
-                    e.setCancelled(true);
-                } else {
-                    e.setCancelled(true);
-                }
-
-            }
             if (e.getInventory().getItem(52).getItemMeta().getDisplayName().equalsIgnoreCase("§c§lキャンセル")) {
                 String val = e.getClickedInventory().getItem(50).getItemMeta().getLore().get(1);
                 if (val.length() <= 8) {
@@ -194,7 +199,14 @@ public class FightClubGUI {
                     } else if (e.getSlot() == 52) {
                         p.closeInventory();
                     } else if (e.getSlot() == 50) {
+                        if(e.getInventory().getItem(50).getItemMeta().getLore().get(1) == ""){
+                            p.sendMessage("掛け金を入力してください");
+                            e.setCancelled(true);
+                            return;
+                        }
                         placeBetGUI(e.getInventory(), p);
+                        e.setCancelled(true);
+                        return;
                         //確認処理
                     }
                     e.setCancelled(true);
@@ -202,7 +214,15 @@ public class FightClubGUI {
                     if (e.getSlot() == 48) {
                         clearCalc(e.getInventory());
                     } else if (e.getSlot() == 50) {
-                        placeBetGUI(e.getInventory(), p);
+                        e.setCancelled(true);
+                        int money = Integer.parseInt(e.getInventory().getItem(50).getItemMeta().getLore().get(1));
+                        if(e.getClickedInventory().getItem(50).getItemMeta().getLore().get(1) == null){
+                            p.sendMessage("掛け金をかけてください。");
+                            e.setCancelled(true);
+                        }else{
+                            placeBetGUI(e.getInventory(), p);
+                        }
+                        return;
 
                     } else if (e.getSlot() == 52) {
                         p.closeInventory();
@@ -228,7 +248,6 @@ public class FightClubGUI {
         Player fighterPlayer = Bukkit.getPlayer(fighterName);
 
         UUID fighter = fighterPlayer.getUniqueId(); //    ShoへここへターゲットのUUID
-
 
         String buyer = p.getName();
         p.sendMessage(buyer);
@@ -579,7 +598,7 @@ public class FightClubGUI {
         p.openInventory(i);
 
     }
-
+/*
     public void adminMenu(Player p){
         Inventory i = Bukkit.createInventory(null, 45, "§c§lMFC Admin Console");
         addServerPlayerList();
@@ -639,6 +658,7 @@ public class FightClubGUI {
         p.openInventory(i);
 
     }
+
     public void changeState(Player p){
         Inventory i = Bukkit.createInventory(null, 9, "ゲームステートを変更する");
         
@@ -687,6 +707,6 @@ public class FightClubGUI {
         }
 
 
-    }
+    }*/
 
 }

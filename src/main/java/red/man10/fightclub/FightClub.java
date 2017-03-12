@@ -19,8 +19,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
@@ -1426,7 +1425,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                     return;
                 }
                 if(s.getLine(1).equalsIgnoreCase("Admin")){
-                    gui.adminMenu(e.getPlayer());
+                    //gui.adminMenu(e.getPlayer());
                     return;
                 }
                 if(s.getLine(1).equalsIgnoreCase("Kit")){
@@ -1507,19 +1506,20 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     @EventHandler
     public void clickItem(InventoryClickEvent e) {
-        if(currentStatus == Closed){
+        /*if(currentStatus == Closed){
+            return;
+        }*/
+        if(!e.getInventory().getName().equals(e.getInventory().getName())){
             return;
         }
-
-
         if(e.getClickedInventory() == null){
             //例外インベントリの処理
             //実は、インベントリの外枠（インベントリじゃないところ）　でもこのイベントは発動する
             return;
         }
-        if(currentStatus == Entry || currentStatus == Opened) {
+        //if(currentStatus == Entry || currentStatus == Opened) {
             gui.clickItem(e);
-        }
+       //}
 
     }
 
@@ -1569,7 +1569,10 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
     }
-
+    @EventHandler
+    public void creativeInventory(InventoryCreativeEvent e){
+        return;
+    }
 
     //      ブロックがこわれた
     @EventHandler
