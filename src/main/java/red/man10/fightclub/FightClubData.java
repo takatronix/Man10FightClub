@@ -180,9 +180,7 @@ public class FightClubData {
     public String currentTime(){
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy'-'MM'-'dd' 'HH':'mm':'ss");
-        Bukkit.getLogger().info("datetime ");
         String currentTime = sdf.format(date);
-       // Bukkit.getLogger().info(currentTime);
         return currentTime;
     }
 
