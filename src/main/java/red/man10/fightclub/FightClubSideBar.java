@@ -77,8 +77,8 @@ public class FightClubSideBar {
         sideBar.setScore("§e勝者への賞金：$"+plugin.getPrize(),0);
         sideBar.setScore("§b==========================",0);
 
-        sideBar.setScore("§e "+plugin.fighters.get(0).name+" K:"+plugin.kill0 + " D:"+plugin.death0+" $"+plugin.prize0 ,0);
-        sideBar.setScore("§e "+plugin.fighters.get(1).name+" K:"+plugin.kill1 + " D:"+plugin.death1+" $"+plugin.prize1 ,0);
+        sideBar.setScore("§e "+plugin.fighters.get(0).name+" K:"+plugin.kill0 + " D:"+plugin.death0+" $"+(int)plugin.prize0 ,0);
+        sideBar.setScore("§e "+plugin.fighters.get(1).name+" K:"+plugin.kill1 + " D:"+plugin.death1+" $"+(int)plugin.prize1 ,0);
 
         if(plugin.canStartGame()){
             sideBar.setScore("§eまもなく試合が開催されます！！！！",0);
