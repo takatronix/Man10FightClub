@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -60,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="442" column="0" lean-forward="true" selection-start-line="442" selection-start-column="0" selection-end-line="442" selection-end-column="0" />
+            <state relative-caret-position="451">
+              <caret line="1706" column="55" lean-forward="false" selection-start-line="1706" selection-start-column="55" selection-end-line="1706" selection-end-column="55" />
               <folding>
                 <element signature="e#2723#2742#0" expanded="true" />
                 <element signature="e#2823#2842#0" expanded="true" />
@@ -73,16 +73,17 @@
                 <element signature="e#35535#35543#0" expanded="true" />
                 <element signature="e#41816#41826#0" expanded="true" />
                 <element signature="e#44398#44406#0" expanded="true" />
+                <element signature="e#50115#50123#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VaultManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VaultManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
-              <caret line="52" column="40" lean-forward="true" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+            <state relative-caret-position="406">
+              <caret line="75" column="13" lean-forward="false" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -152,7 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>startEntry</find>
       <find>showToAll</find>
       <find>loadConfigt</find>
       <find>FightClub</find>
@@ -182,6 +182,7 @@
       <find>PlayerQuit</find>
       <find>datetime</find>
       <find>cancelGame</find>
+      <find>telepor</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -219,10 +220,10 @@
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubHistoryCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java" />
         <option value="$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
       </list>
     </option>
   </component>
@@ -282,10 +283,10 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2583" />
-    <option name="y" value="116" />
+    <option name="x" value="2626" />
+    <option name="y" value="119" />
     <option name="width" value="2333" />
-    <option name="height" value="1032" />
+    <option name="height" value="959" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -760,13 +761,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00092" summary="死亡キャンセル">
-      <created>1489042885915</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1489042885915</updated>
-    </task>
     <task id="LOCAL-00093" summary="死亡キャンセル">
       <created>1489043271801</created>
       <option name="number" value="00093" />
@@ -1103,7 +1097,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489315285055</updated>
     </task>
-    <option name="localTasksCounter" value="141" />
+    <task id="LOCAL-00141" summary="タイムアウトが連発する問題">
+      <created>1489315919495</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1489315919495</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1116,7 +1117,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2583" y="116" width="2333" height="1032" extended-state="0" />
+    <frame x="2626" y="119" width="2333" height="959" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1129,7 +1130,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.036585364" sideWeight="0.52296454" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07114797" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12800875" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21991247" sideWeight="0.69261366" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23900118" sideWeight="0.69261366" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1243,6 +1244,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
+            <element signature="e#50115#50123#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1298,6 +1300,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
+            <element signature="e#50115#50123#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1353,6 +1356,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
+            <element signature="e#50115#50123#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1460,6 +1464,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
+            <element signature="e#50115#50123#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1507,6 +1512,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
+            <element signature="e#50115#50123#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1562,6 +1568,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
+            <element signature="e#50115#50123#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1617,6 +1624,7 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
+            <element signature="e#50115#50123#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1737,10 +1745,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="75" column="13" lean-forward="false" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="442" column="0" lean-forward="true" selection-start-line="442" selection-start-column="0" selection-end-line="442" selection-end-column="0" />
+        <state relative-caret-position="451">
+          <caret line="1706" column="55" lean-forward="false" selection-start-line="1706" selection-start-column="55" selection-end-line="1706" selection-end-column="55" />
           <folding>
             <element signature="e#2723#2742#0" expanded="true" />
             <element signature="e#2823#2842#0" expanded="true" />
@@ -1749,15 +1765,8 @@
             <element signature="e#35535#35543#0" expanded="true" />
             <element signature="e#41816#41826#0" expanded="true" />
             <element signature="e#44398#44406#0" expanded="true" />
+            <element signature="e#50115#50123#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="52" column="40" lean-forward="true" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>

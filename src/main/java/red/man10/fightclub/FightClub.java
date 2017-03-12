@@ -1683,6 +1683,10 @@ public final class FightClub extends JavaPlugin implements Listener {
             Location loc = (Location)o;
             p.teleport(loc);
             p.sendMessage("§a§lTPしました。");
+
+
+            updateEntities(p,getPlayersWithin(p,100),true);
+
         }
         return;
     }
@@ -1736,7 +1740,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
             }
-
+         //   Bukkit.getWorld(worldName).refreshChunk();
         }
         return;
     }
@@ -1797,5 +1801,34 @@ public final class FightClub extends JavaPlugin implements Listener {
             en.remove();;
         }
     }
+
+    //      Invisible Bug Fix
+
+    private List<Player> getPlayersWithin(Player player, int distance) {
+        List<Player> res = new ArrayList<Player>();
+        int d2 = distance * distance;
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            if (p != player && p.getWorld() == player.getWorld()
+                    && p.getLocation().distanceSquared(player.getLocation()) <= d2) {
+                res.add(p);
+            }
+        }
+        return res;
+    }
+
+    private void updateEntities(Player tpedPlayer, List<Player> players, boolean visible) {
+        // Hide or show every player to tpedPlayer
+        // and hide or show tpedPlayer to every player.
+        for (Player player : players) {
+            if (visible) {
+                tpedPlayer.showPlayer(player);
+                player.showPlayer(tpedPlayer);
+            } else {
+                tpedPlayer.hidePlayer(player);
+                player.hidePlayer(tpedPlayer);
+            }
+        }
+    }
+
 
 }
