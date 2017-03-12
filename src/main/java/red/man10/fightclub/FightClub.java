@@ -540,7 +540,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
 
         double o0 = getFighterOdds(f0.getUniqueId());
-        double o1 = getFighterOdds(f0.getUniqueId());
+        double o1 = getFighterOdds(f1.getUniqueId());
         int b0 = getFighterBetCount(f0.getUniqueId());
         int b1 = getFighterBetCount(f1.getUniqueId());
 
