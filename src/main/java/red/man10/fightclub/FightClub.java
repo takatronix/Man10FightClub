@@ -458,9 +458,10 @@ public final class FightClub extends JavaPlugin implements Listener {
            //p.sendMessage("Return money to " + bet.buyerName + " $"+ bet.bet );
 
             vault.deposit(bet.buyerUUID,bet.bet);
-            Bukkit.getPlayer(bet.buyerName).sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
+            //Bukkit.getPlayer(bet.buyerName).sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
         }
         bets.clear();
+
 
         resetBetTimer();
         resetEnetryTimer();
@@ -471,6 +472,10 @@ public final class FightClub extends JavaPlugin implements Listener {
            // command("mkit pop "+fighters.get(0).name);
            // command("mkit pop "+fighters.get(1).name);
         }
+
+        unregisterFighter(fighters.get(0).uuid);
+        unregisterFighter(fighters.get(1).uuid);
+
         fighters.clear();
 
 
