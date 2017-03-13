@@ -67,7 +67,7 @@ public class FightClubSideBar {
             String tx = String.format("%10s Odds:§bx§l%3.3f",f.name,plugin.getFighterOdds(f.uuid));
             sideBar.setScore(tx,plugin.getFighterBetCount(f.uuid));
 
-            setFighterInfo(f);
+         //   setFighterInfo(f);
 
         }
 
@@ -80,8 +80,8 @@ public class FightClubSideBar {
         sideBar.setScore("§e勝者への賞金：$"+plugin.getPrize(),0);
         sideBar.setScore("§b==========================",0);
 
-     //   sideBar.setScore("§e"+plugin.fighters.get(0).name+" Kill:"+plugin.kill0 + "/Death:"+plugin.death0+"/獲得$"+(int)plugin.prize0 ,0);
-      //  sideBar.setScore("§e"+plugin.fighters.get(1).name+" Kill:"+plugin.kill1 + "/Death:"+plugin.death1+"/獲得$"+(int)plugin.prize1 ,0);
+        sideBar.setScore("§e"+plugin.fighters.get(0).name+" Kill:"+plugin.kill0 + "/Death:"+plugin.death0+"/獲得$"+(int)plugin.prize0 ,0);
+        sideBar.setScore("§e"+plugin.fighters.get(1).name+" Kill:"+plugin.kill1 + "/Death:"+plugin.death1+"/獲得$"+(int)plugin.prize1 ,0);
 
         if(plugin.canStartGame()){
             sideBar.setScore("§eまもなく試合が開催されます！！！！",0);
@@ -158,11 +158,10 @@ public class FightClubSideBar {
         showToAll();
     }
 
-
     void setFighterInfo(FightClub.PlayerInformation f){
 
-        String name = String.format("%-8s",f.name);
-        String shortString = name.substring(0, Math.min(name.length(), 8));
+        String name = String.format("%-10s",f.name);
+        String shortString = name.substring(0, Math.min(name.length(), 10));
 
         String s= shortString + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
         if(s.length() > 40){

@@ -26,6 +26,7 @@ import org.bukkit.potion.PotionEffectType;
 import red.man10.*;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.*;
 import static red.man10.fightclub.FightClub.Status.*;
 
@@ -544,14 +545,19 @@ public final class FightClub extends JavaPlugin implements Listener {
         int b0 = getFighterBetCount(f0.getUniqueId());
         int b1 = getFighterBetCount(f1.getUniqueId());
 
-        String f0o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d",o0,getScore(fighters.get(0)));
-        String f1o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d",o1,getScore(fighters.get(1)));
+
+        String inf0 = fighterInfo(fighters.get(0));
+        String inf1 = fighterInfo(fighters.get(1));
+
+        String f0o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d ",o0,getScore(fighters.get(0))) ;
+        String f1o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d ",o1,getScore(fighters.get(1)));
+
 
         this.fightId = data.createFight(selectedArena,selectedKit,f0.getUniqueId(),f1.getUniqueId(),o0,o1,b0,b1,getPrize(),getTotalBet());
 
         //      init bar
-        lifebar.setRname(f0.getName() + f0o);
-        lifebar.setBname(f1.getName() + f1o);
+        lifebar.setRname(f0.getName() + f0o + inf0);
+        lifebar.setBname(f1.getName() + f1o + inf1);
         lifebar.setVisible(true);
         resetPlayerStatus(f0);
         resetPlayerStatus(f1);
@@ -1044,6 +1050,23 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
     }
 
+
+     String fighterInfo(FightClub.PlayerInformation f){
+        String s = "§9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
+        return s;
+    }
+    //          描画系
+    private static String[] suffix = new String[]{"","K", "M", "B", "T"};
+    private static int MAX_LENGTH = 4;
+
+    private static String money(double number) {
+        String r = new DecimalFormat("##0E0").format(number);
+        r = r.replaceAll("E[0-9]", suffix[Character.getNumericValue(r.charAt(r.length() - 1)) / 3]);
+        while(r.length() > MAX_LENGTH || r.matches("[0-9]+\\.[a-z]")){
+            r = r.substring(0, r.length()-2) + r.substring(r.length() - 1);
+        }
+        return r;
+    }
 
     /////////////////////////////////
     //      起動
