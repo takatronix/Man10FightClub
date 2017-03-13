@@ -587,6 +587,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         updateSidebar();
         saveCurrentStatus();
 
+
+        unregisterFighter(f0.getUniqueId());
+        unregisterFighter(f1.getUniqueId());
+        tpWaiterToArena();
         return 0;
     }
     public void resetPlayerStatus(Player p)
@@ -1150,11 +1154,18 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
         updateSidebar();
+        tpLobby(p);
     }
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
         log(p.getName() + "ログアウト");
+
+        if(p.isOnline()){
+            p.setGameMode(GameMode.SURVIVAL);
+            tpLobby(p);
+        }
+
 
         if(unregisterFighter(p.getUniqueId()) < 0){
             serverMessage(p.getName() + "はログアウトしたため、登録リストからはずされた");
@@ -1793,6 +1804,27 @@ public final class FightClub extends JavaPlugin implements Listener {
         saveConfig();
         p.sendMessage("§a§lTPロケーションを設定しました。:");
     }
+    public void tpWaiterToArena(){
+
+
+        int n = 0;
+        for(PlayerInformation inf : waiters){
+            Player p = Bukkit.getPlayer(inf.uuid);
+
+            if(p.isOnline() == false){
+                continue;
+            }
+            p.setGameMode(GameMode.SPECTATOR);
+
+            if((n % 2) == 0){
+                tp(p,selectedArena,"player1");
+            }else{
+                tp(p,selectedArena,"player1");
+            }
+            n++;
+        }
+
+    }
     public void tpaLobby(){
         Object o =  getConfig().get("lobby");
         if(o != null){
@@ -1801,6 +1833,10 @@ public final class FightClub extends JavaPlugin implements Listener {
 
                 if(player.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
                     player.teleport(loc);
+                    player.setGameMode(GameMode.SURVIVAL);
+
+                    //      ブルブルバグ
+                    updateEntities(player,getPlayersWithin(player,100) ,true);
                 }
             }
 
