@@ -238,8 +238,10 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      もとの場所にもどす
         Player player = Bukkit.getPlayer(uuid);
-        player.teleport(inf.returnLoc);
-        player.setGameMode(GameMode.SURVIVAL);
+        if(player != null){
+            player.teleport(inf.returnLoc);
+            player.setGameMode(GameMode.SURVIVAL);
+        }
 
         return 0;
     }
