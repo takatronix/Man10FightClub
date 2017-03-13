@@ -544,8 +544,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         int b0 = getFighterBetCount(f0.getUniqueId());
         int b1 = getFighterBetCount(f1.getUniqueId());
 
-        String f0o = String.format(" Odds:§b§lx%.2f §f§lMFC Score:§c§l%d",o0,getScore(fighters.get(0)));
-        String f1o = String.format(" Odds:§b§lx%.2f §f§lMFC Score:§c§l%d",o1,getScore(fighters.get(1)));
+        String f0o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d",o0,getScore(fighters.get(0)));
+        String f1o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d",o1,getScore(fighters.get(1)));
 
         this.fightId = data.createFight(selectedArena,selectedKit,f0.getUniqueId(),f1.getUniqueId(),o0,o1,b0,b1,getPrize(),getTotalBet());
 

@@ -162,8 +162,9 @@ public class FightClubSideBar {
     void setFighterInfo(FightClub.PlayerInformation f){
 
         String name = String.format("%-8s",f.name);
+        String shortString = name.substring(0, Math.min(name.length(), 8));
 
-        String s= name + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
+        String s= shortString + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
         if(s.length() > 40){
             s = s.substring(0,40);
         }
