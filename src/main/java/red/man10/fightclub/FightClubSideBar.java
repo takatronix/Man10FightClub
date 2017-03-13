@@ -66,6 +66,9 @@ public class FightClubSideBar {
 
             String tx = String.format("%10s Odds:§bx§l%3.3f",f.name,plugin.getFighterOdds(f.uuid));
             sideBar.setScore(tx,plugin.getFighterBetCount(f.uuid));
+
+            setFighterInfo(f);
+
         }
 
         sideBar.setScore("§d合計かけ金額：$"+total,0);
@@ -77,8 +80,8 @@ public class FightClubSideBar {
         sideBar.setScore("§e勝者への賞金：$"+plugin.getPrize(),0);
         sideBar.setScore("§b==========================",0);
 
-        sideBar.setScore("§e"+plugin.fighters.get(0).name+" Kill:"+plugin.kill0 + "/Death:"+plugin.death0+"/獲得$"+(int)plugin.prize0 ,0);
-        sideBar.setScore("§e"+plugin.fighters.get(1).name+" Kill:"+plugin.kill1 + "/Death:"+plugin.death1+"/獲得$"+(int)plugin.prize1 ,0);
+     //   sideBar.setScore("§e"+plugin.fighters.get(0).name+" Kill:"+plugin.kill0 + "/Death:"+plugin.death0+"/獲得$"+(int)plugin.prize0 ,0);
+      //  sideBar.setScore("§e"+plugin.fighters.get(1).name+" Kill:"+plugin.kill1 + "/Death:"+plugin.death1+"/獲得$"+(int)plugin.prize1 ,0);
 
         if(plugin.canStartGame()){
             sideBar.setScore("§eまもなく試合が開催されます！！！！",0);
@@ -112,10 +115,8 @@ public class FightClubSideBar {
         showToAll();
     }
 
-    int  getScore(FightClub.PlayerInformation inf){
-        double d = inf.prize /  (double)(inf.kill + inf.death) * 0.001;
-        return (int)d;
-    }
+
+
 
 
     private static String[] suffix = new String[]{"","K", "M", "B", "T"};
@@ -144,16 +145,27 @@ public class FightClubSideBar {
         }
         for(int i = 0;i < plugin.waiters.size();i++){
             FightClub.PlayerInformation f = plugin.waiters.get(i);
-
+/*
             String s= f.name + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
             if(s.length() > 40){
                 s = s.substring(0,40);
             }
 
             sideBar.setScore(s,getScore(f));
-
+*/
+            setFighterInfo(f);
         }
         showToAll();
+    }
+
+
+    void setFighterInfo(FightClub.PlayerInformation f){
+        String s= f.name + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
+        if(s.length() > 40){
+            s = s.substring(0,40);
+        }
+
+        sideBar.setScore(s,plugin.getScore(f));
     }
 
     void showToAll(){

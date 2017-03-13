@@ -544,8 +544,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         int b0 = getFighterBetCount(f0.getUniqueId());
         int b1 = getFighterBetCount(f1.getUniqueId());
 
-        String f0o = String.format(" Odds:x%.2f",o0);
-        String f1o = String.format(" Odds:x%.2f",o1);
+        String f0o = String.format(" Odds:x%.2f Score:",o0,getScore(fighters.get(0)));
+        String f1o = String.format(" Odds:x%.2f Score:",o1,getScore(fighters.get(1)));
 
         this.fightId = data.createFight(selectedArena,selectedKit,f0.getUniqueId(),f1.getUniqueId(),o0,o1,b0,b1,getPrize(),getTotalBet());
 
@@ -1273,7 +1273,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
     }
 
-
+    int  getScore(FightClub.PlayerInformation inf){
+        double d = inf.prize /  (double)(inf.kill + inf.death) * 0.001;
+        return (int)d;
+    }
 
     ////////////////////////////
     //      ダメージイベント
