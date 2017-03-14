@@ -222,7 +222,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         //      スポンへ移動
         Player p = Bukkit.getPlayer(uuid);
         tp(p,selectedArena,"spawn");
-        p.setGameMode(GameMode.SPECTATOR);
+      //  p.setGameMode(GameMode.SPECTATOR);
 
    //     updateSidebar();
      //   return spectators.size();
@@ -1197,9 +1197,9 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
 
-        if (unregisterSpectator(p.getUniqueId()) != -1){
-            serverMessage(p.getName()+"はログアウトしたため、観戦をやめました");
-        }
+//        if (unregisterSpectator(p.getUniqueId()) != -1){
+ //           serverMessage(p.getName()+"はログアウトしたため、観戦をやめました");
+ //       }
 
 
 
