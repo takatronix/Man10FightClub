@@ -747,6 +747,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         //tps(selectedArena,"spawn");
         tpf(selectedArena,"spawn");
 
+        String f0Name = fighters.get(0).name;
+        String f1Name = fighters.get(0).name;
+
 
         //       KDRの算出
         kill0 = data.killCount(fighters.get(0).uuid);
@@ -775,7 +778,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         sideBar.hidden = true;
         String title = "§cMFC 選手決定！!";
-        String subTitle = fighters.get(0).name + " vs "+fighters.get(1).name + " Stage:" + selectedArena + " Kit:"+selectedKit;
+        String subTitle = f0Name + " vs "+f1Name + " Stage:" + selectedArena + " Kit:"+selectedKit;
         titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
         sideBar.show();
@@ -783,7 +786,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                String title = "§4"+fighters.get(0).name ;
+                String title = "§4"+f0Name ;
                 //String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
                 String subTitle = "§9§lKill:"+kill0+" §c§lDeath:"+death0+" §e§l総獲得賞金 $"+(int)prize0;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
@@ -793,7 +796,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }, 100);
        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                String title = "§1"+fighters.get(1).name ;
+                String title = "§1"+f1Name;
  //               String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
 //                String subTitle = "Kill:"+kill1+" Death:"+death1+" KDR:"+kdrs1+"総獲得賞金 $"+(int)prize1;
                 String subTitle = "§9§lKill:"+kill1+" §c§lDeath:"+death1+" §e§l総獲得賞金 $"+(int)prize1;
@@ -805,7 +808,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
                 String title = "勝者を予想しベットしてください！ /MFC" ;
-                String subTitle = ""+ fighters.get(0).name + " vs " + fighters.get(1).name + " ";
+                String subTitle = ""+ f0Name + " vs " + f1Name + " ";
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
             }
         }, 300);
