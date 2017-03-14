@@ -31,13 +31,13 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="1178" column="22" lean-forward="true" selection-start-line="1178" selection-start-column="22" selection-end-line="1178" selection-end-column="22" />
+            <state relative-caret-position="256">
+              <caret line="1822" column="30" lean-forward="true" selection-start-line="1822" selection-start-column="30" selection-end-line="1823" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1489466556000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
-                <marker date="1489466556000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
-                <marker date="1489466556000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
+                <marker date="1489467488000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
+                <marker date="1489467488000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
+                <marker date="1489467488000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
               </folding>
             </state>
           </provider>
@@ -108,8 +108,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>life</find>
-      <find>titgle</find>
       <find>getScore</find>
       <find>money</find>
       <find>lifeBar</find>
@@ -138,6 +136,8 @@
       <find>tpaLobbytpaLobby</find>
       <find>unregisterS</find>
       <find>観戦を</find>
+      <find>registerSpec</find>
+      <find>void tp</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -713,13 +713,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00128" summary="選手が投票ｄけいないようにした">
-      <created>1489282450747</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1489282450747</updated>
-    </task>
     <task id="LOCAL-00129" summary="選手が投票ｄけいないようにした">
       <created>1489282577383</created>
       <option name="number" value="00129" />
@@ -1056,7 +1049,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489466100879</updated>
     </task>
-    <option name="localTasksCounter" value="177" />
+    <task id="LOCAL-00177" summary="観戦者モードをなくした">
+      <created>1489466574968</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1489466574968</updated>
+    </task>
+    <option name="localTasksCounter" value="178" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1182,9 +1182,9 @@
           <caret line="418" column="34" lean-forward="false" selection-start-line="418" selection-start-column="34" selection-end-line="418" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489466556000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1226,9 +1226,9 @@
           <caret line="418" column="34" lean-forward="false" selection-start-line="418" selection-start-column="34" selection-end-line="418" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489466556000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1270,9 +1270,9 @@
           <caret line="1221" column="27" lean-forward="true" selection-start-line="1221" selection-start-column="27" selection-end-line="1221" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489466556000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1359,9 +1359,9 @@
           <caret line="766" column="22" lean-forward="false" selection-start-line="766" selection-start-column="15" selection-end-line="766" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489466556000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1395,9 +1395,9 @@
           <caret line="418" column="34" lean-forward="false" selection-start-line="418" selection-start-column="34" selection-end-line="418" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489466556000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1439,9 +1439,9 @@
           <caret line="418" column="34" lean-forward="false" selection-start-line="418" selection-start-column="34" selection-end-line="418" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489466556000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1483,9 +1483,9 @@
           <caret line="1221" column="27" lean-forward="true" selection-start-line="1221" selection-start-column="27" selection-end-line="1221" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489466556000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1601,13 +1601,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="1178" column="22" lean-forward="true" selection-start-line="1178" selection-start-column="22" selection-end-line="1178" selection-end-column="22" />
+        <state relative-caret-position="256">
+          <caret line="1822" column="30" lean-forward="true" selection-start-line="1822" selection-start-column="30" selection-end-line="1823" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489466556000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
-            <marker date="1489466556000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="45577:45587" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="48259:48267" ph="&lt;~&gt;" />
+            <marker date="1489467488000" expanded="false" signature="54903:54911" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>

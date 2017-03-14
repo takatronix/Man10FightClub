@@ -190,7 +190,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     //      観戦者
     public int registerSpectator(UUID uuid){
-
+/*
         ////////////////////////////////////////
         //      ファイター登録登録されてたらエラー
         ////////////////////////////////////////
@@ -200,7 +200,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return -1;
             }
         }
-/*
+
         ////////////////////////////////////////
         //     観戦者登録登録されてたらエラー
         ////////////////////////////////////////
