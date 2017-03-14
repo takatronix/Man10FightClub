@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,8 +30,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="1921" column="34" lean-forward="true" selection-start-line="1921" selection-start-column="34" selection-end-line="1921" selection-end-column="34" />
+            <state relative-caret-position="227">
+              <caret line="1976" column="42" lean-forward="true" selection-start-line="1976" selection-start-column="42" selection-end-line="1976" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <marker date="1489465171000" expanded="false" signature="45438:45448" ph="&lt;~&gt;" />
@@ -703,13 +702,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00124" summary="ベット履歴の保存">
-      <created>1489249669664</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1489249669664</updated>
-    </task>
     <task id="LOCAL-00125" summary="ベット履歴の保存">
       <created>1489279078573</created>
       <option name="number" value="00125" />
@@ -1046,7 +1038,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489462483933</updated>
     </task>
-    <option name="localTasksCounter" value="173" />
+    <task id="LOCAL-00173" summary="TPブルブルバグ">
+      <created>1489465203559</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1489465203559</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1128,7 +1127,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="サイドボードがでない問題" />
     <MESSAGE value="選手が投票ｄけいないようにした" />
     <MESSAGE value="added mfc on/off/reload  commands&#10;" />
     <MESSAGE value="MFC on/off状態の保存" />
@@ -1153,7 +1151,8 @@
     <MESSAGE value="対象ワールド(Arena)以外ではイベントを無視" />
     <MESSAGE value="選手登録ないときにキャンセルすると落ちる問題" />
     <MESSAGE value="キャンセルでの服装退避" />
-    <option name="LAST_COMMIT_MESSAGE" value="キャンセルでの服装退避" />
+    <MESSAGE value="TPブルブルバグ" />
+    <option name="LAST_COMMIT_MESSAGE" value="TPブルブルバグ" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1591,8 +1590,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="1921" column="34" lean-forward="true" selection-start-line="1921" selection-start-column="34" selection-end-line="1921" selection-end-column="34" />
+        <state relative-caret-position="227">
+          <caret line="1976" column="42" lean-forward="true" selection-start-line="1976" selection-start-column="42" selection-end-line="1976" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1489465171000" expanded="false" signature="45438:45448" ph="&lt;~&gt;" />
