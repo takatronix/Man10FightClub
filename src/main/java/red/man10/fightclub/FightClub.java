@@ -1,7 +1,7 @@
 package red.man10.fightclub;
 
 
-import com.mysql.cj.mysqlx.protobuf.MysqlxConnection;
+
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -1157,7 +1157,17 @@ public final class FightClub extends JavaPlugin implements Listener {
     /////////////////////////////////
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
+
+        if(currentStatus != Fighting){
+            return;
+        }
         Player p = e.getPlayer();
+
+        //      アリーナでなければ
+        if(!p.getWorld().getName().equalsIgnoreCase(worldName)){
+            return;
+        }
+
         updateSidebar();
         tpLobby(p);
     }
@@ -1201,10 +1211,17 @@ public final class FightClub extends JavaPlugin implements Listener {
     /////////////////////////////////
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
+        if(currentStatus != Fighting){
+            return;
+        }
+
         Player p = e.getPlayer();
         String message = e.getMessage();
                 //  GlowAPI.setGlowing(e.getPlayer(), GlowAPI.Color.AQUA, Bukkit.getOnlinePlayers())
-
+        //      対象アリーナでなければ
+        if(!p.getWorld().getName().equalsIgnoreCase(worldName)){
+            return;
+        }
     }
     /////////////////////////////////
     //      デスイベント
@@ -1218,7 +1235,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         Player p = (Player)e.getEntity();
-
+        //      対象アリーナでなければ
+        if(!p.getWorld().getName().equalsIgnoreCase(worldName)){
+            return;
+        }
         int index = getFighterIndex(p.getUniqueId());
         //
 
@@ -1278,10 +1298,20 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(e.getDamager() instanceof Projectile && e.getEntity() instanceof Player) {
             //make sure the damager is a snowball & the damaged entity is a Player
             ProjectileSource shooter = ((Projectile) e.getDamager()).getShooter();
+
             if (!(shooter instanceof Player)) {
                 return;
             }
+
+
             Player p = (Player)shooter;
+
+            //      対象アリーナでなければ
+            if(!p.getWorld().getName().equalsIgnoreCase(worldName)){
+                return;
+            }
+
+
             if(!isFighter(p.getUniqueId())){
                 p.sendMessage("選手以外の戦闘行動は禁止されています");
                 e.setCancelled(true);
@@ -1305,6 +1335,11 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         if(e.getEntity() instanceof Player) {
             Player damaged = (Player) e.getEntity();
+
+            //      対象アリーナでなければ
+            if(!damaged.getWorld().getName().equalsIgnoreCase(worldName)){
+                return;
+            }
 
             if((e.getDamager() instanceof  Player) == false){
 
