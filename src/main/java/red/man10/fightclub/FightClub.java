@@ -982,6 +982,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         return 0;
     }
 
+
+
     int      entryTimer = 0;
     int      betTimer = 0;
     int      fightTimer = 0;
@@ -1803,8 +1805,8 @@ public final class FightClub extends JavaPlugin implements Listener {
             p.sendMessage("§a§lTPしました。");
 
 
-            updateEntities(p,getPlayersWithin(p,100),true);
-
+//            updateEntities(p,getPlayersWithin(p,100),true);
+            fixTpBug(p);
         }
         return;
     }
@@ -1816,7 +1818,8 @@ public final class FightClub extends JavaPlugin implements Listener {
             for(PlayerInformation f :waiters){
                 Player p = Bukkit.getPlayer(f.uuid);
                 p.teleport(loc);
-                updateEntities(p,getPlayersWithin(p,100),true);
+ //               updateEntities(p,getPlayersWithin(p,100),true);
+                fixTpBug(p);
             }
 
         }
@@ -1857,7 +1860,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                 p.teleport(loc);
 
-                updateEntities(p,getPlayersWithin(p,100),true);
+                updateEntities(p,getPlayersWithin(p,100));
 
             }
          //   Bukkit.getWorld(worldName).refreshChunk();
@@ -1907,7 +1910,8 @@ public final class FightClub extends JavaPlugin implements Listener {
                     player.setGameMode(GameMode.SURVIVAL);
 
                     //      ブルブルバグ
-                    updateEntities(player,getPlayersWithin(player,100) ,true);
+                    //updateEntities(player,getPlayersWithin(player,100) ,true);
+                    fixTpBug(player);
                 }
             }
 
@@ -1965,19 +1969,29 @@ public final class FightClub extends JavaPlugin implements Listener {
         return res;
     }
 
-    private void updateEntities(Player tpedPlayer, List<Player> players, boolean visible) {
+    private void updateEntities(Player tpedPlayer, List<Player> players) {
         // Hide or show every player to tpedPlayer
         // and hide or show tpedPlayer to every player.
         for (Player player : players) {
-            if (visible) {
-                tpedPlayer.showPlayer(player);
-                player.showPlayer(tpedPlayer);
-            } else {
-                tpedPlayer.hidePlayer(player);
-                player.hidePlayer(tpedPlayer);
-            }
+            tpedPlayer.hidePlayer(player);
+            player.hidePlayer(tpedPlayer);
+
+            tpedPlayer.showPlayer(player);
+            player.showPlayer(tpedPlayer);
+
         }
     }
 
+
+    void fixTpBug(Player tpedPlayer){
+        for (Player player: Bukkit.getWorld(worldName).getPlayers()) {
+            tpedPlayer.hidePlayer(player);
+            player.hidePlayer(tpedPlayer);
+        }
+        for (Player player: Bukkit.getWorld(worldName).getPlayers()) {
+            tpedPlayer.showPlayer(player);
+            player.showPlayer(tpedPlayer);
+        }
+    }
 
 }
