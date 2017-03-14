@@ -426,7 +426,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     boolean checkAdminPermission(CommandSender sender){
-        if(sender.hasPermission(adminPermision)){
+        if(!sender.hasPermission(adminPermision)){
             sender.sendMessage("You don't have permission:" + adminPermision);
             return true;
         }
