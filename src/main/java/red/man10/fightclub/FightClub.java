@@ -462,27 +462,17 @@ public final class FightClub extends JavaPlugin implements Listener {
         //   払い戻し処理
         for (int i = 0;i < bets.size();i++) {
             BetInformation bet = bets.get(i);
-           //p.sendMessage("Return money to " + bet.buyerName + " $"+ bet.bet );
-
             vault.deposit(bet.buyerUUID,bet.bet);
-            //Bukkit.getPlayer(bet.buyerName).sendMessage("ゲームがキャンセルされお金を$"+bet.bet+"返金しました。");
         }
         bets.clear();
-
 
         resetBetTimer();
         resetEnetryTimer();
         resetFightTimer();
 
-        if(fighters.size() >= 2){
-            //      服装をバックアップ
-           // command("mkit pop "+fighters.get(0).name);
-           // command("mkit pop "+fighters.get(1).name);
-        }
-
         for(PlayerInformation p : fighters){
             unregisterFighter(p.uuid);
-
+            command("mkit pop "+fighters.get(0).name);
         }
 
         fighters.clear();
