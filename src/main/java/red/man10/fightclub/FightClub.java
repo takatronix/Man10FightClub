@@ -244,6 +244,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      もとの場所にもどす
         Player player = Bukkit.getPlayer(uuid);
+        player.setGameMode(GameMode.SURVIVAL);
         tpLobby(player);
         /*
         if(player != null){
