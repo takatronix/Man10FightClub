@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 
 import org.bukkit.enchantments.Enchantment;
 
+import org.bukkit.event.inventory.InventoryCreativeEvent;
 import red.man10.SkullMaker;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -92,15 +93,17 @@ public class FightClubGUI {
             return;
         }
         */
+        if(e.getEventName().equalsIgnoreCase("InventoryCreativeEvent")){
+            return;
+        }
         if (e.getInventory().getTitle().equals("§c§l         ベットメニュー")) {
-            FightClub.PlayerInformation info = plugin.fighters.get(0);
-            FightClub.PlayerInformation info1 = plugin.fighters.get(1);
             if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
                 priceMenu(p, e.getCurrentItem().getItemMeta().getDisplayName());
                 e.setCancelled(true);
             } else {
                 e.setCancelled(true);
             }
+            return;
 
         }
         if(e.getClickedInventory().getTitle().equals("     §cMan10 Fight Club menu")){

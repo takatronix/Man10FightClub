@@ -5,9 +5,11 @@
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-6.0.5.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-6.0.5.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-6.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-6.0.5.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-6.0.5-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-6.0.5-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-6.0.5-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-6.0.5-sources.jar!/" />
