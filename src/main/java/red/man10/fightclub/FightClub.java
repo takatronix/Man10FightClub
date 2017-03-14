@@ -1907,6 +1907,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(o != null){
             Location loc = (Location)o;
             p.teleport(loc);
+            fixTpBug(p);
         }
     }
 
