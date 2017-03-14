@@ -1785,9 +1785,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             Location loc = (Location)o;
             p.teleport(loc);
             p.sendMessage("§a§lTPしました。");
-
-
-//            updateEntities(p,getPlayersWithin(p,100),true);
             fixTpBug(p);
         }
         return;
@@ -1807,49 +1804,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return;
     }
-    public void tpw(String arena,String name){
-        Object o =  getConfig().get(arena+ ".pos."+name);
-        if(o != null){
-            Location loc = (Location)o;
-//            p.teleport(loc);
-            for(PlayerInformation f :waiters){
-                Player p = Bukkit.getPlayer(f.uuid);
-                p.teleport(loc);
-            }
 
-        }
-        return;
-    }
-/*
-    public void tps(String arena,String name){
-        Object o =  getConfig().get(arena+ ".pos."+name);
-        if(o != null){
-            Location loc = (Location)o;
-//            p.teleport(loc);
-            for(PlayerInformation f :spectators){
-                Player p = Bukkit.getPlayer(f.uuid);
-                p.teleport(loc);
-            }
 
-        }
-        return;
-    }*/
-
-    public void tpa(String arena,String name){
-        Object o =  getConfig().get(arena+ ".pos."+name);
-        if(o != null){
-            Location loc = (Location)o;
-//            p.teleport(loc);
-            for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-                p.teleport(loc);
-
-                updateEntities(p,getPlayersWithin(p,100));
-
-            }
-         //   Bukkit.getWorld(worldName).refreshChunk();
-        }
-        return;
-    }
     public void settp(Player p,String arena,String name){
         getConfig().set(arena+ ".pos."+name , p.getLocation());
         saveConfig();
@@ -1861,9 +1817,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         saveConfig();
         p.sendMessage("§a§lTPロケーションを設定しました。:");
     }
+    //      選手をアリーナへ移動（スペクテータにする）
     public void tpWaiterToArena(){
-
-
         int n = 0;
         for(PlayerInformation inf : waiters){
             Player p = Bukkit.getPlayer(inf.uuid);
@@ -1876,12 +1831,14 @@ public final class FightClub extends JavaPlugin implements Listener {
             if((n % 2) == 0){
                 tp(p,selectedArena,"player1");
             }else{
-                tp(p,selectedArena,"player1");
+                tp(p,selectedArena,"player2");
             }
             n++;
         }
 
     }
+
+    //      アリーナにいる全員をロビーに移動
     public void tpaLobby(){
         Object o =  getConfig().get("lobby");
         if(o != null){
@@ -1891,14 +1848,9 @@ public final class FightClub extends JavaPlugin implements Listener {
                 if(player.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
                     player.teleport(loc);
                     player.setGameMode(GameMode.SURVIVAL);
-
-                    //      ブルブルバグ
-                    //updateEntities(player,getPlayersWithin(player,100) ,true);
                     fixTpBug(player);
                 }
             }
-
-
         }
         return;
     }

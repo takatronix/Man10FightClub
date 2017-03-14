@@ -21,18 +21,14 @@ public class FightClubArenaCommand  implements CommandExecutor {
         if(args.length == 0){
             CommandSender p = sender;
             p.sendMessage("§c/mfca setlobby - ロビーを設定する");
-            p.sendMessage("§c/mfca create [アリーナ名]");
+            p.sendMessage("§c/mfca create [アリーナ名](1)");
             p.sendMessage("§c/mfca select [アリーナ名]");
             p.sendMessage("§c/mfca delete [アリーナ名]");
             p.sendMessage("§c/mfca list");
-            p.sendMessage("§c/mfca settp player1 - 選択中のアリーナ Player1座標設定");
-            p.sendMessage("§c/mfca settp player2 - 選択中のアリーナ Player2座標設定");
-            p.sendMessage("§c/mfca settp spawn - 選択中のアリーナ スポー座標設定");
-           // p.sendMessage("-----------アリーナ(Console)-----------");
-          //  p.sendMessage("§c/mfca tpf - 登録者全員を選択中のアリーナ(spawn)へ移動");
-           // p.sendMessage("§c/mfca tpu [Player] player1");
-            //p.sendMessage("§c/mfca tpu [Player] player2");
-           // p.sendMessage("§c/mfca tpu [Player] spawn");
+            p.sendMessage("§c/mfca settp spawn - 選択中のアリーナ スポーン座標設定(2)");
+            p.sendMessage("§c/mfca settp player1 - 選択中のアリーナ Player1座標設定(3)");
+            p.sendMessage("§c/mfca settp player2 - 選択中のアリーナ Player2座標設定(4)");
+            p.sendMessage("§cステージ作成する時->(1)(2)(3)(4) の順に実行");
             return false;
         }
 
@@ -71,11 +67,6 @@ public class FightClubArenaCommand  implements CommandExecutor {
         if(args[0].equalsIgnoreCase("settp")) {
 
             plugin.settp((Player)sender,plugin.selectedArena,args[1]);
-        }
-        //
-        if(args[0].equalsIgnoreCase("tpa")) {
-
-            plugin.tpa(plugin.selectedArena,args[1]);
         }
 
 
