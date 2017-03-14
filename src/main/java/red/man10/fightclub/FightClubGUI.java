@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.enchantments.Enchantment;
 
 import org.bukkit.event.inventory.InventoryCreativeEvent;
+import org.bukkit.event.inventory.InventoryType;
 import red.man10.SkullMaker;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -95,6 +96,9 @@ public class FightClubGUI {
             return;
         }
         */
+        if(e.getClickedInventory().getType() == InventoryType.PLAYER){
+            return;
+        }
         if(e.getEventName().equalsIgnoreCase("InventoryCreativeEvent")){
             return;
         }
@@ -155,7 +159,8 @@ public class FightClubGUI {
             e.setCancelled(true);
             return;
         }
-            if (e.getInventory().getItem(52).getItemMeta().getDisplayName().equalsIgnoreCase("§c§lキャンセル")) {
+            if (e.getInventory().getTitle().equalsIgnoreCase("§5§l金額設定メニュー")) {
+
                 String val = e.getClickedInventory().getItem(50).getItemMeta().getLore().get(1);
                 if (val.length() <= 8) {
                     if (e.getSlot() == 46) { //0
@@ -163,38 +168,50 @@ public class FightClubGUI {
                             moveD(e.getClickedInventory());
                             createDisplay(e.getClickedInventory(), p, 0);
                         }
-                    } else if (e.getSlot() == 37) {
+                    }
+                    if (e.getSlot() == 37) {
                         moveD(e.getClickedInventory());
                         createDisplay(e.getClickedInventory(), p, 1);
-                    } else if (e.getSlot() == 38) {
+                    }
+                    if (e.getSlot() == 38) {
                         moveD(e.getClickedInventory());
                         createDisplay(e.getClickedInventory(), p, 2);
-                    } else if (e.getSlot() == 39) {
+                    }
+                    if (e.getSlot() == 39) {
                         moveD(e.getClickedInventory());
                         createDisplay(e.getClickedInventory(), p, 3);
-                    } else if (e.getSlot() == 28) {
+                    }
+                    if (e.getSlot() == 28) {
                         moveD(e.getClickedInventory());
                         createDisplay(e.getClickedInventory(), p, 4);
-                    } else if (e.getSlot() == 29) {
+                    }
+                    if (e.getSlot() == 29) {
                         moveD(e.getClickedInventory());
                         createDisplay(e.getClickedInventory(), p, 5);
-                    } else if (e.getSlot() == 30) {
+                    }
+                    if (e.getSlot() == 30) {
                         moveD(e.getClickedInventory());
                         createDisplay(e.getClickedInventory(), p, 6);
-                    } else if (e.getSlot() == 19) {
+                    }
+                    if (e.getSlot() == 19) {
                         moveD(e.getClickedInventory());
                         createDisplay(e.getClickedInventory(), p, 7);
-                    } else if (e.getSlot() == 20) {
+                    }
+                    if (e.getSlot() == 20) {
                         moveD(e.getClickedInventory());
                         createDisplay(e.getClickedInventory(), p, 8);
-                    } else if (e.getSlot() == 21) {
+                    }
+                    if (e.getSlot() == 21) {
                         moveD(e.getClickedInventory());
                         createDisplay(e.getClickedInventory(), p, 9);
-                    } else if (e.getSlot() == 48) {
+                    }
+                    if (e.getSlot() == 48) {
                         clearCalc(e.getClickedInventory());
-                    } else if (e.getSlot() == 52) {
+                    }
+                    if (e.getSlot() == 52) {
                         p.closeInventory();
-                    } else if (e.getSlot() == 50) {
+                    }
+                    if (e.getSlot() == 50) {
                         if(e.getInventory().getItem(50).getItemMeta().getLore().get(1) == ""){
                             p.sendMessage("掛け金を入力してください");
                             e.setCancelled(true);
@@ -418,7 +435,7 @@ public class FightClubGUI {
 
     public void priceMenu(Player p,String betp) {
         //ItemStack head = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/7c57f9192e81eb6897c24ecd4935cfb5a731a6f9a57abb51f2b35e8b4be7ebc").build();
-        Inventory inv = Bukkit.createInventory(null, 54, betp + "にベットする");
+        Inventory inv = Bukkit.createInventory(null, 54, "§5§l金額設定メニュー");
         ItemStack i0 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/0ebe7e5215169a699acc6cefa7b73fdb108db87bb6dae2849fbe24714b27").build();
         ItemStack i1 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/71bc2bcfb2bd3759e6b1e86fc7a79585e1127dd357fc202893f9de241bc9e530").build();
         ItemStack i2 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/4cd9eeee883468881d83848a46bf3012485c23f75753b8fbe8487341419847").build();
