@@ -125,8 +125,8 @@ public class FightClubData {
 
     public int createFight(String stage,String kit,  UUID uuid1,UUID uuid2,double odds1,double odds2,int bet1,int bet2,double prize,double totalBet){
 
-        String name1 = Bukkit.getPlayer(uuid1).getName();
-        String name2 = Bukkit.getPlayer(uuid2).getName();
+        String name1 = Bukkit.getOfflinePlayer(uuid1).getName();
+        String name2 = Bukkit.getOfflinePlayer(uuid2).getName();
 
         boolean ret = mysql.execute("insert into mfc_fight values(0"
                 +",'" + currentTime()
@@ -156,8 +156,9 @@ public class FightClubData {
 
     public boolean createBet(int fightId,UUID uuid,double bet,boolean win,UUID fighterId,double odds,double profit){
 
-        String name = Bukkit.getPlayer(uuid).getName();
-        String fighterName = Bukkit.getPlayer(fighterId).getName();
+
+        String name = Bukkit.getOfflinePlayer(uuid).getName();
+        String fighterName = Bukkit.getOfflinePlayer(fighterId).getName();
 
         boolean ret = mysql.execute("insert into mfc_bet values(0,"+fightId
                 +",'" + currentTime()
