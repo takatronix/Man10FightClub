@@ -829,9 +829,20 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         saveCurrentStatus();
 
+
+        if(autoBet){
+            UUID uuid = UUID.fromString(autoBetUUID);
+            betFighter(fighters.get(0).uuid,autoBetPrice,uuid,autoBetPlayerName);
+            betFighter(fighters.get(1).uuid,autoBetPrice,uuid,autoBetPlayerName);
+        }
+
         return true;
     }
 
+    double autoBetPrice = 12345;
+    boolean autoBet = true;
+    String autoBetPlayerName = "MFC Auto Bet";
+    String autoBetUUID = "1927b4f6-1e01-41a0-a0fa-28ea775c558e";
 
     boolean broadcastTitle = true;
     public void showTitle(String title,String subTitle,double stay,double delay){
