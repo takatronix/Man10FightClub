@@ -108,6 +108,26 @@ public class FightClubData {
         return ret;
     }
 
+
+    public boolean createScore(UUID id,int kill,int death,double totalPrize,String table){
+
+        String name = Bukkit.getOfflinePlayer(id).getName();
+
+
+        boolean ret = mysql.execute("insert into "+table+"(0"
+                +",'" + name
+                +"','" + id.toString()
+                +"'," + kill
+                +"," + death
+                +"," + totalPrize
+                +",'" + currentTime()
+                +"');");
+
+        return  ret;
+    }
+
+
+
     public boolean updateFight(int fightId,int result,UUID winner,UUID loser,double duration){
 
         String sql = "update mfc_fight set"

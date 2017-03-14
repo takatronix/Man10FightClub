@@ -418,14 +418,19 @@ public final class FightClub extends JavaPlugin implements Listener {
         return bets.size();
     }
 
-
+    boolean checkAdminPermission(CommandSender sender){
+        if(sender.hasPermission(adminPermision)){
+            sender.sendMessage("You don't have permission:" + adminPermision);
+            return true;
+        }
+        return false;
+    }
 
     //      MFC有効無効
     int enableMFC(CommandSender sender,boolean enable){
 
-        //
-        if(!sender.hasPermission(adminPermision)){
-            sender.sendMessage("You don't have permission:" + adminPermision);
+        //      管理者権限チェック
+        if(checkAdminPermission(sender)){
             return 0;
         }
 
@@ -445,6 +450,11 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     //      MFC有効無効
     int reload(CommandSender sender){
+        //      管理者権限チェック
+        if(checkAdminPermission(sender)){
+            return 0;
+        }
+
         serverMessage("MFC Reloading...");
 
         loadConfig();
