@@ -1261,10 +1261,18 @@ public final class FightClub extends JavaPlugin implements Listener {
 
             fighters.get(index).isDead = true;
             serverMessage("死亡!!!:"+p.getDisplayName());
-
+            int lastIndex = getLastFighter();
             p.spigot().respawn();
             resetPlayerStatus(p);
             tpLobby(p);
+
+            getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+                public void run() {
+                    command("mkit pop "+p.getName());
+                    resetPlayerStatus(p);
+                }
+            }, 20);
+
 
 
         //    p.sendMessage("あなたは、観戦者になりました。");
@@ -1288,7 +1296,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
 
-                int lastIndex = getLastFighter();
+
                 endGame(lastIndex);
 
 
