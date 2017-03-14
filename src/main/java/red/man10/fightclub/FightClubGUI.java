@@ -73,9 +73,9 @@ public class FightClubGUI {
             if(e.getSlot() == 10){
                 registerPlayerGUI(p,0);
                 return;
-            }
+            }r
             if(e.getSlot() == 12){
-                plugin.tp(p,plugin.selectedArena,"spawn");
+                plugin.tp(p,plugin.selectedArena,"spahuwn");
             }
             if(e.getSlot() == 16){
 
@@ -270,20 +270,23 @@ public class FightClubGUI {
             return;
         }
 
-        if(plugin.betFighter(fighter,money,p.getUniqueId(),buyer) == -1){
+        int ret = plugin.betFighter(fighter,money,p.getUniqueId(),buyer);
+
+        if(ret == -1){
             p.sendMessage(ChatColor.RED+"選手はベットできません");
             p.closeInventory();
             return;
         }
 
-        if(plugin.betFighter(fighter,money,p.getUniqueId(),buyer) == -2){
+        if(ret == -2){
             p.sendMessage(ChatColor.RED+"投票受付中しかベットできません");
             p.closeInventory();
             return;
         }
 
-        p.sendMessage(fighterName +"へ、$" + money + "ベットしました！！");
-        p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.vault.getBalance(p.getUniqueId()) +"です");
+//        plugin.serverMessage(p.getDisplayName()+"は、"+fighterName+"へ"+money+"ベットした！！！");
+//        p.sendMessage(fighterName +"へ、$" + money + "ベットしました！！");
+//        p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.vault.getBalance(p.getUniqueId()) +"です");
         //  plugin.showSideBar(p);
         plugin.updateSidebar();;
         p.closeInventory();

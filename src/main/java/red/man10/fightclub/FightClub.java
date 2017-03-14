@@ -391,6 +391,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 continue;
             }
             if(bet.fighterIndex == index){
+                serverMessage(buyerName+"は"+fighters.get(index).name+"へ"+price+"追加ベットした");
                 bets.get(i).bet += price;
                 return i;
             }
@@ -403,6 +404,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         bet.buyerName = buyerName;
         bets.add(bet);
 
+        serverMessage(buyerName+"は"+fighters.get(index).name+"へ"+price+"ベットした！！(debug)");
         resetBetTimer();
         return bets.size();
     }
