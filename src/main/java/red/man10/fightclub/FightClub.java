@@ -541,21 +541,15 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         showLifeBarToAll();
-        currentStatus = Fighting;
 
         resetFightTimer();
 
-
-
-
-        //      キットを選択
-
-        //      装備を保存
-        command("mkit push "+fighters.get(0).name );
-        command("mkit push "+fighters.get(1).name );
-
-        command("mkit set "+fighters.get(0).name + " " + selectedKit);
-        command("mkit set "+fighters.get(1).name + " " + selectedKit);
+        for(PlayerInformation fi : fighters){
+            //      装備を保存
+            command("mkit push "+fi.name );
+            //      キットを選択
+            command("mkit set "+fi.name + " " + selectedKit);
+        }
 
         tp(Bukkit.getPlayer(fighters.get(0).uuid),selectedArena,"player1");
         tp(Bukkit.getPlayer(fighters.get(1).uuid),selectedArena,"player2");
@@ -586,14 +580,13 @@ public final class FightClub extends JavaPlugin implements Listener {
         resetPlayerStatus(f1);
 
 
-        String subStitle =  f0.getName() + " vs " + f1.getName();
+        String subStitle =  "§1"+f0.getName() + " §fvs " + "§4"+f1.getName();
 
-        showTitle("3",subStitle, 0.5,0);
-        showTitle("2",subStitle, 0.5,1);
-        showTitle("1",subStitle, 0.5,2);
+        showTitle("§c3",subStitle, 0.5,0);
+        showTitle("§c2",subStitle, 0.5,1);
+        showTitle("§c1",subStitle, 0.5,2);
 
-        showTitle("ファイト！！ #"+fightId,subStitle, 1,3);
-
+        showTitle("§cファイト！！ #"+fightId,subStitle, 1,3);
 
         f0.hidePlayer(f1);
         f1.hidePlayer(f0);
@@ -607,6 +600,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         unregisterFighter(f0.getUniqueId());
         unregisterFighter(f1.getUniqueId());
         tpWaiterToArena();
+
+        currentStatus = Fighting;
+
         return 0;
     }
     public void resetPlayerStatus(Player p)
