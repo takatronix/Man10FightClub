@@ -779,7 +779,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         sideBar.show();
         //String s= f.name + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
 
-        serverMessage("§e============== §d●§f●§a●§e　Man10 Fight Club 選手決定　§d●§f●§a● §e===============");
+        serverMessage("§e============== §d●§f●§a●§eMan10 Fight Club 選手決定§d●§f●§a● §e===============");
         serverMessage(subTitle);
 
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
@@ -788,7 +788,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 //String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
                 String subTitle = "§9§lKill:"+f0.kill+" §c§lDeath:"+f0.death+" §e§l総獲得賞金 $"+(int)f0.prize;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
-                serverMessage(subTitle);
+                serverMessage(title + subTitle);
             }
         }, 100);
        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
@@ -796,15 +796,15 @@ public final class FightClub extends JavaPlugin implements Listener {
                 String title = "§1"+f1.name;
                 String subTitle = "§9§lKill:"+f1.kill+" §c§lDeath:"+f1.death+" §e§l総獲得賞金 $"+(int)f1.prize;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
-                serverMessage(subTitle);
+                serverMessage(title + subTitle);
 
             }
         }, 200);
 
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                String title = "勝者を予想しベットしてください！§a/MFC" ;
-                String subTitle = "§4"+ f0.name + " §f §1" +f1.name + " ";
+                String title = "勝者を予想しベットしてください！§a§l/MFC" ;
+                String subTitle = "§4"+ f0.name + " §fvs§1" +f1.name + " ";
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
                 serverMessage(subTitle);
                 serverMessage(title);
@@ -1002,7 +1002,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
 
-    String  prefix = "§f§l[§d§lM§f§lF§aC§l§f§l]";
+    String  prefix = "§f§l[§d§lM§f§lF§a§lC§l§f§l]";
 
     int      entryTimer = 0;
     int      betTimer = 0;
@@ -1292,6 +1292,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
             tpaLobby();
             updateSidebar();
+            endGame(lastIndex);
         }
 
 
