@@ -29,6 +29,8 @@ public class FightClubGUI {
         this.plugin = plugin;
     }
 
+    //メニュー開いてる人
+    ArrayList<Player> inmenu = new ArrayList<Player>();
 
     public void clickItem(InventoryClickEvent e) {
        Player p = (Player) e.getWhoClicked();
@@ -233,6 +235,27 @@ public class FightClubGUI {
         }
      // }catch (Exception ee){
 
+    public void closeInMenu(){
+        for(Player p : inmenu){
+            p.closeInventory();
+        }
+        inmenu.clear();
+    }
+    public void addInMenu(Player p){
+        if(inmenu.contains(p)){
+         return;
+        }else{
+           inmenu.add(p);
+        }
+        return;
+    }
+    public void removeInMenu(Player p){
+        if(inmenu.contains(p)){
+            inmenu.remove(p);
+        }else{
+            return;
+        }
+    }
 
 
     //##################[MFC BET MENU]#####################
@@ -498,7 +521,7 @@ public class FightClubGUI {
         inv.setItem(33, skull);
 
         inv.setItem(48, clear);
-
+        addInMenu(p);
         p.openInventory(inv);
     }
 
@@ -551,7 +574,7 @@ public class FightClubGUI {
         bet.setItem(24, b);
         bet.setItem(25, b);
         bet.setItem(26, b);
-
+        addInMenu(p);
         p.openInventory(bet);
 
 
@@ -592,7 +615,7 @@ public class FightClubGUI {
         i.setItem(4, bet);
         i.setItem(6, watch);
         i.setItem(7, watchback);
-
+        addInMenu(p);
         p.openInventory(i);
 
     }

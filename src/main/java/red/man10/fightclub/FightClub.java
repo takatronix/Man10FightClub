@@ -1,6 +1,7 @@
 package red.man10.fightclub;
 
 
+import com.mysql.cj.mysqlx.protobuf.MysqlxConnection;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -513,7 +514,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
     //      募集開始
     public int startGame(){
-
+        gui.closeInMenu();
         if(fighters.size() < 2){
             serverMessage("二人以上いないと開催できませんキャンセルします");
             cancelGame();
@@ -1578,7 +1579,13 @@ public final class FightClub extends JavaPlugin implements Listener {
         updateSidebar();
 
     }
-
+    @EventHandler
+    public void closeInventoryIvent(InventoryCloseEvent e){
+        if(currentStatus == Closed){
+            return;
+        }
+        gui.removeInMenu((Player) e.getPlayer());
+    }
     @EventHandler
     public void clickItem(InventoryClickEvent e) {
         /*if(currentStatus == Closed){
