@@ -955,7 +955,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         double prize = getPrize();
         serverMessage("§e§l============== §d●§f●§a●§e§lMan10 Fight Club 結果速報§d●§f●§a● §e§l===============");
 
-        serverMessage("§c勝者："+winner.getDisplayName() +"は§c§l優勝賞金 §e§l$"+(int)prize+"をゲットした！！！！");
+        serverMessage("§c勝者："+winner.getDisplayName() +"は§c§l優勝賞金 §e§l$"+(int)prize+"§f§lをゲットした！！！！");
         vault.deposit(winner.getUniqueId(),prize);
 
         //  掛け金の計算
@@ -979,7 +979,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             double playerPayout = bet.bet * odds;
 
             //      プレイヤーへ支払い
-            serverMessage("§e"+bet.buyerName+"§fは、予想があたり、§e§l$"+(int)playerPayout+"をゲットした！！ §b§lOdds:x"+String.format("%.3f",odds));
+            serverMessage("§e"+bet.buyerName+"§fは、予想があたり、§e§l$"+(int)playerPayout+"§f§lをゲットした！！ §b§lOdds:x"+String.format("%.3f",odds));
 
             //      通知
             vault.deposit(bet.buyerUUID,playerPayout);
