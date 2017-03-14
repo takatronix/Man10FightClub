@@ -777,7 +777,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         sideBar.hidden = true;
         String title = "§cMFC 選手決定！!";
-        String subTitle = f0.name + " vs "+f1.name + " Stage:" + selectedArena + " Kit:"+selectedKit;
+        String subTitle = "§4§l"+f0.name + " §fvs §1§l"+f1.name + " §aStage:" + selectedArena + " §bKit:"+selectedKit;
         titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
         sideBar.show();
@@ -788,7 +788,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                String title = "§4"+f0.name ;
+                String title = "§4§l"+f0.name ;
                 //String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
                 String subTitle = "§9§lKill:"+f0.kill+" §c§lDeath:"+f0.death+" §e§l総獲得賞金 $"+(int)f0.prize;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
@@ -797,7 +797,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }, 100);
        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                String title = "§1"+f1.name;
+                String title = "§1§l"+f1.name;
                 String subTitle = "§9§lKill:"+f1.kill+" §c§lDeath:"+f1.death+" §e§l総獲得賞金 $"+(int)f1.prize;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
                 serverMessage(title + "§f: "+ subTitle);
@@ -808,7 +808,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
                 String title = "勝者を予想しベットしてください！ §a§l/MFC" ;
-                String subTitle = "§4"+ f0.name + " §fvs§1" +f1.name + " ";
+                String subTitle = "§4§l"+ f0.name + " §fvs §1§l" +f1.name + " ";
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
                 serverMessage(subTitle);
                 serverMessage(title);
