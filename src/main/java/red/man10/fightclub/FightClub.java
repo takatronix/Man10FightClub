@@ -949,7 +949,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         double prize = getPrize();
-        serverMessage("§e============== §d●§f●§a●§e　Man10 Fight Club 結果速報　§d●§f●§a● §e===============");
+        serverMessage("§e============== §d●§f●§a●§eMan10 Fight Club 結果速報§d●§f●§a● §e===============");
 
         serverMessage("§c勝者："+winner.getDisplayName() +"は§c§l優勝賞金 §e§l$"+(int)prize+"をゲットした！！！！");
         vault.deposit(winner.getUniqueId(),prize);
@@ -1071,7 +1071,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if (currentStatus == Fighting) {
             fightTimer--;
             if(fightTimer <= 0){
-                serverMessage("タイムアウト！！！　");
+                serverMessage("タイムアウト！！！");
                 cancelGame();
             }
 
