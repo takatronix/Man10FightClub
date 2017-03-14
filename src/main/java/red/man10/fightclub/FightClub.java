@@ -481,6 +481,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     int cancelGame(){
 
         showTitle("試合中断!","試合はキャンセルされ返金されます",3,0);
+        serverMessage("試合中断！ 試合はキャンセルされ返金されます");
 
         //   払い戻し処理
         for (int i = 0;i < bets.size();i++) {
@@ -590,7 +591,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         showTitle("§c2",subStitle, 0.5,1);
         showTitle("§c1",subStitle, 0.5,2);
 
-        showTitle("§cファイト！！ #"+fightId,subStitle, 1,3);
+        String title = "§cファイト！！ #"+fightId;
+        showTitle(title,subStitle, 1,3);
+        serverMessage(title);
+        serverMessage(subStitle);
 
         f0.hidePlayer(f1);
         f1.hidePlayer(f0);
@@ -788,7 +792,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 //String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
                 String subTitle = "§9§lKill:"+f0.kill+" §c§lDeath:"+f0.death+" §e§l総獲得賞金 $"+(int)f0.prize;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
-                serverMessage(title + subTitle);
+                serverMessage(title + "§f: "+ subTitle);
             }
         }, 100);
        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
@@ -796,14 +800,14 @@ public final class FightClub extends JavaPlugin implements Listener {
                 String title = "§1"+f1.name;
                 String subTitle = "§9§lKill:"+f1.kill+" §c§lDeath:"+f1.death+" §e§l総獲得賞金 $"+(int)f1.prize;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
-                serverMessage(title + subTitle);
+                serverMessage(title + "§f: "+ subTitle);
 
             }
         }, 200);
 
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                String title = "勝者を予想しベットしてください！§a§l/MFC" ;
+                String title = "勝者を予想しベットしてください！ §a§l/MFC" ;
                 String subTitle = "§4"+ f0.name + " §fvs§1" +f1.name + " ";
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
                 serverMessage(subTitle);
@@ -949,7 +953,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         double prize = getPrize();
-        serverMessage("§e============== §d●§f●§a●§eMan10 Fight Club 結果速報§d●§f●§a● §e===============");
+        serverMessage("§e§l============== §d●§f●§a●§e§lMan10 Fight Club 結果速報§d●§f●§a● §e§l===============");
 
         serverMessage("§c勝者："+winner.getDisplayName() +"は§c§l優勝賞金 §e§l$"+(int)prize+"をゲットした！！！！");
         vault.deposit(winner.getUniqueId(),prize);
@@ -975,7 +979,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             double playerPayout = bet.bet * odds;
 
             //      プレイヤーへ支払い
-            serverMessage("§e"+bet.buyerName+"§fは、予想があたり、§e$"+(int)playerPayout+"をゲットした！！ §bOdds:x"+String.format("%.3f",odds));
+            serverMessage("§e"+bet.buyerName+"§fは、予想があたり、§e§l$"+(int)playerPayout+"をゲットした！！ §b§lOdds:x"+String.format("%.3f",odds));
 
             //      通知
             vault.deposit(bet.buyerUUID,playerPayout);
