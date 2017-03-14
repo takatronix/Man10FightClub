@@ -108,7 +108,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     ArrayList<PlayerInformation> fighters = new ArrayList<PlayerInformation>();
 
     //      観戦者リスト
-    ArrayList<PlayerInformation> spectators = new ArrayList<PlayerInformation>();
+   // ArrayList<PlayerInformation> spectators = new ArrayList<PlayerInformation>();
 
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
@@ -155,7 +155,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return -1;
             }
         }
-
+/*
         ////////////////////////////////////
         //      観戦者登録されてたらエラー
         ////////////////////////////////////
@@ -164,7 +164,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 //  登録済みエラー表示
                 return -2;
             }
-        }
+        }*/
 
         //        登録費用
         if(vault.withdraw(uuid,entryPrice) == false){
@@ -200,7 +200,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return -1;
             }
         }
-
+/*
         ////////////////////////////////////////
         //     観戦者登録登録されてたらエラー
         ////////////////////////////////////////
@@ -217,6 +217,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         playerInfo.isDead = false;
         playerInfo.returnLoc = Bukkit.getPlayer(uuid).getLocation();
         spectators.add(playerInfo);
+        */
 
         //      スポンへ移動
         Player p = Bukkit.getPlayer(uuid);
@@ -224,11 +225,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         p.setGameMode(GameMode.SPECTATOR);
 
    //     updateSidebar();
-        return spectators.size();
+     //   return spectators.size();
+        return 0;
     }
 
     public int unregisterSpectator(UUID uuid){
-
+/*
         PlayerInformation inf = null;
         for(int i = 0;i < spectators.size();i++){
             PlayerInformation p =  spectators.get(i);
@@ -238,14 +240,17 @@ public final class FightClub extends JavaPlugin implements Listener {
                 break;
             }
         }
+*/
 
         //      もとの場所にもどす
         Player player = Bukkit.getPlayer(uuid);
+        tpLobby(player);
+        /*
         if(player != null){
             player.teleport(inf.returnLoc);
             player.setGameMode(GameMode.SURVIVAL);
         }
-
+*/
         return 0;
     }
 
@@ -738,7 +743,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //     選手全員をアリーナへ移動
         //      ファイター観戦者ともに移動
-        tps(selectedArena,"spawn");
+        //tps(selectedArena,"spawn");
         tpf(selectedArena,"spawn");
 
 
@@ -1838,7 +1843,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return;
     }
-
+/*
     public void tps(String arena,String name){
         Object o =  getConfig().get(arena+ ".pos."+name);
         if(o != null){
@@ -1851,7 +1856,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         }
         return;
-    }
+    }*/
+
     public void tpa(String arena,String name){
         Object o =  getConfig().get(arena+ ".pos."+name);
         if(o != null){
