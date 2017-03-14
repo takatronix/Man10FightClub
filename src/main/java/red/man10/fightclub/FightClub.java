@@ -10,6 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -23,6 +24,7 @@ import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.projectiles.ProjectileSource;
 import red.man10.*;
 
 import java.io.File;
@@ -1266,9 +1268,33 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     }
 
+    @EventHandler
+    public void onEntityDamage(EntityDamageByEntityEvent e) {
+        if(currentStatus == Closed){
+            return ;
+        }
 
+        if(e.getDamager() instanceof Projectile && e.getEntity() instanceof Player) {
+            //make sure the damager is a snowball & the damaged entity is a Player
+            ProjectileSource shooter = ((Projectile) e.getDamager()).getShooter();
+            if (!(shooter instanceof Player)) {
+                return;
+            }
+            Player p = (Player)shooter;
+            if(!isFighter(p.getUniqueId())){
+                p.sendMessage("選手以外の戦闘行動は禁止されています");
+                e.setCancelled(true);
+                return;
+            }
+            //      試合中以外はキャンセル
+            if(currentStatus != Fighting){
+                e.setCancelled(true);
+                return ;
+            }
 
+        }
 
+    }
     @EventHandler
     public void PlayerDamageReceive(EntityDamageByEntityEvent e) {
         if(currentStatus == Closed){
@@ -1292,6 +1318,13 @@ public final class FightClub extends JavaPlugin implements Listener {
                 e.setCancelled(true);
                 return;
             }
+
+            //      試合中以外はキャンセル
+            if(currentStatus != Fighting){
+                e.setCancelled(true);
+                return ;
+            }
+
 
             //  死亡をキャンセル
             if((damaged.getHealth()-e.getDamage()) <= 0) {
