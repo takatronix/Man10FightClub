@@ -50,17 +50,14 @@ public final class FightClub extends JavaPlugin implements Listener {
     //    Fight ID （データベースキー）OpenFightでアップデートされる
     int fightId = -1;
 
-
+/*
     int kill0 = 0;
     int kill1 = 0;
     int death0 = 0;
     int death1 = 0;
     double prize0 =0;
     double prize1 =0;
-    double kdr0 =0;
-    double kdr1 =0;
-    String kdrs0 = "";
-    String kdrs1 = "";
+*/
 
 
     String      worldName = "Arena";
@@ -82,9 +79,15 @@ public final class FightClub extends JavaPlugin implements Listener {
         String      name;
         Location    returnLoc;          //  戻る場所
         Boolean     isDead;
+        //
         int         kill;
         int         death;
         double      prize;
+        void updateKDRP(FightClubData data){
+            kill = data.killCount(uuid);
+            death = data.deathCount(uuid);
+            prize = data.totalPrize(uuid);
+        }
     }
     //      購入者情報
     class  BuyerInformation{
@@ -754,41 +757,23 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //     選手全員をアリーナへ移動
         //      ファイター観戦者ともに移動
-        //tps(selectedArena,"spawn");
         tpf(selectedArena,"spawn");
 
-        String f0Name = fighters.get(0).name;
-        String f1Name = fighters.get(1).name;
 
-
-        //       KDRの算出
-        kill0 = data.killCount(fighters.get(0).uuid);
-        kill1 = data.killCount(fighters.get(1).uuid);
-        death0 = data.deathCount(fighters.get(0).uuid);
-        death1 = data.deathCount(fighters.get(1).uuid);
-        prize0 = data.totalPrize(fighters.get(0).uuid);
-        prize1 = data.totalPrize(fighters.get(1).uuid);
-        kdr0 = 0;
-        kdr1 = 0;
-        kdrs0 = "";
-        kdrs1 = "";
-        if(death0 > 0){
-            kdr0 = kill0 / death0;
-            kdrs0 = String.format("%.2f",kdr0);
-        }
-        if(death1 > 0){
-            kdr1 = kill1 / death1;
-            kdrs1 = String.format("%.2f",kdr1);
+        //  Kill/Death/Prize更新
+        for(PlayerInformation inf : fighters){
+            inf.updateKDRP(data);
         }
 
-
+        PlayerInformation f0 = fighters.get(0);
+        PlayerInformation f1 = fighters.get(1);
 
 
         clearEntity();
 
         sideBar.hidden = true;
         String title = "§cMFC 選手決定！!";
-        String subTitle = f0Name + " vs "+f1Name + " Stage:" + selectedArena + " Kit:"+selectedKit;
+        String subTitle = f0.name + " vs "+f1.name + " Stage:" + selectedArena + " Kit:"+selectedKit;
         titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
         sideBar.show();
@@ -796,20 +781,16 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                String title = "§4"+f0Name ;
+                String title = "§4"+f0.name ;
                 //String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
-                String subTitle = "§9§lKill:"+kill0+" §c§lDeath:"+death0+" §e§l総獲得賞金 $"+(int)prize0;
+                String subTitle = "§9§lKill:"+f0.kill+" §c§lDeath:"+f0.death+" §e§l総獲得賞金 $"+(int)f0.prize;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
-
-
             }
         }, 100);
        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                String title = "§1"+f1Name;
- //               String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
-//                String subTitle = "Kill:"+kill1+" Death:"+death1+" KDR:"+kdrs1+"総獲得賞金 $"+(int)prize1;
-                String subTitle = "§9§lKill:"+kill1+" §c§lDeath:"+death1+" §e§l総獲得賞金 $"+(int)prize1;
+                String title = "§1"+f1.name;
+                String subTitle = "§9§lKill:"+f1.kill+" §c§lDeath:"+f1.death+" §e§l総獲得賞金 $"+(int)f1.prize;
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
             }
@@ -817,8 +798,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                String title = "勝者を予想しベットしてください！ /MFC" ;
-                String subTitle = ""+ f0Name + " vs " + f1Name + " ";
+                String title = "勝者を予想しベットしてください！§a/MFC" ;
+                String subTitle = "§4"+ f0.name + " §f §1" +f1.name + " ";
                 titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
             }
         }, 300);
@@ -1263,73 +1244,52 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(!p.getWorld().getName().equalsIgnoreCase(worldName)){
             return;
         }
+
+        //      ファイターでなければ無視
         int index = getFighterIndex(p.getUniqueId());
-        //
+        if(index == -1){
+            return;
+        }
 
-        if(index != -1){
-            PlayerInformation f = fighters.get(index);      //  死亡者
+        PlayerInformation f = fighters.get(index);      //  死亡者
+        fighters.get(index).isDead = true;
 
-            fighters.get(index).isDead = true;
-            serverMessage("死亡!!!:"+p.getDisplayName());
-            int lastIndex = getLastFighter();
-            p.spigot().respawn();
-            resetPlayerStatus(p);
-            tpLobby(p);
+        serverMessage("死亡!!!:"+p.getDisplayName());
 
-            getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-                public void run() {
-                    command("mkit pop "+p.getName());
-                    resetPlayerStatus(p);
-                }
-            }, 20);
+        int lastIndex = getLastFighter();               //  最後の生存者ID
 
+        //      死亡者をよみがえらせTPさせる
+        p.spigot().respawn();
+        resetPlayerStatus(p);
+        tpLobby(p);
 
-
-        //    p.sendMessage("あなたは、観戦者になりました。");
-
-
-            //command("man10 tpuser "+ fighters.get(0).name + " death");
-            //command("man10 tpuser "+ fighters.get(1).name + " death");
-
-            //      最後ならゲームを終了する
-            if(getAliveFighterCount() <= 1){
-                serverMessage("ゲーム終了！！！");
-
-
-                for(PlayerInformation pf : fighters){
-                    Player pn = Bukkit.getPlayer(pf.uuid);
-                    resetPlayerStatus(pn);
-                    command("mkit pop "+pf.name );
-                }
-
-                tpaLobby();
-
-
-
-
-                endGame(lastIndex);
-
-
-
-
-
-                return;
-
-            }else{
-                String s = p.getDisplayName() + "は死亡した！！";
-                serverMessage(s);
-                s = "生存者/プレーヤ= " + getAliveFighterCount() + "/" + fighters.size();
-                serverMessage(s);
-
-
+        //      遅延実行で装備をリセット
+        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+            public void run() {
+                resetPlayerStatus(p);
+                command("mkit pop "+p.getName());
             }
-            updateSidebar();
+        }, 20);
 
+        ////////////////////////////////////
+        //      最後ならゲームを終了する
+        ////////////////////////////////////
+        if(getAliveFighterCount() <= 1){
+            serverMessage("ゲーム終了！！！");
+            for(PlayerInformation pf : fighters){
+                Player pn = Bukkit.getPlayer(pf.uuid);
+                resetPlayerStatus(pn);
+                command("mkit pop "+pf.name );
+            }
+            tpaLobby();
+            updateSidebar();
         }
 
 
     }
 
+
+    //      銃や弓などのダメージイベント
     @EventHandler
     public void onEntityDamage(EntityDamageByEntityEvent e) {
         if(currentStatus == Closed){
@@ -1363,10 +1323,13 @@ public final class FightClub extends JavaPlugin implements Listener {
                 e.setCancelled(true);
                 return ;
             }
+            //  ライフバー更新
+            updateLifeBar();
 
         }
 
     }
+    //      ヒットダメージ等
     @EventHandler
     public void PlayerDamageReceive(EntityDamageByEntityEvent e) {
         if(currentStatus == Closed){
@@ -1388,45 +1351,19 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
 
             Player damager = (Player) e.getDamager();
-
             //
             if(!isFighter(damager.getUniqueId())){
                 damager.sendMessage("選手以外の戦闘行動は禁止されています");
                 e.setCancelled(true);
                 return;
             }
-
-            return;
-/*
             //      試合中以外はキャンセル
             if(currentStatus != Fighting){
                 e.setCancelled(true);
                 return ;
             }
-
-
-            //  死亡をキャンセル
-            if((damaged.getHealth()-e.getDamage()) <= 0) {
-                e.setCancelled(true);
-
-                serverMessage("[MFC]ゲーム終了:"+damaged.getDisplayName()+"は死亡した");
-
-                resetPlayerStatus(damaged);
-
-
-                int index = getFighterIndex(damager.getUniqueId());
-                endGame(index);
-
-                for(PlayerInformation pf : fighters){
-                    command("mkit pop "+pf.name);
-                }
-
-                tpaLobby();
-
-
-            }
-*/
-
+            //  ライフバー更新
+            updateLifeBar();
         }
     }
 
@@ -1434,7 +1371,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         double d = inf.prize /  (double)(inf.kill + inf.death) * 0.001;
         return (int)d;
     }
-
+/*
     ////////////////////////////
     //      ダメージイベント
     /////////////////////////////////
@@ -1456,13 +1393,13 @@ public final class FightClub extends JavaPlugin implements Listener {
             if(d == 0){
                 return;
             }
-            String dam = String.format("%.2f",d);
+           // String dam = String.format("%.2f",d);
            // serverMessage(p.getName()+"は、"+dam+"ダメージ を受けた！！！");
             updateSidebar();
         }
 
     }
-
+*/
     //      ログメッセージ
     void log(String text){
         getLogger().info(text);
