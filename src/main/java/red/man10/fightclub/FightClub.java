@@ -748,7 +748,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         tpf(selectedArena,"spawn");
 
         String f0Name = fighters.get(0).name;
-        String f1Name = fighters.get(0).name;
+        String f1Name = fighters.get(1).name;
 
 
         //       KDRの算出
