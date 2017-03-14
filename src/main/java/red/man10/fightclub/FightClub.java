@@ -1591,7 +1591,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     }
     @EventHandler
-    public void closeInventoryIvent(InventoryCloseEvent e){
+    public void closeInventoryEvent(InventoryCloseEvent e){
         if(currentStatus == Closed){
             return;
         }
