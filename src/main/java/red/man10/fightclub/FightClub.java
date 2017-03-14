@@ -598,7 +598,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
     public void resetPlayerStatus(Player p)
         {
-
+            p.setFireTicks(0);
 
             if (p.hasPotionEffect(PotionEffectType.BLINDNESS) == true)
             {
@@ -1261,8 +1261,13 @@ public final class FightClub extends JavaPlugin implements Listener {
 
             fighters.get(index).isDead = true;
             serverMessage("死亡!!!:"+p.getDisplayName());
-        //    p.sendMessage("あなたは、観戦者になりました。");
 
+            p.spigot().respawn();
+            resetPlayerStatus(p);
+            tpLobby(p);
+
+
+        //    p.sendMessage("あなたは、観戦者になりました。");
 
 
             //command("man10 tpuser "+ fighters.get(0).name + " death");
@@ -1273,15 +1278,19 @@ public final class FightClub extends JavaPlugin implements Listener {
                 serverMessage("ゲーム終了！！！");
 
 
+                for(PlayerInformation pf : fighters){
+                    Player pn = Bukkit.getPlayer(pf.uuid);
+                    resetPlayerStatus(pn);
+                    command("mkit pop "+pf.name );
+                }
 
-                command("mkit pop "+fighters.get(0).name );
-                command("mkit pop "+fighters.get(1).name );
                 tpaLobby();
 
 
 
                 int lastIndex = getLastFighter();
                 endGame(lastIndex);
+
 
 
 
@@ -1369,6 +1378,8 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return;
             }
 
+            return;
+/*
             //      試合中以外はキャンセル
             if(currentStatus != Fighting){
                 e.setCancelled(true);
@@ -1396,7 +1407,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
             }
-
+*/
 
         }
     }

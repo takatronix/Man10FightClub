@@ -31,13 +31,13 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="786" column="53" lean-forward="false" selection-start-line="786" selection-start-column="53" selection-end-line="786" selection-end-column="53" />
+            <state relative-caret-position="76">
+              <caret line="1263" column="0" lean-forward="true" selection-start-line="1263" selection-start-column="0" selection-end-line="1263" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1489488497000" expanded="false" signature="46009:46019" ph="&lt;~&gt;" />
-                <marker date="1489488497000" expanded="false" signature="48691:48699" ph="&lt;~&gt;" />
-                <marker date="1489488497000" expanded="false" signature="55335:55343" ph="&lt;~&gt;" />
+                <marker date="1489509764000" expanded="false" signature="46264:46274" ph="&lt;~&gt;" />
+                <marker date="1489509764000" expanded="false" signature="48946:48954" ph="&lt;~&gt;" />
+                <marker date="1489509764000" expanded="false" signature="55590:55598" ph="&lt;~&gt;" />
               </folding>
             </state>
           </provider>
@@ -56,8 +56,8 @@
       <file leaf-file-name="FightClubGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="151" column="34" lean-forward="false" selection-start-line="151" selection-start-column="23" selection-end-line="151" selection-end-column="34" />
+            <state relative-caret-position="285">
+              <caret line="312" column="27" lean-forward="false" selection-start-line="312" selection-start-column="27" selection-end-line="312" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -66,11 +66,9 @@
       <file leaf-file-name="VaultManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
+            <state relative-caret-position="975">
               <caret line="75" column="41" lean-forward="false" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,8 +76,8 @@
       <file leaf-file-name="FightClubData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-733">
-              <caret line="35" column="9" lean-forward="true" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+            <state relative-caret-position="420">
+              <caret line="35" column="9" lean-forward="false" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -88,7 +86,7 @@
       <file leaf-file-name="FightClubCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
+            <state relative-caret-position="2205">
               <caret line="156" column="54" lean-forward="false" selection-start-line="156" selection-start-column="54" selection-end-line="156" selection-end-column="54" />
               <folding />
             </state>
@@ -107,9 +105,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lifeBar</find>
-      <find>cance</find>
-      <find>tpa</find>
       <find>out</find>
       <find>PlayerQu</find>
       <find>tpaLobby</find>
@@ -135,8 +130,11 @@
       <find>観戦を</find>
       <find>registerSpec</find>
       <find>void tp</find>
-      <find>openGame</find>
       <find>159</find>
+      <find>openGame</find>
+      <find>resetPlayer</find>
+      <find>resetPlayerStatus</find>
+      <find>death</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -224,8 +222,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2440" />
-    <option name="y" value="91" />
+    <option name="x" value="2877" />
+    <option name="y" value="95" />
     <option name="width" value="1920" />
     <option name="height" value="1053" />
   </component>
@@ -247,8 +245,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -401,7 +399,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -711,20 +709,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
-    </task>
-    <task id="LOCAL-00132" summary="MFC on/off状態の保存">
-      <created>1489301819144</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1489301819144</updated>
-    </task>
-    <task id="LOCAL-00133" summary="MFC無効時のイベントキャセンル処理">
-      <created>1489302279912</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1489302279912</updated>
     </task>
     <task id="LOCAL-00134" summary="Unregisterコマンド">
       <created>1489304480794</created>
@@ -1055,7 +1039,21 @@
       <option name="project" value="LOCAL" />
       <updated>1489470164519</updated>
     </task>
-    <option name="localTasksCounter" value="181" />
+    <task id="LOCAL-00181" summary="開始中にキャンセルするとエラー泊問題">
+      <created>1489488635338</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1489488635338</updated>
+    </task>
+    <task id="LOCAL-00182" summary="開始中にキャンセルするとエラー泊問題">
+      <created>1489491473966</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1489491473966</updated>
+    </task>
+    <option name="localTasksCounter" value="183" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1068,7 +1066,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2440" y="91" width="1920" height="1053" extended-state="0" />
+    <frame x="2877" y="95" width="1920" height="1053" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1080,19 +1078,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.036585364" sideWeight="0.52296454" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09904154" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.284492" sideWeight="0.69261366" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12800875" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.284492" sideWeight="0.69261366" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14962727" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1512247" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25185508" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973601" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1137,7 +1135,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="MFC無効時のイベントキャセンル処理" />
     <MESSAGE value="Unregisterコマンド" />
     <MESSAGE value="Bet用figher idバグ" />
     <MESSAGE value="Damage受信処理修正" />
@@ -1162,7 +1159,8 @@
     <MESSAGE value="観戦者モードをなくした" />
     <MESSAGE value="debug用autobet機能" />
     <MESSAGE value="betterがオフラインになったときのバグシュウセイ" />
-    <option name="LAST_COMMIT_MESSAGE" value="betterがオフラインになったときのバグシュウセイ" />
+    <MESSAGE value="開始中にキャンセルするとエラー泊問題" />
+    <option name="LAST_COMMIT_MESSAGE" value="開始中にキャンセルするとエラー泊問題" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1189,9 +1187,9 @@
           <caret line="418" column="34" lean-forward="false" selection-start-line="418" selection-start-column="34" selection-end-line="418" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489488497000" expanded="false" signature="46009:46019" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="48691:48699" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="55335:55343" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="46264:46274" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="48946:48954" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="55590:55598" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1233,9 +1231,9 @@
           <caret line="418" column="34" lean-forward="false" selection-start-line="418" selection-start-column="34" selection-end-line="418" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489488497000" expanded="false" signature="46009:46019" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="48691:48699" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="55335:55343" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="46264:46274" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="48946:48954" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="55590:55598" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1277,9 +1275,9 @@
           <caret line="1221" column="27" lean-forward="true" selection-start-line="1221" selection-start-column="27" selection-end-line="1221" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489488497000" expanded="false" signature="46009:46019" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="48691:48699" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="55335:55343" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="46264:46274" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="48946:48954" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="55590:55598" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1366,9 +1364,9 @@
           <caret line="766" column="22" lean-forward="false" selection-start-line="766" selection-start-column="15" selection-end-line="766" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489488497000" expanded="false" signature="46009:46019" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="48691:48699" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="55335:55343" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="46264:46274" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="48946:48954" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="55590:55598" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1402,9 +1400,9 @@
           <caret line="418" column="34" lean-forward="false" selection-start-line="418" selection-start-column="34" selection-end-line="418" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489488497000" expanded="false" signature="46009:46019" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="48691:48699" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="55335:55343" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="46264:46274" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="48946:48954" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="55590:55598" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1446,9 +1444,9 @@
           <caret line="418" column="34" lean-forward="false" selection-start-line="418" selection-start-column="34" selection-end-line="418" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489488497000" expanded="false" signature="46009:46019" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="48691:48699" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="55335:55343" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="46264:46274" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="48946:48954" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="55590:55598" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1490,9 +1488,9 @@
           <caret line="1221" column="27" lean-forward="true" selection-start-line="1221" selection-start-column="27" selection-end-line="1221" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489488497000" expanded="false" signature="46009:46019" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="48691:48699" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="55335:55343" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="46264:46274" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="48946:48954" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="55590:55598" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1565,11 +1563,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
+        <state relative-caret-position="975">
           <caret line="75" column="41" lean-forward="false" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1581,17 +1577,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="151" column="34" lean-forward="false" selection-start-line="151" selection-start-column="23" selection-end-line="151" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
+        <state relative-caret-position="2205">
           <caret line="156" column="54" lean-forward="false" selection-start-line="156" selection-start-column="54" selection-end-line="156" selection-end-column="54" />
           <folding />
         </state>
@@ -1599,21 +1587,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-733">
-          <caret line="35" column="9" lean-forward="true" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+        <state relative-caret-position="420">
+          <caret line="35" column="9" lean-forward="false" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="312" column="27" lean-forward="false" selection-start-line="312" selection-start-column="27" selection-end-line="312" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="786" column="53" lean-forward="false" selection-start-line="786" selection-start-column="53" selection-end-line="786" selection-end-column="53" />
+        <state relative-caret-position="76">
+          <caret line="1263" column="0" lean-forward="true" selection-start-line="1263" selection-start-column="0" selection-end-line="1263" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489488497000" expanded="false" signature="46009:46019" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="48691:48699" ph="&lt;~&gt;" />
-            <marker date="1489488497000" expanded="false" signature="55335:55343" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="46264:46274" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="48946:48954" ph="&lt;~&gt;" />
+            <marker date="1489509764000" expanded="false" signature="55590:55598" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
