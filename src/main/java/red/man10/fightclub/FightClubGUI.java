@@ -25,6 +25,7 @@ import java.util.UUID;
  */
 public class FightClubGUI {
     private final FightClub plugin;
+    String  prefix = "§f§l[§d§lM§f§lF§a§lC§l§f§l]";
 
     public FightClubGUI(FightClub plugin) {
         this.plugin = plugin;
@@ -38,6 +39,7 @@ public class FightClubGUI {
        if(plugin.currentStatus == FightClub.Status.Opened) {
            if (p.getWorld().getName().equalsIgnoreCase("arena")) {
                if (p.getName().equalsIgnoreCase(plugin.fighters.get(0).name) || p.getName().equalsIgnoreCase(plugin.fighters.get(1).name)) {
+                   p.sendMessage(prefix + "選手はインベントリを編集できません");
                    e.setCancelled(true);
                    return;
                }else{
