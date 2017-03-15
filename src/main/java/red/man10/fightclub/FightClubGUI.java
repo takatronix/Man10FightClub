@@ -35,6 +35,15 @@ public class FightClubGUI {
 
     public void clickItem(InventoryClickEvent e) {
        Player p = (Player) e.getWhoClicked();
+       if(plugin.currentStatus == FightClub.Status.Opened) {
+           if (p.getWorld().getName().equalsIgnoreCase("arena")) {
+               if (p.getName().equalsIgnoreCase(plugin.fighters.get(0).name) || p.getName().equalsIgnoreCase(plugin.fighters.get(1).name)) {
+                   e.setCancelled(true);
+                   return;
+               }else{
+               }
+           }
+       }
         //try {
         /*
         if(e.getClickedInventory().getTitle().equals("§9§lプレイヤーを登録する")){
