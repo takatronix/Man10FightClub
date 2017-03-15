@@ -1469,7 +1469,19 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         return ret;
     }
-
+    @EventHandler
+    public void commandCancel(PlayerCommandPreprocessEvent e){
+        if(currentStatus == Status.Fighting) {
+            Player p = e.getPlayer();
+            if (p.getWorld().getName().equalsIgnoreCase("arena")) {
+                if (p.getName().equalsIgnoreCase(fighters.get(0).name) || p.getName().equalsIgnoreCase(fighters.get(1).name)) {
+                    p.sendMessage(prefix + "戦闘中はコマンドの使用はできません");
+                    e.setCancelled(true);
+                    return;
+                }
+            }
+        }
+    }
     @EventHandler
     public void clickSignEvent(PlayerInteractEvent e) {
 
