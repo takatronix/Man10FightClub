@@ -1199,30 +1199,24 @@ public final class FightClub extends JavaPlugin implements Listener {
                 p.setGameMode(GameMode.SURVIVAL);
                 tpLobby(p);
             }
-        }
 
-
-        if(unregisterFighter(p.getUniqueId()) < 0){
-            serverMessage(p.getName() + "はログアウトしたため、登録リストからはずされた");
-            updateSidebar();
-        }
-
-        for (int i = 0; i < fighters.size(); i++) {
-            if (fighters.get(i).uuid == p.getUniqueId()) {
-                serverMessage(p.getName() + "はログアウトしたため、試合をキャンセルします");
-                cancelGame();
-                break;
+            if(unregisterFighter(p.getUniqueId()) < 0){
+                serverMessage(p.getName() + "はログアウトしたため、登録リストからはずされた");
+                updateSidebar();
             }
+
+            for (int i = 0; i < fighters.size(); i++) {
+                if (fighters.get(i).uuid == p.getUniqueId()) {
+                    serverMessage(p.getName() + "はログアウトしたため、試合をキャンセルします");
+                    cancelGame();
+                    break;
+                }
+            }
+
+
         }
 
-//        if (unregisterSpectator(p.getUniqueId()) != -1){
- //           serverMessage(p.getName()+"はログアウトしたため、観戦をやめました");
- //       }
 
-
-
-        // You don't need a null check here, it will always be a valid player (afaik)
- //       this.plugin.onQuit(p);
     }
     /////////////////////////////////
     //      チャットイベント
