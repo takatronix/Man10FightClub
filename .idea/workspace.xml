@@ -31,8 +31,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="1479" column="27" lean-forward="false" selection-start-line="1479" selection-start-column="27" selection-end-line="1479" selection-end-column="27" />
+            <state relative-caret-position="333">
+              <caret line="1478" column="31" lean-forward="false" selection-start-line="1478" selection-start-column="31" selection-end-line="1478" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -722,13 +722,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00153" summary="表示修正">
-      <created>1489341591538</created>
-      <option name="number" value="00153" />
-      <option name="presentableId" value="LOCAL-00153" />
-      <option name="project" value="LOCAL" />
-      <updated>1489341591538</updated>
-    </task>
     <task id="LOCAL-00154" summary="表示修正">
       <created>1489341717130</created>
       <option name="number" value="00154" />
@@ -1065,7 +1058,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489547192656</updated>
     </task>
-    <option name="localTasksCounter" value="202" />
+    <task id="LOCAL-00202" summary="戦闘時コマンド禁止処理追加">
+      <created>1489616237046</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
+      <option name="project" value="LOCAL" />
+      <updated>1489616237046</updated>
+    </task>
+    <option name="localTasksCounter" value="203" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1147,7 +1147,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="MFC Score表示修正" />
     <MESSAGE value="LifeBarバグシュウセイ" />
     <MESSAGE value="まちリストを修正" />
     <MESSAGE value="表示修正" />
@@ -1172,7 +1171,8 @@
     <MESSAGE value="ファイターのアイテム持ち込みチート対策" />
     <MESSAGE value="ファイターのアイテム持ち込みチート対策にメッセージを追加" />
     <MESSAGE value="ファイターのアイテム持ち込みチート対策を分類化（バグ修正）" />
-    <option name="LAST_COMMIT_MESSAGE" value="ファイターのアイテム持ち込みチート対策を分類化（バグ修正）" />
+    <MESSAGE value="戦闘時コマンド禁止処理追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="戦闘時コマンド禁止処理追加" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1650,8 +1650,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="1479" column="27" lean-forward="false" selection-start-line="1479" selection-start-column="27" selection-end-line="1479" selection-end-column="27" />
+        <state relative-caret-position="333">
+          <caret line="1478" column="31" lean-forward="false" selection-start-line="1478" selection-start-column="31" selection-end-line="1478" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
