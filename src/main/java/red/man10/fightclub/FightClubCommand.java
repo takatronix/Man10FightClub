@@ -55,7 +55,10 @@ public class FightClubCommand  implements CommandExecutor {
         //          エントリー
         ////////////////////////////////////
         if(args[0].equalsIgnoreCase("entry")){
-
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
             if (plugin.currentStatus != FightClub.Status.Closed){
                 p.sendMessage("You should cancel game!");
                 return false;
@@ -168,11 +171,20 @@ public class FightClubCommand  implements CommandExecutor {
         ///       キャンセル
         //////////////////////////////////
         if(args[0].equalsIgnoreCase("open")){
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限が必要です");
+                return false;
+            }
+
             plugin.openGame();
             p.sendMessage("MFC Opened");
             return true;
         }
         if(args[0].equalsIgnoreCase("admin")){
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限が必要です");
+                return false;
+            }
             //plugin.gui.adminMenu(p);
          //   p.sendMessage("MFC Opened");
             return true;
@@ -181,6 +193,10 @@ public class FightClubCommand  implements CommandExecutor {
         ///       ファイト
         //////////////////////////////////
         if(args[0].equalsIgnoreCase("fight")){
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限が必要です");
+                return false;
+            }
             plugin.startGame();
             p.sendMessage("MFC Started");
             return true;

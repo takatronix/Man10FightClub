@@ -38,7 +38,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     String adminPermision = "man10.fightclub.admin";
     String betPermision = "man10.fightclub.bet";
     String registerPermision = "man10.fightclub.register";
-    String unregisterPermision = "man10.fightclub.unrgister";
+    String unregisterPermision = "man10.fightclub.unregister";
 
     FightClubGUI gui = new FightClubGUI(this);
     LifeBar lifebar = new LifeBar(this);
@@ -154,16 +154,6 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return -1;
             }
         }
-/*
-        ////////////////////////////////////
-        //      観戦者登録されてたらエラー
-        ////////////////////////////////////
-        for(PlayerInformation p : this.spectators){
-            if(p.uuid == uuid){
-                //  登録済みエラー表示
-                return -2;
-            }
-        }*/
 
         //        登録費用
         if(vault.withdraw(uuid,entryPrice) == false){
@@ -206,34 +196,6 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     //      観戦者
     public int registerSpectator(UUID uuid){
-/*
-        ////////////////////////////////////////
-        //      ファイター登録登録されてたらエラー
-        ////////////////////////////////////////
-        for(PlayerInformation waiter : waiters){
-            if(waiter.uuid == uuid){
-                //  登録済みエラー表示
-                return -1;
-            }
-        }
-
-        ////////////////////////////////////////
-        //     観戦者登録登録されてたらエラー
-        ////////////////////////////////////////
-        for(PlayerInformation p : spectators){
-            if(p.uuid == uuid){
-                //  登録済みエラー表示
-                return -2;
-            }
-        }
-
-        //      追加
-        PlayerInformation playerInfo = new PlayerInformation();
-        playerInfo.uuid = uuid;
-        playerInfo.isDead = false;
-        playerInfo.returnLoc = Bukkit.getPlayer(uuid).getLocation();
-        spectators.add(playerInfo);
-        */
 
         //      スポンへ移動
         Player p = Bukkit.getPlayer(uuid);
@@ -246,28 +208,12 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     public int unregisterSpectator(UUID uuid){
-/*
-        PlayerInformation inf = null;
-        for(int i = 0;i < spectators.size();i++){
-            PlayerInformation p =  spectators.get(i);
-            if(p.uuid == uuid){
-                inf = p;
-                spectators.remove(i);
-                break;
-            }
-        }
-*/
 
         //      もとの場所にもどす
         Player player = Bukkit.getPlayer(uuid);
         player.setGameMode(GameMode.SURVIVAL);
         tpLobby(player);
-        /*
-        if(player != null){
-            player.teleport(inf.returnLoc);
-            player.setGameMode(GameMode.SURVIVAL);
-        }
-*/
+
         return 0;
     }
 
@@ -894,7 +840,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     double autoBetPrice = 12345;
-    boolean autoBet = true;
+    boolean autoBet = false;
     String autoBetPlayerName = "MFC Auto Bet";
     String autoBetUUID = "1927b4f6-1e01-41a0-a0fa-28ea775c558e";
 
@@ -1624,26 +1570,40 @@ public final class FightClub extends JavaPlugin implements Listener {
                 }
 
                 Sign s = (Sign) e.getClickedBlock().getState();
+                Player p = e.getPlayer();
                 if (s.getLine(0).equalsIgnoreCase("[MFC]") == false){
                     return;
                 }
                 if (s.getLine(1).equalsIgnoreCase("BET")) {
-
-
-                    guiBetMenu(e.getPlayer());
-
+                    if(!p.hasPermission(betPermision)){
+                        p.sendMessage("ベットする権限がありません");
+                        return;
+                    }
+                    guiBetMenu(p);
                     return;
                 }
                 if (s.getLine(1).equalsIgnoreCase("Register")) {
+                    if(!p.hasPermission(registerPermision)){
+                        p.sendMessage("選手登録する権限がありません");
+                        return;
+                    }
                     registerFighter(e.getPlayer().getUniqueId(),e.getPlayer().getName());
                     return;
                 }
             if (s.getLine(1).equalsIgnoreCase("UnRegister")) {
+                if(!p.hasPermission(unregisterPermision)){
+                    p.sendMessage("選手登録解除する権限がありません");
+                    return;
+                }
                 unregisterFighter(e.getPlayer().getUniqueId());
                 return;
             }
 
                 if (s.getLine(1).equalsIgnoreCase("Entry")) {
+                    if(!p.hasPermission(adminPermision)){
+                        p.sendMessage("管理者権限がありません");
+                        return;
+                    }
                     startEntry();
                     return;
                 }
@@ -1658,14 +1618,27 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
 
                 if (s.getLine(1).equalsIgnoreCase("Cancel")) {
+                    if(!p.hasPermission(adminPermision)){
+                        p.sendMessage("管理者権限がありません");
+                        return;
+                    }
                     cancelGame();
                     return;
                 }
                 if (s.getLine(1).equalsIgnoreCase("Open")) {
+                    if(!p.hasPermission(adminPermision)){
+                        p.sendMessage("管理者権限がありません");
+                        return;
+                    }
+
                     openGame();
                     return;
                 }
                 if (s.getLine(1).equalsIgnoreCase("Fight")) {
+                    if(!p.hasPermission(adminPermision)){
+                        p.sendMessage("管理者権限がありません");
+                        return;
+                    }
                     startGame();
                     return;
                 }
