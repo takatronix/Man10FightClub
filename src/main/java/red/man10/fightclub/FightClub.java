@@ -496,7 +496,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         for(PlayerInformation p : fighters){
             unregisterFighter(p.uuid);
-            command("mkit pop "+fighters.get(0).name);
+            command("mkit pop "+p.name);
         }
 
         fighters.clear();
