@@ -1219,6 +1219,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         vault = new VaultManager(this);
+        sideBar.showToAll();
         updateSidebar();
 
         //data = new FightClubData(this);

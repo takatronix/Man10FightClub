@@ -94,26 +94,7 @@ public class FightClubSideBar {
 
         showToAll();
     }
-    void showFighters(){
-        sideBar.setTitle("§l Man10 Fight Club 対戦中!!!!");
-        sideBar.setScore("§4残り時間",plugin.fightTimer);
 
-        for(int i = 0;i < plugin.fighters.size();i++){
-            FightClub.PlayerInformation f = plugin.fighters.get(i);
-
-
-           // FightClub.PlayerInformation f = plugin.fighters.get(i);
-            //String s = "["+i+"]" + f.name ;
-
-            String s = String.format("%10s Odds:§bx§l%3.2f",f.name,plugin.getFighterOdds(f.uuid));
-
-
-            sideBar.setScore(s,0);
-
- //           sideBar.setScore(s,plugin.getFighterBetCount(f.uuid));
-        }
-    //    showToAll();
-    }
 
 
 
@@ -155,7 +136,7 @@ public class FightClubSideBar {
 */
             setFighterInfo(f);
         }
-   //     showToAll();
+         showToAll();
     }
 
     void setFighterInfo(FightClub.PlayerInformation f){
