@@ -26,6 +26,7 @@ import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.projectiles.ProjectileSource;
+import org.bukkit.util.io.BukkitObjectInputStream;
 import red.man10.*;
 
 import java.io.File;
@@ -37,6 +38,9 @@ import static red.man10.fightclub.FightClub.Status.*;
 public final class FightClub extends JavaPlugin implements Listener {
 
     String adminPermision = "man10.fightclub.admin";
+    String betPermision = "man10.fightclub.bet";
+    String registerPermision = "man10.fightclub.register";
+    String unregisterPermision = "man10.fightclub.unrgister";
 
     FightClubGUI gui = new FightClubGUI(this);
     LifeBar lifebar = new LifeBar(this);
@@ -116,7 +120,10 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
 
-
+    //      ブラックリスト
+    ArrayList<UUID> blacklist = new ArrayList<UUID>();
+    //      ホワイトリスト
+    ArrayList<UUID> whitelist = new ArrayList<UUID>();
 
 
     public boolean isFighter(UUID uuid){
@@ -189,6 +196,23 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         updateSidebar();
         return waiters.size();
+    }
+
+    public int addBlocklist(CommandSender sender,UUID uuid){
+        return 0;
+    }
+    public int whiteBlocklist(CommandSender sender,UUID uuid){
+        return 0;
+
+    }
+
+    public int kick(CommandSender sender,UUID uuid){
+
+        return 0;
+    }
+    public int ban(CommandSender sender,UUID uuid){
+
+        return 0;
     }
 
     //      観戦者
@@ -497,6 +521,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         for(PlayerInformation p : fighters){
             unregisterFighter(p.uuid);
             command("mkit pop "+p.name);
+            serverMessage(p.name +"のインベントリをもどしています");
         }
 
         fighters.clear();
@@ -551,7 +576,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         for(PlayerInformation fi : fighters){
             //      装備を保存
-            command("mkit push "+fi.name );
+           // command("mkit push "+fi.name );
             //      キットを選択
             command("mkit set "+fi.name + " " + selectedKit);
         }
@@ -748,8 +773,10 @@ public final class FightClub extends JavaPlugin implements Listener {
             fighters.clear();
             return false;
         }
-
-
+        for(PlayerInformation fi : fighters) {
+            //      装備を保存
+             command("mkit push "+fi.name );
+        }
         //      キットの自動選択処理
         List<String> kits = listKits();
         Collections.shuffle(kits);
@@ -1265,6 +1292,10 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         int lastIndex = getLastFighter();               //  最後の生存者ID
 
+        //      生存者
+        Player pa = (Player)Bukkit.getPlayer(fighters.get(lastIndex).uuid);
+
+
         //      死亡者をよみがえらせTPさせる
         p.spigot().respawn();
         resetPlayerStatus(p);
@@ -1275,6 +1306,8 @@ public final class FightClub extends JavaPlugin implements Listener {
             public void run() {
                 resetPlayerStatus(p);
                 command("mkit pop "+p.getName());
+                resetPlayerStatus(pa);
+                command("mkit pop "+pa.getName());
             }
         }, 20);
 
