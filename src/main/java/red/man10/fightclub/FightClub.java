@@ -1070,6 +1070,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(currentStatus == Opened){
             lifebar.setInfoName("§a§lMFC §f§lベット受付中! §b"+selectedArena + "§f/§a"+selectedKit+" §4§l Time:"+betTimer+ " §e§l賞金:$"+(int)getPrize());
             double d = (double)betTimer / (double)betTimerDefault;
+            if(d < 0){
+                d = 0;
+            }
+            if(d > 1){
+                d = 1;
+            }
             lifebar.setInfoBar(d);
 
             PlayerInformation f0 = fighters.get(0);
