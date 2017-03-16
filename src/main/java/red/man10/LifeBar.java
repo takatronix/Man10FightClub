@@ -108,6 +108,10 @@ public class LifeBar {
     public void clearBar(){
         b.removeAll();
         r.removeAll();
+        info.removeAll();
+    }
+    public void clearInfoBar(){
+        info.removeAll();
     }
     public void removeRPlayer(Player p){
         r.removePlayer(p);
