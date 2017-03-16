@@ -315,7 +315,7 @@ public class FightClubGUI {
 
 
         double balance = plugin.vault.getBalance(p.getUniqueId());
-        p.sendMessage("あなたの残額は $"+balance +"です");
+        //p.sendMessage("あなたの残額は $"+balance +"です");
         if(balance < money){
             p.sendMessage(ChatColor.RED+ "残高が足りません！！");
             p.closeInventory();
