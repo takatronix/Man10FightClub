@@ -41,7 +41,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     double      tax   = 0;
 
 
-    int         newbiePlayableCount = 5;
+    int         newbiePlayableCount = 10;
     double      registerKDRLimit = 0.2;
 
 
@@ -1263,12 +1263,20 @@ public final class FightClub extends JavaPlugin implements Listener {
             currentStatus = Closed;
         }
 
+
         int fee = getConfig().getInt("fee");
         int autobet = getConfig().getInt("autobet");
 
 
         this.autoBetPrice = (double)autobet;
         this.entryPrice = fee;
+
+
+        this.tax = getConfig().getDouble("tax",0);
+        this.prize = getConfig().getDouble("prize",0.5);
+        this.newbiePlayableCount =  getConfig().getInt("newbiePlayableCount",10);
+        this.registerKDRLimit  = getConfig().getDouble("registerKDRLimit",0.2);
+
 
         updateSidebar();
 
