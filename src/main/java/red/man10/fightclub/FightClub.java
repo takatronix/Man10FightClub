@@ -180,7 +180,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         int play = playerInfo.kill + playerInfo.death;
         String kdrs = "0.00";
         if(playerInfo.death != 0){
-            double kdr = playerInfo.kill / playerInfo.death;;
+            double kdr = (double)playerInfo.kill / (double)playerInfo.death;
             kdrs = String.format("%.2f",kdr);
         }
         String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " $:"+(int)playerInfo.prize + " 総プレイ数:"+play + " KDR:"+kdrs;
@@ -191,9 +191,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         //       参加資格チェック
         /////////////////////////////////////
         if(play >= newbiePlayableCount && playerInfo.death != 0){
-            double kdr = playerInfo.kill / playerInfo.death;
+            double kdr = (double)playerInfo.kill / (double)playerInfo.death;
             if(kdr < registerKDRLimit){
-                serverMessage(playerInfo.name +"は、MFCに登録しようとしましたが、弱すぎるため拒否されました");
+                serverMessage(playerInfo.name +"は、MFCに登録しようとしましたが、弱すぎるため拒否されました。KDR:"+registerKDRLimit+"以上が最低条件です");
                 return -4;
             }
         }
@@ -871,7 +871,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         saveCurrentStatus();
 
 
-        if(autoBetPrice > 10000){
+        if(autoBetPrice >= 10000){
             UUID uuid = UUID.fromString(autoBetUUID);
             betFighter(fighters.get(0).uuid,autoBetPrice,uuid,autoBetPlayerName);
             betFighter(fighters.get(1).uuid,autoBetPrice,uuid,autoBetPlayerName);
@@ -1273,9 +1273,15 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         this.tax = getConfig().getDouble("tax",0);
-        this.prize = getConfig().getDouble("prize",0.5);
+        this.prize = getConfig().getDouble("prize",0.05);
         this.newbiePlayableCount =  getConfig().getInt("newbiePlayableCount",10);
         this.registerKDRLimit  = getConfig().getDouble("registerKDRLimit",0.2);
+
+        serverMessage("賞金比率:"+this.prize);
+        serverMessage("ニュービープレイ可能回数:"+this.newbiePlayableCount);
+        serverMessage("KDRリミット:"+this.registerKDRLimit);
+        serverMessage("自動ベット金額:"+this.autoBetPrice);
+        serverMessage("エントリ金額:"+this.entryPrice);
 
 
         updateSidebar();

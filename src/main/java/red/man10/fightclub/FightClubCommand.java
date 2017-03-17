@@ -90,6 +90,25 @@ public class FightClubCommand  implements CommandExecutor {
 
             return false;
         }
+        if(args[0].equalsIgnoreCase("prize")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+
+            if(args.length != 2) {
+                p.sendMessage("/mfc fee [money]");
+                return false;
+            }
+
+            double prize = Double.parseDouble(args[1]);
+            plugin.prize = prize;
+            plugin.getConfig().set("prize",prize);
+            plugin.serverMessage("賞金を"+prize+"%に設定しました");
+            plugin.saveConfig();
+
+            return false;
+        }
 
         ////////////////////////////////////
         //          エントリー
@@ -373,6 +392,7 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("----------------------");
         p.sendMessage("§c*/mfc autobet [money] - 自動ベットする金額");
         p.sendMessage("§c*/mfc fee [money] - register時に必要な金額");
+        p.sendMessage("§c*/mfc prize [掛け率] - 賞金の比率");
 
        // p.sendMessage("-----------アリーナ(Console)-----------");
        // p.sendMessage("§c*/mfca tpa - 登録者全員を選択中のアリーナ(spawn)へ移動");
