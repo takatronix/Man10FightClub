@@ -36,7 +36,7 @@ import static red.man10.fightclub.FightClub.Status.*;
 public final class FightClub extends JavaPlugin implements Listener {
 
     //      初期設定
-    int      entryPrice = 0;        //  ミニマムベットプライス
+    int      entryPrice = 10000;        //  ミニマムベットプライス
     double      prize = 0.05;
     double      tax   = 0;
 
@@ -1262,6 +1262,13 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(flag == true){
             currentStatus = Closed;
         }
+
+        int fee = getConfig().getInt("fee");
+        int autobet = getConfig().getInt("autobet");
+
+
+        this.autoBetPrice = (double)autobet;
+        this.entryPrice = fee;
 
         updateSidebar();
 

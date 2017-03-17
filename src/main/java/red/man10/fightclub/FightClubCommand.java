@@ -63,10 +63,34 @@ public class FightClubCommand  implements CommandExecutor {
 
             double money = Double.parseDouble(args[1]);
             plugin.autoBetPrice = money;
-            p.sendMessage("自動ベット金額を$"+money+"に設定しました");
+            plugin.serverMessage("自動ベット金額を$"+money+"に設定しました");
+            plugin.getConfig().set("autobet",(int)plugin.autoBetPrice);
+
+            plugin.saveConfig();
 
             return false;
         }
+
+        if(args[0].equalsIgnoreCase("fee")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+
+            if(args.length != 2) {
+                p.sendMessage("/mfc fee [money]");
+                return false;
+            }
+
+            double money = Double.parseDouble(args[1]);
+            plugin.entryPrice = (int)money;
+            plugin.getConfig().set("fee",plugin.entryPrice);
+            plugin.serverMessage("登録費用を$"+money+"に設定しました");
+            plugin.saveConfig();
+
+            return false;
+        }
+
         ////////////////////////////////////
         //          エントリー
         ////////////////////////////////////
@@ -346,6 +370,10 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c*/mfca settp player1 - 選択中のPlayer1座標設定");
         p.sendMessage("§c*/mfca settp player2 - 選択中のPlayer2座標設定");
         p.sendMessage("§c*/mfca settp spawn - 選択中のPlayer1座標設定");
+        p.sendMessage("----------------------");
+        p.sendMessage("§c*/mfc autobet [money] - 自動ベットする金額");
+        p.sendMessage("§c*/mfc fee [money] - register時に必要な金額");
+
        // p.sendMessage("-----------アリーナ(Console)-----------");
        // p.sendMessage("§c*/mfca tpa - 登録者全員を選択中のアリーナ(spawn)へ移動");
         //p.sendMessage("§c*/mfca tpu [Player] player1");

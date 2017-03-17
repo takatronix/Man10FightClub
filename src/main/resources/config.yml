@@ -7,3 +7,5 @@ mysql:
 money:
   tax: 0
   prize: 10
+fee: 10000
+autobet: 10000
