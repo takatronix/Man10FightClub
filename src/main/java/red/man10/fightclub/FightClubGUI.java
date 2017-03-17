@@ -144,7 +144,11 @@ public class FightClubGUI {
                 }
                 else if(ret == -3){
                     p.sendMessage("参加費がしはらえないため参加できません");
-                }else{
+                }
+                else if(ret == -4){
+                    p.sendMessage("あなたは、弱すぎるため参加資格が取り消されました。");
+                }
+                else{
                     p.sendMessage("選手登録しました");
                 }
 

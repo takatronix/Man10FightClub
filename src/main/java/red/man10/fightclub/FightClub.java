@@ -35,6 +35,16 @@ import static red.man10.fightclub.FightClub.Status.*;
 
 public final class FightClub extends JavaPlugin implements Listener {
 
+    //      初期設定
+    int      entryPrice = 10000;        //  ミニマムベットプライス
+    double      prize = 0.05;
+    double      tax   = 0;
+
+
+    int         newbiePlayableCount = 5;
+    double      registerKDRLimit = 0.2;
+
+
     String adminPermision = "man10.fightclub.admin";
     String betPermision = "man10.fightclub.bet";
     String registerPermision = "man10.fightclub.register";
@@ -55,9 +65,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     String      worldName = "Arena";
 
-    int      entryPrice = 10000;
-    double      prize = 0.05;
-    double      tax   = 0.;
+
 
     //   状態遷移 これらの状態遷移する
     public enum Status {
@@ -170,6 +178,23 @@ public final class FightClub extends JavaPlugin implements Listener {
         playerInfo.kill = data.killCount(uuid);
         playerInfo.death = data.deathCount(uuid);
         playerInfo.prize = data.totalPrize(uuid);
+
+        /////////////////////////////////////
+        //       参加資格チェック
+        /////////////////////////////////////
+        int play = playerInfo.kill + playerInfo.death;
+        if(play >= newbiePlayableCount && playerInfo.death != 0){
+            double kdr = playerInfo.kill / playerInfo.death;
+
+
+            if(kdr < registerKDRLimit){
+                return -3;
+            }
+        }
+
+
+
+
 
         waiters.add(playerInfo);
 
@@ -338,6 +363,10 @@ public final class FightClub extends JavaPlugin implements Listener {
     //     プレイーやに賭ける 成功なら掛け金テーブルindex
     //////////////////////////////////////////////
     int  betFighter(UUID fighterUUID,double price,UUID buyerUUID,String buyerName){
+
+        if(price <= 0){
+            return -1;
+        }
 
         int index = getFighterIndex(fighterUUID);
         if(index == -1){

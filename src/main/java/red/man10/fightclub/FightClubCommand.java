@@ -72,6 +72,11 @@ public class FightClubCommand  implements CommandExecutor {
         }
 
         if(args[0].equalsIgnoreCase("register")){
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+
             if(args.length != 2) {
                 p.sendMessage("/mfc register [fighter]");
                 return false;
@@ -92,7 +97,12 @@ public class FightClubCommand  implements CommandExecutor {
             plugin.updateSidebar();
             return true;
         }
-        if(args[0].equalsIgnoreCase("unregister")){
+            if(args[0].equalsIgnoreCase("unregister")){
+                if(!p.hasPermission(plugin.adminPermision)){
+                    p.sendMessage("管理者権限がありません");
+                    return false;
+                }
+
             if(args.length != 2) {
                 p.sendMessage("/mfc ungregister [fighter]");
                 return false;
