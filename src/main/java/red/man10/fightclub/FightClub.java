@@ -184,7 +184,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             kdrs = String.format("%.2f",kdr);
         }
         String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " $:"+(int)playerInfo.prize + " 総プレイ数:"+play + " KDR:"+kdrs;
-        serverMessage(name + "は参加を申し込んだ:");
+        serverMessage(name + "は参加を申し込んだ");
 
         serverMessage(his);
         /////////////////////////////////////
