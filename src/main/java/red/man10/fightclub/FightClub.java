@@ -36,7 +36,7 @@ import static red.man10.fightclub.FightClub.Status.*;
 public final class FightClub extends JavaPlugin implements Listener {
 
     //      初期設定
-    int      entryPrice = 10000;        //  ミニマムベットプライス
+    int      entryPrice = 0;        //  ミニマムベットプライス
     double      prize = 0.05;
     double      tax   = 0;
 
@@ -871,7 +871,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         saveCurrentStatus();
 
 
-        if(autoBet){
+        if(autoBetPrice > 10000){
             UUID uuid = UUID.fromString(autoBetUUID);
             betFighter(fighters.get(0).uuid,autoBetPrice,uuid,autoBetPlayerName);
             betFighter(fighters.get(1).uuid,autoBetPrice,uuid,autoBetPlayerName);
@@ -880,8 +880,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         return true;
     }
 
-    double autoBetPrice = 12345;
-    boolean autoBet = false;
+    double autoBetPrice = 0;
     String autoBetPlayerName = "MFC Auto Bet";
     String autoBetUUID = "1927b4f6-1e01-41a0-a0fa-28ea775c558e";
 

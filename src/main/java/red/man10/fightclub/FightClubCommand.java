@@ -50,7 +50,23 @@ public class FightClubCommand  implements CommandExecutor {
             plugin.reload(sender);
             return false;
         }
+        if(args[0].equalsIgnoreCase("autobet")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
 
+            if(args.length != 2) {
+                p.sendMessage("/mfc autobet [money]");
+                return false;
+            }
+
+            double money = Double.parseDouble(args[1]);
+            plugin.autoBetPrice = money;
+            p.sendMessage("自動ベット金額を$"+money+"に設定しました");
+
+            return false;
+        }
         ////////////////////////////////////
         //          エントリー
         ////////////////////////////////////
