@@ -163,11 +163,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
 
-        //        登録費用
-        if(vault.withdraw(uuid,entryPrice) == false){
-            return -3;
-        }
-
 
         //      追加
         PlayerInformation playerInfo = new PlayerInformation();
@@ -179,17 +174,34 @@ public final class FightClub extends JavaPlugin implements Listener {
         playerInfo.death = data.deathCount(uuid);
         playerInfo.prize = data.totalPrize(uuid);
 
+
+        //String str = String.format("");
+
+        int play = playerInfo.kill + playerInfo.death;
+        String kdrs = "0.00";
+        if(playerInfo.death != 0){
+            double kdr = playerInfo.kill / playerInfo.death;;
+            kdrs = String.format("%.2f",kdr);
+        }
+        String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " $:"+(int)playerInfo.prize + " 総プレイ数:"+play + " KDR:"+kdrs;
+        serverMessage(name + "は参加を申し込んだ:");
+
+        serverMessage(his);
         /////////////////////////////////////
         //       参加資格チェック
         /////////////////////////////////////
-        int play = playerInfo.kill + playerInfo.death;
         if(play >= newbiePlayableCount && playerInfo.death != 0){
             double kdr = playerInfo.kill / playerInfo.death;
-
-
             if(kdr < registerKDRLimit){
-                return -3;
+                serverMessage(playerInfo.name +"は、MFCに登録しようとしましたが、弱すぎるため拒否されました");
+                return -4;
             }
+        }
+
+
+        //        登録費用
+        if(vault.withdraw(uuid,entryPrice) == false){
+            return -3;
         }
 
 
