@@ -26,6 +26,7 @@ import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.projectiles.ProjectileSource;
+import org.bukkit.scheduler.BukkitRunnable;
 import red.man10.*;
 
 import java.io.File;
@@ -1468,6 +1469,16 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         return ret;
+    }
+    @EventHandler
+    public void playerChangeWorldEvent(PlayerChangedWorldEvent e){
+        if(currentStatus == Fighting){
+            Player p = e.getPlayer();
+            if(p.getGameMode() == GameMode.SPECTATOR){
+                p.setGameMode(GameMode.SURVIVAL);
+                p.sendMessage(prefix + "ワールド変更されたため、観戦を終了しました");
+            }
+        }
     }
     @EventHandler
     public void commandCancel(PlayerCommandPreprocessEvent e){
