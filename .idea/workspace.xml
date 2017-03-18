@@ -31,8 +31,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="1331" column="17" lean-forward="true" selection-start-line="1331" selection-start-column="17" selection-end-line="1331" selection-end-column="17" />
+            <state relative-caret-position="340">
+              <caret line="1335" column="42" lean-forward="false" selection-start-line="1335" selection-start-column="42" selection-end-line="1335" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -753,13 +753,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00170" summary="対象ワールド(Arena)以外ではイベントを無視">
-      <created>1489459351042</created>
-      <option name="number" value="00170" />
-      <option name="presentableId" value="LOCAL-00170" />
-      <option name="project" value="LOCAL" />
-      <updated>1489459351042</updated>
-    </task>
     <task id="LOCAL-00171" summary="選手登録ないときにキャンセルすると落ちる問題">
       <created>1489462410621</created>
       <option name="number" value="00171" />
@@ -1096,7 +1089,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489821908053</updated>
     </task>
-    <option name="localTasksCounter" value="219" />
+    <task id="LOCAL-00219" summary="ペット沸いた瞬間にぶっ殺す処理を追加">
+      <created>1489822996514</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1489822996514</updated>
+    </task>
+    <option name="localTasksCounter" value="220" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1178,7 +1178,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="debug用autobet機能" />
     <MESSAGE value="betterがオフラインになったときのバグシュウセイ" />
     <MESSAGE value="開始中にキャンセルするとエラー泊問題" />
     <MESSAGE value="死亡処理、死亡後リセット" />
@@ -1203,7 +1202,8 @@
     <MESSAGE value="初期設定の読み込み" />
     <MESSAGE value="バグ修正１" />
     <MESSAGE value="ワールド変更時スペクテーター解除処理追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="ワールド変更時スペクテーター解除処理追加" />
+    <MESSAGE value="ペット沸いた瞬間にぶっ殺す処理を追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="ペット沸いた瞬間にぶっ殺す処理を追加" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1629,8 +1629,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="1331" column="17" lean-forward="true" selection-start-line="1331" selection-start-column="17" selection-end-line="1331" selection-end-column="17" />
+        <state relative-caret-position="340">
+          <caret line="1335" column="42" lean-forward="false" selection-start-line="1335" selection-start-column="42" selection-end-line="1335" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

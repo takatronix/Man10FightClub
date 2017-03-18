@@ -1334,7 +1334,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(currentStatus != Closed){
             if(e.getEntity().getWorld().getName().equalsIgnoreCase("arena")){
                 Entity en = e.getEntity();
-                if(en.getType() == EntityType.PLAYER || en.getType() == EntityType.ARROW || en.getType() == EntityType.SPLASH_POTION || en.getType() == EntityType.FISHING_HOOK){
+                if(en.getType() == EntityType.PLAYER || en.getType() == EntityType.ARROW || en.getType() == EntityType.SPLASH_POTION || en.getType() == EntityType.FISHING_HOOK || en.getType() == EntityType.FALLING_BLOCK || en.getType() == EntityType.SNOWBALL || en.getType() == EntityType.EGG || en.getType() == EntityType.ENDER_PEARL){
                 }else{
                     e.setCancelled(true);
                 }
