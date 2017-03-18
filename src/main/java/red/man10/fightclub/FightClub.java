@@ -2,22 +2,21 @@ package red.man10.fightclub;
 
 
 
+import com.mysql.cj.mysqlx.protobuf.MysqlxConnection;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.*;
@@ -522,6 +521,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     boolean pauseTimer = false;
 
+
+
     public boolean canStartGame(){
 
         UUID id0 = fighters.get(0).uuid;
@@ -539,6 +540,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         return true;
     }
     //      募集開始
+
     public int startGame(){
         gui.closeInMenu();
         if(fighters.size() < 2){
@@ -1326,6 +1328,18 @@ public final class FightClub extends JavaPlugin implements Listener {
         sideBar.addPlayer(p);
         updateSidebar();
         tpLobby(p);
+    }
+    @EventHandler
+    public void onEntitySpawnEvent(EntitySpawnEvent e){
+        if(currentStatus != Closed){
+            if(e.getEntity().getWorld().getName().equalsIgnoreCase("arena")){
+                Entity en = e.getEntity();
+                if(en.getType() == EntityType.PLAYER || en.getType() == EntityType.ARROW || en.getType() == EntityType.SPLASH_POTION || en.getType() == EntityType.FISHING_HOOK){
+                }else{
+                    e.setCancelled(true);
+                }
+            }
+        }
     }
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e) {
