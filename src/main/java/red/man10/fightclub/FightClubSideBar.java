@@ -49,8 +49,8 @@ public class FightClubSideBar {
     }
 
         if(plugin.currentStatus == Fighting) {
-            showFighters();
-            showToAll();
+           // showFighters();
+           // showToAll();
         }
     }
 
@@ -71,13 +71,13 @@ public class FightClubSideBar {
 
         }
 
-        sideBar.setScore("§d合計かけ金額：$"+total,0);
+        sideBar.setScore("§d合計かけ金額：$"+(int)total,0);
 
 
         sideBar.setScore("§a今回のアリーナ：" + plugin.selectedArena,0);
         sideBar.setScore("§a今回のキット：" + plugin.selectedKit,0);
 
-        sideBar.setScore("§e勝者への賞金：$"+plugin.getPrize(),0);
+        sideBar.setScore("§e§l勝者への賞金：$"+(int)plugin.getPrize(),0);
         sideBar.setScore("§b==========================",0);
 
        // sideBar.setScore("§e"+plugin.fighters.get(0).name+" Kill:"+plugin.kill0 + "/Death:"+plugin.death0+"/獲得$"+(int)plugin.prize0 ,0);
@@ -94,26 +94,7 @@ public class FightClubSideBar {
 
         showToAll();
     }
-    void showFighters(){
-        sideBar.setTitle("§l Man10 Fight Club 対戦中!!!!");
-        sideBar.setScore("§4残り時間",plugin.fightTimer);
 
-        for(int i = 0;i < plugin.fighters.size();i++){
-            FightClub.PlayerInformation f = plugin.fighters.get(i);
-
-
-           // FightClub.PlayerInformation f = plugin.fighters.get(i);
-            //String s = "["+i+"]" + f.name ;
-
-            String s = String.format("%10s Odds:§bx§l%3.2f",f.name,plugin.getFighterOdds(f.uuid));
-
-
-            sideBar.setScore(s,0);
-
- //           sideBar.setScore(s,plugin.getFighterBetCount(f.uuid));
-        }
-        showToAll();
-    }
 
 
 
@@ -137,8 +118,8 @@ public class FightClubSideBar {
         sideBar.setTitle("Man10 Fight Club 選手受付中 §a/§lMFC");
         sideBar.setScore("獲得金額説明 K=1000/M=1000000",0);
 
-        String inf = "残り時間:"+plugin.entryTimer +" §e§l参加費:$"+(int)plugin.entryPrice;
-        sideBar.setScore(inf,0);
+       // String inf = "残り時間:"+plugin.entryTimer +" §e§l参加費:$"+(int)plugin.entryPrice;
+       // sideBar.setScore(inf,0);
 
         if(plugin.waiters.size() == 0){
             sideBar.setScore("§a/§lMFC§f で登録",0);
@@ -155,7 +136,7 @@ public class FightClubSideBar {
 */
             setFighterInfo(f);
         }
-        showToAll();
+         showToAll();
     }
 
     void setFighterInfo(FightClub.PlayerInformation f){
@@ -169,6 +150,13 @@ public class FightClubSideBar {
         }
 
         sideBar.setScore(s,plugin.getScore(f));
+    }
+
+    void addPlayer(Player p){
+
+        sideBar.setMainScoreboard(p);
+        sideBar.setShowPlayer(p);
+
     }
 
     void showToAll(){

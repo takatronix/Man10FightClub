@@ -4,6 +4,9 @@ mysql:
   user: root
   pass: password
   db: man10
-money:
-  tax: 0
-  prize: 10
+tax: 0
+prize: 0.5
+fee: 10000
+autobet: 100000
+newbiePlayableCount: 10
+registerKDRLimit: 0.2

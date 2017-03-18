@@ -50,12 +50,74 @@ public class FightClubCommand  implements CommandExecutor {
             plugin.reload(sender);
             return false;
         }
+        if(args[0].equalsIgnoreCase("autobet")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+
+            if(args.length != 2) {
+                p.sendMessage("/mfc autobet [money]");
+                return false;
+            }
+
+            double money = Double.parseDouble(args[1]);
+            plugin.autoBetPrice = money;
+            plugin.serverMessage("自動ベット金額を$"+money+"に設定しました");
+            plugin.getConfig().set("autobet",(int)plugin.autoBetPrice);
+
+            plugin.saveConfig();
+
+            return false;
+        }
+
+        if(args[0].equalsIgnoreCase("fee")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+
+            if(args.length != 2) {
+                p.sendMessage("/mfc fee [money]");
+                return false;
+            }
+
+            double money = Double.parseDouble(args[1]);
+            plugin.entryPrice = (int)money;
+            plugin.getConfig().set("fee",plugin.entryPrice);
+            plugin.serverMessage("登録費用を$"+money+"に設定しました");
+            plugin.saveConfig();
+
+            return false;
+        }
+        if(args[0].equalsIgnoreCase("prize")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+
+            if(args.length != 2) {
+                p.sendMessage("/mfc fee [money]");
+                return false;
+            }
+
+            double prize = Double.parseDouble(args[1]);
+            plugin.prize = prize;
+            plugin.getConfig().set("prize",prize);
+            plugin.serverMessage("賞金を"+prize+"%に設定しました");
+            plugin.saveConfig();
+
+            return false;
+        }
 
         ////////////////////////////////////
         //          エントリー
         ////////////////////////////////////
         if(args[0].equalsIgnoreCase("entry")){
-
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
             if (plugin.currentStatus != FightClub.Status.Closed){
                 p.sendMessage("You should cancel game!");
                 return false;
@@ -69,6 +131,11 @@ public class FightClubCommand  implements CommandExecutor {
         }
 
         if(args[0].equalsIgnoreCase("register")){
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+
             if(args.length != 2) {
                 p.sendMessage("/mfc register [fighter]");
                 return false;
@@ -89,7 +156,12 @@ public class FightClubCommand  implements CommandExecutor {
             plugin.updateSidebar();
             return true;
         }
-        if(args[0].equalsIgnoreCase("unregister")){
+            if(args[0].equalsIgnoreCase("unregister")){
+                if(!p.hasPermission(plugin.adminPermision)){
+                    p.sendMessage("管理者権限がありません");
+                    return false;
+                }
+
             if(args.length != 2) {
                 p.sendMessage("/mfc ungregister [fighter]");
                 return false;
@@ -168,11 +240,20 @@ public class FightClubCommand  implements CommandExecutor {
         ///       キャンセル
         //////////////////////////////////
         if(args[0].equalsIgnoreCase("open")){
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限が必要です");
+                return false;
+            }
+
             plugin.openGame();
             p.sendMessage("MFC Opened");
             return true;
         }
         if(args[0].equalsIgnoreCase("admin")){
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限が必要です");
+                return false;
+            }
             //plugin.gui.adminMenu(p);
          //   p.sendMessage("MFC Opened");
             return true;
@@ -181,6 +262,10 @@ public class FightClubCommand  implements CommandExecutor {
         ///       ファイト
         //////////////////////////////////
         if(args[0].equalsIgnoreCase("fight")){
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限が必要です");
+                return false;
+            }
             plugin.startGame();
             p.sendMessage("MFC Started");
             return true;
@@ -304,6 +389,11 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c*/mfca settp player1 - 選択中のPlayer1座標設定");
         p.sendMessage("§c*/mfca settp player2 - 選択中のPlayer2座標設定");
         p.sendMessage("§c*/mfca settp spawn - 選択中のPlayer1座標設定");
+        p.sendMessage("----------------------");
+        p.sendMessage("§c*/mfc autobet [money] - 自動ベットする金額");
+        p.sendMessage("§c*/mfc fee [money] - register時に必要な金額");
+        p.sendMessage("§c*/mfc prize [掛け率] - 賞金の比率");
+
        // p.sendMessage("-----------アリーナ(Console)-----------");
        // p.sendMessage("§c*/mfca tpa - 登録者全員を選択中のアリーナ(spawn)へ移動");
         //p.sendMessage("§c*/mfca tpu [Player] player1");
