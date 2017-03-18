@@ -1608,6 +1608,16 @@ public final class FightClub extends JavaPlugin implements Listener {
         return ret;
     }
     @EventHandler
+    public void playerChangeWorldEvent(PlayerChangedWorldEvent e){
+        if(currentStatus == Fighting){
+            Player p = e.getPlayer();
+            if(p.getGameMode() == GameMode.SPECTATOR){
+                p.setGameMode(GameMode.SURVIVAL);
+                p.sendMessage(prefix + "ワールド変更されたため、観戦を終了しました");
+            }
+        }
+    }
+    @EventHandler
     public void commandCancel(PlayerCommandPreprocessEvent e){
         if(currentStatus == Status.Fighting) {
             Player p = e.getPlayer();
