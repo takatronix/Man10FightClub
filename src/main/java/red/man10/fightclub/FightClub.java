@@ -2,22 +2,21 @@ package red.man10.fightclub;
 
 
 
+import com.mysql.cj.mysqlx.protobuf.MysqlxConnection;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.*;
@@ -25,6 +24,7 @@ import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.projectiles.ProjectileSource;
+import org.bukkit.scheduler.BukkitRunnable;
 import red.man10.*;
 
 import java.io.File;
@@ -528,6 +528,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     boolean pauseTimer = false;
 
+
+
     public boolean canStartGame(){
 
         UUID id0 = fighters.get(0).uuid;
@@ -545,6 +547,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         return true;
     }
     //      募集開始
+
     public int startGame(){
         gui.closeInMenu();
         if(fighters.size() < 2){
@@ -1326,6 +1329,18 @@ public final class FightClub extends JavaPlugin implements Listener {
         tpLobby(p);
     }
     @EventHandler
+    public void onEntitySpawnEvent(EntitySpawnEvent e){
+        if(currentStatus != Closed){
+            if(e.getEntity().getWorld().getName().equalsIgnoreCase("arena")){
+                Entity en = e.getEntity();
+                if(en.getType() == EntityType.PLAYER || en.getType() == EntityType.ARROW || en.getType() == EntityType.SPLASH_POTION || en.getType() == EntityType.FISHING_HOOK || en.getType() == EntityType.FALLING_BLOCK || en.getType() == EntityType.SNOWBALL || en.getType() == EntityType.EGG || en.getType() == EntityType.ENDER_PEARL){
+                }else{
+                    e.setCancelled(true);
+                }
+            }
+        }
+    }
+    @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
         log(p.getName() + "ログアウト");
@@ -1578,6 +1593,16 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         return ret;
+    }
+    @EventHandler
+    public void playerChangeWorldEvent(PlayerChangedWorldEvent e){
+        if(currentStatus == Fighting){
+            Player p = e.getPlayer();
+            if(p.getGameMode() == GameMode.SPECTATOR){
+                p.setGameMode(GameMode.SURVIVAL);
+                p.sendMessage(prefix + "ワールド変更されたため、観戦を終了しました");
+            }
+        }
     }
     @EventHandler
     public void commandCancel(PlayerCommandPreprocessEvent e){
