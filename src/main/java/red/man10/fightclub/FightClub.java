@@ -2,7 +2,6 @@ package red.man10.fightclub;
 
 
 
-import com.mysql.cj.mysqlx.protobuf.MysqlxConnection;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
