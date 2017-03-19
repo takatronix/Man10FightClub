@@ -129,6 +129,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return true;
             }
         }
+        Bukkit.getLogger().info("");
         return false;
     }
     public int unregisterFighter(UUID uuid){
@@ -162,6 +163,12 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return -1;
             }
         }
+        Player p = Bukkit.getPlayer(uuid);
+        if(vault.getBalance(uuid) < entryPrice){
+
+            p.sendMessage("お金がたりません");
+            return -3;
+        }
 
 
         //      追加
@@ -193,7 +200,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(play >= newbiePlayableCount && playerInfo.death != 0){
             double kdr = (double)playerInfo.kill / (double)playerInfo.death;
             if(kdr < registerKDRLimit){
-                serverMessage(playerInfo.name +"は、MFCに登録しようとしましたが、弱すぎるため拒否されました。KDR:"+registerKDRLimit+"以上が最低条件です");
+                p.sendMessage(playerInfo.name +"は、MFCに登録しようとしましたが、弱すぎるため拒否されました。KDR:"+registerKDRLimit+"以上が最低条件です");
                 return -4;
             }
         }
@@ -1250,10 +1257,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     void loadConfig(){
-
         loadArenaConfig();
         loadSignes();
-
 
         //      MYSQL初期化
         data = new FightClubData(this);
@@ -1263,14 +1268,11 @@ public final class FightClub extends JavaPlugin implements Listener {
             currentStatus = Closed;
         }
 
-
         int fee = getConfig().getInt("fee");
         int autobet = getConfig().getInt("autobet");
 
-
         this.autoBetPrice = (double)autobet;
         this.entryPrice = fee;
-
 
         this.tax = getConfig().getDouble("tax",0);
         this.prize = getConfig().getDouble("prize",0.05);
@@ -1282,10 +1284,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         serverMessage("KDRリミット:"+this.registerKDRLimit);
         serverMessage("自動ベット金額:"+this.autoBetPrice);
         serverMessage("エントリ金額:"+this.entryPrice);
-
-
         updateSidebar();
-
     }
 
 
@@ -1355,6 +1354,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
     }
+
+
     /////////////////////////////////
     //      チャットイベント
     /////////////////////////////////
@@ -1522,35 +1523,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         double d = inf.prize /  (double)(inf.kill + inf.death) * 0.001;
         return (int)d;
     }
-/*
-    ////////////////////////////
-    //      ダメージイベント
-    /////////////////////////////////
-    @EventHandler
-    public void onHit(EntityDamageEvent e){
 
-        if(currentStatus != Fighting){
-            return;
-        }
-       // serverMessage("damage :" +e.getDamage());
-
-        if(e.getEntity() instanceof Player)
-        {
-            updateSidebar();
-            updateLifeBar();
-
-            Player p = (Player)e.getEntity();
-            double d = e.getDamage();
-            if(d == 0){
-                return;
-            }
-           // String dam = String.format("%.2f",d);
-           // serverMessage(p.getName()+"は、"+dam+"ダメージ を受けた！！！");
-            updateSidebar();
-        }
-
-    }
-*/
     //      ログメッセージ
     void log(String text){
         getLogger().info(text);
@@ -1622,6 +1595,9 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
     }
+
+
+
     @EventHandler
     public void clickSignEvent(PlayerInteractEvent e) {
 
@@ -1654,6 +1630,8 @@ public final class FightClub extends JavaPlugin implements Listener {
                         p.sendMessage("選手登録する権限がありません");
                         return;
                     }
+
+
                     registerFighter(e.getPlayer().getUniqueId(),e.getPlayer().getName());
                     return;
                 }
