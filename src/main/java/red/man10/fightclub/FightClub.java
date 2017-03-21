@@ -21,6 +21,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -707,6 +708,13 @@ public final class FightClub extends JavaPlugin implements Listener {
             if (p.hasPotionEffect(PotionEffectType.WEAKNESS) == true)
             {
                 p.removePotionEffect(PotionEffectType.WEAKNESS);
+            }
+            if(p.hasPotionEffect(PotionEffectType.ABSORPTION))
+            {
+                p.removePotionEffect(PotionEffectType.ABSORPTION);
+            }
+            if(p.hasPotionEffect(PotionEffectType.DAMAGE_RESISTANCE)){
+                p.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
             }
             p.setFoodLevel(20);
             p.setExhaustion(0);
@@ -1477,7 +1485,9 @@ public final class FightClub extends JavaPlugin implements Listener {
             if(!p.getWorld().getName().equalsIgnoreCase(worldName)){
                 return;
             }
-
+            if(p.isOp() == true){
+                return;
+            }
 
             if(!isFighter(p.getUniqueId())){
                 p.sendMessage("選手以外の戦闘行動は禁止されています");
