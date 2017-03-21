@@ -1308,8 +1308,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
 
-
-        if(currentStatus != Closed) {
+        if(currentStatus == Closed) {
+        }else{
             showInfoBar(p);
             showLifeBar(p);
         }
@@ -1325,7 +1325,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         sideBar.addPlayer(p);
         updateSidebar();
-        tpLobby(p);
+//        tpLobby(p);
     }
     @EventHandler
     public void onEntitySpawnEvent(EntitySpawnEvent e){
