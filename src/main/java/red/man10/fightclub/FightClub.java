@@ -1354,8 +1354,11 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         if(p != null){
             if(p.isOnline()){
-                p.setGameMode(GameMode.SURVIVAL);
-                tpLobby(p);
+                if(p.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
+                    p.setGameMode(GameMode.SURVIVAL);
+                    tpLobby(p);
+                    p.sendMessage("ロビーに転送された");
+                }
             }
 
             if(unregisterFighter(p.getUniqueId()) < 0){
