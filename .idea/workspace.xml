@@ -31,8 +31,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="1617" column="27" lean-forward="false" selection-start-line="1617" selection-start-column="27" selection-end-line="1617" selection-end-column="27" />
+            <state relative-caret-position="300">
+              <caret line="1612" column="38" lean-forward="true" selection-start-line="1612" selection-start-column="38" selection-end-line="1612" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3015#3034#0" expanded="true" />
@@ -41,9 +41,9 @@
                 <element signature="e#3395#3401#0" expanded="true" />
                 <element signature="e#3470#3476#0" expanded="true" />
                 <element signature="e#44740#44748#0" expanded="true" />
-                <element signature="e#53297#53307#0" expanded="true" />
-                <element signature="e#55957#55965#0" expanded="true" />
-                <element signature="e#61178#61186#0" expanded="true" />
+                <element signature="e#53350#53360#0" expanded="true" />
+                <element signature="e#56010#56018#0" expanded="true" />
+                <element signature="e#61231#61239#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -763,13 +763,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00172" summary="キャンセルでの服装退避">
-      <created>1489462483933</created>
-      <option name="number" value="00172" />
-      <option name="presentableId" value="LOCAL-00172" />
-      <option name="project" value="LOCAL" />
-      <updated>1489462483933</updated>
-    </task>
     <task id="LOCAL-00173" summary="TPブルブルバグ">
       <created>1489465203559</created>
       <option name="number" value="00173" />
@@ -1106,7 +1099,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490160002111</updated>
     </task>
-    <option name="localTasksCounter" value="221" />
+    <task id="LOCAL-00221" summary="ワールド移動後、lobbyに強制的にもどす">
+      <created>1490160112259</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
+      <option name="project" value="LOCAL" />
+      <updated>1490160112259</updated>
+    </task>
+    <option name="localTasksCounter" value="222" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1132,7 +1132,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.036585364" sideWeight="0.52296454" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14467146" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12727273" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28342247" sideWeight="0.69261366" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28342247" sideWeight="0.69261366" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829374" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1188,7 +1188,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="開始中にキャンセルするとエラー泊問題" />
     <MESSAGE value="死亡処理、死亡後リセット" />
     <MESSAGE value="スコアテーブル保存" />
     <MESSAGE value="リファクタリング" />
@@ -1213,7 +1212,8 @@
     <MESSAGE value="看板連打対策&#10;" />
     <MESSAGE value="初回起動失敗する問題" />
     <MESSAGE value="戦闘中にコマンドを選手以外もつかえなくした" />
-    <option name="LAST_COMMIT_MESSAGE" value="戦闘中にコマンドを選手以外もつかえなくした" />
+    <MESSAGE value="ワールド移動後、lobbyに強制的にもどす" />
+    <option name="LAST_COMMIT_MESSAGE" value="ワールド移動後、lobbyに強制的にもどす" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1226,7 +1226,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>1659</line>
+          <line>1661</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
@@ -1268,9 +1268,9 @@
             <element signature="e#3395#3401#0" expanded="true" />
             <element signature="e#3470#3476#0" expanded="true" />
             <element signature="e#44740#44748#0" expanded="true" />
-            <element signature="e#53297#53307#0" expanded="true" />
-            <element signature="e#55957#55965#0" expanded="true" />
-            <element signature="e#61178#61186#0" expanded="true" />
+            <element signature="e#53350#53360#0" expanded="true" />
+            <element signature="e#56010#56018#0" expanded="true" />
+            <element signature="e#61231#61239#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1318,9 +1318,9 @@
             <element signature="e#3395#3401#0" expanded="true" />
             <element signature="e#3470#3476#0" expanded="true" />
             <element signature="e#44740#44748#0" expanded="true" />
-            <element signature="e#53297#53307#0" expanded="true" />
-            <element signature="e#55957#55965#0" expanded="true" />
-            <element signature="e#61178#61186#0" expanded="true" />
+            <element signature="e#53350#53360#0" expanded="true" />
+            <element signature="e#56010#56018#0" expanded="true" />
+            <element signature="e#61231#61239#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1413,9 +1413,9 @@
             <element signature="e#3395#3401#0" expanded="true" />
             <element signature="e#3470#3476#0" expanded="true" />
             <element signature="e#44740#44748#0" expanded="true" />
-            <element signature="e#53297#53307#0" expanded="true" />
-            <element signature="e#55957#55965#0" expanded="true" />
-            <element signature="e#61178#61186#0" expanded="true" />
+            <element signature="e#53350#53360#0" expanded="true" />
+            <element signature="e#56010#56018#0" expanded="true" />
+            <element signature="e#61231#61239#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1455,9 +1455,9 @@
             <element signature="e#3395#3401#0" expanded="true" />
             <element signature="e#3470#3476#0" expanded="true" />
             <element signature="e#44740#44748#0" expanded="true" />
-            <element signature="e#53297#53307#0" expanded="true" />
-            <element signature="e#55957#55965#0" expanded="true" />
-            <element signature="e#61178#61186#0" expanded="true" />
+            <element signature="e#53350#53360#0" expanded="true" />
+            <element signature="e#56010#56018#0" expanded="true" />
+            <element signature="e#61231#61239#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1505,9 +1505,9 @@
             <element signature="e#3395#3401#0" expanded="true" />
             <element signature="e#3470#3476#0" expanded="true" />
             <element signature="e#44740#44748#0" expanded="true" />
-            <element signature="e#53297#53307#0" expanded="true" />
-            <element signature="e#55957#55965#0" expanded="true" />
-            <element signature="e#61178#61186#0" expanded="true" />
+            <element signature="e#53350#53360#0" expanded="true" />
+            <element signature="e#56010#56018#0" expanded="true" />
+            <element signature="e#61231#61239#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1555,9 +1555,9 @@
             <element signature="e#3395#3401#0" expanded="true" />
             <element signature="e#3470#3476#0" expanded="true" />
             <element signature="e#44740#44748#0" expanded="true" />
-            <element signature="e#53297#53307#0" expanded="true" />
-            <element signature="e#55957#55965#0" expanded="true" />
-            <element signature="e#61178#61186#0" expanded="true" />
+            <element signature="e#53350#53360#0" expanded="true" />
+            <element signature="e#56010#56018#0" expanded="true" />
+            <element signature="e#61231#61239#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1701,8 +1701,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="1617" column="27" lean-forward="false" selection-start-line="1617" selection-start-column="27" selection-end-line="1617" selection-end-column="27" />
+        <state relative-caret-position="300">
+          <caret line="1612" column="38" lean-forward="true" selection-start-line="1612" selection-start-column="38" selection-end-line="1612" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3015#3034#0" expanded="true" />
@@ -1711,9 +1711,9 @@
             <element signature="e#3395#3401#0" expanded="true" />
             <element signature="e#3470#3476#0" expanded="true" />
             <element signature="e#44740#44748#0" expanded="true" />
-            <element signature="e#53297#53307#0" expanded="true" />
-            <element signature="e#55957#55965#0" expanded="true" />
-            <element signature="e#61178#61186#0" expanded="true" />
+            <element signature="e#53350#53360#0" expanded="true" />
+            <element signature="e#56010#56018#0" expanded="true" />
+            <element signature="e#61231#61239#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1615,7 +1615,9 @@ public final class FightClub extends JavaPlugin implements Listener {
             if(p.getGameMode() == GameMode.SPECTATOR){
                 p.setGameMode(GameMode.SURVIVAL);
                 p.sendMessage(prefix + "ワールド変更されたため、観戦を終了しました");
-                tpLobby(p);
+                if(!p.isOp()){
+                    tpLobby(p);
+                }
             }
         }
     }
