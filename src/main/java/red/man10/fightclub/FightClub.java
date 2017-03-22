@@ -1215,6 +1215,10 @@ public final class FightClub extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         getLogger().info("Enabled");
+        sideBar = new FightClubSideBar(this);
+        vault = new VaultManager(this);
+
+
         this.saveDefaultConfig();
         this.loadConfig();
 
@@ -1226,8 +1230,6 @@ public final class FightClub extends JavaPlugin implements Listener {
        getCommand("mfc").setExecutor(new FightClubCommand(this));
        getCommand("mfca").setExecutor(new FightClubArenaCommand(this));
 
-
-        vault = new VaultManager(this);
         sideBar.showToAll();
         updateSidebar();
 
@@ -1911,7 +1913,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
     //      サイドバー
-    FightClubSideBar sideBar = new FightClubSideBar(this);
+    FightClubSideBar sideBar = null;
     void updateSidebar(){
         sideBar.show();
     }
