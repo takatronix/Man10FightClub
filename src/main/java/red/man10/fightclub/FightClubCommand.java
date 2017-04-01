@@ -40,11 +40,11 @@ public class FightClubCommand  implements CommandExecutor {
 
         //      ON/OFFコマンド
         if(args[0].equalsIgnoreCase("on")) {
-            plugin.enableMFC(sender,true);
+            plugin.setMFCMode(sender,FightClub.MFCModes.Normal);
             return false;
         }
         if(args[0].equalsIgnoreCase("off")) {
-            plugin.enableMFC(sender,false);
+            plugin.setMFCMode(sender,FightClub.MFCModes.Off);
             return false;
         }
 
@@ -323,6 +323,31 @@ public class FightClubCommand  implements CommandExecutor {
             return false;
         }
 
+        if(args.length == 1 && args[0].equalsIgnoreCase("whitelist") ||
+                args[0].equalsIgnoreCase("free") ||
+                args[0].equalsIgnoreCase("pro") ||
+                args[0].equalsIgnoreCase("normal")
+
+                ){
+                String modeName = args[0];
+
+            FightClub.MFCModes m = FightClub.MFCModes.Off;
+            if(args[0].equalsIgnoreCase("whitelist")){
+                m = FightClub.MFCModes.WhiteList;
+            }
+            if(args[0].equalsIgnoreCase("free")){
+                m = FightClub.MFCModes.Free;
+            }
+            if(args[0].equalsIgnoreCase("pro")){
+                m = FightClub.MFCModes.Pro;
+            }
+            if(args[0].equalsIgnoreCase("normal")){
+                m = FightClub.MFCModes.Normal;
+            }
+            plugin.setMFCMode(sender,m);
+            return true;
+        }
+
 
         //////////////////////////////////
         ///         Bet
@@ -332,9 +357,6 @@ public class FightClubCommand  implements CommandExecutor {
             args[0].equalsIgnoreCase("prolist")
 
                 ) {
-
-
-
 
             listCommand(sender,args);
             return true;
@@ -347,7 +369,7 @@ public class FightClubCommand  implements CommandExecutor {
 
     boolean listCommand(CommandSender s,String[] args){
 
-        s.sendMessage("args :"+args.length);
+     //   s.sendMessage("args :"+args.length);
         String name = args[0];
 
 
@@ -448,17 +470,23 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("/mfc bet [fighter] [money]   / Bet money on fighter");
         p.sendMessage("§c/mfc fight                 / Start Fight!!");
         p.sendMessage("-----------ホワイトリスト・ブラックリスト・プロコマンド-----------");
-        p.sendMessage("§c/mfc whitelist on");
-        p.sendMessage("§c/mfc whitelist off");
-        p.sendMessage("§c/mfc whitelist delete [username]");
-        p.sendMessage("§c/mfc blacklist on");
-        p.sendMessage("§c/mfc blacklist off");
-        p.sendMessage("§c/mfc blacklistlist add [username]");
-        p.sendMessage("§c/mfc blacklistlist delete [username]");
-        p.sendMessage("§c/mfc pro on");
-        p.sendMessage("§c/mfc pro off");
-        p.sendMessage("§c/mfc pro add [username]");
-        p.sendMessage("§c/mfc pro delete [username]");
+        p.sendMessage("§c/mfc whitelist list - ホワイリスト表示");
+        p.sendMessage("§c/mfc whitelist add [username] - ホワイトリスト追加");
+        p.sendMessage("§c/mfc whitelist delete [username] - ホワイトリスト削除");
+        p.sendMessage("§c/mfc blacklist list - ブラックリスト表示");
+        p.sendMessage("§c/mfc blacklist add [username] - ブラックリスト追加");
+        p.sendMessage("§c/mfc blacklist delete [username] - ブラックリスト削除");
+        p.sendMessage("§c/mfc prolist list - プロリスト表示");
+        p.sendMessage("§c/mfc prolist add [username] - プロリスト追加");
+        p.sendMessage("§c/mfc prolist delete [username] - プロリスト削除");
+        p.sendMessage("-----------モード変更コマンド-----------");
+        p.sendMessage("§c/mfc off - MFC停止");
+        p.sendMessage("§c/mfc on - MFC開始(通常モード)");
+        p.sendMessage("§c/mfc free - MFC開始(フリーモード)");
+        p.sendMessage("§c/mfc whitelist - MFC開始(ホワイトリストモード)");
+        p.sendMessage("§c/mfc pro - MFC開始(プロモード)");
+
+
         p.sendMessage("-----------アリーナ-----------");
         p.sendMessage("§c*/mfca create [アリーナ名]");
         p.sendMessage("§c*/mfca select [アリーナ名]");

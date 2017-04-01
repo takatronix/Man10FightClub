@@ -2,6 +2,7 @@ package red.man10.fightclub;
 
 
 
+import net.minecraft.server.v1_9_R2.WhiteList;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -65,13 +66,14 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     String      worldName = "Arena";
 
-    public enum Modes {
+    public enum MFCModes {
         Off,
         Free,           //  自由に遊べる、通知はしない
         Normal,         //  通常のモード（グローバル通知はしない
+        WhiteList,      //  ホワイトリスト
         Pro             //  グローバル通知あり
     }
-    Modes           mode;
+    MFCModes           mode;
 
     //   状態遷移 これらの状態遷移する
     public enum Status {
@@ -137,6 +139,44 @@ public final class FightClub extends JavaPlugin implements Listener {
     FightClubList whitelist = null;
     FightClubList blacklist = null;
     FightClubList prolist = null;
+
+    public  void setMFCMode(CommandSender sender,MFCModes mode){
+
+        this.mode = mode;
+
+        String title = "";
+        String subTitle = "";
+        if(mode == MFCModes.Off){
+            title = "MFC 終了します";
+            enableMFC(sender,false);
+        if(mode == MFCModes.Free){
+            title = "§dMFC フリーモード";
+            subTitle = "誰でも参加練習できます。お金もかかりませんし、記録も残りません";
+            enableMFC(sender,true);
+
+        }
+        if(mode == MFCModes.Normal){
+            title = "§bMFC 通常モード";
+            subTitle = "誰も参加できます。KDR0.2以下になると参加できません";
+            enableMFC(sender,true);
+
+        }
+        if(mode == MFCModes.WhiteList){
+            title = "MFC ホワイトリスト";
+            subTitle = "参加資格がある者のみ参加できます";
+            enableMFC(sender,true);
+        }
+        if(mode == MFCModes.Pro){
+            title = "§e§kXXXXX  §c§l【MFC Pro】§e§kXXXXX";
+            subTitle = "§e§lMan10プロプレーヤを予想して、§e§n大金§e§lをゲットしよう！！！";
+
+            enableMFC(sender,true);
+        }
+
+
+        titlebar.sendTitleToAllWithSound(title,subTitle,20,140,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+
+    }
 
 
     public boolean isFighter(UUID uuid){
@@ -942,9 +982,16 @@ public final class FightClub extends JavaPlugin implements Listener {
         int stayTick = (int)(stay * 20);
         int delayTick = (int)(delay * 20);
 
+        MFCModes m = this.mode;
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
-                titlebar.sendTitleToAllWithSound(title,subTitle,20,stayTick,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+                if(m == MFCModes.Pro){
+                    titlebar.sendTitleToAllWithSound(title,subTitle,20,stayTick,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+                }else{
+                    for(Player p : Bukkit.getServer().getWorld(selectedArena).getPlayers()){
+                        titlebar.sendTitleWithSound(p,title,subTitle,20,20,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+                    }
+                }
             }
         }, delayTick);
 
