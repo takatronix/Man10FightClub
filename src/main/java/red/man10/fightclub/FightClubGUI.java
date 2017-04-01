@@ -135,7 +135,8 @@ public class FightClubGUI {
 
 
                 //選手登録処理
-                int ret = plugin.registerFighter(e.getWhoClicked().getUniqueId(), e.getWhoClicked().getName());
+                int ret = plugin.registerFighter(e.getWhoClicked(),e.getWhoClicked().getUniqueId(), e.getWhoClicked().getName());
+ /*
                 if(ret == -1){
                     p.sendMessage("対戦者リストにすでに登録されています");
                 }
@@ -146,12 +147,15 @@ public class FightClubGUI {
                     p.sendMessage("参加費がしはらえないため参加できません");
                 }
                 else if(ret == -4){
-                    p.sendMessage("あなたは、弱すぎるため参加資格が取り消されました。");
+                    p.sendMessage("あなたは、弱すぎるため参加資格が取り消されました");
+                }
+                else if(ret == -5){
+                    p.sendMessage("あなたは、ブラックリストに登録されているため参加できません");
                 }
                 else{
                     p.sendMessage("選手登録しました");
                 }
-
+*/
 
             }
 

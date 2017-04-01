@@ -2,11 +2,13 @@ package red.man10.fightclub;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
 import java.util.logging.Filter;
 
 /**
@@ -147,7 +149,7 @@ public class FightClubCommand  implements CommandExecutor {
                 return false;
             }
 
-            int ret = plugin.registerFighter(fighter.getUniqueId(),args[1]);
+            int ret = plugin.registerFighter(p,fighter.getUniqueId(),args[1]);
             if (ret == -1){
                 p.sendMessage(ChatColor.RED + "Error: " + args[1] +" is already registered!");
                 return false;
@@ -320,10 +322,73 @@ public class FightClubCommand  implements CommandExecutor {
             showBets(p);
             return false;
         }
+
+
+        //////////////////////////////////
+        ///         Bet
+        //////////////////////////////////
+        if( args[0].equalsIgnoreCase("whitelist") ||
+            args[0].equalsIgnoreCase("blacklist") ||
+            args[0].equalsIgnoreCase("prolist")
+
+                ) {
+
+
+
+
+            listCommand(sender,args);
+            return true;
+        }
         p.sendMessage("invalid command");
 
-        return false;
+        return true;
     }
+
+
+    boolean listCommand(CommandSender s,String[] args){
+
+        s.sendMessage("args :"+args.length);
+        String name = args[0];
+
+
+        FightClubList list = null;
+        if(args[0].equalsIgnoreCase("whitelist")){
+            list = plugin.whitelist;
+        }
+        if(args[0].equalsIgnoreCase("blacklist")){
+            list = plugin.blacklist;
+        }
+        if(args[0].equalsIgnoreCase("prolist")){
+            list = plugin.prolist;
+        }
+
+        if(args.length < 3){
+            list.print(s);
+            return true;
+        }
+
+
+
+
+        String target = args[2];
+        Player p = Bukkit.getPlayer(target);
+        UUID uuid = p.getUniqueId();
+
+
+        ///     追加
+        if(args[1].equalsIgnoreCase("add")){
+            list.add(s,p);
+        }
+        if(args[1].equalsIgnoreCase("delete")){
+            list.delete(s,p);
+        }
+        return true;
+    }
+
+
+
+
+
     void showBets(Player p){
 
         p.sendMessage("§e=========== §d●§f●§a●§e Man10 Fight Club Buyer §d●§f●§a● §e===============");
@@ -363,10 +428,11 @@ public class FightClubCommand  implements CommandExecutor {
 
     }
 
+
     void showHelp(CommandSender p){
         p.sendMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
         p.sendMessage("§e  by takatronix http://man10.red");
-        p.sendMessage("§c* red commands for Admin");
+        p.sendMessage("§c* 赤いコマンドは管理者用です");
         p.sendMessage("§c/mfc entry - エントリ開始");
         p.sendMessage("§c/mfc cancel(close) - ゲームをキャンセルして返金->エントリへ");
         p.sendMessage("§c*/mfc stop - 停止");
@@ -381,6 +447,18 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("-----------オープン後有効コマンド-----------");
         p.sendMessage("/mfc bet [fighter] [money]   / Bet money on fighter");
         p.sendMessage("§c/mfc fight                 / Start Fight!!");
+        p.sendMessage("-----------ホワイトリスト・ブラックリスト・プロコマンド-----------");
+        p.sendMessage("§c/mfc whitelist on");
+        p.sendMessage("§c/mfc whitelist off");
+        p.sendMessage("§c/mfc whitelist delete [username]");
+        p.sendMessage("§c/mfc blacklist on");
+        p.sendMessage("§c/mfc blacklist off");
+        p.sendMessage("§c/mfc blacklistlist add [username]");
+        p.sendMessage("§c/mfc blacklistlist delete [username]");
+        p.sendMessage("§c/mfc pro on");
+        p.sendMessage("§c/mfc pro off");
+        p.sendMessage("§c/mfc pro add [username]");
+        p.sendMessage("§c/mfc pro delete [username]");
         p.sendMessage("-----------アリーナ-----------");
         p.sendMessage("§c*/mfca create [アリーナ名]");
         p.sendMessage("§c*/mfca select [アリーナ名]");

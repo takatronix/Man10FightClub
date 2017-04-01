@@ -65,7 +65,13 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     String      worldName = "Arena";
 
-
+    public enum Modes {
+        Off,
+        Free,           //  自由に遊べる、通知はしない
+        Normal,         //  通常のモード（グローバル通知はしない
+        Pro             //  グローバル通知あり
+    }
+    Modes           mode;
 
     //   状態遷移 これらの状態遷移する
     public enum Status {
@@ -117,10 +123,20 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
 
+    /*
     //      ブラックリスト
     ArrayList<UUID> blacklist = new ArrayList<UUID>();
     //      ホワイトリスト
     ArrayList<UUID> whitelist = new ArrayList<UUID>();
+    //     Pro
+    ArrayList<UUID> prolist = new ArrayList<UUID>();
+    Boolean enbaleBlackList = true;
+    Boolean enableWhitelist = true;
+    */
+
+    FightClubList whitelist = null;
+    FightClubList blacklist = null;
+    FightClubList prolist = null;
 
 
     public boolean isFighter(UUID uuid){
@@ -150,7 +166,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     ////////////////////////////////
     //       対戦者登録
     ////////////////////////////////
-    public int registerFighter(UUID uuid,String name){
+    public int registerFighter(CommandSender s,UUID uuid,String name){
 
         resetEnetryTimer();
 
@@ -160,16 +176,21 @@ public final class FightClub extends JavaPlugin implements Listener {
         for(PlayerInformation waiter : this.waiters){
             if(waiter.uuid == uuid){
                 //  登録済みエラー表示
+                s.sendMessage("すでに登録ずみです");
                 return -1;
             }
         }
         Player p = Bukkit.getPlayer(uuid);
         if(vault.getBalance(uuid) < entryPrice){
 
-            p.sendMessage("お金がたりません");
+            s.sendMessage("参加費用が足りません");
             return -3;
         }
 
+        if(blacklist.find(uuid.toString()) != -1){
+            s.sendMessage("ブラックリストに登録されているため参加できません");
+            return -5;
+        }
 
         //      追加
         PlayerInformation playerInfo = new PlayerInformation();
@@ -190,28 +211,40 @@ public final class FightClub extends JavaPlugin implements Listener {
             double kdr = (double)playerInfo.kill / (double)playerInfo.death;
             kdrs = String.format("%.2f",kdr);
         }
-        String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " $:"+(int)playerInfo.prize + " 総プレイ数:"+play + " KDR:"+kdrs;
-        serverMessage(name + "は参加を申し込んだ");
-
-        serverMessage(his);
+        //        登録費用
+        if(vault.withdraw(uuid,entryPrice) == false){
+            s.sendMessage("参加費用がありません");
+            return -3;
+        }
         /////////////////////////////////////
         //       参加資格チェック
         /////////////////////////////////////
         if(play >= newbiePlayableCount && playerInfo.death != 0){
             double kdr = (double)playerInfo.kill / (double)playerInfo.death;
             if(kdr < registerKDRLimit){
-                p.sendMessage(playerInfo.name +"は、MFCに登録しようとしましたが、弱すぎるため拒否されました。KDR:"+registerKDRLimit+"以上が最低条件です");
+                if(whitelist.find(p.getUniqueId().toString()) != -1){
+
+                    serverMessage(playerInfo.name +"は、弱すぎて参加資格がないが、今回は特別に許された。");
+                    waiters.add(playerInfo);
+                    String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " $:"+(int)playerInfo.prize + " 総プレイ数:"+play + " KDR:"+kdrs;
+                    serverMessage(his);
+
+                    return waiters.size();
+                }
+
+
+                //s.sendMessage("ブラックリストに登録されているため参加できません");
+                s.sendMessage(playerInfo.name +"は、MFCに登録しようとしましたが、弱すぎるため拒否されました。KDR:"+registerKDRLimit+"以上が最低条件です");
                 return -4;
             }
         }
 
 
-        //        登録費用
-        if(vault.withdraw(uuid,entryPrice) == false){
-            return -3;
-        }
 
 
+        String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " $:"+(int)playerInfo.prize + " 総プレイ数:"+play + " KDR:"+kdrs;
+        serverMessage(name + "は参加を申し込んだ");
+        serverMessage(his);
 
 
 
@@ -745,6 +778,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         }
 
+        getConfig().set("CurrentMode",mode);
+
 
         saveConfig();
     }
@@ -922,7 +957,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         //      本人登録
         if(cmd.getName().equalsIgnoreCase("mfcr")){
             Player p = (Player)sender;
-            registerFighter(p.getUniqueId(),p.getName());
+            registerFighter(sender,p.getUniqueId(),p.getName());
             return true;
         }
         return false;
@@ -1297,6 +1332,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         serverMessage("自動ベット金額:"+this.autoBetPrice);
         serverMessage("エントリ金額:"+this.entryPrice);
         updateSidebar();
+
+        whitelist = new FightClubList("whitelist");
+        blacklist = new FightClubList("blacklist");
+        prolist = new FightClubList("prolist");
+
     }
 
 
@@ -1672,7 +1712,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                     }
 
 
-                    registerFighter(e.getPlayer().getUniqueId(),e.getPlayer().getName());
+                    registerFighter(p,e.getPlayer().getUniqueId(),e.getPlayer().getName());
                     return;
                 }
             if (s.getLine(1).equalsIgnoreCase("UnRegister")) {
