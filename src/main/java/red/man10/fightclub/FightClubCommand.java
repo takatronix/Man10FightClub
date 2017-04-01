@@ -175,8 +175,8 @@ public class FightClubCommand  implements CommandExecutor {
                 return false;
             }
 
-            int ret = plugin.unregisterFighter(fighter.getUniqueId());
-            if (ret == -1){
+            boolean ret = plugin.unregisterFighter(fighter.getUniqueId());
+            if (ret == false){
                 p.sendMessage(ChatColor.RED + "Error: " + args[1] +" is already unregistered!");
                 return false;
             }

@@ -146,9 +146,10 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         String title = "";
         String subTitle = "";
-        if(mode == MFCModes.Off){
+        if(mode == MFCModes.Off) {
             title = "MFC 終了します";
-            enableMFC(sender,false);
+            enableMFC(sender, false);
+        }
         if(mode == MFCModes.Free){
             title = "§dMFC フリーモード";
             subTitle = "誰でも参加練習できます。お金もかかりませんし、記録も残りません";
@@ -188,7 +189,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         Bukkit.getLogger().info("");
         return false;
     }
-    public int unregisterFighter(UUID uuid){
+    public boolean unregisterFighter(UUID uuid){
         ////////////////////////////////////
         //      すでに登録されてたらエラー
         ////////////////////////////////////
@@ -198,10 +199,10 @@ public final class FightClub extends JavaPlugin implements Listener {
 
                 waiters.remove(i);
                 updateSidebar();;
-                return 0;
+                return false;
             }
         }
-        return 1;
+        return true;
     }
     ////////////////////////////////
     //       対戦者登録
@@ -231,6 +232,24 @@ public final class FightClub extends JavaPlugin implements Listener {
             s.sendMessage("ブラックリストに登録されているため参加できません");
             return -5;
         }
+
+
+        //      プロモード中はプロしか登録できない
+        if( mode == MFCModes.Pro){
+            if(prolist.find(uuid.toString()) == -1){
+                s.sendMessage("プロしか参加できません");
+                return -6;
+            }
+        }
+        //      プロモード中はプロしか登録できない
+        if( mode == MFCModes.WhiteList){
+            if(whitelist.find(uuid.toString()) == -1){
+                s.sendMessage("あなたはホワイトリストに追加されていません");
+                return -7;
+            }
+        }
+
+
 
         //      追加
         PlayerInformation playerInfo = new PlayerInformation();
@@ -818,7 +837,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         }
 
-        getConfig().set("CurrentMode",mode);
+       // getConfig().set("CurrentMode",mode);
 
 
         saveConfig();
@@ -1356,6 +1375,10 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      MYSQL初期化
         data = new FightClubData(this);
+        if(data == null){
+            Bukkit.getServer().broadcastMessage("MFC DB接続エラー");
+            return;
+        }
 
         boolean flag = getConfig().getBoolean("Disabled");
         if(flag == true){
@@ -1450,7 +1473,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 }
             }
 
-            if(unregisterFighter(p.getUniqueId()) < 0){
+            if(unregisterFighter(p.getUniqueId()) ){
                 serverMessage(p.getName() + "はログアウトしたため、登録リストからはずされた");
                 updateSidebar();
             }
@@ -1767,7 +1790,9 @@ public final class FightClub extends JavaPlugin implements Listener {
                     p.sendMessage("選手登録解除する権限がありません");
                     return;
                 }
-                unregisterFighter(e.getPlayer().getUniqueId());
+                if(unregisterFighter(e.getPlayer().getUniqueId())){
+                    p.sendMessage("選手登録解除しました");
+                }
                 return;
             }
 

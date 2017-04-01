@@ -32,6 +32,10 @@ public class FightClubList {
 
 
     int find(String uuid){
+        if(list.size() == -1){
+            return -1;
+        }
+
         for(int i = 0;i < list.size();i++){
             if(list.get(i).equals(uuid)){
                 return i;
