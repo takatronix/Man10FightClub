@@ -37,6 +37,10 @@ public class FightClubCommand  implements CommandExecutor {
             showHelp(p);
             return true;
         }
+        if(args[0].equalsIgnoreCase("clear")){
+            plugin.waiters.clear();
+            return true;
+        }
 
         //      ON/OFFコマンド
         if(args[0].equalsIgnoreCase("on")) {
@@ -44,6 +48,7 @@ public class FightClubCommand  implements CommandExecutor {
             return false;
         }
         if(args[0].equalsIgnoreCase("off")) {
+            plugin.waiters.clear();
             plugin.setMFCMode(sender,FightClub.MFCModes.Off);
             return false;
         }

@@ -142,6 +142,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     public  void setMFCMode(CommandSender sender,MFCModes mode){
 
+        cancelGame();
         this.mode = mode;
 
         String title = "";
@@ -168,7 +169,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             enableMFC(sender,true);
         }
         if(mode == MFCModes.Pro){
-            title = "§e§kXXXXX  §c§l【MFC Pro】§e§kXXXXX";
+            title = "§e§kXXXXX  §4§l【MFC Pro】§e§kXXXXX";
             subTitle = "§e§lMan10プロプレーヤを予想して、§e§n大金§e§lをゲットしよう！！！";
 
             enableMFC(sender,true);
@@ -532,7 +533,18 @@ public final class FightClub extends JavaPlugin implements Listener {
 
       //  lifebar.setInfoName(mes);
 
-        resetBetTimer();
+        if(mode == MFCModes.Pro){
+            if(price >= 10000){
+                resetBetTimer();
+            }
+
+        }else{
+            resetBetTimer();
+
+        }
+
+
+
         return bets.size();
     }
 
@@ -1281,7 +1293,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             ret = "§a§lMFC";
         }
         if(mode == MFCModes.Pro){
-            ret = "§c§l【MFC Pro】";
+            ret = "§4§l【MFC Pro】";
             fightTimerDefault = 300;
         }
         if(mode == MFCModes.Free){
