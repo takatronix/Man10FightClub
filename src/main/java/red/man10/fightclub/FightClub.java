@@ -209,7 +209,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     ////////////////////////////////
     public int registerFighter(CommandSender s,UUID uuid,String name){
 
-        resetEnetryTimer();
+        if(mode != MFCModes.Free){
+            resetEnetryTimer();
+        }
 
         ////////////////////////////////////
         //      すでに登録されてたらエラー
@@ -258,9 +260,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         playerInfo.name = name;
         playerInfo.isDead = false;
         playerInfo.returnLoc = Bukkit.getPlayer(uuid).getLocation();
-        playerInfo.kill = data.killCount(uuid);
-        playerInfo.death = data.deathCount(uuid);
-        playerInfo.prize = data.totalPrize(uuid);
+        if(data != null){
+            playerInfo.kill = data.killCount(uuid);
+            playerInfo.death = data.deathCount(uuid);
+            playerInfo.prize = data.totalPrize(uuid);
+        }
 
 
         //String str = String.format("");
@@ -698,7 +702,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         String f1o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d ",o1,getScore(fighters.get(1)));
 
 
-        this.fightId = data.createFight(selectedArena,selectedKit,f0.getUniqueId(),f1.getUniqueId(),o0,o1,b0,b1,getPrize(),getTotalBet());
+        if(mode != MFCModes.Free){
+            this.fightId = data.createFight(selectedArena,selectedKit,f0.getUniqueId(),f1.getUniqueId(),o0,o1,b0,b1,getPrize(),getTotalBet());
+
+        }
 
         //      init bar
         lifebar.setRname(f0.getName() + f0o + inf0);
@@ -1024,9 +1031,13 @@ public final class FightClub extends JavaPlugin implements Listener {
                 if(m == MFCModes.Pro){
                     titlebar.sendTitleToAllWithSound(title,subTitle,20,stayTick,20,Sound.ENTITY_WITHER_SPAWN,1,1);
                 }else{
-                    for(Player p : Bukkit.getServer().getWorld(selectedArena).getPlayers()){
-                        if(p.isOnline()){
-                            titlebar.sendTitleWithSound(p,title,subTitle,20,20,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+
+                    for(Player p :Bukkit.getOnlinePlayers()){
+                        if(p != null){
+                            if(p.getWorld().getName().toString().equalsIgnoreCase(selectedArena)){
+                                titlebar.sendTitleWithSound(p,title,subTitle,20,20,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+
+                            }
                         }
                     }
                 }
@@ -1295,6 +1306,12 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
 
             double d = (double)entryTimer / (double)entryTimerDefault;
+            if(d < 0){
+                d = 0;
+            }
+            if(d > 1){
+                d = 1;
+            }
             lifebar.setInfoBar(d);
         }
 

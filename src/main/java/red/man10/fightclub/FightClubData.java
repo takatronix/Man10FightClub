@@ -35,7 +35,7 @@ public class FightClubData {
 
         ResultSet rs = mysql.query(sql);
         if(rs == null){
-            Bukkit.getServer().broadcastMessage("query error");
+          //  Bukkit.getServer().broadcastMessage("query error");
             return ret;
         }
         try
