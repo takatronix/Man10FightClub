@@ -28,10 +28,27 @@ public class FightClubData {
         mysql.execute(sqlCreateBetProTable);
     }
 
+    public String getBetTable(){
+        String ret = "mfc_bet";
+        if(plugin.mode == FightClub.MFCModes.Pro){
+            ret = "mfcpro_bet";
+        }
+        return  ret;
+    }
+    public String getFightTable(){
+        String ret = "mfc_fight";
+        if(plugin.mode == FightClub.MFCModes.Pro){
+            ret = "mfcpro_fight";
+        }
+        return  ret;
+
+    }
+
     public int killCount(UUID id){
 
         int ret = -1;
-        String sql = "select count(*) from mfc_fight where winner='" + id.toString()+"';";
+//        String sql = "select count(*) from mfc_fight where winner='" + id.toString()+"';";
+        String sql = "select count(*) from "+getFightTable()+" where winner='" + id.toString()+"';";
 
         ResultSet rs = mysql.query(sql);
         if(rs == null){
@@ -55,7 +72,7 @@ public class FightClubData {
     public int deathCount(UUID id){
 
         int ret = -1;
-        String sql = "select count(*) from mfc_fight where loser='" + id.toString()+"';";
+        String sql = "select count(*) from "+getFightTable()+" where loser='" + id.toString()+"';";
 
         ResultSet rs = mysql.query(sql);
         try
@@ -75,7 +92,7 @@ public class FightClubData {
 
     public double totalPrize(UUID id){
         double ret = 0;
-        String sql = "select sum(prize) from mfc_fight where winner='" + id.toString()+"';";
+        String sql = "select sum(prize) from "+getFightTable()+" where winner='" + id.toString()+"';";
 
         ResultSet rs = mysql.query(sql);
         try
@@ -96,7 +113,7 @@ public class FightClubData {
     public int getLatestId(){
 
         int ret = -1;
-        String sql = "select * from mfc_fight order by id desc limit 1";
+        String sql = "select * from "+getFightTable()+" order by id desc limit 1";
 
         ResultSet rs = mysql.query(sql);
         try
@@ -136,7 +153,7 @@ public class FightClubData {
 
     public boolean updateFight(int fightId,int result,UUID winner,UUID loser,double duration){
 
-        String sql = "update mfc_fight set"
+        String sql = "update "+getFightTable()+" set"
                 +" result="+result
                 +" ,winner='"+winner.toString()
                 +"' ,loser='"+loser.toString()
@@ -154,7 +171,7 @@ public class FightClubData {
         String name1 = Bukkit.getOfflinePlayer(uuid1).getName();
         String name2 = Bukkit.getOfflinePlayer(uuid2).getName();
 
-        boolean ret = mysql.execute("insert into mfc_fight values(0"
+        boolean ret = mysql.execute("insert into "+getFightTable()+" values(0"
                 +",'" + currentTime()
                 +"','" + kit
                 +"','" + stage
@@ -186,7 +203,7 @@ public class FightClubData {
         String name = Bukkit.getOfflinePlayer(uuid).getName();
         String fighterName = Bukkit.getOfflinePlayer(fighterId).getName();
 
-        boolean ret = mysql.execute("insert into mfc_bet values(0,"+fightId
+        boolean ret = mysql.execute("insert into "+getBetTable()+" values(0,"+fightId
                 +",'" + currentTime()
                 +"','" + name
                 +"','" + uuid.toString()
