@@ -200,10 +200,10 @@ public final class FightClub extends JavaPlugin implements Listener {
 
                 waiters.remove(i);
                 updateSidebar();;
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
     ////////////////////////////////
     //       対戦者登録
