@@ -38,22 +38,38 @@ public class FightClubCommand  implements CommandExecutor {
             return true;
         }
         if(args[0].equalsIgnoreCase("clear")){
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
             plugin.waiters.clear();
             return true;
         }
 
         //      ON/OFFコマンド
         if(args[0].equalsIgnoreCase("on")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
             plugin.setMFCMode(sender,FightClub.MFCModes.Normal);
             return false;
         }
         if(args[0].equalsIgnoreCase("off")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
             plugin.waiters.clear();
             plugin.setMFCMode(sender,FightClub.MFCModes.Off);
             return false;
         }
 
         if(args[0].equalsIgnoreCase("reload")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
             plugin.reload(sender);
             return false;
         }
@@ -218,11 +234,19 @@ public class FightClubCommand  implements CommandExecutor {
         ///       キャンセル
         //////////////////////////////////
         if(args[0].equalsIgnoreCase("cancel")){
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
             plugin.cancelGame();
             p.sendMessage("MFC Closed.");
             return true;
         }
         if(args[0].equalsIgnoreCase("close")){
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
             plugin.cancelGame();
             p.sendMessage("MFC Closed.");
             return true;
@@ -336,6 +360,12 @@ public class FightClubCommand  implements CommandExecutor {
                 ){
                 String modeName = args[0];
 
+
+            if(!sender.hasPermission(plugin.adminPermision)){
+                sender.sendMessage("管理者権限がありません");
+                return false;
+            }
+
             FightClub.MFCModes m = FightClub.MFCModes.Off;
             if(args[0].equalsIgnoreCase("whitelist")){
                 m = FightClub.MFCModes.WhiteList;
@@ -393,7 +423,10 @@ public class FightClubCommand  implements CommandExecutor {
             list.print(s);
             return true;
         }
-
+        if(!s.hasPermission(plugin.adminPermision)){
+            s.sendMessage("管理者権限がありません");
+            return false;
+        }
 
 
 
