@@ -1518,6 +1518,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         getLogger().info("Disabled");
+        cancelGame();
         lifebar.clearBar();
         lifebar.clearInfoBar();
     }
