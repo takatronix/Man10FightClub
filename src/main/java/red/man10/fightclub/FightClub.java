@@ -1838,20 +1838,20 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
     }
     @EventHandler
-    public void commandCancel(PlayerCommandPreprocessEvent e){
-        if(currentStatus == Status.Fighting) {
+    public void commandCancel(PlayerCommandPreprocessEvent e) {
+        if (currentStatus == Status.Fighting) {
             Player p = e.getPlayer();
-            if (p.getWorld().getName().equalsIgnoreCase(worldName)) {
-                    if(p.isOp()){
-                        return;
-                    }
-                    p.sendMessage(prefix + "戦闘中はコマンドの使用はできません");
-                    e.setCancelled(true);
+            if (isFighter(p.getUniqueId())) {
+
+                if (p.isOp()) {
                     return;
+                }
             }
+            p.sendMessage(prefix + "戦闘中はコマンドの使用はできません");
+            e.setCancelled(true);
+            return;
         }
     }
-
 
 
     @EventHandler
