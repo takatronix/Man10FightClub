@@ -1823,8 +1823,12 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
     @EventHandler
     public void playerChangeWorldEvent(PlayerChangedWorldEvent e){
-        if(currentStatus == Fighting){
+        if(currentStatus != Closed){
             Player p = e.getPlayer();
+            if(isFighter(p.getUniqueId())){
+                p.sendMessage(prefix + "選手はワールド変更できません");
+                tpLobby(p);
+            }
             if(p.getGameMode() == GameMode.SPECTATOR){
                 p.setGameMode(GameMode.SURVIVAL);
                 p.sendMessage(prefix + "ワールド変更されたため、観戦を終了しました");
@@ -1835,20 +1839,20 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
     }
     @EventHandler
-    public void commandCancel(PlayerCommandPreprocessEvent e){
-        if(currentStatus == Status.Fighting) {
+    public void commandCancel(PlayerCommandPreprocessEvent e) {
+        if (currentStatus == Status.Fighting) {
             Player p = e.getPlayer();
-            if (p.getWorld().getName().equalsIgnoreCase(worldName)) {
-                    if(p.isOp()){
-                        return;
-                    }
-                    p.sendMessage(prefix + "戦闘中はコマンドの使用はできません");
-                    e.setCancelled(true);
+            if (isFighter(p.getUniqueId())) {
+
+                if (p.isOp()) {
                     return;
+                }
             }
+            p.sendMessage(prefix + "戦闘中はコマンドの使用はできません");
+            e.setCancelled(true);
+            return;
         }
     }
-
 
 
     @EventHandler
@@ -2029,6 +2033,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         gui.removeInMenu((Player) e.getPlayer());
     }
+
+
     @EventHandler
     public void clickItem(InventoryClickEvent e) {
         /*if(currentStatus == Closed){
