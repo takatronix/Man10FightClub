@@ -37,20 +37,18 @@ public class FightClubGUI {
     public void clickItem(InventoryClickEvent e) {
        Player p = (Player) e.getWhoClicked();
        if(plugin.currentStatus == FightClub.Status.Opened) {
-           if (p.getWorld().getName().equalsIgnoreCase("arena")) {
-                   if (p.getName().equalsIgnoreCase(plugin.fighters.get(0).name) || p.getName().equalsIgnoreCase(plugin.fighters.get(1).name)) {
-                       if(e.getClickedInventory().getType() == InventoryType.PLAYER){
-                           if(e.getCurrentItem().getType() == Material.AIR){
-                               return;
-                           }
-                           p.sendMessage(prefix + "選手はインベントリを編集できません");
-                           e.setCancelled(true);
-                           return;
-                       }else{
-                       }
-                       e.setCancelled(true);
-                   } else {
+           if (p.getName().equalsIgnoreCase(plugin.fighters.get(0).name) || p.getName().equalsIgnoreCase(plugin.fighters.get(1).name)) {
+               if (e.getClickedInventory().getType() == InventoryType.PLAYER) {
+                   if (e.getCurrentItem().getType() == Material.AIR) {
+                       return;
+                   }
+                   p.sendMessage(prefix + "選手はインベントリを編集できません");
+                   e.setCancelled(true);
+                   return;
+               } else {
                }
+               e.setCancelled(true);
+           } else {
            }
        }
         //try {
