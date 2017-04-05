@@ -31,8 +31,8 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="1843" column="12" lean-forward="false" selection-start-line="1843" selection-start-column="12" selection-end-line="1849" selection-end-column="27" />
+            <state relative-caret-position="429">
+              <caret line="1846" column="17" lean-forward="true" selection-start-line="1846" selection-start-column="17" selection-end-line="1846" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -772,13 +772,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00185" summary="スコアテーブル保存">
-      <created>1489521984300</created>
-      <option name="number" value="00185" />
-      <option name="presentableId" value="LOCAL-00185" />
-      <option name="project" value="LOCAL" />
-      <updated>1489521984300</updated>
-    </task>
     <task id="LOCAL-00186" summary="リファクタリング">
       <created>1489523599609</created>
       <option name="number" value="00186" />
@@ -1115,7 +1108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491395760894</updated>
     </task>
-    <option name="localTasksCounter" value="234" />
+    <task id="LOCAL-00234" summary="無限増殖対策(3)">
+      <created>1491404367075</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1491404367076</updated>
+    </task>
+    <option name="localTasksCounter" value="235" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1235,19 +1235,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>1876</line>
+          <line>1875</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>1884</line>
+          <line>1883</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>1889</line>
+          <line>1888</line>
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
@@ -1754,8 +1754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="1843" column="12" lean-forward="false" selection-start-line="1843" selection-start-column="12" selection-end-line="1849" selection-end-column="27" />
+        <state relative-caret-position="429">
+          <caret line="1846" column="17" lean-forward="true" selection-start-line="1846" selection-start-column="17" selection-end-line="1846" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
