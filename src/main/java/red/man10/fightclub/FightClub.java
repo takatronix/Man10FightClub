@@ -187,7 +187,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return true;
             }
         }
-        Bukkit.getLogger().info("");
+       // Bukkit.getLogger().info("");
         return false;
     }
     public boolean unregisterFighter(UUID uuid){
