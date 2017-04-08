@@ -3,11 +3,13 @@ package red.man10;
 /**
  * Created by takatronix on 2017/03/05.
  */
+
+import org.bukkit.Bukkit;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
-import org.bukkit.Bukkit;
 
 public class MySQLFunc {
     String HOST = null;

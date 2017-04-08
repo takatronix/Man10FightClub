@@ -488,6 +488,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             return -1;
         }
 
+
         int index = getFighterIndex(fighterUUID);
         if(index == -1){
             return -1;

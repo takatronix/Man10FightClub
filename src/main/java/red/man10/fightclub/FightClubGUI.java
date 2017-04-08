@@ -312,7 +312,10 @@ public class FightClubGUI {
         p.sendMessage(buyer);
 
 
-
+        if(plugin.currentStatus == FightClub.Status.Fighting){
+            p.sendMessage(plugin.prefix + "試合中はベットできません");
+            return;
+        }
 
         if(plugin.canBet(p.getUniqueId()) == false){
             p.closeInventory();

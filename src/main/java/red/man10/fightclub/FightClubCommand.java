@@ -309,7 +309,10 @@ public class FightClubCommand  implements CommandExecutor {
                 p.sendMessage("/mfc bet [fighter] [money]");
                 return false;
             }
-
+            if(plugin.currentStatus == FightClub.Status.Fighting){
+                p.sendMessage(plugin.prefix + "戦闘中はベットできません");
+                return false;
+            }
             double money = Double.parseDouble(args[2]);
             Player fighter = Bukkit.getPlayer(args[1]);
             String buyer = p.getName();
