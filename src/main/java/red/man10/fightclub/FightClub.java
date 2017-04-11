@@ -758,13 +758,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             public void run() {
                pauseTimer = false;
 
-               //       もう一度TPさせるTPバグ対策
-                tp(Bukkit.getPlayer(fighters.get(0).uuid),selectedArena,"player1");
-                tp(Bukkit.getPlayer(fighters.get(1).uuid),selectedArena,"player2");
-                f0.hidePlayer(f1);
-                f1.hidePlayer(f0);
-                f0.showPlayer(f1);
-                f1.showPlayer(f0);
+
             }
         }, 20*3);
 
