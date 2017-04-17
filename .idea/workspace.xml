@@ -8,6 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,19 +31,31 @@
       <file leaf-file-name="FightClub.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="768" column="29" lean-forward="true" selection-start-line="768" selection-start-column="29" selection-end-line="768" selection-end-column="29" />
+            <state relative-caret-position="28">
+              <caret line="162" column="35" lean-forward="false" selection-start-line="162" selection-start-column="35" selection-end-line="162" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3299#3318#0" expanded="true" />
                 <element signature="e#3399#3418#0" expanded="true" />
                 <element signature="e#3593#3609#0" expanded="true" />
-                <element signature="e#59163#59173#0" expanded="true" />
-                <element signature="e#67044#67052#0" expanded="true" />
-                <marker date="1491889632000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
-                <marker date="1491889632000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
-                <marker date="1491889632000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
+                <element signature="e#50741#50749#0" expanded="true" />
+                <element signature="e#59556#59566#0" expanded="true" />
+                <element signature="e#62216#62224#0" expanded="true" />
+                <element signature="e#67437#67445#0" expanded="true" />
+                <marker date="1492419108000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
+                <marker date="1492419108000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
+                <marker date="1492419108000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TitleBar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/TitleBar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="44" column="1" lean-forward="false" selection-start-line="43" selection-start-column="2" selection-end-line="44" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -52,6 +65,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="690">
               <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VaultManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -67,37 +90,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClubData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="35" column="20" lean-forward="false" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SidebarDisplay.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/SidebarDisplay.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
               <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#693#694#0" expanded="false" />
-                <element signature="e#741#742#0" expanded="false" />
-                <element signature="e#2374#2375#0" expanded="false" />
-                <element signature="e#2418#2419#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightClubArenaCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubArenaCommand.java">
+      <file leaf-file-name="SkullMaker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/SkullMaker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="38" column="47" lean-forward="false" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+            <state relative-caret-position="-1240">
+              <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -118,29 +125,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
               <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#1281#1282#0" expanded="false" />
-                <element signature="e#1320#1321#0" expanded="false" />
-                <element signature="e#1359#1360#0" expanded="false" />
-                <element signature="e#1383#1384#0" expanded="false" />
-                <element signature="e#1417#1418#0" expanded="false" />
-                <element signature="e#1448#1449#0" expanded="false" />
-                <element signature="e#1490#1491#0" expanded="false" />
-                <element signature="e#1520#1521#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MySQLManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1395">
-              <caret line="100" column="108" lean-forward="false" selection-start-line="100" selection-start-column="103" selection-end-line="100" selection-end-column="108" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -167,14 +152,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>modeString</find>
-      <find>unregister</find>
-      <find>waiting</find>
-      <find>setMode</find>
-      <find>showToAll</find>
-      <find>mode</find>
-      <find>getMode</find>
-      <find>unregisterFighter</find>
       <find>setMfCMode</find>
       <find>changewo</find>
       <find>arena</find>
@@ -197,6 +174,14 @@
       <find>[MFC]</find>
       <find>startGame</find>
       <find>tpWaiterToArena</find>
+      <find>blacklist</find>
+      <find>whitelist</find>
+      <find>showToAll</find>
+      <find>titleMessage</find>
+      <find>titlebar</find>
+      <find>pro</find>
+      <find>showTitle</find>
+      <find>sendTitleToAllWithSound</find>
     </findStrings>
     <replaceStrings>
       <replace>fighters</replace>
@@ -301,16 +286,16 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="315" />
-    <option name="y" value="100" />
-    <option name="width" value="1774" />
-    <option name="height" value="1128" />
+    <option name="x" value="385" />
+    <option name="y" value="139" />
+    <option name="width" value="2103" />
+    <option name="height" value="1285" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -323,10 +308,152 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="man10" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="man10" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fightclub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Man10FightClub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30149597" />
@@ -649,13 +776,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
-    </task>
-    <task id="LOCAL-00189" summary="closeInventoryIvent -&gt; closeInventoryEvent">
-      <created>1489524319106</created>
-      <option name="number" value="00189" />
-      <option name="presentableId" value="LOCAL-00189" />
-      <option name="project" value="LOCAL" />
-      <updated>1489524319106</updated>
     </task>
     <task id="LOCAL-00190" summary="リファクタリング&#10;">
       <created>1489524789783</created>
@@ -993,7 +1113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492417634639</updated>
     </task>
-    <option name="localTasksCounter" value="238" />
+    <task id="LOCAL-00238" summary="TPバグの修正のバグの修正ｗ">
+      <created>1492417642396</created>
+      <option name="number" value="00238" />
+      <option name="presentableId" value="LOCAL-00238" />
+      <option name="project" value="LOCAL" />
+      <updated>1492417642396</updated>
+    </task>
+    <option name="localTasksCounter" value="239" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1006,24 +1133,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="315" y="100" width="1774" height="1128" extended-state="0" />
+    <frame x="385" y="139" width="2103" height="1285" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23907454" sideWeight="0.47501212" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28234184" sideWeight="0.43291995" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25072718" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23907454" sideWeight="0.5249879" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19068414" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12727273" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28234184" sideWeight="0.56708" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24507284" sideWeight="0.56574476" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829374" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21088165" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37655017" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16060165" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3001962" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24944568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1034,7 +1163,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2395722" sideWeight="0.4770355" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3315508" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1106,55 +1234,55 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>275</line>
+          <line>287</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>1878</line>
+          <line>1887</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>1886</line>
+          <line>1895</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>1891</line>
+          <line>1900</line>
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>1316</line>
+          <line>1328</line>
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>1329</line>
+          <line>1341</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>1580</line>
+          <line>1592</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>928</line>
+          <line>940</line>
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java</url>
-          <line>752</line>
+          <line>764</line>
           <properties />
           <option name="timeStamp" value="25" />
         </line-breakpoint>
@@ -1213,11 +1341,13 @@
             <element signature="e#3299#3318#0" expanded="true" />
             <element signature="e#3399#3418#0" expanded="true" />
             <element signature="e#3593#3609#0" expanded="true" />
-            <element signature="e#59163#59173#0" expanded="true" />
-            <element signature="e#67044#67052#0" expanded="true" />
-            <marker date="1491889632000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
-            <marker date="1491889632000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
-            <marker date="1491889632000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
+            <element signature="e#50741#50749#0" expanded="true" />
+            <element signature="e#59556#59566#0" expanded="true" />
+            <element signature="e#62216#62224#0" expanded="true" />
+            <element signature="e#67437#67445#0" expanded="true" />
+            <marker date="1492419108000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
+            <marker date="1492419108000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
+            <marker date="1492419108000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1293,11 +1423,13 @@
             <element signature="e#3299#3318#0" expanded="true" />
             <element signature="e#3399#3418#0" expanded="true" />
             <element signature="e#3593#3609#0" expanded="true" />
-            <element signature="e#59163#59173#0" expanded="true" />
-            <element signature="e#67044#67052#0" expanded="true" />
-            <marker date="1491889632000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
-            <marker date="1491889632000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
-            <marker date="1491889632000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
+            <element signature="e#50741#50749#0" expanded="true" />
+            <element signature="e#59556#59566#0" expanded="true" />
+            <element signature="e#62216#62224#0" expanded="true" />
+            <element signature="e#67437#67445#0" expanded="true" />
+            <marker date="1492419108000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
+            <marker date="1492419108000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
+            <marker date="1492419108000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1334,11 +1466,13 @@
             <element signature="e#3299#3318#0" expanded="true" />
             <element signature="e#3399#3418#0" expanded="true" />
             <element signature="e#3593#3609#0" expanded="true" />
-            <element signature="e#59163#59173#0" expanded="true" />
-            <element signature="e#67044#67052#0" expanded="true" />
-            <marker date="1491889632000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
-            <marker date="1491889632000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
-            <marker date="1491889632000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
+            <element signature="e#50741#50749#0" expanded="true" />
+            <element signature="e#59556#59566#0" expanded="true" />
+            <element signature="e#62216#62224#0" expanded="true" />
+            <element signature="e#67437#67445#0" expanded="true" />
+            <marker date="1492419108000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
+            <marker date="1492419108000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
+            <marker date="1492419108000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1382,11 +1516,13 @@
             <element signature="e#3299#3318#0" expanded="true" />
             <element signature="e#3399#3418#0" expanded="true" />
             <element signature="e#3593#3609#0" expanded="true" />
-            <element signature="e#59163#59173#0" expanded="true" />
-            <element signature="e#67044#67052#0" expanded="true" />
-            <marker date="1491889632000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
-            <marker date="1491889632000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
-            <marker date="1491889632000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
+            <element signature="e#50741#50749#0" expanded="true" />
+            <element signature="e#59556#59566#0" expanded="true" />
+            <element signature="e#62216#62224#0" expanded="true" />
+            <element signature="e#67437#67445#0" expanded="true" />
+            <marker date="1492419108000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
+            <marker date="1492419108000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
+            <marker date="1492419108000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1430,11 +1566,13 @@
             <element signature="e#3299#3318#0" expanded="true" />
             <element signature="e#3399#3418#0" expanded="true" />
             <element signature="e#3593#3609#0" expanded="true" />
-            <element signature="e#59163#59173#0" expanded="true" />
-            <element signature="e#67044#67052#0" expanded="true" />
-            <marker date="1491889632000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
-            <marker date="1491889632000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
-            <marker date="1491889632000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
+            <element signature="e#50741#50749#0" expanded="true" />
+            <element signature="e#59556#59566#0" expanded="true" />
+            <element signature="e#62216#62224#0" expanded="true" />
+            <element signature="e#67437#67445#0" expanded="true" />
+            <marker date="1492419108000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
+            <marker date="1492419108000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
+            <marker date="1492419108000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1474,109 +1612,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/SkullMaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/TitleBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="28" column="14" lean-forward="false" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/SidebarDisplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#693#694#0" expanded="false" />
-            <element signature="e#741#742#0" expanded="false" />
-            <element signature="e#2374#2375#0" expanded="false" />
-            <element signature="e#2418#2419#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/LifeBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="59" column="19" lean-forward="false" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../man10skywars/src/main/java/red/man10/man10skywars/MySQLManager.java" />
     <entry file="file://$PROJECT_DIR$/../man10skywars/src/main/java/red/man10/man10skywars/MySQLFunc.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1281#1282#0" expanded="false" />
-            <element signature="e#1320#1321#0" expanded="false" />
-            <element signature="e#1359#1360#0" expanded="false" />
-            <element signature="e#1383#1384#0" expanded="false" />
-            <element signature="e#1417#1418#0" expanded="false" />
-            <element signature="e#1448#1449#0" expanded="false" />
-            <element signature="e#1490#1491#0" expanded="false" />
-            <element signature="e#1520#1521#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1395">
           <caret line="100" column="108" lean-forward="false" selection-start-line="100" selection-start-column="103" selection-end-line="100" selection-end-column="108" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="768" column="29" lean-forward="true" selection-start-line="768" selection-start-column="29" selection-end-line="768" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3299#3318#0" expanded="true" />
-            <element signature="e#3399#3418#0" expanded="true" />
-            <element signature="e#3593#3609#0" expanded="true" />
-            <element signature="e#59163#59173#0" expanded="true" />
-            <element signature="e#67044#67052#0" expanded="true" />
-            <marker date="1491889632000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
-            <marker date="1491889632000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
-            <marker date="1491889632000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1610,6 +1651,90 @@
         <state relative-caret-position="412">
           <caret line="320" column="31" lean-forward="true" selection-start-line="320" selection-start-column="31" selection-end-line="320" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/MySQLFunc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/SidebarDisplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/SkullMaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1240">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/LifeBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="59" column="19" lean-forward="false" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/TitleBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="44" column="1" lean-forward="false" selection-start-line="43" selection-start-column="2" selection-end-line="44" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="162" column="35" lean-forward="false" selection-start-line="162" selection-start-column="35" selection-end-line="162" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3299#3318#0" expanded="true" />
+            <element signature="e#3399#3418#0" expanded="true" />
+            <element signature="e#3593#3609#0" expanded="true" />
+            <element signature="e#50741#50749#0" expanded="true" />
+            <element signature="e#59556#59566#0" expanded="true" />
+            <element signature="e#62216#62224#0" expanded="true" />
+            <element signature="e#67437#67445#0" expanded="true" />
+            <marker date="1492419108000" expanded="false" signature="3686:3692" ph="&lt;~&gt;" />
+            <marker date="1492419108000" expanded="false" signature="3761:3767" ph="&lt;~&gt;" />
+            <marker date="1492419108000" expanded="false" signature="3829:3835" ph="&lt;~&gt;" />
+          </folding>
         </state>
       </provider>
     </entry>

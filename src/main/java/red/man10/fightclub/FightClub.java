@@ -176,12 +176,24 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
 
-        titlebar.sendTitleToAllWithSound(title,subTitle,20,140,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+        sendTitleToAllWithSound(title,subTitle,20,140,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+
+    }
+
+    //      タイトルバーに表示
+    public void sendTitleToAllWithSound(String mainText,String subText,int fadeIn,int stay,int fadeOut,Sound s,float volume,float pitch) {
+        if( mode == MFCModes.Pro){
+            titlebar.sendTitleToAllWithSound(mainText,subText,fadeIn,stay,fadeOut,s,volume,pitch);
+            return;
+        }
+        for(Player p :Bukkit.getWorld(worldName).getPlayers()){
+            titlebar.sendTitleWithSound(p,mainText,subText,fadeIn,stay,fadeOut,s,volume,pitch);
+        }
 
     }
 
 
-    public boolean isFighter(UUID uuid){
+        public boolean isFighter(UUID uuid){
         for(PlayerInformation pi :fighters){
             if(pi.uuid == uuid){
                 return true;
@@ -963,7 +975,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         sideBar.hidden = true;
         String title = "§cMFC 選手決定！!";
         String subTitle = "§4§l"+f0.name + " §fvs §1§l"+f1.name + " §aStage:" + selectedArena + " §bKit:"+selectedKit;
-        titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
+        sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
         sideBar.show();
         //String s= f.name + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
@@ -976,7 +988,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 String title = "§4§l"+f0.name ;
                 //String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
                 String subTitle = "§9§lKill:"+f0.kill+" §c§lDeath:"+f0.death+" §e§l総獲得賞金 $"+(int)f0.prize;
-                titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
+                sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
                 serverMessage(title + "§f: "+ subTitle);
             }
         }, 100);
@@ -984,7 +996,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             public void run() {
                 String title = "§1§l"+f1.name;
                 String subTitle = "§9§lKill:"+f1.kill+" §c§lDeath:"+f1.death+" §e§l総獲得賞金 $"+(int)f1.prize;
-                titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
+                sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
                 serverMessage(title + "§f: "+ subTitle);
 
             }
@@ -994,7 +1006,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             public void run() {
                 String title = "勝者を予想しベットしてください！ §a§l/MFC" ;
                 String subTitle = "§4§l"+ f0.name + " §fvs §1§l" +f1.name + " ";
-                titlebar.sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
+                sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
                 serverMessage(subTitle);
                 serverMessage(title);
             }
@@ -1781,9 +1793,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         p.sendMessage(prefix + text);
     }
 
-    void titleMessage(Player p,String title,String subTitle){
-
-    }
 
     public void guiBetMenu(Player p){
 
