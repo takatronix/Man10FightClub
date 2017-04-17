@@ -1787,7 +1787,14 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
     //     サーバーメッセージ
     void serverMessage(String text){
-        Bukkit.getServer().broadcastMessage(prefix +  text);
+        if( mode == MFCModes.Pro){
+            Bukkit.getServer().broadcastMessage(prefix +  text);
+            return;
+        }
+        for(Player p :Bukkit.getWorld(worldName).getPlayers()){
+            p.sendMessage(text);
+        }
+
     }
     void playerMessage(Player p,String text){
         p.sendMessage(prefix + text);
