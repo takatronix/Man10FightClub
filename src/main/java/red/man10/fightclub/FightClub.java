@@ -1572,7 +1572,13 @@ public final class FightClub extends JavaPlugin implements Listener {
                 Entity en = e.getEntity();
                 if(en.getType() == EntityType.PLAYER || en.getType() == EntityType.ARROW || en.getType() == EntityType.SPLASH_POTION || en.getType() == EntityType.FISHING_HOOK || en.getType() == EntityType.FALLING_BLOCK || en.getType() == EntityType.SNOWBALL || en.getType() == EntityType.EGG || en.getType() == EntityType.ENDER_PEARL){
                 }else{
-                    e.setCancelled(true);
+                    if(currentStatus == Fighting ){
+
+
+                    }
+
+
+ //                   e.setCancelled(true);
                 }
             }
         }
@@ -2327,16 +2333,58 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     @EventHandler
+    /*
     public void itemSpawn(ItemSpawnEvent e) {
         if(currentStatus == Closed){
             return;
         }
 
         if(e.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
+
+
+            //      試合中である
+            if(currentStatus == Fighting){
+                if(isFighter())
+
+
+            }
+
+
             e.getEntity().remove();
 
         }
     }
+    */
+
+
+    public void onItemDrop (PlayerDropItemEvent e) {
+        Player p = e.getPlayer();
+
+        if(currentStatus == Closed){
+            return;
+        }
+
+
+        if(p.getLocation().getWorld().getName().equalsIgnoreCase(worldName)) {
+
+            if(currentStatus == Fighting){
+
+                //      選手である＆
+                if(isFighter(p.getUniqueId())){
+                    return;
+                }
+            }
+
+
+
+            p.sendMessage("MFC中はアイテムは捨てられない！！");
+            e.setCancelled(true);
+
+        }
+
+
+    }
+
     //      エンティティを消す
     void clearEntity(){
         for(Entity en : Bukkit.getServer().getWorld(worldName).getEntitiesByClass(Item.class)){
