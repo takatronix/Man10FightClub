@@ -778,7 +778,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void resetPlayerStatus(Player p)
         {
             p.setFireTicks(0);
-            p.getInventory().setContents(null);
+            p.getInventory().clear();
             if (p.hasPotionEffect(PotionEffectType.BLINDNESS) == true)
             {
                 p.removePotionEffect(PotionEffectType.BLINDNESS);

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.inventivetalent.packetlistener:api:3.6.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/inventivetalent/packetlistener/api/3.6.0-SNAPSHOT/api-3.6.0-20170616.213046-2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/inventivetalent/packetlistener/api/3.6.0-SNAPSHOT/api-3.6.0-20170616.213046-2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/inventivetalent/packetlistener/api/3.6.0-SNAPSHOT/api-3.6.0-20170616.213046-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
