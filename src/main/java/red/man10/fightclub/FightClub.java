@@ -989,6 +989,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 String subTitle = "§9§lKill:"+f0.kill+" §c§lDeath:"+f0.death+" §e§l総獲得賞金 $"+(int)f0.prize;
                 sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
                 serverMessage(title + "§f: "+ subTitle);
+                serverMessage("§f§lユーザー情報はここをクリック！ => §b§l§nhttp://man10.red/u?"+f0.name);
             }
         }, 100);
        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
@@ -997,6 +998,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 String subTitle = "§9§lKill:"+f1.kill+" §c§lDeath:"+f1.death+" §e§l総獲得賞金 $"+(int)f1.prize;
                 sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
                 serverMessage(title + "§f: "+ subTitle);
+                serverMessage("§f§lユーザー情報はここをクリック! => §b§l§nhttp://man10.red/u?"+f1.name);
 
             }
         }, 200);
@@ -1679,7 +1681,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 command("mkit pop "+p.getName());
                 resetPlayerStatus(pa);
                 command("mkit pop "+pa.getName());
-            }
+
         }, 20);
 
         ////////////////////////////////////
@@ -1690,7 +1692,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             for(PlayerInformation pf : fighters){
                 Player pn = Bukkit.getPlayer(pf.uuid);
                 resetPlayerStatus(pn);
-                command("mkit pop "+pf.name );
+                //command("mkit pop "+pf.name );
             }
             tpaLobby();
             updateSidebar();
@@ -1833,7 +1835,10 @@ public final class FightClub extends JavaPlugin implements Listener {
                 if(filename.substring(0,1).equalsIgnoreCase(".")){
                     continue;
                 }
-
+                //      先頭に_がつくキットは除外する
+                if(filename.substring(0,1).equalsIgnoreCase("_")){
+                    continue;
+                }
                 int point = filename.lastIndexOf(".");
                 if (point != -1) {
                     String kitName =  filename.substring(0, point);
