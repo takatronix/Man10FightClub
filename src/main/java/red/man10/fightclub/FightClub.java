@@ -2,7 +2,6 @@ package red.man10.fightclub;
 
 
 
-import net.minecraft.server.v1_9_R2.WhiteList;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -779,7 +778,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void resetPlayerStatus(Player p)
         {
             p.setFireTicks(0);
-
+            p.getInventory().setContents(null);
             if (p.hasPotionEffect(PotionEffectType.BLINDNESS) == true)
             {
                 p.removePotionEffect(PotionEffectType.BLINDNESS);
