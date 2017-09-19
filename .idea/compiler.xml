@@ -6,10 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Man10FightClub" />
+        <module name="FightClub" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="FightClub" target="1.8" />
       <module name="Man10FightClub" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -256,6 +256,16 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return -6;
             }
         }
+
+        //      プロモード中はプロしか登録できない
+        if( mode == MFCModes.Normal){
+            if(prolist.find(uuid.toString()) == -1){
+                s.sendMessage("プロは通常モードに参加できません");
+                return -7;
+            }
+        }
+
+
         //      プロモード中はプロしか登録できない
         if( mode == MFCModes.WhiteList){
             if(whitelist.find(uuid.toString()) == -1){
@@ -1678,9 +1688,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
                 resetPlayerStatus(p);
-                command("mkit pop "+p.getName());
+                command("mkit pop " + p.getName());
                 resetPlayerStatus(pa);
-                command("mkit pop "+pa.getName());
+                command("mkit pop " + pa.getName());
+            }
 
         }, 20);
 
