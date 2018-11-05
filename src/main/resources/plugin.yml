@@ -1,0 +1,5 @@
+name: Man10FightClub V2
+version: ${project.version}
+main: red.man10.man10fightclubv2.Man10FightClubV2
+authors: [Mr_IK]
+description: MFC … Man10 Fight Club version 2
