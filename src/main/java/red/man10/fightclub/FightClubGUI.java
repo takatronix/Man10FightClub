@@ -1,21 +1,18 @@
 package red.man10.fightclub;
 
 
-import org.bukkit.ChatColor;
-
-import org.bukkit.enchantments.Enchantment;
-
-import org.bukkit.event.inventory.InventoryCreativeEvent;
-import org.bukkit.event.inventory.InventoryType;
-import red.man10.SkullMaker;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import red.man10.SkullMaker;
 
 import java.util.ArrayList;
 import java.util.UUID;

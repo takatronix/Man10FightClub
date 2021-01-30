@@ -1,7 +1,6 @@
 package red.man10.fightclub;
 
 
-
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -16,20 +15,26 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
-import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.inventory.*;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.projectiles.ProjectileSource;
-import org.bukkit.scheduler.BukkitRunnable;
-import red.man10.*;
+import red.man10.LifeBar;
+import red.man10.TitleBar;
+import red.man10.VaultManager;
 
 import java.io.File;
 import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
+
 import static red.man10.fightclub.FightClub.Status.*;
 
 
@@ -299,7 +304,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         if(mode != MFCModes.Free) {
             //        登録費用
-            if (vault.withdraw(uuid, entryPrice) == false) {
+            if (!vault.withdraw(uuid, entryPrice)) {
                 s.sendMessage("参加費用がありません");
                 return -3;
             }
@@ -395,9 +400,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      生存者数
     int getAliveFighterCount() {
         int ret = 0;
-        for(int i = 0;i < fighters.size();i++){
-            if(fighters.get(i).isDead == false){
-                ret ++;
+        for (PlayerInformation fighter : fighters) {
+            if (!fighter.isDead) {
+                ret++;
             }
         }
         return ret;
@@ -409,7 +414,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         for(int i=0;i<fighters.size();i++){
 
             Player p = Bukkit.getPlayer(fighters.get(i).uuid);
-            if(p.isDead() == false){
+            if(!p.isDead()){
                 return i;
             }
         }
@@ -459,15 +464,13 @@ public final class FightClub extends JavaPlugin implements Listener {
             return 1.0;
         }
         //  （賭けられたお金の合計 － 手数料）÷【賭けに勝つ人達の勝ちに賭けた総合計金額】
-        double odds = (total - getCost()) / bet;
-        return odds;
+        return (total - getCost()) / bet;
     }
 
     double getFighterBets(int fighterIndex){
         double totalBet = 0;
-        for(int i = 0;i < bets.size();i++){
-            BetInformation bet = bets.get(i);
-            if (bet.fighterIndex == fighterIndex){
+        for (BetInformation bet : bets) {
+            if (bet.fighterIndex == fighterIndex) {
                 totalBet += bet.bet;
             }
         }
@@ -479,8 +482,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     ///////////////////////////////////
     double getTotalBet(){
         double totalBet = 0;
-        for(int i = 0;i < bets.size();i++){
-            totalBet += bets.get(i).bet;
+        for (BetInformation bet : bets) {
+            totalBet += bet.bet;
         }
         return totalBet;
     }
@@ -515,7 +518,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             return -1;
         }
 
-        if(canBet(buyerUUID) == false){
+        if(!canBet(buyerUUID)){
             return -1;
         }
         if( currentStatus != Opened){
@@ -632,9 +635,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         serverMessage("試合中断！ 試合はキャンセルされ返金されます");
 
         //   払い戻し処理
-        for (int i = 0;i < bets.size();i++) {
-            BetInformation bet = bets.get(i);
-            vault.deposit(bet.buyerUUID,bet.bet);
+        for (BetInformation bet : bets) {
+            vault.deposit(bet.buyerUUID, bet.bet);
         }
         bets.clear();
 
@@ -696,7 +698,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
 
-        if(canStartGame() == false){
+        if(!canStartGame()){
             serverMessage("ベットされた金額が足らないため試合をキャンセルします");
             cancelGame();
             return 0;
@@ -789,77 +791,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         {
             p.setFireTicks(0);
             p.getInventory().clear();
-            if (p.hasPotionEffect(PotionEffectType.BLINDNESS) == true)
-            {
-                p.removePotionEffect(PotionEffectType.BLINDNESS);
+
+            for (PotionEffect type : p.getActivePotionEffects()){
+                p.removePotionEffect(type.getType());
             }
-            if (p.hasPotionEffect(PotionEffectType.CONFUSION) == true)
-            {
-                p.removePotionEffect(PotionEffectType.CONFUSION);
-            }
-            if (p.hasPotionEffect(PotionEffectType.DAMAGE_RESISTANCE) == true)
-            {
-                p.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
-            }
-            if (p.hasPotionEffect(PotionEffectType.FAST_DIGGING) == true)
-            {
-                p.removePotionEffect(PotionEffectType.FAST_DIGGING);
-            }
-            if (p.hasPotionEffect(PotionEffectType.FIRE_RESISTANCE) == true)
-            {
-                p.removePotionEffect(PotionEffectType.FIRE_RESISTANCE);
-            }
-            if (p.hasPotionEffect(PotionEffectType.HEAL) == true)
-            {
-                p.removePotionEffect(PotionEffectType.HEAL);
-            }
-            if (p.hasPotionEffect(PotionEffectType.HUNGER) == true)
-            {
-                p.removePotionEffect(PotionEffectType.HUNGER);
-            }
-            if (p.hasPotionEffect(PotionEffectType.INCREASE_DAMAGE) == true)
-            {
-                p.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
-            }
-            if (p.hasPotionEffect(PotionEffectType.JUMP) == true)
-            {
-                p.removePotionEffect(PotionEffectType.JUMP);
-            }
-            if (p.hasPotionEffect(PotionEffectType.POISON) == true)
-            {
-                p.removePotionEffect(PotionEffectType.POISON);
-            }
-            if (p.hasPotionEffect(PotionEffectType.REGENERATION) == true)
-            {
-                p.removePotionEffect(PotionEffectType.REGENERATION);
-            }
-            if (p.hasPotionEffect(PotionEffectType.SLOW) == true)
-            {
-                p.removePotionEffect(PotionEffectType.SLOW);
-            }
-            if(p.hasPotionEffect(PotionEffectType.SLOW_DIGGING) == true)
-            {
-                p.removePotionEffect(PotionEffectType.SLOW_DIGGING);
-            }
-            if (p.hasPotionEffect(PotionEffectType.SPEED) == true)
-            {
-                p.removePotionEffect(PotionEffectType.SPEED);
-            }
-            if (p.hasPotionEffect(PotionEffectType.WATER_BREATHING) == true)
-            {
-                p.removePotionEffect(PotionEffectType.WATER_BREATHING);
-            }
-            if (p.hasPotionEffect(PotionEffectType.WEAKNESS) == true)
-            {
-                p.removePotionEffect(PotionEffectType.WEAKNESS);
-            }
-            if(p.hasPotionEffect(PotionEffectType.ABSORPTION))
-            {
-                p.removePotionEffect(PotionEffectType.ABSORPTION);
-            }
-            if(p.hasPotionEffect(PotionEffectType.DAMAGE_RESISTANCE)){
-                p.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
-            }
+
             p.setFoodLevel(20);
             p.setExhaustion(0);
             p.setHealth(p.getHealthScale());
@@ -916,12 +852,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         fighters.clear();
 
         int    max = 2;         //  最大マッチ数
-        for(int i=0;i< waiters.size();i++){
-            PlayerInformation f = waiters.get(i);
+        for (PlayerInformation f : waiters) {
             Player p = Bukkit.getPlayer(f.uuid);
-            if(p.isOnline() ){
+            if (p != null) {
                 fighters.add(f);
-                if(fighters.size() >= max){
+                if (fighters.size() >= max) {
                     break;
                 }
             }
@@ -1503,13 +1438,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      MYSQL初期化
         data = new FightClubData(this);
-        if(data == null){
-            Bukkit.getServer().broadcastMessage("MFC DB接続エラー");
-            return;
-        }
 
         boolean flag = getConfig().getBoolean("Disabled");
-        if(flag == true){
+        if(flag){
             currentStatus = Closed;
         }
 
@@ -1599,29 +1530,25 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player p = e.getPlayer();
         log(p.getName() + "ログアウト");
 
-        if(p != null){
-            if(p.isOnline()){
-                if(p.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
-                    p.setGameMode(GameMode.SURVIVAL);
-                    tpLobby(p);
-                    p.sendMessage("ロビーに転送された");
-                }
+        if(p.isOnline()){
+            if(p.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
+                p.setGameMode(GameMode.SURVIVAL);
+                tpLobby(p);
+                p.sendMessage("ロビーに転送された");
             }
+        }
 
-            if(unregisterFighter(p.getUniqueId()) ){
-                serverMessage(p.getName() + "はログアウトしたため、登録リストからはずされた");
-                updateSidebar();
+        if(unregisterFighter(p.getUniqueId()) ){
+            serverMessage(p.getName() + "はログアウトしたため、登録リストからはずされた");
+            updateSidebar();
+        }
+
+        for (PlayerInformation fighter : fighters) {
+            if (fighter.uuid == p.getUniqueId()) {
+                serverMessage(p.getName() + "はログアウトしたため、試合をキャンセルします");
+                cancelGame();
+                break;
             }
-
-            for (int i = 0; i < fighters.size(); i++) {
-                if (fighters.get(i).uuid == p.getUniqueId()) {
-                    serverMessage(p.getName() + "はログアウトしたため、試合をキャンセルします");
-                    cancelGame();
-                    break;
-                }
-            }
-
-
         }
 
 
@@ -1736,7 +1663,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             if(!p.getWorld().getName().equalsIgnoreCase(worldName)){
                 return;
             }
-            if(p.isOp() == true){
+            if(p.isOp()){
                 return;
             }
 
@@ -1772,7 +1699,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return;
             }
 
-            if((e.getDamager() instanceof  Player) == false){
+            if(!(e.getDamager() instanceof Player)){
 
                 return ;
             }
@@ -1901,15 +1828,15 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         if( e.getAction() == Action.RIGHT_CLICK_BLOCK  || e.getAction() == Action.LEFT_CLICK_BLOCK ) {
-        if (e.getClickedBlock().getType() == Material.SIGN_POST || e.getClickedBlock().getType() == Material.WALL_SIGN) {
+        if (e.getClickedBlock().getType() == Material.OAK_SIGN || e.getClickedBlock().getType() == Material.OAK_WALL_SIGN) {
                 Object o = e.getClickedBlock().getState();
-                if((o instanceof  Sign) == false){
+                if(!(o instanceof Sign)){
                     return;
                 }
 
                 Sign s = (Sign) e.getClickedBlock().getState();
                 Player p = e.getPlayer();
-                if (s.getLine(0).equalsIgnoreCase("[MFC]") == false){
+                if (!s.getLine(0).equalsIgnoreCase("[MFC]")){
                     return;
                 }
                 if (s.getLine(1).equalsIgnoreCase("BET")) {
@@ -2078,7 +2005,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         /*if(currentStatus == Closed){
             return;
         }*/
-        if(!e.getInventory().getName().equals(e.getInventory().getName())){
+        if(e.getClickedInventory() == e.getWhoClicked().getInventory()){
             return;
         }
         if(e.getClickedInventory() == null){
@@ -2123,17 +2050,15 @@ public final class FightClub extends JavaPlugin implements Listener {
     void updateSigns(){
         for(Location s: kitSigns){
             Sign sign = (Sign)s.getBlock().getState();
-            if(sign instanceof  Sign){
-                if(sign.getLine(0).equalsIgnoreCase("[MFC]")){
-                    if(sign.getLine(1).equalsIgnoreCase("kit")){
-                        sign.setLine(2,""+tickCounter);
-                        sign.update();
+            if(sign.getLine(0).equalsIgnoreCase("[MFC]")){
+                if(sign.getLine(1).equalsIgnoreCase("kit")){
+                    sign.setLine(2,""+tickCounter);
+                    sign.update();
 
-                        tickCounter++;
-                    }
-                    if(sign.getLine(1).equalsIgnoreCase(worldName)){
-                        sign.setLine(2,selectedArena);
-                    }
+                    tickCounter++;
+                }
+                if(sign.getLine(1).equalsIgnoreCase(worldName)){
+                    sign.setLine(2,selectedArena);
                 }
             }
         }
@@ -2156,7 +2081,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         for (BlockFace f : BlockFace.values()) {
-            if (b.getRelative(f).getType() == Material.WALL_SIGN) {
+            if (b.getRelative(f).getType() == Material.OAK_WALL_SIGN) {
                 for(int i = 0;i < kitSigns.size();i++) {
                     Location loc = kitSigns.get(i);
                     if(loc.getX() == b.getX() && loc.getY() == b.getY() && loc.getZ() == b.getZ()){
