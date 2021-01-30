@@ -264,7 +264,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      プロモード中はプロしか登録できない
         if( mode == MFCModes.Normal){
-            if(prolist.find(uuid.toString()) == -1){
+            if(prolist.find(uuid.toString()) != -1){
                 s.sendMessage("プロは通常モードに参加できません");
                 return -7;
             }
@@ -927,45 +927,37 @@ public final class FightClub extends JavaPlugin implements Listener {
         serverMessage("§e============== §d●§f●§a●§eMan10 Fight Club 選手決定§d●§f●§a● §e===============");
         serverMessage(subTitle);
 
-        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-            public void run() {
-                String title = "§4§l"+f0.name ;
-                //String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
-                String subTitle = "§9§lKill:"+f0.kill+" §c§lDeath:"+f0.death+" §e§l総獲得賞金 $"+(int)f0.prize;
-                sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
-                serverMessage(title + "§f: "+ subTitle);
-                serverMessage("§f§lユーザー情報はここをクリック！ => §b§l§nhttp://man10.red/u?"+f0.name);
-            }
+        getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
+            String title1 = "§4§l"+f0.name ;
+            //String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
+            String subTitle1 = "§9§lKill:"+f0.kill+" §c§lDeath:"+f0.death+" §e§l総獲得賞金 $"+(int)f0.prize;
+            sendTitleToAllWithSound(title1, subTitle1,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
+            serverMessage(title1 + "§f: "+ subTitle1);
+            serverMessage("§f§lユーザー情報はここをクリック！ => §b§l§nhttp://man10.red/u?"+f0.name);
         }, 100);
-       getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-            public void run() {
-                String title = "§1§l"+f1.name;
-                String subTitle = "§9§lKill:"+f1.kill+" §c§lDeath:"+f1.death+" §e§l総獲得賞金 $"+(int)f1.prize;
-                sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
-                serverMessage(title + "§f: "+ subTitle);
-                serverMessage("§f§lユーザー情報はここをクリック! => §b§l§nhttp://man10.red/u?"+f1.name);
+       getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
+           String title12 = "§1§l"+f1.name;
+           String subTitle12 = "§9§lKill:"+f1.kill+" §c§lDeath:"+f1.death+" §e§l総獲得賞金 $"+(int)f1.prize;
+           sendTitleToAllWithSound(title12, subTitle12,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
+           serverMessage(title12 + "§f: "+ subTitle12);
+           serverMessage("§f§lユーザー情報はここをクリック! => §b§l§nhttp://man10.red/u?"+f1.name);
 
-            }
-        }, 200);
+       }, 200);
 
-        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-            public void run() {
-                String title = "勝者を予想しベットしてください！ §a§l/MFC" ;
-                String subTitle = "§4§l"+ f0.name + " §fvs §1§l" +f1.name + " ";
-                sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
-                serverMessage(subTitle);
-                serverMessage(title);
-            }
+        getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
+            String title13 = "勝者を予想しベットしてください！ §a§l/MFC" ;
+            String subTitle13 = "§4§l"+ f0.name + " §fvs §1§l" +f1.name + " ";
+            sendTitleToAllWithSound(title13, subTitle13,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
+            serverMessage(subTitle13);
+            serverMessage(title13);
         }, 300);
 
-        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-            public void run() {
+        getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
 
-                sideBar.hidden = false;
-                sideBar.show();
-                resetBetTimer();
-             //  pauseTimer = false;
-            }
+            sideBar.hidden = false;
+            sideBar.show();
+            resetBetTimer();
+         //  pauseTimer = false;
         }, 500);
 
 
@@ -999,18 +991,16 @@ public final class FightClub extends JavaPlugin implements Listener {
         int delayTick = (int)(delay * 20);
 
         MFCModes m = this.mode;
-        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-            public void run() {
-                if(m == MFCModes.Pro){
-                    titlebar.sendTitleToAllWithSound(title,subTitle,20,stayTick,20,Sound.ENTITY_WITHER_SPAWN,1,1);
-                }else{
+        getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
+            if(m == MFCModes.Pro){
+                titlebar.sendTitleToAllWithSound(title,subTitle,20,stayTick,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+            }else{
 
-                    for(Player p :Bukkit.getOnlinePlayers()){
-                        if(p != null){
-                            if(p.getWorld().getName().toString().equalsIgnoreCase(selectedArena)){
-                                titlebar.sendTitleWithSound(p,title,subTitle,20,20,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+                for(Player p :Bukkit.getOnlinePlayers()){
+                    if(p != null){
+                        if(p.getWorld().getName().toString().equalsIgnoreCase(selectedArena)){
+                            titlebar.sendTitleWithSound(p,title,subTitle,20,20,20,Sound.ENTITY_WITHER_SPAWN,1,1);
 
-                            }
                         }
                     }
                 }
@@ -1137,26 +1127,25 @@ public final class FightClub extends JavaPlugin implements Listener {
         //  （賭けられたお金の合計 － 経費）÷【賭けに勝つ人達の勝ちに賭けた総合計金額】
         double odds = (total - getCost()) / winBet;
 
-        for (int i = 0;i < bets.size();i++){
-            BetInformation bet = bets.get(i);
+        for (BetInformation bet : bets) {
             PlayerInformation f = fighters.get(bet.fighterIndex);
-            if (bet.fighterIndex != fighterIndex){
-                data.createBet(fightId,bet.buyerUUID,bet.bet,false,f.uuid,odds,bet.bet * -1);
+            if (bet.fighterIndex != fighterIndex) {
+                data.createBet(fightId, bet.buyerUUID, bet.bet, false, f.uuid, odds, bet.bet * -1);
                 continue;
             }
             //      プレイヤーへの支払い金額
             double playerPayout = bet.bet * odds;
 
             //      プレイヤーへ支払い
-            serverMessage("§e"+bet.buyerName+"§fは、予想があたり、§e§l$"+(int)playerPayout+"§fをゲットした！！ §b§lOdds:x"+String.format("%.3f",odds));
+            serverMessage("§e" + bet.buyerName + "§fは、予想があたり、§e§l$" + (int) playerPayout + "§fをゲットした！！ §b§lOdds:x" + String.format("%.3f", odds));
 
             //      通知
-            vault.deposit(bet.buyerUUID,playerPayout);
+            vault.deposit(bet.buyerUUID, Math.floor(playerPayout));
 
             //      データベース登録
 
             double profit = playerPayout - bet.bet;
-            data.createBet(fightId,bet.buyerUUID,bet.bet,true,f.uuid,odds,profit);
+            data.createBet(fightId, bet.buyerUUID, bet.bet, true, f.uuid, odds, profit);
         }
 
         //

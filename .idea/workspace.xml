@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="エラーを修正">
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Man10FightClub_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Man10FightClub_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_6_0_5.xml" beforeDir="false" />
+    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="細かな酒精">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -370,13 +367,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00196" summary="表示の調整">
-      <created>1489528008889</created>
-      <option name="number" value="00196" />
-      <option name="presentableId" value="LOCAL-00196" />
-      <option name="project" value="LOCAL" />
-      <updated>1489528008889</updated>
-    </task>
     <task id="LOCAL-00197" summary="表示の調整">
       <created>1489528248359</created>
       <option name="number" value="00197" />
@@ -713,7 +703,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612009392028</updated>
     </task>
-    <option name="localTasksCounter" value="245" />
+    <task id="LOCAL-00245" summary="細かな酒精">
+      <created>1612009885807</created>
+      <option name="number" value="00245" />
+      <option name="presentableId" value="LOCAL-00245" />
+      <option name="project" value="LOCAL" />
+      <updated>1612009885807</updated>
+    </task>
+    <option name="localTasksCounter" value="246" />
     <servers />
   </component>
   <component name="TodoView">
@@ -793,7 +790,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="MFC Autobet コマンド" />
     <MESSAGE value="autobet / fee" />
     <MESSAGE value="初期設定の読み込み" />
     <MESSAGE value="KDRチェック" />
@@ -818,7 +814,8 @@
     <MESSAGE value="ビルド設定を1.16に&#10;FightClub.javaをリファクタリング、エラー修正" />
     <MESSAGE value="FightClubGUI.java修正" />
     <MESSAGE value="エラーを修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="エラーを修正" />
+    <MESSAGE value="細かな酒精" />
+    <option name="LAST_COMMIT_MESSAGE" value="細かな酒精" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
