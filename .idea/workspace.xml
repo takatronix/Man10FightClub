@@ -9,9 +9,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="ビルド設定を1.16に&#10;FightClub.javaをリファクタリング、エラー修正">
+    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="エラーを修正">
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Man10FightClub_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Man10FightClub_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_6_0_5.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -192,7 +194,7 @@
     <property name="SearchEverywhereHistoryKey" value="fight&#9;PSI&#9;JAVA://red.man10.fightclub.FightClub" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30149597" />
     <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
@@ -267,19 +269,6 @@
     <configuration name="CustomSkullAPI_v1.0.1.jar" type="JarApplication">
       <option name="JAR_PATH" value="$PROJECT_DIR$/libs/CustomSkullAPI_v1.0.1.jar" />
       <method v="2" />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Man10FightClub" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <option name="filePath" />
@@ -380,20 +369,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
-    </task>
-    <task id="LOCAL-00194" summary="表示の調整">
-      <created>1489527305449</created>
-      <option name="number" value="00194" />
-      <option name="presentableId" value="LOCAL-00194" />
-      <option name="project" value="LOCAL" />
-      <updated>1489527305449</updated>
-    </task>
-    <task id="LOCAL-00195" summary="表示の調整">
-      <created>1489527749943</created>
-      <option name="number" value="00195" />
-      <option name="presentableId" value="LOCAL-00195" />
-      <option name="project" value="LOCAL" />
-      <updated>1489527749943</updated>
     </task>
     <task id="LOCAL-00196" summary="表示の調整">
       <created>1489528008889</created>
@@ -724,7 +699,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612009121492</updated>
     </task>
-    <option name="localTasksCounter" value="243" />
+    <task id="LOCAL-00243" summary="FightClubGUI.java修正">
+      <created>1612009349281</created>
+      <option name="number" value="00243" />
+      <option name="presentableId" value="LOCAL-00243" />
+      <option name="project" value="LOCAL" />
+      <updated>1612009349281</updated>
+    </task>
+    <task id="LOCAL-00244" summary="エラーを修正">
+      <created>1612009392028</created>
+      <option name="number" value="00244" />
+      <option name="presentableId" value="LOCAL-00244" />
+      <option name="project" value="LOCAL" />
+      <updated>1612009392028</updated>
+    </task>
+    <option name="localTasksCounter" value="245" />
     <servers />
   </component>
   <component name="TodoView">
@@ -804,8 +793,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="パーミッション設定&#10;autobetオフ" />
-    <MESSAGE value="登録時のKDRチェック" />
     <MESSAGE value="MFC Autobet コマンド" />
     <MESSAGE value="autobet / fee" />
     <MESSAGE value="初期設定の読み込み" />
@@ -829,7 +816,9 @@
     <MESSAGE value="ログはPRO以外はグローバル表示しない" />
     <MESSAGE value="インベントリを消す処理追加" />
     <MESSAGE value="ビルド設定を1.16に&#10;FightClub.javaをリファクタリング、エラー修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="ビルド設定を1.16に&#10;FightClub.javaをリファクタリング、エラー修正" />
+    <MESSAGE value="FightClubGUI.java修正" />
+    <MESSAGE value="エラーを修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="エラーを修正" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

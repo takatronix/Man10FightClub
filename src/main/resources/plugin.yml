@@ -1,5 +1,5 @@
 name: Man10FightClub
-version: ${project.version}
+version: 1.0
 main: red.man10.fightclub.FightClub
 prefix: Man10FightClub
 authors: [takatornix]
