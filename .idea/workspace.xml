@@ -9,8 +9,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="細かな酒精">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="細かな修正、少数を切り捨てるように">
       <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -367,13 +366,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00197" summary="表示の調整">
-      <created>1489528248359</created>
-      <option name="number" value="00197" />
-      <option name="presentableId" value="LOCAL-00197" />
-      <option name="project" value="LOCAL" />
-      <updated>1489528248359</updated>
-    </task>
     <task id="LOCAL-00198" summary="表示の調整">
       <created>1489528420486</created>
       <option name="number" value="00198" />
@@ -710,7 +702,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612009885807</updated>
     </task>
-    <option name="localTasksCounter" value="246" />
+    <task id="LOCAL-00246" summary="細かな修正、少数を切り捨てるように">
+      <created>1612012839687</created>
+      <option name="number" value="00246" />
+      <option name="presentableId" value="LOCAL-00246" />
+      <option name="project" value="LOCAL" />
+      <updated>1612012839687</updated>
+    </task>
+    <option name="localTasksCounter" value="247" />
     <servers />
   </component>
   <component name="TodoView">
@@ -790,7 +789,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="autobet / fee" />
     <MESSAGE value="初期設定の読み込み" />
     <MESSAGE value="KDRチェック" />
     <MESSAGE value="看板連打対策&#10;" />
@@ -815,7 +813,8 @@
     <MESSAGE value="FightClubGUI.java修正" />
     <MESSAGE value="エラーを修正" />
     <MESSAGE value="細かな酒精" />
-    <option name="LAST_COMMIT_MESSAGE" value="細かな酒精" />
+    <MESSAGE value="細かな修正、少数を切り捨てるように" />
+    <option name="LAST_COMMIT_MESSAGE" value="細かな修正、少数を切り捨てるように" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -226,10 +226,6 @@ public final class FightClub extends JavaPlugin implements Listener {
     ////////////////////////////////
     public int registerFighter(CommandSender s,UUID uuid,String name){
 
-        if(mode != MFCModes.Free){
-            resetEnetryTimer();
-        }
-
         ////////////////////////////////////
         //      すでに登録されてたらエラー
         ////////////////////////////////////
@@ -279,6 +275,9 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
 
+        if(mode != MFCModes.Free){
+            resetEnetryTimer();
+        }
 
 
         //      追加
