@@ -216,6 +216,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
                 waiters.remove(i);
                 updateSidebar();;
+
+                vault.deposit(uuid, entryPrice);
                 return true;
             }
         }
@@ -275,10 +277,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
 
-        if(mode != MFCModes.Free){
-            resetEnetryTimer();
-        }
-
 
         //      追加
         PlayerInformation playerInfo = new PlayerInformation();
@@ -292,6 +290,9 @@ public final class FightClub extends JavaPlugin implements Listener {
             playerInfo.prize = data.totalPrize(uuid);
         }
 
+        if(mode != MFCModes.Free){
+            resetEnetryTimer();
+        }
 
         //String str = String.format("");
 
