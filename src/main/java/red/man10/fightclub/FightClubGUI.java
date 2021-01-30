@@ -42,10 +42,8 @@ public class FightClubGUI {
                    p.sendMessage(prefix + "選手はインベントリを編集できません");
                    e.setCancelled(true);
                    return;
-               } else {
                }
                e.setCancelled(true);
-           } else {
            }
        }
         //try {
@@ -115,8 +113,8 @@ public class FightClubGUI {
         if(e.getEventName().equalsIgnoreCase("InventoryCreativeEvent")){
             return;
         }
-        if (e.getInventory().getTitle().equals("§c§l         ベットメニュー")) {
-            if (e.getCurrentItem().getType() == Material.SKULL_ITEM) {
+        if (e.getView().getTitle().equals("§c§l         ベットメニュー")) {
+            if (e.getCurrentItem().getType() == Material.PLAYER_HEAD) {
                 priceMenu(p, e.getCurrentItem().getItemMeta().getDisplayName());
                 e.setCancelled(true);
             } else {
@@ -125,7 +123,7 @@ public class FightClubGUI {
             return;
 
         }
-        if(e.getClickedInventory().getTitle().equals("     §cMan10 Fight Club menu")){
+        if(e.getView().getTitle().equals("     §cMan10 Fight Club menu")){
             if(e.getSlot() == 1){
 
 
@@ -180,7 +178,7 @@ public class FightClubGUI {
             e.setCancelled(true);
             return;
         }
-            if (e.getInventory().getTitle().equalsIgnoreCase("§5§l金額設定メニュー")) {
+            if (e.getView().getTitle().equalsIgnoreCase("§5§l金額設定メニュー")) {
 
                 String val = e.getClickedInventory().getItem(50).getItemMeta().getLore().get(1);
                 if (val.length() <= 8) {
@@ -475,7 +473,7 @@ public class FightClubGUI {
         ItemStack cancel = new ItemStack(Material.REDSTONE_BLOCK, 1);
         ItemStack Accept = new ItemStack(Material.EMERALD_BLOCK, 1);
 
-        ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1, (short) 3);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setDisplayName(betp);
         meta.setOwner(betp);
@@ -572,25 +570,25 @@ public class FightClubGUI {
         FightClub.PlayerInformation info = plugin.fighters.get(0);
         FightClub.PlayerInformation info1 = plugin.fighters.get(1);
 
-        ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setDisplayName(info.name);
         meta.setOwner(info.name);
         skull.setItemMeta(meta);
 
-        ItemStack skull1 = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        ItemStack skull1 = new ItemStack(Material.PLAYER_HEAD, 1);
         SkullMeta meta1 = (SkullMeta) skull1.getItemMeta();
         meta1.setDisplayName(info1.name);
         meta1.setOwner(info1.name);
         skull1.setItemMeta(meta1);
 
-        ItemStack r = new ItemStack(Material.STAINED_GLASS_PANE, 1,(short) 14);
+        ItemStack r = new ItemStack(Material.RED_STAINED_GLASS_PANE, 1);
         ItemMeta rm = r.getItemMeta();
         rm.setDisplayName("§c§l" + info.name + "にベットする");
         r.setItemMeta(rm);
 
 
-        ItemStack b = new ItemStack(Material.STAINED_GLASS_PANE, 1,(short) 11);
+        ItemStack b = new ItemStack(Material.BLUE_STAINED_GLASS_PANE, 1);
         ItemMeta bm = b.getItemMeta();
         bm.setDisplayName("§9§l" + info1.name + "にベットする");
         b.setItemMeta(bm);
@@ -635,7 +633,7 @@ public class FightClubGUI {
         quitmeta.setDisplayName("§c§l登録をキャンセル");
         quit.setItemMeta(quitmeta);
 
-        ItemStack watch = new ItemStack(Material.EYE_OF_ENDER);
+        ItemStack watch = new ItemStack(Material.ENDER_EYE);
         ItemMeta watchmeta = watch.getItemMeta();
         watchmeta.setDisplayName("§5§l観戦");
         watch.setItemMeta(watchmeta);
@@ -645,7 +643,7 @@ public class FightClubGUI {
         watchbackmeta.setDisplayName("§7§lロビーに戻る");
         watchback.setItemMeta(watchbackmeta);
 
-        ItemStack bet = new ItemStack(Material.FLOWER_POT_ITEM);
+        ItemStack bet = new ItemStack(Material.FLOWER_POT);
         ItemMeta betmeta = bet.getItemMeta();
         betmeta.addEnchant(Enchantment.ARROW_FIRE,1,true);
         betmeta.setDisplayName("§c§lベットする");
