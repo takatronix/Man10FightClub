@@ -712,18 +712,17 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         resetFightTimer();
 
-        for(PlayerInformation fi : fighters){
-            //      装備を保存
-           // command("mkit push "+fi.name );
-            //      キットを選択
-            command("mkit set "+fi.name + " " + selectedKit);
-        }
-
-        tp(Bukkit.getPlayer(fighters.get(0).uuid),selectedArena,"player1");
-        tp(Bukkit.getPlayer(fighters.get(1).uuid),selectedArena,"player2");
-
         Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
         Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
+
+        assert f0 != null;
+        assert f1 != null;
+
+        command("mkit set " + f0.getName() + " " + selectedKit);
+        command("mkit set " + f1.getName() + " " + selectedKit);
+
+        tp(f0,selectedArena,"player1");
+        tp(f1,selectedArena,"player2");
 
         double o0 = getFighterOdds(f0.getUniqueId());
         double o1 = getFighterOdds(f1.getUniqueId());
@@ -751,16 +750,16 @@ public final class FightClub extends JavaPlugin implements Listener {
         resetPlayerStatus(f1);
 
 
-        String subStitle =  "§1"+f0.getName() + " §fvs " + "§4"+f1.getName();
+        String subTitle =  "§1"+f0.getName() + " §fvs " + "§4"+f1.getName();
 
-        showTitle("§c3",subStitle, 0.5,0);
-        showTitle("§c2",subStitle, 0.5,1);
-        showTitle("§c1",subStitle, 0.5,2);
+        showTitle("§c3",subTitle, 0.5,0);
+        showTitle("§c2",subTitle, 0.5,1);
+        showTitle("§c1",subTitle, 0.5,2);
 
         String title = "§cファイト！！ #"+fightId;
-        showTitle(title,subStitle, 1,3);
+        showTitle(title,subTitle, 1,3);
         serverMessage(title);
-        serverMessage(subStitle);
+        serverMessage(subTitle);
 
         f0.hidePlayer(f1);
         f1.hidePlayer(f0);
