@@ -718,9 +718,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         assert f0 != null;
         assert f1 != null;
 
-        command("mkit set " + f0.getName() + " " + selectedKit);
-        command("mkit set " + f1.getName() + " " + selectedKit);
-
         tp(f0,selectedArena,"player1");
         tp(f1,selectedArena,"player2");
 
@@ -748,6 +745,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         lifebar.setVisible(true);
         resetPlayerStatus(f0);
         resetPlayerStatus(f1);
+
+        command("mkit set " + f0.getName() + " " + selectedKit);
+        command("mkit set " + f1.getName() + " " + selectedKit);
 
 
         String subTitle =  "§1"+f0.getName() + " §fvs " + "§4"+f1.getName();
@@ -1128,6 +1128,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         for (BetInformation bet : bets) {
             PlayerInformation f = fighters.get(bet.fighterIndex);
+
+            if (bet.buyerName.equals(autoBetPlayerName))continue;
+
             if (bet.fighterIndex != fighterIndex) {
                 data.createBet(fightId, bet.buyerUUID, bet.bet, false, f.uuid, odds, bet.bet * -1);
                 continue;
@@ -1140,6 +1143,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
             //      通知
             vault.deposit(bet.buyerUUID, Math.floor(playerPayout));
+//            vault.deposit(bet.buyerUUID, playerPayout);
 
             //      データベース登録
 
@@ -1591,7 +1595,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         int lastIndex = getLastFighter();               //  最後の生存者ID
 
         //      生存者
-        Player pa = (Player)Bukkit.getPlayer(fighters.get(lastIndex).uuid);
+        Player pa = Bukkit.getPlayer(fighters.get(lastIndex).uuid);
 
 
         //      死亡者をよみがえらせTPさせる
