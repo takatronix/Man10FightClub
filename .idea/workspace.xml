@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="参加費の返金処理追加">
+    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="kit部分の処理変更">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterDir="false" />
     </list>
@@ -367,13 +367,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00200" summary="ファイターのアイテム持ち込みチート対策にメッセージを追加">
-      <created>1489539914607</created>
-      <option name="number" value="00200" />
-      <option name="presentableId" value="LOCAL-00200" />
-      <option name="project" value="LOCAL" />
-      <updated>1489539914607</updated>
-    </task>
     <task id="LOCAL-00201" summary="ファイターのアイテム持ち込みチート対策を分類化（バグ修正）">
       <created>1489547192656</created>
       <option name="number" value="00201" />
@@ -710,7 +703,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612013150992</updated>
     </task>
-    <option name="localTasksCounter" value="249" />
+    <task id="LOCAL-00249" summary="kit部分の処理変更">
+      <created>1612052188226</created>
+      <option name="number" value="00249" />
+      <option name="presentableId" value="LOCAL-00249" />
+      <option name="project" value="LOCAL" />
+      <updated>1612052188226</updated>
+    </task>
+    <option name="localTasksCounter" value="250" />
     <servers />
   </component>
   <component name="TodoView">
@@ -790,7 +790,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="看板連打対策&#10;" />
     <MESSAGE value="初回起動失敗する問題" />
     <MESSAGE value="戦闘中にコマンドを選手以外もつかえなくした" />
     <MESSAGE value="ワールド移動後、lobbyに強制的にもどす" />
@@ -815,7 +814,8 @@
     <MESSAGE value="細かな修正、少数を切り捨てるように" />
     <MESSAGE value="タイマーのリセット修正" />
     <MESSAGE value="参加費の返金処理追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="参加費の返金処理追加" />
+    <MESSAGE value="kit部分の処理変更" />
+    <option name="LAST_COMMIT_MESSAGE" value="kit部分の処理変更" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

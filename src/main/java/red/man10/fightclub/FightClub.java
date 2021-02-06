@@ -217,7 +217,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 waiters.remove(i);
                 updateSidebar();;
 
-                vault.deposit(uuid, entryPrice);
+//                vault.deposit(uuid, entryPrice);
                 return true;
             }
         }
