@@ -1129,8 +1129,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         for (BetInformation bet : bets) {
             PlayerInformation f = fighters.get(bet.fighterIndex);
 
-            if (bet.buyerName.equals(autoBetPlayerName))continue;
-
             if (bet.fighterIndex != fighterIndex) {
                 data.createBet(fightId, bet.buyerUUID, bet.bet, false, f.uuid, odds, bet.bet * -1);
                 continue;
