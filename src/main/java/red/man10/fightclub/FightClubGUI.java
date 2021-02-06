@@ -114,6 +114,7 @@ public class FightClubGUI {
             return;
         }
         if (e.getView().getTitle().equals("§c§l         ベットメニュー")) {
+            e.setCancelled(true);
             if (e.getCurrentItem().getType() == Material.PLAYER_HEAD) {
                 priceMenu(p, e.getCurrentItem().getItemMeta().getDisplayName());
                 e.setCancelled(true);
@@ -124,6 +125,7 @@ public class FightClubGUI {
 
         }
         if(e.getView().getTitle().equals("     §cMan10 Fight Club menu")){
+            e.setCancelled(true);
             if(e.getSlot() == 1){
 
 
@@ -179,6 +181,8 @@ public class FightClubGUI {
             return;
         }
             if (e.getView().getTitle().equalsIgnoreCase("§5§l金額設定メニュー")) {
+                e.setCancelled(true);
+
 
                 String val = e.getClickedInventory().getItem(50).getItemMeta().getLore().get(1);
                 if (val.length() <= 8) {

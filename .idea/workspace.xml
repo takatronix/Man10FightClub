@@ -9,10 +9,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="Kitが反映されないバグを修正&#10;AutoBetの処理修正">
+    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="auto bet 修正">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/VaultManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -372,13 +372,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00204" summary="キャンセルしたあとに服装がもどらない問題">
-      <created>1489636073523</created>
-      <option name="number" value="00204" />
-      <option name="presentableId" value="LOCAL-00204" />
-      <option name="project" value="LOCAL" />
-      <updated>1489636073524</updated>
-    </task>
     <task id="LOCAL-00205" summary="ベット時、残額の表示をやめる">
       <created>1489636759111</created>
       <option name="number" value="00205" />
@@ -715,7 +708,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612596000151</updated>
     </task>
-    <option name="localTasksCounter" value="253" />
+    <task id="LOCAL-00253" summary="auto bet 修正">
+      <created>1612597176617</created>
+      <option name="number" value="00253" />
+      <option name="presentableId" value="LOCAL-00253" />
+      <option name="project" value="LOCAL" />
+      <updated>1612597176617</updated>
+    </task>
+    <option name="localTasksCounter" value="254" />
     <servers />
   </component>
   <component name="TodoView">
@@ -807,7 +807,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ワールド移動後、lobbyに強制的にもどす" />
     <MESSAGE value="ワールド移動後、lobbyに強制的にもどす(op以外)" />
     <MESSAGE value="MFC Blacklist whitelist 機能" />
     <MESSAGE value="Freeモード追加" />
@@ -832,7 +831,8 @@
     <MESSAGE value="kit部分の処理変更" />
     <MESSAGE value="vault fix" />
     <MESSAGE value="Kitが反映されないバグを修正&#10;AutoBetの処理修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kitが反映されないバグを修正&#10;AutoBetの処理修正" />
+    <MESSAGE value="auto bet 修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="auto bet 修正" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

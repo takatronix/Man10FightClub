@@ -1597,7 +1597,14 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         //      死亡者をよみがえらせTPさせる
-        p.spigot().respawn();
+
+        try {
+            p.spigot().respawn();
+
+        }catch (Exception exception){
+            Bukkit.getLogger().info(exception.getMessage());
+        }
+
         resetPlayerStatus(p);
         tpLobby(p);
 
