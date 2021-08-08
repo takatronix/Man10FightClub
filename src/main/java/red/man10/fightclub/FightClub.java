@@ -2186,10 +2186,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         for (int i = 0; i < arenas.size(); i++) {
             if(arenas.get(i).equalsIgnoreCase(selectedArena)){
                 p.sendMessage(arenas.get(i) +":(selected)");
-
             }else{
                 p.sendMessage(arenas.get(i));
-
             }
         }
         return arenas.size();
