@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="auto bet 修正">
+    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="GUI 修正">
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +31,12 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Man10FightClub" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -372,13 +376,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00205" summary="ベット時、残額の表示をやめる">
-      <created>1489636759111</created>
-      <option name="number" value="00205" />
-      <option name="presentableId" value="LOCAL-00205" />
-      <option name="project" value="LOCAL" />
-      <updated>1489636759111</updated>
-    </task>
     <task id="LOCAL-00206" summary="キャンセル時、アイテム復元">
       <created>1489676456813</created>
       <option name="number" value="00206" />
@@ -715,7 +712,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612597176617</updated>
     </task>
-    <option name="localTasksCounter" value="254" />
+    <task id="LOCAL-00254" summary="GUI 修正">
+      <created>1612601463439</created>
+      <option name="number" value="00254" />
+      <option name="presentableId" value="LOCAL-00254" />
+      <option name="project" value="LOCAL" />
+      <updated>1612601463439</updated>
+    </task>
+    <option name="localTasksCounter" value="255" />
     <servers />
   </component>
   <component name="TodoView">
@@ -807,7 +811,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ワールド移動後、lobbyに強制的にもどす(op以外)" />
     <MESSAGE value="MFC Blacklist whitelist 機能" />
     <MESSAGE value="Freeモード追加" />
     <MESSAGE value="Proはデータベースをわけるようにした" />
@@ -832,7 +835,8 @@
     <MESSAGE value="vault fix" />
     <MESSAGE value="Kitが反映されないバグを修正&#10;AutoBetの処理修正" />
     <MESSAGE value="auto bet 修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="auto bet 修正" />
+    <MESSAGE value="GUI 修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI 修正" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
