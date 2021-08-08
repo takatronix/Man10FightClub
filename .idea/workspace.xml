@@ -9,23 +9,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="GUI 修正">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/Man10FightClub.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Man10FightClub.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mysql-connector-java-6.0.5-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mysql-connector-java-6.0.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/man10Fightclub/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/man10Fightclub/Man10FightClub.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterDir="false" />
-    </list>
+    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="1.17対応" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -387,13 +371,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00206" summary="キャンセル時、アイテム復元">
-      <created>1489676456813</created>
-      <option name="number" value="00206" />
-      <option name="presentableId" value="LOCAL-00206" />
-      <option name="project" value="LOCAL" />
-      <updated>1489676456813</updated>
-    </task>
     <task id="LOCAL-00207" summary="ライフバーで時間表示&#10;ラグ対策">
       <created>1489691113500</created>
       <option name="number" value="00207" />
@@ -730,7 +707,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612601463439</updated>
     </task>
-    <option name="localTasksCounter" value="255" />
+    <task id="LOCAL-00255" summary="1.17対応">
+      <created>1628425094523</created>
+      <option name="number" value="00255" />
+      <option name="presentableId" value="LOCAL-00255" />
+      <option name="project" value="LOCAL" />
+      <updated>1628425094524</updated>
+    </task>
+    <option name="localTasksCounter" value="256" />
     <servers />
   </component>
   <component name="TodoView">
@@ -822,7 +806,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="MFC Blacklist whitelist 機能" />
     <MESSAGE value="Freeモード追加" />
     <MESSAGE value="Proはデータベースをわけるようにした" />
     <MESSAGE value="clearコマンドの追加" />
@@ -847,7 +830,8 @@
     <MESSAGE value="Kitが反映されないバグを修正&#10;AutoBetの処理修正" />
     <MESSAGE value="auto bet 修正" />
     <MESSAGE value="GUI 修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="GUI 修正" />
+    <MESSAGE value="1.17対応" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.17対応" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

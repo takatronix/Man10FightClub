@@ -2247,7 +2247,6 @@ public final class FightClub extends JavaPlugin implements Listener {
                 }
             }
         }
-        return;
     }
     public void tpLobby(Player p){
         Object o =  getConfig().get("lobby");
