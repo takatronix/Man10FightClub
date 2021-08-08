@@ -759,10 +759,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         serverMessage(title);
         serverMessage(subTitle);
 
-        f0.hidePlayer(f1);
-        f1.hidePlayer(f0);
-        f0.showPlayer(f1);
-        f1.showPlayer(f0);
+        // for spigot invisible bug
+        f0.hidePlayer(this,f1);
+        f1.hidePlayer(this,f0);
+        f0.showPlayer(this,f1);
+        f1.showPlayer(this,f0);
+
 
         updateSidebar();
         saveCurrentStatus();
@@ -2372,14 +2374,15 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
 
+    // TODO: 本当にいまのバージョンで必要か確かめる。不要なら削除
     void fixTpBug(Player tpedPlayer){
         for (Player player: Bukkit.getWorld(worldName).getPlayers()) {
-            tpedPlayer.hidePlayer(player);
-            player.hidePlayer(tpedPlayer);
+            tpedPlayer.hidePlayer(this,player);
+            player.hidePlayer(this,tpedPlayer);
         }
         for (Player player: Bukkit.getWorld(worldName).getPlayers()) {
-            tpedPlayer.showPlayer(player);
-            player.showPlayer(tpedPlayer);
+            tpedPlayer.showPlayer(this,player);
+            player.showPlayer(this,tpedPlayer);
         }
     }
 
