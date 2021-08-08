@@ -66,8 +66,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     //    Fight ID （データベースキー）OpenFightでアップデートされる
     int fightId = -1;
 
-
-    String      worldName = "Arena";
+    String      worldName = "mfc";
 
     public enum MFCModes {
         Off,
@@ -1377,6 +1376,14 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
 
+        //   ワールド名チェック
+        var mfcWorld = Bukkit.getWorld(worldName);
+        if(mfcWorld == null){
+            log("ワールド名:"+worldName + "が存在しないのでシャットダウンします");
+            return;
+        }
+
+
         getServer().getPluginManager().registerEvents (this,this);
 
         //
@@ -1436,6 +1443,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         int fee = getConfig().getInt("fee");
         int autobet = getConfig().getInt("autobet");
 
+        this.worldName = getConfig().getString("worldName");
         this.autoBetPrice = (double)autobet;
         this.entryPrice = fee;
 
@@ -1724,15 +1732,24 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     //      ログメッセージ
     void log(String text){
-        getLogger().info(text);
+        getLogger().info("[MFC]:"+text);
     }
+
     //     サーバーメッセージ
     void serverMessage(String text){
+
+        var mfcWorld = Bukkit.getWorld(worldName);
+        if(mfcWorld == null){
+            log("ワールド名:"+worldName + "が存在しない");
+            return;
+        }
+
+
         if( mode == MFCModes.Pro){
             Bukkit.getServer().broadcastMessage(prefix +  text);
             return;
         }
-        for(Player p :Bukkit.getWorld(worldName).getPlayers()){
+        for(Player p :mfcWorld.getPlayers()){
             p.sendMessage(text);
         }
 
