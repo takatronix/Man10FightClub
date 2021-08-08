@@ -1,10 +1,11 @@
 name: Man10FightClub
-version: ${project.version}
+version: 1.0
 main: red.man10.fightclub.FightClub
 prefix: Man10FightClub
 authors: [takatornix]
 description: Man10 Fight Club Plugin
 website: http://man10.red
+api-version: 1.16
 commands:
    mfc:
       description: Man10 Fight club Minecraft PvP Gambling system
