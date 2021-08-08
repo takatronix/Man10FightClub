@@ -5,6 +5,9 @@ prefix: Man10FightClub
 authors: [takatornix]
 description: Man10 Fight Club Plugin
 website: http://man10.red
+depend:
+   - MultiWorld
+   - Man10Kit
 api-version: 1.16
 commands:
    mfc:
