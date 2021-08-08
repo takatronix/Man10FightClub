@@ -644,7 +644,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         for(PlayerInformation p : fighters){
             unregisterFighter(p.uuid);
-            command("mkit pop "+p.name);
+            command("man10kit pop "+p.name);
             //sserverMessage(p.name +"のインベントリをもどしています");
         }
 
@@ -744,8 +744,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         resetPlayerStatus(f0);
         resetPlayerStatus(f1);
 
-        command("mkit set " + f0.getName() + " " + selectedKit);
-        command("mkit set " + f1.getName() + " " + selectedKit);
+        command("man10kit set " + f0.getName() + " " + selectedKit);
+        command("man10kit set " + f1.getName() + " " + selectedKit);
 
 
         String subTitle =  "§1"+f0.getName() + " §fvs " + "§4"+f1.getName();
@@ -868,7 +868,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         for(PlayerInformation fi : fighters) {
             //      装備を保存
-             command("mkit push "+fi.name );
+             command("man10kit push "+fi.name );
         }
         //      キットの自動選択処理
         List<String> kits = listKits();
@@ -1621,9 +1621,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
                 resetPlayerStatus(p);
-                command("mkit pop " + p.getName());
+                command("man10kit pop " + p.getName());
                 resetPlayerStatus(pa);
-                command("mkit pop " + pa.getName());
+                command("man10kit pop " + pa.getName());
             }
 
         }, 20);
