@@ -332,9 +332,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
 
-
-
-
         String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " "+ Utility.getPriceString(playerInfo.prize) + " 総プレイ数:"+play + " KDR:"+kdrs;
         serverMessage(name + "は参加を申し込んだ");
         serverMessage(his);
@@ -537,8 +534,6 @@ public final class FightClub extends JavaPlugin implements Listener {
                 double odds = getFighterOdds(fighterUUID);
                 String ods = String.format("§b§l倍率:%.2f倍",odds);
 
-
-
                 serverMessage(buyerName+"は"+fighters.get(index).name+"へ"+Utility.getPriceString(price)+ "§f追加ベットした! -> "+ods);
                 return i;
             }
@@ -600,7 +595,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             this.currentStatus = Closed;
         }
 
-        saveCurrentStatus();
+        saveCurrentStatusAsync();
         updateSidebar();
         updateLifeBar();
         return 0;
@@ -767,7 +762,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         updateSidebar();
-        saveCurrentStatus();
+        saveCurrentStatusAsync();
 
 
         unregisterFighter(f0.getUniqueId());
@@ -779,8 +774,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
                pauseTimer = false;
-
-
             }
         }, 20*3);
 
@@ -809,25 +802,23 @@ public final class FightClub extends JavaPlugin implements Listener {
         closeLifeBar();
         showInfoBarToPlayer();
         updateSidebar();
-        saveCurrentStatus();
+        saveCurrentStatusAsync();
         pauseTimer = false;
         lifebar.setInfoBar(0);
+
         return 0;
     }
 
-    public void saveCurrentStatus(){
+    public void saveCurrentStatusAsync(){
+        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+            if(currentStatus == Closed){
+                getConfig().set("Disabled",true);
+            }else{
+                getConfig().set("Disabled",false);
 
-        if(currentStatus == Closed){
-            getConfig().set("Disabled",true);
-        }else{
-            getConfig().set("Disabled",false);
-
-        }
-
-       // getConfig().set("CurrentMode",mode);
-
-
-        saveConfig();
+            }
+            saveConfig();
+        });
     }
 
 
@@ -958,7 +949,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         currentStatus = Opened;
         updateSidebar();
 
-        saveCurrentStatus();
+        saveCurrentStatusAsync();
 
 
         if(autoBetPrice >= 1000){
@@ -1291,7 +1282,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             double o1 = getFighterOdds(f1.uuid);
 
             String s0 = String.format("§4§l" + f0.name+": 倍率:%.3f倍",o0);
-            String s1 = String.format("§5§l" + f1.name+": 倍率:%.3f倍",o1);
+            String s1 = String.format("§9§l" + f1.name+": 倍率:%.3f倍",o1);
             lifebar.setRname(s0);
             lifebar.setBname(s1);
             lifebar.setVisible(true);

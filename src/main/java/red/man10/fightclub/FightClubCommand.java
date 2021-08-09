@@ -334,7 +334,7 @@ public class FightClubCommand  implements CommandExecutor {
                 p.sendMessage(ChatColor.RED+ "お金の引き出しに失敗しました" );
                 return false;
             }
-            
+
             p.sendMessage(fighter.getName() +"へ、" + Utility.getPriceString(money) + " ベットしました！！");
             p.sendMessage(ChatColor.YELLOW + "あなたの残高は" + Utility.getPriceString(plugin.vault.getBalance(p.getUniqueId())) +"です");
           //  plugin.showSideBar(p);

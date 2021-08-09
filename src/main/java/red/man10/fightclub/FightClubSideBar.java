@@ -67,7 +67,7 @@ public class FightClubSideBar {
 
             var col = "§4§l";
             if(i == 1)
-                col = "§5§l";
+                col = "§9§l";
             String tx = String.format("%10s 倍率:§l%3.2f倍",f.name,plugin.getFighterOdds(f.uuid));
 
             sideBar.setScore(col + tx,plugin.getFighterBetCount(f.uuid));
