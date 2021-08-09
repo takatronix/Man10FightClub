@@ -20,8 +20,6 @@
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubSideBar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +112,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GithubProjectSettings">
     <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />

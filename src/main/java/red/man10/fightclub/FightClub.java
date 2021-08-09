@@ -276,22 +276,41 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
 
-        //      追加
+        //      DBでKDR情報を取得してから処理
         PlayerInformation playerInfo = new PlayerInformation();
         playerInfo.uuid = uuid;
         playerInfo.name = name;
         playerInfo.isDead = false;
         playerInfo.returnLoc = Bukkit.getPlayer(uuid).getLocation();
         if(data != null){
-            playerInfo.kill = data.killCount(uuid);
-            playerInfo.death = data.deathCount(uuid);
-            playerInfo.prize = data.totalPrize(uuid);
+
+            // KDRなどの情報をスレッドで取得する
+            Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+                playerInfo.kill = data.killCount(uuid);
+                playerInfo.death = data.deathCount(uuid);
+                playerInfo.prize = data.totalPrize(uuid);
+
+                //  メインスレッドで再実行
+                Bukkit.getScheduler().runTask(this, new Runnable() {
+                    public void run() {
+                        RegisterPlayerTask(playerInfo,s, name);
+                    }
+                });
+
+            });
         }
 
+
+        return 0;
+    }
+
+
+
+    int RegisterPlayerTask(PlayerInformation playerInfo,CommandSender s,String name){
         if(mode != MFCModes.Free){
             resetEnetryTimer();
         }
-
+        Player p = Bukkit.getPlayer(playerInfo.uuid);
         //String str = String.format("");
 
         int play = playerInfo.kill + playerInfo.death;
@@ -302,7 +321,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         if(mode != MFCModes.Free) {
             //        登録費用
-            if (!vault.withdraw(uuid, entryPrice)) {
+            if (!vault.withdraw(playerInfo.uuid, entryPrice)) {
                 s.sendMessage("参加費用がありません");
                 return -3;
             }
@@ -323,7 +342,6 @@ public final class FightClub extends JavaPlugin implements Listener {
                         return waiters.size();
                     }
 
-
                     //s.sendMessage("ブラックリストに登録されているため参加できません");
                     s.sendMessage(playerInfo.name +"は、MFCに登録しようとしましたが、弱すぎるため拒否されました。KDR:"+registerKDRLimit+"以上が最低条件です");
                     return -4;
@@ -335,8 +353,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " "+ Utility.getPriceString(playerInfo.prize) + " 総プレイ数:"+play + " KDR:"+kdrs;
         serverMessage(name + "は参加を申し込んだ");
         serverMessage(his);
-
-
 
         waiters.add(playerInfo);
 
@@ -595,7 +611,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             this.currentStatus = Closed;
         }
 
-        saveCurrentStatusAsync();
+        saveCurrentStatus();
         updateSidebar();
         updateLifeBar();
         return 0;
@@ -733,8 +749,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         //      init bar
-        lifebar.setRname(f0.getName() + f0o + inf0);
-        lifebar.setBname(f1.getName() + f1o + inf1);
+        lifebar.setRname("§4§l"+ f0.getName() + f0o + inf0);
+        lifebar.setBname("§9§l"+f1.getName() + f1o + inf1);
         lifebar.setVisible(true);
         resetPlayerStatus(f0);
         resetPlayerStatus(f1);
@@ -754,23 +770,27 @@ public final class FightClub extends JavaPlugin implements Listener {
         serverMessage(title);
         serverMessage(subTitle);
 
+        /*
         // for spigot invisible bug
         f0.hidePlayer(this,f1);
         f1.hidePlayer(this,f0);
         f0.showPlayer(this,f1);
         f1.showPlayer(this,f0);
+*/
 
 
-        updateSidebar();
-        saveCurrentStatusAsync();
+        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+            tpWaiterToArena();
+        });
 
-
+        saveCurrentStatus();
         unregisterFighter(f0.getUniqueId());
         unregisterFighter(f1.getUniqueId());
-        tpWaiterToArena();
+        updateSidebar();
+        sideBar.show();
+
 
         currentStatus = Fighting;
-        sideBar.show();
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
                pauseTimer = false;
@@ -802,23 +822,21 @@ public final class FightClub extends JavaPlugin implements Listener {
         closeLifeBar();
         showInfoBarToPlayer();
         updateSidebar();
-        saveCurrentStatusAsync();
+        saveCurrentStatus();
         pauseTimer = false;
         lifebar.setInfoBar(0);
 
         return 0;
     }
 
-    public void saveCurrentStatusAsync(){
-        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
-            if(currentStatus == Closed){
-                getConfig().set("Disabled",true);
-            }else{
-                getConfig().set("Disabled",false);
+    public void saveCurrentStatus(){
+        if(currentStatus == Closed){
+            getConfig().set("Disabled",true);
+        }else{
+            getConfig().set("Disabled",false);
 
-            }
-            saveConfig();
-        });
+        }
+        saveConfig();
     }
 
 
@@ -949,7 +967,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         currentStatus = Opened;
         updateSidebar();
 
-        saveCurrentStatusAsync();
+        saveCurrentStatus();
 
 
         if(autoBetPrice >= 1000){
@@ -2178,7 +2196,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             Location loc = (Location)o;
             p.teleport(loc);
             p.sendMessage("§a§lTPしました。");
-            fixTpBug(p);
+         //   fixTpBug(p);
         }
         return;
     }
@@ -2189,7 +2207,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             for(PlayerInformation f :waiters){
                 Player p = Bukkit.getPlayer(f.uuid);
                 p.teleport(loc);
-                fixTpBug(p);
+            //    fixTpBug(p);
             }
 
         }
