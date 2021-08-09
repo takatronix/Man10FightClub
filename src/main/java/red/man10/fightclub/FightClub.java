@@ -1133,7 +1133,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             double playerPayout = bet.bet * odds;
 
             //      プレイヤーへ支払い
-            serverMessage("§e" + bet.buyerName + "§fは、予想があたり、" + Utility.getPriceString(playerPayout) + "§fをゲットした！！ §b§倍率:" + String.format("%.3f", odds)+"倍");
+            serverMessage("§e" + bet.buyerName + "§fは、予想があたり、" + Utility.getPriceString(playerPayout) + "§fをゲットした！！ §b§l倍率:" + String.format("%.3f", odds)+"倍");
 
             //      通知
             vault.deposit(bet.buyerUUID, Math.floor(playerPayout));

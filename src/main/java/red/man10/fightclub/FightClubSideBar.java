@@ -85,7 +85,7 @@ public class FightClubSideBar {
        // sideBar.setScore("§e"+plugin.fighters.get(1).name+" Kill:"+plugin.kill1 + "/Death:"+plugin.ddeath1+"/獲得$"+(int)plugin.prize1 ,0);
 
         if(plugin.canStartGame()){
-            sideBar.setScore("§eまもなく試合が開催されます！！！！",0);
+            sideBar.setScore("§eまもなく試合が始まります！",0);
 
         }else {
             sideBar.setScore("§eみなさんが、ベットしないと試合ははじまりません",0);
