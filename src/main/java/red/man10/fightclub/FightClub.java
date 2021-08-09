@@ -535,7 +535,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             if(bet.fighterIndex == index){
                 bets.get(i).bet += price;
                 double odds = getFighterOdds(fighterUUID);
-                String ods = String.format("§b§lOdds:%.3f",odds);
+                String ods = String.format("§b§l倍率:%.2f倍",odds);
 
 
 
@@ -551,7 +551,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         bet.buyerName = buyerName;
         bets.add(bet);
         double odds = getFighterOdds(fighterUUID);
-        String ods = String.format("§b§lOdds:%.3f",odds);
+        String ods = String.format("§b§l倍率:%.2f倍",odds);
 
         String mes =  buyerName+"は"+fighters.get(index).name+"へ§e"+Utility.getPriceString(price)+"§fベットした！ -> "+ods;
         serverMessage(mes);
