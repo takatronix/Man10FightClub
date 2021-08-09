@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import red.man10.SkullMaker;
+import red.man10.Utility;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -447,7 +448,10 @@ public class FightClubGUI {
         ac.setDisplayName("§a§l確認");
         ArrayList<String> conf = new ArrayList<String>();
         conf.add("§e§l" + betp + "に");
-        conf.add( val + num);
+
+        //conf.add( val + num);
+        conf.add(Utility.getPriceString(num));
+
         conf.add("§e§l賭ける");
         ac.setLore(conf);
         Accept.setItemMeta(ac);

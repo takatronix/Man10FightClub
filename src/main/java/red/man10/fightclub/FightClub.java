@@ -727,8 +727,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         String inf0 = fighterInfo(fighters.get(0));
         String inf1 = fighterInfo(fighters.get(1));
 
-        String f0o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d ",o0,getScore(fighters.get(0))) ;
-        String f1o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d ",o1,getScore(fighters.get(1)));
+//        String f0o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d ",o0,getScore(fighters.get(0))) ;
+//        String f1o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d ",o1,getScore(fighters.get(1)));
+        String f0o = String.format(" 倍率:§b§lx%.2f倍 §f§lScore:§c§l%d ",o0,getScore(fighters.get(0))) ;
+        String f1o = String.format(" 倍率:§b§lx%.2f倍 §f§lScore:§c§l%d ",o1,getScore(fighters.get(1)));
 
 
         if(mode != MFCModes.Free){
