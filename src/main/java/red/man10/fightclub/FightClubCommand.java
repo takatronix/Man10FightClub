@@ -324,15 +324,17 @@ public class FightClubCommand  implements CommandExecutor {
                 return false;
             }
 
-            if(plugin.vault.withdraw(p.getUniqueId(),money) == false){
-                p.sendMessage(ChatColor.RED+ "お金の引き出しに失敗しました" );
-                return false;
-            }
 
             if(plugin.betFighter(fighter.getUniqueId(),money,p.getUniqueId(),buyer) == -1){
                 p.sendMessage("Error :" + args[1] +"is not on entry!");
                 return false;
             }
+
+            if(plugin.vault.withdraw(p.getUniqueId(),money) == false){
+                p.sendMessage(ChatColor.RED+ "お金の引き出しに失敗しました" );
+                return false;
+            }
+            
             p.sendMessage(fighter.getName() +"へ、" + Utility.getPriceString(money) + " ベットしました！！");
             p.sendMessage(ChatColor.YELLOW + "あなたの残高は" + Utility.getPriceString(plugin.vault.getBalance(p.getUniqueId())) +"です");
           //  plugin.showSideBar(p);

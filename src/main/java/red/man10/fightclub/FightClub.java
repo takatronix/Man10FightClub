@@ -317,7 +317,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
                         serverMessage(playerInfo.name +"は、弱すぎて参加資格がないが、今回は特別に許された。");
                         waiters.add(playerInfo);
-                        String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + playerInfo.prize + " 総プレイ数:"+play + " KDR:"+kdrs;
+                        String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " 総プレイ数:"+play + " KDR:"+kdrs;
                         serverMessage(his);
 
                         return waiters.size();
@@ -892,9 +892,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         tpf(selectedArena,"spawn");
 
 
-
-
-
         PlayerInformation f0 = fighters.get(0);
         PlayerInformation f1 = fighters.get(1);
 
@@ -1291,10 +1288,12 @@ public final class FightClub extends JavaPlugin implements Listener {
             PlayerInformation f0 = fighters.get(0);
             PlayerInformation f1 = fighters.get(1);
             double o0 = getFighterOdds(f0.uuid);
+            double o1 = getFighterOdds(f1.uuid);
 
-            String s0 = String.format(f0.name+": 倍率:%.3f倍",o0);
+            String s0 = String.format("§4§l" + f0.name+": 倍率:%.3f倍",o0);
+            String s1 = String.format("§5§l" + f1.name+": 倍率:%.3f倍",o1);
             lifebar.setRname(s0);
-            lifebar.setBname("");
+            lifebar.setBname(s1);
             lifebar.setVisible(true);
         }
         if(currentStatus == Fighting){
