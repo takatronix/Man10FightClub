@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.checkerframework.checker.guieffect.qual.UIType;
 
 import java.util.UUID;
 
@@ -51,7 +52,7 @@ public class VaultManager {
     public void showBalance(UUID uuid){
         OfflinePlayer p = Bukkit.getOfflinePlayer(uuid).getPlayer();
         double money = getBalance(uuid);
-        p.getPlayer().sendMessage(ChatColor.YELLOW + "あなたの所持金は$" + (int)money);
+        p.getPlayer().sendMessage(ChatColor.YELLOW + "あなたの所持金は" + Utility.getPriceString(money));
     }
     /////////////////////////////////////
     //      引き出し
@@ -62,7 +63,7 @@ public class VaultManager {
         EconomyResponse resp = economy.withdrawPlayer(p,money);
         if(resp.transactionSuccess()){
             if(p.isOnline()) {
-                p.getPlayer().sendMessage(ChatColor.YELLOW + "$" + (int) money + "支払いました");
+                p.getPlayer().sendMessage(Utility.getPriceString(money) + "支払いました");
             }
             return true;
         }
