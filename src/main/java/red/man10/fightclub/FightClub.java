@@ -501,8 +501,6 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
     Boolean canBet(UUID buyerUUID){
-
-
         //          ファイターは登録できません
         for (PlayerInformation fighter : fighters) {
             if (fighter.uuid == buyerUUID) {
@@ -510,7 +508,6 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return false;
             }
         }
-
         return true;
     }
 
@@ -2257,7 +2254,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 if(player.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
                     player.teleport(loc);
                     player.setGameMode(GameMode.SURVIVAL);
-                    fixTpBug(player);
+                    //fixTpBug(player);
                 }
             }
         }
@@ -2267,7 +2264,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(o != null){
             Location loc = (Location)o;
             p.teleport(loc);
-            fixTpBug(p);
+            //_fixTpBug(p);
         }
     }
 
@@ -2370,7 +2367,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
     // TODO: 本当にいまのバージョンで必要か確かめる。不要なら削除
-    void fixTpBug(Player tpedPlayer){
+    void _fixTpBug(Player tpedPlayer){
         for (Player player: Bukkit.getWorld(worldName).getPlayers()) {
             tpedPlayer.hidePlayer(this,player);
             player.hidePlayer(this,tpedPlayer);
