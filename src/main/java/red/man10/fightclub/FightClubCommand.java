@@ -468,7 +468,7 @@ public class FightClubCommand  implements CommandExecutor {
 
             double odds = plugin.getFighterOdds(info.uuid);
 
-            p.sendMessage("["+i+"]:" +info.name +" Death:"+ info.isDead +"   $"+price +"  Count:"+count+"  Odds:"+odds);
+            p.sendMessage("["+i+"]:" +info.name +" Death:"+ info.isDead +"   $"+price +"  Count:"+count+"  倍率:"+odds+"倍");
         }
         p.sendMessage("-------------------------");
         p.sendMessage("total: $"+plugin.getTotalBet());

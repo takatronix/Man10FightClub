@@ -16,8 +16,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/Man10FightClub_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Man10FightClub_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/Utility.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClubCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

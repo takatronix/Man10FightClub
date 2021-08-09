@@ -161,7 +161,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         if(mode == MFCModes.Normal){
             title = "§bMFC 通常モード";
-            subTitle = "誰も参加できます。KDR0.2以下になると参加できません";
+            subTitle = "誰でも参加できます。KDR0.2以下になると参加できません";
             enableMFC(sender,true);
 
         }
@@ -1133,7 +1133,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             double playerPayout = bet.bet * odds;
 
             //      プレイヤーへ支払い
-            serverMessage("§e" + bet.buyerName + "§fは、予想があたり、" + Utility.getPriceString(playerPayout) + "§fをゲットした！！ §b§lOdds:x" + String.format("%.3f", odds));
+            serverMessage("§e" + bet.buyerName + "§fは、予想があたり、" + Utility.getPriceString(playerPayout) + "§fをゲットした！！ §b§倍率:" + String.format("%.3f", odds)+"倍");
 
             //      通知
             vault.deposit(bet.buyerUUID, Math.floor(playerPayout));
