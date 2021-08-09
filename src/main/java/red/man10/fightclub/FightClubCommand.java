@@ -142,13 +142,13 @@ public class FightClubCommand  implements CommandExecutor {
                 return false;
             }
             if (plugin.currentStatus != FightClub.Status.Closed){
-                p.sendMessage("You should cancel game!");
+                p.sendMessage("ゲームをキャンセルしてください!");
                 return false;
             }
 
             plugin.currentStatus = FightClub.Status.Entry;
 
-            p.sendMessage("Entry started");
+            p.sendMessage("エントリーされました");
             plugin.updateSidebar();
             return false;
         }
