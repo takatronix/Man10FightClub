@@ -116,16 +116,16 @@ public final class FightClub extends JavaPlugin implements Listener {
     Status  currentStatus = Entry;
 
     //      対戦まちリスト
-    ArrayList<PlayerInformation> waiters = new ArrayList<PlayerInformation>();
+    ArrayList<PlayerInformation> waiters = new ArrayList<>();
 
     //      対戦者リスト
-    ArrayList<PlayerInformation> fighters = new ArrayList<PlayerInformation>();
+    ArrayList<PlayerInformation> fighters = new ArrayList<>();
 
     //      観戦者リスト
    // ArrayList<PlayerInformation> spectators = new ArrayList<PlayerInformation>();
 
     //      掛け金
-    ArrayList<BetInformation> bets = new ArrayList<BetInformation>();
+    ArrayList<BetInformation> bets = new ArrayList<>();
 
     /*
     //      ブラックリスト
@@ -441,10 +441,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         int count = 0;
-        for(int i = 0;i < bets.size();i++){
-            BetInformation bet = bets.get(i);
-            if (bet.fighterIndex == index){
-                count ++;
+        for (BetInformation bet : bets) {
+            if (bet.fighterIndex == index) {
+                count++;
             }
         }
         return count;
@@ -491,9 +490,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
         //          ファイターは登録できません
-        for(int i=0;i< fighters.size();i++){
-            if(fighters.get(i).uuid == buyerUUID){
-              // serverMessage( "§d八百長防止のため、選手はベットすることはできません");
+        for (PlayerInformation fighter : fighters) {
+            if (fighter.uuid == buyerUUID) {
+                // serverMessage( "§d八百長防止のため、選手はベットすることはできません");
                 return false;
             }
         }
@@ -680,10 +679,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             return false;
         }
         //      双方にベットされているか
-        if(getFighterBetMoney(fighters.get(1).uuid) < limit){
-            return false;
-        }
-        return true;
+        return !(getFighterBetMoney(fighters.get(1).uuid) < limit);
     }
     //      募集開始
 
@@ -1351,8 +1347,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         return s;
     }
     //          描画系
-    private static String[] suffix = new String[]{"","K", "M", "B", "T"};
-    private static int MAX_LENGTH = 4;
+    private static final String[] suffix = new String[]{"","K", "M", "B", "T"};
+    private static final int MAX_LENGTH = 4;
 
     private static String money(double number) {
         String r = new DecimalFormat("##0E0").format(number);
@@ -1398,19 +1394,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         //data = new FightClubData(this);
 
 
-        Bukkit.getScheduler().runTaskTimer(this, new Runnable() {
-            @Override
-            public void run() {
-                onTimer();
-            }
-        }, 0, 20);
+        Bukkit.getScheduler().runTaskTimer(this, this::onTimer, 0, 20);
 
-        Bukkit.getScheduler().runTaskTimer(this, new Runnable() {
-            @Override
-            public void run() {
-                onTickTimer();
-            }
-        }, 0, 1);
+        Bukkit.getScheduler().runTaskTimer(this, this::onTickTimer, 0, 1);
 
 
         showInfoBarToPlayer();
@@ -2035,7 +2021,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     //      auto update signs
-    ArrayList<Location> kitSigns = new ArrayList<Location>();
+    ArrayList<Location> kitSigns = new ArrayList<>();
     boolean registerKitSign(Player p,Location loc){
         for(Location s: kitSigns){
             if(s.getX() == loc.getX() && s.getY() == loc.getY() && s.getZ() == loc.getZ()){
@@ -2183,11 +2169,11 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
     public int listArena(CommandSender p) {
         p.sendMessage("------arena list-----");
-        for (int i = 0; i < arenas.size(); i++) {
-            if(arenas.get(i).equalsIgnoreCase(selectedArena)){
-                p.sendMessage(arenas.get(i) +":(selected)");
-            }else{
-                p.sendMessage(arenas.get(i));
+        for (String arena : arenas) {
+            if (arena.equalsIgnoreCase(selectedArena)) {
+                p.sendMessage(arena + ":(selected)");
+            } else {
+                p.sendMessage(arena);
             }
         }
         return arenas.size();
@@ -2235,7 +2221,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         for(PlayerInformation inf : waiters){
             Player p = Bukkit.getPlayer(inf.uuid);
 
-            if(p.isOnline() == false){
+            if(!p.isOnline()){
                 continue;
             }
             p.setGameMode(GameMode.SPECTATOR);
