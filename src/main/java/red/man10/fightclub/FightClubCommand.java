@@ -7,6 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import red.man10.Utility;
 
 import java.util.UUID;
 import java.util.logging.Filter;
@@ -20,7 +21,6 @@ public class FightClubCommand  implements CommandExecutor {
     public FightClubCommand(FightClub plugin) {
        this.plugin = plugin;
     }
-
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -86,7 +86,7 @@ public class FightClubCommand  implements CommandExecutor {
 
             double money = Double.parseDouble(args[1]);
             plugin.autoBetPrice = money;
-            plugin.serverMessage("自動ベット金額を$"+money+"に設定しました");
+            plugin.serverMessage("自動ベット金額を"+ Utility.getPriceString(money)+"に設定しました");
             plugin.getConfig().set("autobet",(int)plugin.autoBetPrice);
 
             plugin.saveConfig();
@@ -106,9 +106,9 @@ public class FightClubCommand  implements CommandExecutor {
             }
 
             double money = Double.parseDouble(args[1]);
-            plugin.entryPrice = (int)money;
+            plugin.entryPrice = (long)money;
             plugin.getConfig().set("fee",plugin.entryPrice);
-            plugin.serverMessage("登録費用を$"+money+"に設定しました");
+            plugin.serverMessage("登録費用を"+Utility.getPriceString(money)+"に設定しました");
             plugin.saveConfig();
 
             return false;
@@ -127,7 +127,7 @@ public class FightClubCommand  implements CommandExecutor {
             double prize = Double.parseDouble(args[1]);
             plugin.prize = prize;
             plugin.getConfig().set("prize",prize);
-            plugin.serverMessage("賞金を"+prize+"%に設定しました");
+            plugin.serverMessage("賞金を"+Utility.getPriceString(prize)+"に設定しました");
             plugin.saveConfig();
 
             return false;
@@ -319,7 +319,7 @@ public class FightClubCommand  implements CommandExecutor {
             p.sendMessage(buyer);
 
             double balance = plugin.vault.getBalance(p.getUniqueId());
-            p.sendMessage("あなたの残額は $"+balance +"です");
+            p.sendMessage("あなたの残額は "+Utility.getPriceString(balance) +"です");
             if(balance < money){
                 p.sendMessage(ChatColor.RED+ "残高が足りません！！");
                 return false;
@@ -334,8 +334,8 @@ public class FightClubCommand  implements CommandExecutor {
                 p.sendMessage("Error :" + args[1] +"is not on entry!");
                 return false;
             }
-            p.sendMessage(fighter.getName() +"へ、$" + money + "ベットしました！！");
-            p.sendMessage(ChatColor.YELLOW + "あなたの残高は$" + plugin.vault.getBalance(p.getUniqueId()) +"です");
+            p.sendMessage(fighter.getName() +"へ、" + Utility.getPriceString(money) + " ベットしました！！");
+            p.sendMessage(ChatColor.YELLOW + "あなたの残高は" + Utility.getPriceString(plugin.vault.getBalance(p.getUniqueId())) +"です");
           //  plugin.showSideBar(p);
             showOdds(p);
             return true;

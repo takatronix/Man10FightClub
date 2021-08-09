@@ -25,6 +25,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.projectiles.ProjectileSource;
 import red.man10.LifeBar;
 import red.man10.TitleBar;
+import red.man10.Utility;
 import red.man10.VaultManager;
 
 import java.io.File;
@@ -40,7 +41,7 @@ import static red.man10.fightclub.FightClub.Status.*;
 public final class FightClub extends JavaPlugin implements Listener {
 
     //      初期設定
-    int      entryPrice = 10000;        //  ミニマムベットプライス
+    long        entryPrice = 10000;        //  ミニマムベットプライス
     double      prize = 0.05;
     double      tax   = 0;
 
@@ -48,7 +49,6 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     int         newbiePlayableCount = 10;
     double      registerKDRLimit = 0.2;
-
 
     String adminPermision = "man10.fightclub.admin";
     String betPermision = "man10.fightclub.bet";
@@ -60,7 +60,6 @@ public final class FightClub extends JavaPlugin implements Listener {
     TitleBar titlebar = new TitleBar(this);
 
     VaultManager vault = null;
-
     FightClubData data = null;
 
 
@@ -318,7 +317,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
                         serverMessage(playerInfo.name +"は、弱すぎて参加資格がないが、今回は特別に許された。");
                         waiters.add(playerInfo);
-                        String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " $:"+(int)playerInfo.prize + " 総プレイ数:"+play + " KDR:"+kdrs;
+                        String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + playerInfo.prize + " 総プレイ数:"+play + " KDR:"+kdrs;
                         serverMessage(his);
 
                         return waiters.size();
@@ -335,7 +334,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
 
-        String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " $:"+(int)playerInfo.prize + " 総プレイ数:"+play + " KDR:"+kdrs;
+
+        String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " "+ Utility.getPriceString(playerInfo.prize) + " 総プレイ数:"+play + " KDR:"+kdrs;
         serverMessage(name + "は参加を申し込んだ");
         serverMessage(his);
 
@@ -524,7 +524,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             return -2;
         }
 
-
         /////////////////////////////////////////
         //     同じ相手への購入ならbetをマージ
         /////////////////////////////////////////
@@ -538,7 +537,10 @@ public final class FightClub extends JavaPlugin implements Listener {
                 bets.get(i).bet += price;
                 double odds = getFighterOdds(fighterUUID);
                 String ods = String.format("§b§lOdds:%.3f",odds);
-                serverMessage(buyerName+"は"+fighters.get(index).name+"へ§e$"+(int)price+"§f追加ベットした! -> "+ods);
+
+
+
+                serverMessage(buyerName+"は"+fighters.get(index).name+"へ"+Utility.getPriceString(price)+ "§f追加ベットした! -> "+ods);
                 return i;
             }
         }
@@ -552,7 +554,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         double odds = getFighterOdds(fighterUUID);
         String ods = String.format("§b§lOdds:%.3f",odds);
 
-        String mes =  buyerName+"は"+fighters.get(index).name+"へ§e$"+(int)price+"§fベットした！ -> "+ods;
+        String mes =  buyerName+"は"+fighters.get(index).name+"へ§e"+Utility.getPriceString(price)+"§fベットした！ -> "+ods;
         serverMessage(mes);
 
       //  lifebar.setInfoName(mes);
@@ -735,7 +737,6 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         if(mode != MFCModes.Free){
             this.fightId = data.createFight(selectedArena,selectedKit,f0.getUniqueId(),f1.getUniqueId(),o0,o1,b0,b1,getPrize(),getTotalBet());
-
         }
 
         //      init bar
@@ -930,17 +931,17 @@ public final class FightClub extends JavaPlugin implements Listener {
         getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
             String title1 = "§4§l"+f0.name ;
             //String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
-            String subTitle1 = "§9§lKill:"+f0.kill+" §c§lDeath:"+f0.death+" §e§l総獲得賞金 $"+(int)f0.prize;
+            String subTitle1 = "§9§lKill:"+f0.kill+" §c§lDeath:"+f0.death+" §e§l総獲得賞金 "+ Utility.getPriceString(f0.prize);
             sendTitleToAllWithSound(title1, subTitle1,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
             serverMessage(title1 + "§f: "+ subTitle1);
-            serverMessage("§f§lユーザー情報はここをクリック！ => §b§l§nhttp://man10.red/u?"+f0.name);
+           // serverMessage("§f§lユーザー情報はここをクリック！ => §b§l§nhttp://man10.red/u?"+f0.name);
         }, 100);
        getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
            String title12 = "§1§l"+f1.name;
-           String subTitle12 = "§9§lKill:"+f1.kill+" §c§lDeath:"+f1.death+" §e§l総獲得賞金 $"+(int)f1.prize;
+           String subTitle12 = "§9§lKill:"+f1.kill+" §c§lDeath:"+f1.death+" §e§l総獲得賞金 "+Utility.getPriceString(f1.prize);
            sendTitleToAllWithSound(title12, subTitle12,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
            serverMessage(title12 + "§f: "+ subTitle12);
-           serverMessage("§f§lユーザー情報はここをクリック! => §b§l§nhttp://man10.red/u?"+f1.name);
+          // serverMessage("§f§lユーザー情報はここをクリック! => §b§l§nhttp://man10.red/u?"+f1.name);
 
        }, 200);
 
@@ -971,7 +972,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         saveCurrentStatus();
 
 
-        if(autoBetPrice >= 10000){
+        if(autoBetPrice >= 1000){
             UUID uuid = UUID.fromString(autoBetUUID);
             betFighter(fighters.get(0).uuid,autoBetPrice,uuid,autoBetPlayerName);
             betFighter(fighters.get(1).uuid,autoBetPrice,uuid,autoBetPlayerName);
@@ -982,7 +983,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     double autoBetPrice = 0;
     String autoBetPlayerName = "MFC Auto Bet";
-    String autoBetUUID = "1927b4f6-1e01-41a0-a0fa-28ea775c558e";
+    String autoBetUUID = "43986c19-28ec-408f-a217-5a97b4ac8991";
 
     boolean broadcastTitle = true;
     public void showTitle(String title,String subTitle,double stay,double delay){
@@ -1114,14 +1115,16 @@ public final class FightClub extends JavaPlugin implements Listener {
         double prize = getPrize();
         serverMessage("§e§l============== §d●§f●§a●§e§lMan10 Fight Club 結果速報§d●§f●§a● §e§l===============");
 
-        serverMessage("§c勝者："+winner.getDisplayName() +"§fは§c§l優勝賞金 §e§l$"+(int)prize+"§fをゲットした！！！！");
+
+
+        serverMessage("§c勝者："+winner.getDisplayName() +"§fは§c§l優勝賞金 "+Utility.getPriceString(prize)+"§fをゲットした！！！！");
         vault.deposit(winner.getUniqueId(),prize);
 
         //  掛け金の計算
         double total  = getTotalBet();
         double winBet = getFighterBets(fighterIndex);
 
-        showTitle("§cMFC Winner: "+winner.getName(),"獲得賞金:§c§l$"+(int)prize,5,0);
+        showTitle("§cMFC Winner: "+winner.getName(),"獲得賞金:§c§l"+Utility.getPriceString(prize),5,0);
 
         //    オッズとは
         //  （賭けられたお金の合計 － 経費）÷【賭けに勝つ人達の勝ちに賭けた総合計金額】
@@ -1138,7 +1141,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             double playerPayout = bet.bet * odds;
 
             //      プレイヤーへ支払い
-            serverMessage("§e" + bet.buyerName + "§fは、予想があたり、§e§l$" + (int) playerPayout + "§fをゲットした！！ §b§lOdds:x" + String.format("%.3f", odds));
+            serverMessage("§e" + bet.buyerName + "§fは、予想があたり、" + Utility.getPriceString(playerPayout) + "§fをゲットした！！ §b§lOdds:x" + String.format("%.3f", odds));
 
             //      通知
             vault.deposit(bet.buyerUUID, Math.floor(playerPayout));
@@ -1264,7 +1267,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         if(currentStatus == Entry){
             if(waiters.size() == 0){
-                lifebar.setInfoName(getModeText()+ " §f§l選手登録受付中!! §e§l参加費:$"+entryPrice);
+                lifebar.setInfoName(getModeText()+ " §f§l選手登録受付中!! §e§l参加費:"+ Utility.getPriceString(entryPrice));
             }else{
                 lifebar.setInfoName(getModeText()+ " §a§l選手登録受付中!§e§l("+waiters.size()+") §4§l Time:"+entryTimer);
             }
@@ -1280,7 +1283,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         if(currentStatus == Opened){
-            lifebar.setInfoName(getModeText()+"§f§lベット受付中! §b"+selectedArena + "§f/§a"+selectedKit+" §4§l Time:"+betTimer+ " §e§l賞金:$"+(int)getPrize());
+            lifebar.setInfoName(getModeText()+"§f§lベット受付中! §b"+selectedArena + "§f/§a"+selectedKit+" §4§l Time:"+betTimer+ " §e§l賞金:"+ Utility.getPriceString( getPrize()));
             double d = (double)betTimer / (double)betTimerDefault;
             if(d < 0){
                 d = 0;
@@ -1300,7 +1303,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             lifebar.setVisible(true);
         }
         if(currentStatus == Fighting){
-            lifebar.setInfoName(getModeText() + " 対戦中! §b"+selectedArena + "§f/§a"+selectedKit+" §e§l$"+(int)getPrize()+"§4§l Time:"+fightTimer);
+            lifebar.setInfoName(getModeText() + " 対戦中! §b"+selectedArena + "§f/§a"+selectedKit+" §e§l"+Utility.getPriceString( getPrize())+"§4§l Time:"+fightTimer);
             double d = (double)fightTimer / (double)fightTimerDefault;
             lifebar.setInfoBar(d);
         }
@@ -1348,7 +1351,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 
      String fighterInfo(FightClub.PlayerInformation f){
-        String s = "§9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
+        String s = "§9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/ "+ Utility.getPriceString(f.prize);
         return s;
     }
     //          描画系
