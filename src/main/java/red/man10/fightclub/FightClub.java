@@ -44,6 +44,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     double      prize = 0.05;
     double      tax   = 0;
 
+    int         betLimit = 1000;
 
     int         newbiePlayableCount = 10;
     double      registerKDRLimit = 0.2;
@@ -674,7 +675,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         UUID id0 = fighters.get(0).uuid;
         UUID id1 = fighters.get(1).uuid;
 
-        double    limit = 10000;
+        double    limit = betLimit;
         //      双方にベットされているか
         if(getFighterBetMoney(fighters.get(0).uuid) < limit){
             return false;
