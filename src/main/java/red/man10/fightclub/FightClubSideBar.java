@@ -118,7 +118,7 @@ public class FightClubSideBar {
     void showWaiters(){
 
         sideBar.setTitle(plugin.getModeText() +" 選手受付中 §a/§lMFC");
-        sideBar.setScore("獲得金額説明 K=1000/M=1000000",0);
+     //   sideBar.setScore("獲得金額説明 K=1,000/M=1,000,000",0);
 
        // String inf = "残り時間:"+plugin.entryTimer +" §e§l参加費:$"+(int)plugin.entryPrice;
        // sideBar.setScore(inf,0);
@@ -146,7 +146,7 @@ public class FightClubSideBar {
         String name = String.format("%-10s",f.name);
         String shortString = name.substring(0, Math.min(name.length(), 10));
 
-        String s= shortString + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l"+money(f.prize)+"円";
+        String s= shortString + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/"+Utility.getPriceString(f.prize);
         if(s.length() > 40){
             s = s.substring(0,40);
         }
