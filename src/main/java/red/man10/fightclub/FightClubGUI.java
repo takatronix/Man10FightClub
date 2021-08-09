@@ -372,7 +372,6 @@ public class FightClubGUI {
         e.setItem(8, new ItemStack(Material.AIR));
 
 
-
         String betp = e.getItem(33).getItemMeta().getDisplayName();
         ItemStack Accept = new ItemStack(Material.EMERALD_BLOCK, 1);
         ItemMeta ac = Accept.getItemMeta();
@@ -387,43 +386,52 @@ public class FightClubGUI {
         Accept.setItemMeta(ac);
 
         e.setItem(50, Accept);
-
-
     }
+
+    final String num0 = "http://textures.minecraft.net/texture/3f09018f46f349e553446946a38649fcfcf9fdfd62916aec33ebca96bb21b5";
+    final String num1 = "http://textures.minecraft.net/texture/ca516fbae16058f251aef9a68d3078549f48f6d5b683f19cf5a1745217d72cc";
+    final String num2 = "http://textures.minecraft.net/texture/4698add39cf9e4ea92d42fadefdec3be8a7dafa11fb359de752e9f54aecedc9a";
+    final String num3 = "http://textures.minecraft.net/texture/b85d4fda56bfeb85124460ff72b251dca8d1deb6578070d612b2d3adbf5a8";
+    final String num4 = "http://textures.minecraft.net/texture/f2a3d53898141c58d5acbcfc87469a87d48c5c1fc82fb4e72f7015a3648058";
+    final String num5 = "http://textures.minecraft.net/texture/d1fe36c4104247c87ebfd358ae6ca7809b61affd6245fa984069275d1cba763";
+    final String num6 = "http://textures.minecraft.net/texture/3ab4da2358b7b0e8980d03bdb64399efb4418763aaf89afb0434535637f0a1";
+    final String num7 = "http://textures.minecraft.net/texture/297712ba32496c9e82b20cc7d16e168b035b6f89f3df014324e4d7c365db3fb";
+    final String num8 = "http://textures.minecraft.net/texture/abc0fda9fa1d9847a3b146454ad6737ad1be48bdaa94324426eca0918512d";
+    final String num9 = "http://textures.minecraft.net/texture/d6abc61dcaefbd52d9689c0697c24c7ec4bc1afb56b8b3755e6154b24a5d8ba";
 
 
     void createDisplay(Inventory i,Player p,int num){
         int l = i.getItem(50).getItemMeta().getLore().get(2).length();
         ItemStack item = new ItemStack(Material.AIR);
         if(num==0){
-            item = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/0ebe7e5215169a699acc6cefa7b73fdb108db87bb6dae2849fbe24714b27").build();
+            item = new SkullMaker().withSkinUrl(num0).build();
             setTextPrice(i, 0);
         }else if(num==1){
-            item = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/71bc2bcfb2bd3759e6b1e86fc7a79585e1127dd357fc202893f9de241bc9e530").build();
+            item = new SkullMaker().withSkinUrl(num1).build();
             setTextPrice(i, 1);
         }else if(num==2){
-            item = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/4cd9eeee883468881d83848a46bf3012485c23f75753b8fbe8487341419847").build();
+            item = new SkullMaker().withSkinUrl(num2).build();
             setTextPrice(i, 2);
         }else if(num==3){
-            item = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/1d4eae13933860a6df5e8e955693b95a8c3b15c36b8b587532ac0996bc37e5").build();
+            item = new SkullMaker().withSkinUrl(num3).build();
             setTextPrice(i, 3);
         }else if(num==4){
-            item = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/d2e78fb22424232dc27b81fbcb47fd24c1acf76098753f2d9c28598287db5").build();
+            item = new SkullMaker().withSkinUrl(num4).build();
             setTextPrice(i, 4);
         }else if(num==5){
-            item = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/6d57e3bc88a65730e31a14e3f41e038a5ecf0891a6c243643b8e5476ae2").build();
+            item = new SkullMaker().withSkinUrl(num5).build();
             setTextPrice(i, 5);
         }else if(num==6){
-            item = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/334b36de7d679b8bbc725499adaef24dc518f5ae23e716981e1dcc6b2720ab").build();
+            item = new SkullMaker().withSkinUrl(num6).build();
             setTextPrice(i, 6);
         }else if(num==7){
-            item = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/6db6eb25d1faabe30cf444dc633b5832475e38096b7e2402a3ec476dd7b9").build();
+            item = new SkullMaker().withSkinUrl(num7).build();
             setTextPrice(i, 7);
         }else if(num==8){
-            item = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/59194973a3f17bda9978ed6273383997222774b454386c8319c04f1f4f74c2b5").build();
+            item = new SkullMaker().withSkinUrl(num8).build();
             setTextPrice(i, 8);
         }else if(num==9){
-            item = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/e67caf7591b38e125a8017d58cfc6433bfaf84cd499d794f41d10bff2e5b840").build();
+            item = new SkullMaker().withSkinUrl(num9).build();
             setTextPrice(i, 9);
         }
 
@@ -439,7 +447,7 @@ public class FightClubGUI {
         ac.setDisplayName("§a§l確認");
         ArrayList<String> conf = new ArrayList<String>();
         conf.add("§e§l" + betp + "に");
-        conf.add(val + num);
+        conf.add( val + num);
         conf.add("§e§l賭ける");
         ac.setLore(conf);
         Accept.setItemMeta(ac);
@@ -462,16 +470,16 @@ public class FightClubGUI {
     public void priceMenu(Player p,String betp) {
         //ItemStack head = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/7c57f9192e81eb6897c24ecd4935cfb5a731a6f9a57abb51f2b35e8b4be7ebc").build();
         Inventory inv = Bukkit.createInventory(null, 54, "§5§l金額設定メニュー");
-        ItemStack i0 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/0ebe7e5215169a699acc6cefa7b73fdb108db87bb6dae2849fbe24714b27").build();
-        ItemStack i1 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/71bc2bcfb2bd3759e6b1e86fc7a79585e1127dd357fc202893f9de241bc9e530").build();
-        ItemStack i2 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/4cd9eeee883468881d83848a46bf3012485c23f75753b8fbe8487341419847").build();
-        ItemStack i3 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/1d4eae13933860a6df5e8e955693b95a8c3b15c36b8b587532ac0996bc37e5").build();
-        ItemStack i4 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/d2e78fb22424232dc27b81fbcb47fd24c1acf76098753f2d9c28598287db5").build();
-        ItemStack i5 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/6d57e3bc88a65730e31a14e3f41e038a5ecf0891a6c243643b8e5476ae2").build();
-        ItemStack i6 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/334b36de7d679b8bbc725499adaef24dc518f5ae23e716981e1dcc6b2720ab").build();
-        ItemStack i7 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/6db6eb25d1faabe30cf444dc633b5832475e38096b7e2402a3ec476dd7b9").build();
-        ItemStack i8 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/59194973a3f17bda9978ed6273383997222774b454386c8319c04f1f4f74c2b5").build();
-        ItemStack i9 = new SkullMaker().withSkinUrl("http://textures.minecraft.net/texture/e67caf7591b38e125a8017d58cfc6433bfaf84cd499d794f41d10bff2e5b840").build();
+        ItemStack i0 = new SkullMaker().withSkinUrl(num0).build();
+        ItemStack i1 = new SkullMaker().withSkinUrl(num1).build();
+        ItemStack i2 = new SkullMaker().withSkinUrl(num2).build();
+        ItemStack i3 = new SkullMaker().withSkinUrl(num3).build();
+        ItemStack i4 = new SkullMaker().withSkinUrl(num4).build();
+        ItemStack i5 = new SkullMaker().withSkinUrl(num5).build();
+        ItemStack i6 = new SkullMaker().withSkinUrl(num6).build();
+        ItemStack i7 = new SkullMaker().withSkinUrl(num7).build();
+        ItemStack i8 = new SkullMaker().withSkinUrl(num8).build();
+        ItemStack i9 = new SkullMaker().withSkinUrl(num9).build();
 
         ItemStack price = new ItemStack(Material.EMERALD, 1);
         ItemStack cancel = new ItemStack(Material.REDSTONE_BLOCK, 1);
