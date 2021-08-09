@@ -3,6 +3,7 @@ package red.man10.fightclub;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import red.man10.SidebarDisplay;
+import red.man10.Utility;
 
 import java.awt.*;
 import java.text.DecimalFormat;
@@ -64,24 +65,24 @@ public class FightClubSideBar {
         for(int i = 0;i < plugin.fighters.size();i++){
             FightClub.PlayerInformation f = plugin.fighters.get(i);
 
-            String tx = String.format("%10s Odds:§bx§l%3.3f",f.name,plugin.getFighterOdds(f.uuid));
+            String tx = String.format("%10s オッズ:§l%3.2f倍",f.name,plugin.getFighterOdds(f.uuid));
             sideBar.setScore(tx,plugin.getFighterBetCount(f.uuid));
 
          //   setFighterInfo(f);
 
         }
 
-        sideBar.setScore("§d合計かけ金額：$"+(int)total,0);
+        sideBar.setScore("§d合計かけ金額："+ Utility.getPriceString(total),0);
 
 
         sideBar.setScore("§a今回のアリーナ：" + plugin.selectedArena,0);
         sideBar.setScore("§a今回のキット：" + plugin.selectedKit,0);
 
-        sideBar.setScore("§e§l勝者への賞金：$"+(int)plugin.getPrize(),0);
+        sideBar.setScore("§e§l勝者への賞金："+Utility.getPriceString(plugin.getPrize()),0);
         sideBar.setScore("§b==========================",0);
 
        // sideBar.setScore("§e"+plugin.fighters.get(0).name+" Kill:"+plugin.kill0 + "/Death:"+plugin.death0+"/獲得$"+(int)plugin.prize0 ,0);
-       // sideBar.setScore("§e"+plugin.fighters.get(1).name+" Kill:"+plugin.kill1 + "/Death:"+plugin.death1+"/獲得$"+(int)plugin.prize1 ,0);
+       // sideBar.setScore("§e"+plugin.fighters.get(1).name+" Kill:"+plugin.kill1 + "/Death:"+plugin.ddeath1+"/獲得$"+(int)plugin.prize1 ,0);
 
         if(plugin.canStartGame()){
             sideBar.setScore("§eまもなく試合が開催されます！！！！",0);
@@ -90,7 +91,7 @@ public class FightClubSideBar {
             sideBar.setScore("§eみなさんが、ベットしないと試合ははじまりません",0);
 
         }
-        sideBar.setScore("§a/§lMFC§fで勝利者を予想しお金をかけよう！！",0);
+        sideBar.setScore("§a/§lMFC§fで勝者を予想しお金をかけよう！！",0);
 
         showToAll();
     }
@@ -145,7 +146,7 @@ public class FightClubSideBar {
         String name = String.format("%-10s",f.name);
         String shortString = name.substring(0, Math.min(name.length(), 10));
 
-        String s= shortString + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
+        String s= shortString + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l"+money(f.prize)+"円";
         if(s.length() > 40){
             s = s.substring(0,40);
         }

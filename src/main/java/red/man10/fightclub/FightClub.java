@@ -172,7 +172,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         if(mode == MFCModes.Pro){
             title = "§e§kXXXXX  §4§l【MFC Pro】§e§kXXXXX";
-            subTitle = "§e§lMan10プロプレーヤを予想して、§e§n大金§e§lをゲットしよう！！！";
+            subTitle = "§e§l勝者を予想して、§e§n大金§e§lをゲットしよう！！！";
 
             enableMFC(sender,true);
         }
@@ -942,7 +942,7 @@ public final class FightClub extends JavaPlugin implements Listener {
        }, 200);
 
         getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
-            String title13 = "勝者を予想しベットしてください！ §a§l/MFC" ;
+            String title13 = "勝者を予想してください！ §a§l/MFC" ;
             String subTitle13 = "§4§l"+ f0.name + " §fvs §1§l" +f1.name + " ";
             sendTitleToAllWithSound(title13, subTitle13,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
             serverMessage(subTitle13);
@@ -1141,12 +1141,15 @@ public final class FightClub extends JavaPlugin implements Listener {
 
             //      通知
             vault.deposit(bet.buyerUUID, Math.floor(playerPayout));
-//            vault.deposit(bet.buyerUUID, playerPayout);
+
 
             //      データベース登録
 
             double profit = playerPayout - bet.bet;
-            data.createBet(fightId, bet.buyerUUID, bet.bet, true, f.uuid, odds, profit);
+            //  非同期で登録
+            Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+                data.createBet(fightId, bet.buyerUUID, bet.bet, true, f.uuid, odds, profit);
+            });
         }
 
         //
