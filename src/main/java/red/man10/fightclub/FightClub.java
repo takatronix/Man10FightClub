@@ -729,8 +729,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
 //        String f0o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d ",o0,getScore(fighters.get(0))) ;
 //        String f1o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d ",o1,getScore(fighters.get(1)));
-        String f0o = String.format(" 倍率:§b§lx%.2f倍 §f§lScore:§c§l%d ",o0,getScore(fighters.get(0))) ;
-        String f1o = String.format(" 倍率:§b§lx%.2f倍 §f§lScore:§c§l%d ",o1,getScore(fighters.get(1)));
+        String f0o = String.format(" 倍率:§b§l%.2f倍 §f§lScore:§c§l%d ",o0,getScore(fighters.get(0))) ;
+        String f1o = String.format(" 倍率:§b§l%.2f倍 §f§lScore:§c§l%d ",o1,getScore(fighters.get(1)));
 
 
         if(mode != MFCModes.Free){
@@ -1292,7 +1292,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             PlayerInformation f1 = fighters.get(1);
             double o0 = getFighterOdds(f0.uuid);
 
-            String s0 = String.format(f0.name+": Odds:%.3f",o0);
+            String s0 = String.format(f0.name+": 倍率:%.3f倍",o0);
             lifebar.setRname(s0);
             lifebar.setBname("");
             lifebar.setVisible(true);

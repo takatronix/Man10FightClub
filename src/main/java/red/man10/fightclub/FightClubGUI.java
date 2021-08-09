@@ -449,8 +449,9 @@ public class FightClubGUI {
         ArrayList<String> conf = new ArrayList<String>();
         conf.add("§e§l" + betp + "に");
 
+        //double price = Double.parseDouble(val) + num;
         //conf.add( val + num);
-        conf.add(Utility.getPriceString(num));
+        conf.add(val + num );
 
         conf.add("§e§l賭ける");
         ac.setLore(conf);
