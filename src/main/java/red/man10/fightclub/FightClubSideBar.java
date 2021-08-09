@@ -75,7 +75,7 @@ public class FightClubSideBar {
         sideBar.setScore("§d合計かけ金額："+ Utility.getPriceString(total),0);
 
 
-        sideBar.setScore("§a今回のアリーナ：" + plugin.selectedArena,0);
+        sideBar.setScore("§a今回のステージ：" + plugin.selectedArena,0);
         sideBar.setScore("§a今回のキット：" + plugin.selectedKit,0);
 
         sideBar.setScore("§e§l勝者への賞金："+Utility.getPriceString(plugin.getPrize()),0);

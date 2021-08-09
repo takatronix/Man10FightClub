@@ -911,7 +911,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         sideBar.hidden = true;
         String title = "§cMFC 選手決定！!";
-        String subTitle = "§4§l"+f0.name + " §fvs §1§l"+f1.name + " §aStage:" + selectedArena + " §bKit:"+selectedKit;
+        String subTitle = "§4§l"+f0.name + " §fvs §1§l"+f1.name + " §aステージ:" + selectedArena + " §bキット:"+selectedKit;
         sendTitleToAllWithSound(title,subTitle,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
 
         sideBar.show();
