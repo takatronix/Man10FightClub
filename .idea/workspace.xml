@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="test commit">
+    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="man10kit MultiWorldを依存するように">
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Man10FightClub.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Man10FightClub.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -379,13 +380,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00208" summary="ライフバーで時間表示&#10;ラグ対策">
-      <created>1489691491179</created>
-      <option name="number" value="00208" />
-      <option name="presentableId" value="LOCAL-00208" />
-      <option name="project" value="LOCAL" />
-      <updated>1489691491179</updated>
-    </task>
     <task id="LOCAL-00209" summary="パーミッション設定&#10;autobetオフ">
       <created>1489692799324</created>
       <option name="number" value="00209" />
@@ -722,7 +716,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628425442210</updated>
     </task>
-    <option name="localTasksCounter" value="257" />
+    <task id="LOCAL-00257" summary="man10kit MultiWorldを依存するように">
+      <created>1628427198748</created>
+      <option name="number" value="00257" />
+      <option name="presentableId" value="LOCAL-00257" />
+      <option name="project" value="LOCAL" />
+      <updated>1628427198748</updated>
+    </task>
+    <option name="localTasksCounter" value="258" />
     <servers />
   </component>
   <component name="TodoView">
@@ -814,7 +815,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Proはデータベースをわけるようにした" />
     <MESSAGE value="clearコマンドの追加" />
     <MESSAGE value="ログアウト時にメッセージが出る問題" />
     <MESSAGE value="無限増殖対策" />
@@ -839,7 +839,8 @@
     <MESSAGE value="GUI 修正" />
     <MESSAGE value="1.17対応" />
     <MESSAGE value="test commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="test commit" />
+    <MESSAGE value="man10kit MultiWorldを依存するように" />
+    <option name="LAST_COMMIT_MESSAGE" value="man10kit MultiWorldを依存するように" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
