@@ -218,8 +218,6 @@ public class FightClubCommand  implements CommandExecutor {
             return false;
         }
 
-
-
         ////////////////////////////////////
         //        強制勝利
         ////////////////////////////////////
@@ -301,6 +299,7 @@ public class FightClubCommand  implements CommandExecutor {
             p.sendMessage("MFC Started");
             return true;
         }
+
         //////////////////////////////////
         ///         Bet
         //////////////////////////////////
@@ -359,11 +358,8 @@ public class FightClubCommand  implements CommandExecutor {
                 args[0].equalsIgnoreCase("free") ||
                 args[0].equalsIgnoreCase("pro") ||
                 args[0].equalsIgnoreCase("normal")
-
                 ){
                 String modeName = args[0];
-
-
             if(!sender.hasPermission(plugin.adminPermision)){
                 sender.sendMessage("管理者権限がありません");
                 return false;
@@ -392,10 +388,7 @@ public class FightClubCommand  implements CommandExecutor {
         //////////////////////////////////
         if( args[0].equalsIgnoreCase("whitelist") ||
             args[0].equalsIgnoreCase("blacklist") ||
-            args[0].equalsIgnoreCase("prolist")
-
-                ) {
-
+            args[0].equalsIgnoreCase("prolist") ) {
             listCommand(sender,args);
             return true;
         }
@@ -431,12 +424,9 @@ public class FightClubCommand  implements CommandExecutor {
             return false;
         }
 
-
-
         String target = args[2];
         Player p = Bukkit.getPlayer(target);
         UUID uuid = p.getUniqueId();
-
 
         ///     追加
         if(args[1].equalsIgnoreCase("add")){
@@ -450,20 +440,14 @@ public class FightClubCommand  implements CommandExecutor {
 
 
 
-
-
     void showBets(Player p){
 
         p.sendMessage("§e=========== §d●§f●§a●§e Man10 Fight Club Buyer §d●§f●§a● §e===============");
         for(int i=0;i < plugin.bets.size();i++){
             FightClub.BetInformation info = plugin.bets.get(i);
 
-
-           // Player fighter = Bukkit.getPlayer(info.UUID);
-
             double price = info.bet;
             String fighter =   plugin.fighters.get(info.fighterIndex).name;
-
 
             p.sendMessage("["+i+"]:" +info.buyerName +"   $"+price +" fighter:"+fighter);
         }

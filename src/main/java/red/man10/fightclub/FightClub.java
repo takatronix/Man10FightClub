@@ -155,7 +155,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         if(mode == MFCModes.Free){
             title = "§dMFC フリーモード";
-            subTitle = "誰でも参加練習できます。お金もかかりませんし、記録も残りません";
+            subTitle = "誰でも参加練習できます。参加費無料！記録なし";
             enableMFC(sender,true);
 
         }
@@ -864,10 +864,18 @@ public final class FightClub extends JavaPlugin implements Listener {
             fighters.clear();
             return false;
         }
+        //  Kill/Death/Prize更新
+        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+            for(PlayerInformation inf : fighters){
+                inf.updateKDRP(data);
+            }
+        });
+
         for(PlayerInformation fi : fighters) {
             //      装備を保存
              command("man10kit push "+fi.name );
         }
+
         //      キットの自動選択処理
         List<String> kits = listKits();
         Collections.shuffle(kits);
@@ -882,36 +890,22 @@ public final class FightClub extends JavaPlugin implements Listener {
         tpf(selectedArena,"spawn");
 
 
-        //  Kill/Death/Prize更新
-        for(PlayerInformation inf : fighters){
-            inf.updateKDRP(data);
-        }
+
+
 
         PlayerInformation f0 = fighters.get(0);
         PlayerInformation f1 = fighters.get(1);
 
 
-        //      init bar
-//        lifebar.setRname(f0.name);
-//        lifebar.setBname(f1.name);
-//        lifebar.setVisible(true);
-   //     resetPlayerStatus(f0);
-   //     resetPlayerStatus(f1);
-
-
-      //  pauseTimer = true;
         lifebar.setInfoBar(0);
-      //  updateInfoBar();
 
         clearEntity();
-
 
         //      フリーモードなら
         if(mode == MFCModes.Free){
             startGame();
             return true;
         }
-
 
         sideBar.hidden = true;
         String title = "§cMFC 選手決定！!";
