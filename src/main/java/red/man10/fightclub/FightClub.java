@@ -1804,6 +1804,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
     }
 
+
+    /**
+     * 看板クリック処理
+     * @param e
+     */
     @EventHandler
     public void clickSignEvent(PlayerInteractEvent e) {
 
@@ -1820,6 +1825,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
                 Sign s = (Sign) e.getClickedBlock().getState();
                 Player p = e.getPlayer();
+
                 if (!s.getLine(0).equalsIgnoreCase("[MFC]")){
                     return;
                 }
@@ -1861,6 +1867,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                     return;
                 }
             if (s.getLine(1).equalsIgnoreCase("Lobby")) {
+                p.sendMessage("ロビーに戻ります");
                 teleportToLobby(e.getPlayer());
                 return;
             }
@@ -1907,51 +1914,6 @@ public final class FightClub extends JavaPlugin implements Listener {
                     log("Kit");
                     registerKitSign(e.getPlayer(),e.getClickedBlock().getLocation());
                   }
-
-            if(s.getLine(1).equalsIgnoreCase("bar")){
-                    if(s.getLine(2).equalsIgnoreCase("addplayer")){
-                        lifebar.addPlayer(e.getPlayer());
-                    }
-                    if(s.getLine(2).equalsIgnoreCase("setvisible")){
-                            lifebar.setVisible(true);
-                    }
-                    if(s.getLine(2).equalsIgnoreCase("setrtitle")){
-                        lifebar.setRname(s.getLine(3));
-                    }
-                    if(s.getLine(2).equalsIgnoreCase("setbtitle")){
-                        lifebar.setBname(s.getLine(3));
-                    }
-                    if(s.getLine(2).equalsIgnoreCase("setbbar")){
-                        lifebar.setBBar(Double.parseDouble(s.getLine(3)));
-                    }
-                    if(s.getLine(2).equalsIgnoreCase("setrbar")){
-                        lifebar.setRBar(Double.parseDouble(s.getLine(3)));
-                    }
-                    if(s.getLine(2).equalsIgnoreCase("hide")){
-                        lifebar.clearBar();
-                    }
-                    if(s.getLine(2).equalsIgnoreCase("removebplayer")){
-                        lifebar.removeBPlayer(e.getPlayer());
-                    }
-                    if(s.getLine(2).equalsIgnoreCase("removerplayer")){
-                        lifebar.removeRPlayer(e.getPlayer());
-                    }
-                    if(s.getLine(2).equalsIgnoreCase("reset")){
-                        lifebar.resetBar();
-                    }
-
-                }
-                /*if(s.getLine(1).equalsIgnoreCase("boss")){//ボスバーのサンプル
-                    BossBar b = Bukkit.createBossBar("Sho0", BarColor.BLUE, BarStyle.SOLID, new BarFlag[0]);
-                    BossBar r = Bukkit.createBossBar("hashing_bot", BarColor.RED, BarStyle.SOLID, new BarFlag[0]);
-
-                    b.addPlayer(e.getPlayer());
-                    r.addPlayer(e.getPlayer());
-
-                    b.setVisible(true);
-                    r.setVisible(true);
-                }*/
-
 
             }
 
