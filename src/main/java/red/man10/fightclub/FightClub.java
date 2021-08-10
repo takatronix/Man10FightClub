@@ -44,6 +44,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     double      registerKDRLimit = 0.2;
     String      worldName = "mfc";         // MFCワールド名
 
+    Location    lobby;
+
+
     // 自動BET設定
     double autoBetPrice = 0;
     String autoBetPlayerName = "MFC Auto Bet";
@@ -1444,6 +1447,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         this.newbiePlayableCount =  getConfig().getInt("newbiePlayableCount",10);
         this.registerKDRLimit  = getConfig().getDouble("registerKDRLimit",0.2);
 
+        // ロビー情報があれば読み込み
+        Object o =  getConfig().get("lobby");
+        if(o != null) {
+            this.lobby = (Location) o;
+        }
+
         serverMessage("賞金比率:"+this.prize);
         serverMessage("ニュービープレイ可能回数:"+this.newbiePlayableCount);
         serverMessage("KDRリミット:"+this.registerKDRLimit);
@@ -1561,6 +1570,14 @@ public final class FightClub extends JavaPlugin implements Listener {
             return;
         }
     }
+    @EventHandler
+    public void onPlayerRespawn( PlayerRespawnEvent e){
+        if(lobby == null){
+            return;
+        }
+        e.setRespawnLocation(lobby);
+    }
+
     /////////////////////////////////
     //      デスイベント
     /////////////////////////////////
@@ -1593,7 +1610,6 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //      生存者
         Player pa = Bukkit.getPlayer(fighters.get(lastIndex).uuid);
-
 
         //      死亡者をよみがえらせTPさせる
 
@@ -1858,14 +1874,15 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return;
             }
 
-                if (s.getLine(1).equalsIgnoreCase("Entry")) {
-                    if(!p.hasPermission(adminPermision)){
-                        p.sendMessage("管理者権限がありません");
-                        return;
-                    }
-                    startEntry();
+            if (s.getLine(1).equalsIgnoreCase("Entry")) {
+                if(!p.hasPermission(adminPermision)){
+                    p.sendMessage("管理者権限がありません");
                     return;
                 }
+                startEntry();
+                return;
+            }
+
             if (s.getLine(1).equalsIgnoreCase("Lobby")) {
                 p.sendMessage("ロビーに戻ります");
                 teleportToLobby(e.getPlayer());
@@ -2181,27 +2198,38 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     }
 
-    //      アリーナにいる全員をロビーに移動
+
+    /**
+     * MFCにいるプレイヤーをロビーに
+     */
     public void tpaLobby(){
-        Object o =  getConfig().get("lobby");
-        if(o != null){
-            Location loc = (Location)o;
-            for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                if(player.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
-                    player.teleport(loc);
-                    player.setGameMode(GameMode.SURVIVAL);
-                    //fixTpBug(player);
+        if(lobby == null){
+            return;
+        }
+
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+            if(player.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
+                if(player.isOp()){
+                    player.sendMessage("ロビーに招集をかけられたがOPのため無視する");
+                    continue;
                 }
+                player.teleport(lobby);
+                player.setGameMode(GameMode.SURVIVAL);
+                //fixTpBug(player);
             }
         }
     }
+
+    /**
+     * ロビーにプレイヤーを移動
+     * @param p
+     */
     public void teleportToLobby(Player p){
-        Object o =  getConfig().get("lobby");
-        if(o != null){
-            Location loc = (Location)o;
-            p.teleport(loc);
-            //_fixTpBug(p);
+        if(lobby == null){
+            p.sendMessage("ロビーが未設定のためもどれません");
+            return;
         }
+        p.teleport(lobby);
     }
 
     void loadArenaConfig(){
