@@ -1,6 +1,4 @@
 package red.man10.fightclub;
-
-
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -23,11 +21,8 @@ import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.projectiles.ProjectileSource;
-import red.man10.LifeBar;
-import red.man10.TitleBar;
+import red.man10.*;
 import red.man10.Utility;
-import red.man10.VaultManager;
-
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -44,12 +39,18 @@ public final class FightClub extends JavaPlugin implements Listener {
     long        entryPrice = 10000;        //  ミニマムベットプライス
     double      prize = 0.05;
     double      tax   = 0;
-
     int         betLimit = 1000;
-
     int         newbiePlayableCount = 10;
     double      registerKDRLimit = 0.2;
+    String      worldName = "mfc";         // MFCワールド名
 
+    // 自動BET設定
+    double autoBetPrice = 0;
+    String autoBetPlayerName = "MFC Auto Bet";
+    String autoBetUUID = "43986c19-28ec-408f-a217-5a97b4ac8991";
+
+
+    //  Permissions
     String adminPermision = "man10.fightclub.admin";
     String betPermision = "man10.fightclub.bet";
     String registerPermision = "man10.fightclub.register";
@@ -58,7 +59,6 @@ public final class FightClub extends JavaPlugin implements Listener {
     FightClubGUI gui = new FightClubGUI(this);
     LifeBar lifebar = new LifeBar(this);
     TitleBar titlebar = new TitleBar(this);
-
     VaultManager vault = null;
     FightClubData data = null;
 
@@ -66,8 +66,10 @@ public final class FightClub extends JavaPlugin implements Listener {
     //    Fight ID （データベースキー）OpenFightでアップデートされる
     int fightId = -1;
 
-    String      worldName = "mfc";
+    // MFC Kit
+    KitCommand kitCommand = new KitCommand(this);
 
+    // MFCのモード
     public enum MFCModes {
         Off,
         Free,           //  自由に遊べる、通知はしない
@@ -76,6 +78,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         Pro             //  グローバル通知あり
     }
     MFCModes           mode;
+
 
     //   状態遷移 これらの状態遷移する
     public enum Status {
@@ -99,12 +102,17 @@ public final class FightClub extends JavaPlugin implements Listener {
             death = data.deathCount(uuid);
             prize = data.totalPrize(uuid);
         }
+
+        /**
+         * MFCScore
+         * @return
+         */
+        int getScore(){
+            double d = this.prize /  (double)(this.kill + this.death) * 0.001;
+            return (int)d;
+        }
     }
-    //      購入者情報
-    class  BuyerInformation{
-        UUID    uuid;
-        String name;
-    }
+
     //      賭け情報
     class  BetInformation{
         UUID     buyerUUID;       //  購入者のUUID
@@ -113,6 +121,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         double bet;             //  掛け金
     }
 
+    //
     Status  currentStatus = Entry;
 
     //      対戦まちリスト
@@ -121,27 +130,19 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      対戦者リスト
     ArrayList<PlayerInformation> fighters = new ArrayList<>();
 
-    //      観戦者リスト
-   // ArrayList<PlayerInformation> spectators = new ArrayList<PlayerInformation>();
-
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<>();
-
-    /*
-    //      ブラックリスト
-    ArrayList<UUID> blacklist = new ArrayList<UUID>();
-    //      ホワイトリスト
-    ArrayList<UUID> whitelist = new ArrayList<UUID>();
-    //     Pro
-    ArrayList<UUID> prolist = new ArrayList<UUID>();
-    Boolean enbaleBlackList = true;
-    Boolean enableWhitelist = true;
-    */
 
     FightClubList whitelist = null;
     FightClubList blacklist = null;
     FightClubList prolist = null;
 
+
+    /**
+     * MFCのモード設定を行う
+     * @param sender
+     * @param mode
+     */
     public  void setMFCMode(CommandSender sender,MFCModes mode){
 
         cancelGame();
@@ -163,7 +164,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             title = "§bMFC 通常モード";
             subTitle = "誰でも参加できます。KDR0.2以下になると参加できません";
             enableMFC(sender,true);
-
         }
         if(mode == MFCModes.WhiteList){
             title = "MFC ホワイトリスト";
@@ -173,16 +173,22 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(mode == MFCModes.Pro){
             title = "§e§kXXXXX  §4§l【MFC Pro】§e§kXXXXX";
             subTitle = "§e§l勝者を予想して、§e§n大金§e§lをゲットしよう！！！";
-
             enableMFC(sender,true);
         }
-
-
         sendTitleToAllWithSound(title,subTitle,20,140,20,Sound.ENTITY_WITHER_SPAWN,1,1);
-
     }
 
-    //      タイトルバーに表示
+    /**
+     * タイトルバーで表示 / モードによって配信エリアを分ける Proのみ全配信
+     * @param mainText
+     * @param subText
+     * @param fadeIn
+     * @param stay
+     * @param fadeOut
+     * @param s
+     * @param volume
+     * @param pitch
+     */
     public void sendTitleToAllWithSound(String mainText,String subText,int fadeIn,int stay,int fadeOut,Sound s,float volume,float pitch) {
         if( mode == MFCModes.Pro){
             titlebar.sendTitleToAllWithSound(mainText,subText,fadeIn,stay,fadeOut,s,volume,pitch);
@@ -191,19 +197,27 @@ public final class FightClub extends JavaPlugin implements Listener {
         for(Player p :Bukkit.getWorld(worldName).getPlayers()){
             titlebar.sendTitleWithSound(p,mainText,subText,fadeIn,stay,fadeOut,s,volume,pitch);
         }
-
     }
 
-
-        public boolean isFighter(UUID uuid){
+    /**
+     * ファイターかどうか
+     * @param uuid
+     * @return　true / false
+     */
+    public boolean isFighter(UUID uuid){
         for(PlayerInformation pi :fighters){
             if(pi.uuid == uuid){
                 return true;
             }
         }
-       // Bukkit.getLogger().info("");
         return false;
     }
+
+    /**
+     * 選手登録解除
+     * @param uuid
+     * @return
+     */
     public boolean unregisterFighter(UUID uuid){
         ////////////////////////////////////
         //      すでに登録されてたらエラー
@@ -211,19 +225,21 @@ public final class FightClub extends JavaPlugin implements Listener {
         for(int i = 0;i < waiters.size();i++){
             PlayerInformation fighter = waiters.get(i);
             if(fighter.uuid == uuid){
-
                 waiters.remove(i);
                 updateSidebar();;
-
-//                vault.deposit(uuid, entryPrice);
                 return true;
             }
         }
         return false;
     }
-    ////////////////////////////////
-    //       対戦者登録
-    ////////////////////////////////
+
+    /**
+     * 選手登録
+     * @param s
+     * @param uuid
+     * @param name
+     * @return
+     */
     public int registerFighter(CommandSender s,UUID uuid,String name){
 
         ////////////////////////////////////
@@ -236,7 +252,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return -1;
             }
         }
-        Player p = Bukkit.getPlayer(uuid);
+
         if(mode != MFCModes.Free){
             if(vault.getBalance(uuid) < entryPrice){
                 s.sendMessage("参加費用が足りません");
@@ -248,7 +264,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             s.sendMessage("ブラックリストに登録されているため参加できません");
             return -5;
         }
-
 
         //      プロモード中はプロしか登録できない
         if( mode == MFCModes.Pro){
@@ -266,7 +281,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
 
-
         //      プロモード中はプロしか登録できない
         if( mode == MFCModes.WhiteList){
             if(whitelist.find(uuid.toString()) == -1){
@@ -274,8 +288,6 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return -7;
             }
         }
-
-
         //      DBでKDR情報を取得してから処理
         PlayerInformation playerInfo = new PlayerInformation();
         playerInfo.uuid = uuid;
@@ -283,8 +295,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         playerInfo.isDead = false;
         playerInfo.returnLoc = Bukkit.getPlayer(uuid).getLocation();
         if(data != null){
-
-            // KDRなどの情報をスレッドで取得する
+            // KDRなどの情報をスレッドで取得する(非同期) -> 取得後登録処理
             Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
                 playerInfo.kill = data.killCount(uuid);
                 playerInfo.death = data.deathCount(uuid);
@@ -296,22 +307,24 @@ public final class FightClub extends JavaPlugin implements Listener {
                         RegisterPlayerTask(playerInfo,s, name);
                     }
                 });
-
             });
         }
-
 
         return 0;
     }
 
-
-
-    int RegisterPlayerTask(PlayerInformation playerInfo,CommandSender s,String name){
+    /**
+     * 選手登録処理
+     * @param playerInfo
+     * @param s
+     * @param name
+     * @return
+     */
+    private int RegisterPlayerTask(PlayerInformation playerInfo,CommandSender s,String name){
         if(mode != MFCModes.Free){
             resetEnetryTimer();
         }
         Player p = Bukkit.getPlayer(playerInfo.uuid);
-        //String str = String.format("");
 
         int play = playerInfo.kill + playerInfo.death;
         String kdrs = "0.00";
@@ -360,47 +373,34 @@ public final class FightClub extends JavaPlugin implements Listener {
         return waiters.size();
     }
 
-    public int addBlocklist(CommandSender sender,UUID uuid){
-        return 0;
-    }
-    public int whiteBlocklist(CommandSender sender,UUID uuid){
-        return 0;
-
-    }
-
-    public int kick(CommandSender sender,UUID uuid){
-
-        return 0;
-    }
-    public int ban(CommandSender sender,UUID uuid){
-
-        return 0;
-    }
-
-    //      観戦者
+    /**
+     * 観戦者登録
+     * @param uuid
+     * @return
+     */
     public int registerSpectator(UUID uuid){
-
-        //      スポンへ移動
-        Player p = Bukkit.getPlayer(uuid);
+    Player p = Bukkit.getPlayer(uuid);
         tp(p,selectedArena,"spawn");
-      //  p.setGameMode(GameMode.SPECTATOR);
-
-   //     updateSidebar();
-     //   return spectators.size();
         return 0;
     }
 
+    /**
+     * 観戦者登録解除
+     * @param uuid
+     * @return
+     */
     public int unregisterSpectator(UUID uuid){
-
-        //      もとの場所にもどす
         Player player = Bukkit.getPlayer(uuid);
         player.setGameMode(GameMode.SURVIVAL);
         tpLobby(player);
-
         return 0;
     }
 
-    //
+    /**
+     * ファイターインデックス取得
+     * @param uuid
+     * @return
+     */
     int getFighterIndex(UUID uuid) {
         for(int i = 0;i < fighters.size();i++){
             if(fighters.get(i).uuid == uuid){
@@ -409,7 +409,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return -1;
     }
-    //      生存者数
+
+    /**
+     * ファイターの生存者数を取得
+     * @return
+     */
     int getAliveFighterCount() {
         int ret = 0;
         for (PlayerInformation fighter : fighters) {
@@ -435,19 +439,38 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
 
-
-
-    double getFighterBetMoney(UUID uuid){
-
-
+    /**
+     * 選手にかけれた金額を取得
+     * @param uuid
+     * @return
+     */
+    public double getFighterBetMoney(UUID uuid){
         int index = getFighterIndex(uuid);
         if(index == -1){
             return 0;
         }
         return getFighterBets(index);
-
     }
-    //      購入された数
+    /**
+     * 選手にかけれた金額
+     * @param fighterIndex
+     * @return
+     */
+    double getFighterBets(int fighterIndex){
+        double totalBet = 0;
+        for (BetInformation bet : bets) {
+            if (bet.fighterIndex == fighterIndex) {
+                totalBet += bet.bet;
+            }
+        }
+        return totalBet;
+    }
+    /**
+     * 選手にかけられた数取得
+     *
+     * @param uuid
+     * @return
+     */
     int getFighterBetCount(UUID uuid){
         int index = getFighterIndex(uuid);
         if(index == -1){
@@ -463,9 +486,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         return count;
     }
 
-    //////////////////////
-    //      odds
-    //////////////////////
+    /**
+     * 選手のオッズを取得
+     * @param uuid
+     * @return
+     */
     double getFighterOdds(UUID uuid){
 
         //      購入された金額
@@ -478,20 +503,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         return (total - getCost()) / bet;
     }
 
-    double getFighterBets(int fighterIndex){
-        double totalBet = 0;
-        for (BetInformation bet : bets) {
-            if (bet.fighterIndex == fighterIndex) {
-                totalBet += bet.bet;
-            }
-        }
-        return totalBet;
-    }
-
-    ///////////////////////////////////
-    //      トータル掛け金
-    ///////////////////////////////////
-    double getTotalBet(){
+    /**
+     * トータル賭け金額取得
+     * @return
+     */
+    public double getTotalBet(){
         double totalBet = 0;
         for (BetInformation bet : bets) {
             totalBet += bet.bet;
@@ -500,7 +516,12 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
 
-    Boolean canBet(UUID buyerUUID){
+    /**
+     * ユーザーがかけられるのか？
+     * @param buyerUUID
+     * @return
+     */
+    public boolean canBet(UUID buyerUUID){
         //          ファイターは登録できません
         for (PlayerInformation fighter : fighters) {
             if (fighter.uuid == buyerUUID) {
@@ -511,16 +532,19 @@ public final class FightClub extends JavaPlugin implements Listener {
         return true;
     }
 
-    //////////////////////////////////////////////
-    //     プレイーやに賭ける 成功なら掛け金テーブルindex
-    //////////////////////////////////////////////
-    int  betFighter(UUID fighterUUID,double price,UUID buyerUUID,String buyerName){
+    /**
+     * プレイーやに賭ける
+     * @param fighterUUID
+     * @param price
+     * @param buyerUUID
+     * @param buyerName
+     * @return 成功なら掛け金テーブルindex
+     */
+    public int  betFighter(UUID fighterUUID,double price,UUID buyerUUID,String buyerName){
 
         if(price <= 0){
             return -1;
         }
-
-
         int index = getFighterIndex(fighterUUID);
         if(index == -1){
             return -1;
@@ -564,19 +588,14 @@ public final class FightClub extends JavaPlugin implements Listener {
         String mes =  buyerName+"は"+fighters.get(index).name+"へ§e"+Utility.getPriceString(price)+"§fベットした！ -> "+ods;
         serverMessage(mes);
 
-      //  lifebar.setInfoName(mes);
-
+        // プロは賭けられると時間延長
         if(mode == MFCModes.Pro){
             if(price >= 10000){
                 resetBetTimer();
             }
-
         }else{
             resetBetTimer();
-
         }
-
-
 
         return bets.size();
     }
@@ -614,31 +633,30 @@ public final class FightClub extends JavaPlugin implements Listener {
         return 0;
     }
 
-    //      MFC有効無効
+
+    /**
+     * MFCリロード
+     * @param sender
+     * @return
+     */
     int reload(CommandSender sender){
         //      管理者権限チェック
         if(checkAdminPermission(sender)){
             return 0;
         }
-
         serverMessage("MFC Reloading...");
-
         loadConfig();
-
-
         updateSidebar();
         updateLifeBar();
-
-
         serverMessage("MFC Reloaded.");
         return 0;
     }
 
-    //////////////////////////////////////////////
-    //      ゲームを中断する  払い戻し後ステータスを Closedへ
-    //////////////////////////////////////////////
-    int cancelGame(){
-
+    /**
+     * ゲーム中断 -> 払い戻し後ステータスを Closedへ
+     * @return
+     */
+    public int cancelGame(){
         showTitle("試合中断!","試合はキャンセルされ返金されます",3,0);
         serverMessage("試合中断！ 試合はキャンセルされ返金されます");
 
@@ -647,7 +665,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             vault.deposit(bet.buyerUUID, bet.bet);
         }
         bets.clear();
-
         resetBetTimer();
         resetEnetryTimer();
         resetFightTimer();
@@ -665,25 +682,20 @@ public final class FightClub extends JavaPlugin implements Listener {
         //     ファイター移動
         //tpf(selectedArena,"spawn");
         startEntry();
-
-
         return 0;
     }
 
     boolean pauseTimer = false;
 
-
-
+    /**
+     * ゲームを開始できるか？
+     * @return  true/false
+     */
     public boolean canStartGame(){
 
         if(mode == MFCModes.Free){
             return true;
         }
-
-
-        UUID id0 = fighters.get(0).uuid;
-        UUID id1 = fighters.get(1).uuid;
-
         double    limit = betLimit;
         //      双方にベットされているか
         if(getFighterBetMoney(fighters.get(0).uuid) < limit){
@@ -692,8 +704,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         //      双方にベットされているか
         return !(getFighterBetMoney(fighters.get(1).uuid) < limit);
     }
-    //      募集開始
 
+    /**
+     * ゲーム開始
+     * @return
+     */
     public int startGame(){
         gui.closeInMenu();
         if(fighters.size() < 2){
@@ -702,20 +717,20 @@ public final class FightClub extends JavaPlugin implements Listener {
             return 0;
         }
 
-
         if(!canStartGame()){
             serverMessage("ベットされた金額が足らないため試合をキャンセルします");
             cancelGame();
             return 0;
         }
 
-        sideBar.show();
         pauseTimer = true;
+
+        sideBar.show();
         updateInfoBar();
-
+        updateInfoBar();
         showLifeBar();
-
         resetFightTimer();
+
 
         Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
         Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
@@ -735,11 +750,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         String inf0 = fighterInfo(fighters.get(0));
         String inf1 = fighterInfo(fighters.get(1));
 
-//        String f0o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d ",o0,getScore(fighters.get(0))) ;
-//        String f1o = String.format(" Odds:§b§lx%.2f §f§lScore:§c§l%d ",o1,getScore(fighters.get(1)));
         String f0o = String.format(" 倍率:§b§l%.2f倍 §f§lScore:§c§l%d ",o0,getScore(fighters.get(0))) ;
         String f1o = String.format(" 倍率:§b§l%.2f倍 §f§lScore:§c§l%d ",o1,getScore(fighters.get(1)));
-
 
         if(mode != MFCModes.Free){
             this.fightId = data.createFight(selectedArena,selectedKit,f0.getUniqueId(),f1.getUniqueId(),o0,o1,b0,b1,getPrize(),getTotalBet());
@@ -752,12 +764,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         resetPlayerStatus(f0);
         resetPlayerStatus(f1);
 
+        // キット設定
         command("man10kit set " + f0.getName() + " " + selectedKit);
         command("man10kit set " + f1.getName() + " " + selectedKit);
 
-
+        //  タイトルバー表示
         String subTitle =  "§1"+f0.getName() + " §fvs " + "§4"+f1.getName();
-
         showTitle("§c3",subTitle, 0.5,0);
         showTitle("§c2",subTitle, 0.5,1);
         showTitle("§c1",subTitle, 0.5,2);
@@ -766,15 +778,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         showTitle(title,subTitle, 1,3);
         serverMessage(title);
         serverMessage(subTitle);
-
-        /*
-        // for spigot invisible bug
-        f0.hidePlayer(this,f1);
-        f1.hidePlayer(this,f0);
-        f0.showPlayer(this,f1);
-        f1.showPlayer(this,f0);
-*/
-
 
         Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
             tpWaiterToArena();
@@ -786,7 +789,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         updateSidebar();
         sideBar.show();
 
-
+        //   戦闘開始へ
         currentStatus = Fighting;
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
@@ -809,7 +812,12 @@ public final class FightClub extends JavaPlugin implements Listener {
             p.setExhaustion(0);
             p.setHealth(p.getHealthScale());
     }
-    public int startEntry(){
+
+    /**
+     * エントリ開始
+     * @return
+     */
+    public void startEntry(){
         resetEnetryTimer();
         resetFightTimer();
         resetBetTimer();
@@ -822,10 +830,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         saveCurrentStatus();
         pauseTimer = false;
         lifebar.setInfoBar(0);
-
-        return 0;
     }
 
+    /**
+     * 現在ステータス保存
+     */
     public void saveCurrentStatus(){
         if(currentStatus == Closed){
             getConfig().set("Disabled",true);
@@ -957,6 +966,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }, 500);
 
 
+        // 投票タイマー開始
         resetBetTimer();
 
 
@@ -964,10 +974,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         currentStatus = Opened;
         updateSidebar();
 
-        saveCurrentStatus();
-
-
-        if(autoBetPrice >= 1000){
+        // 自動BET処理
+        if(autoBetPrice >= 0){
             UUID uuid = UUID.fromString(autoBetUUID);
             betFighter(fighters.get(0).uuid,autoBetPrice,uuid,autoBetPlayerName);
             betFighter(fighters.get(1).uuid,autoBetPrice,uuid,autoBetPlayerName);
@@ -976,9 +984,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         return true;
     }
 
-    double autoBetPrice = 0;
-    String autoBetPlayerName = "MFC Auto Bet";
-    String autoBetUUID = "43986c19-28ec-408f-a217-5a97b4ac8991";
 
     boolean broadcastTitle = true;
     public void showTitle(String title,String subTitle,double stay,double delay){
@@ -1721,18 +1726,27 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
     }
 
+
     int  getScore(FightClub.PlayerInformation inf){
         double d = inf.prize /  (double)(inf.kill + inf.death) * 0.001;
         return (int)d;
     }
 
-    //      ログメッセージ
-    void log(String text){
+
+    /**
+     * ログ
+     * @param text
+     */
+    private void log(String text){
         getLogger().info("[MFC]:"+text);
     }
 
-    //     サーバーメッセージ
-    void serverMessage(String text){
+
+    /**
+     *
+     * @param text
+     */
+    public void serverMessage(String text){
 
         var mfcWorld = Bukkit.getWorld(worldName);
         if(mfcWorld == null){
@@ -1740,8 +1754,8 @@ public final class FightClub extends JavaPlugin implements Listener {
             return;
         }
 
-
         if( mode == MFCModes.Pro){
+            // TODO: deprecated いつか直す
             Bukkit.getServer().broadcastMessage(prefix +  text);
             return;
         }
