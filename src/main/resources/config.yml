@@ -5,7 +5,7 @@ mysql:
   pass: password
   db: man10_fightclub
 tax: 0
-prize: 0.5
+prize: 0.05
 fee: 1000
 autobet: 1000
 worldName: mfc

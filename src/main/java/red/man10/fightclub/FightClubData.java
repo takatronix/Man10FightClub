@@ -20,12 +20,6 @@ public class FightClubData {
     public FightClubData(FightClub plugin) {
         this.plugin = plugin;
         this.mysql = new MySQLManager(plugin,"MFC");
-        //this.mysql.debugMode = true;
-
-        mysql.execute(sqlCreateFightTable);
-        mysql.execute(sqlCreateBetTable);
-        mysql.execute(sqlCreateFightProTable);
-        mysql.execute(sqlCreateBetProTable);
     }
 
     public String getBetTable(){
@@ -61,6 +55,7 @@ public class FightClubData {
             {
                 ret = rs.getInt("count(*)");
             }
+            rs.close();
         }
         catch (SQLException e)
         {
@@ -81,6 +76,7 @@ public class FightClubData {
             {
                 ret = rs.getInt("count(*)");
             }
+            rs.close();
         }
         catch (SQLException e)
         {
@@ -101,6 +97,7 @@ public class FightClubData {
             {
                 ret = rs.getDouble("sum(prize)");
             }
+            rs.close();
         }
         catch (SQLException e)
         {
@@ -122,6 +119,7 @@ public class FightClubData {
             {
                 ret = rs.getInt("id");
             }
+            rs.close();
         }
         catch (SQLException e)
         {
@@ -166,6 +164,20 @@ public class FightClubData {
     }
 
 
+    /**
+     * ゲーム作成
+     * @param stage
+     * @param kit
+     * @param uuid1
+     * @param uuid2
+     * @param odds1
+     * @param odds2
+     * @param bet1
+     * @param bet2
+     * @param prize
+     * @param totalBet
+     * @return
+     */
     public int createFight(String stage,String kit,  UUID uuid1,UUID uuid2,double odds1,double odds2,int bet1,int bet2,double prize,double totalBet){
 
         String name1 = Bukkit.getOfflinePlayer(uuid1).getName();
@@ -227,81 +239,4 @@ public class FightClubData {
         String currentTime = sdf.format(date);
         return currentTime;
     }
-
-
-
-
-    String sqlCreateFightTable = "CREATE TABLE `mfc_fight` (\n" +
-            "  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,\n" +
-            "  `datetime` datetime NOT NULL COMMENT '日付',\n" +
-            "  `kit` varchar(40) NOT NULL DEFAULT '',\n" +
-            "  `stage` varchar(40) NOT NULL DEFAULT '',\n" +
-            "  `uuid1` varchar(40) NOT NULL COMMENT 'UUID',\n" +
-            "  `uuid2` varchar(40) NOT NULL DEFAULT '' COMMENT 'UUID',\n" +
-            "  `player1` varchar(40) NOT NULL DEFAULT '' COMMENT 'UUID',\n" +
-            "  `player2` varchar(40) NOT NULL DEFAULT '' COMMENT 'UUID',\n" +
-            "  `odds1` double DEFAULT NULL,\n" +
-            "  `odds2` double DEFAULT NULL,\n" +
-            "  `bet1` int(11) DEFAULT NULL,\n" +
-            "  `bet2` int(11) DEFAULT NULL,\n" +
-            "  `totalbet` double DEFAULT NULL,\n" +
-            "  `prize` double DEFAULT NULL,\n" +
-            "  `result` int(11) DEFAULT NULL COMMENT '0:Cancel 1:player1 2:player2',\n" +
-            "  `winner` varchar(40) DEFAULT '' COMMENT 'UUID',\n" +
-            "  `loser` varchar(40) DEFAULT NULL COMMENT 'UUID',\n" +
-            "  `duration` float DEFAULT NULL,\n" +
-            "  PRIMARY KEY (`id`)\n" +
-            ") ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;";
-
-    String sqlCreateBetTable = "CREATE TABLE `mfc_bet` (\n" +
-            "  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,\n" +
-            "  `fight_id` int(11) DEFAULT NULL,\n" +
-            "  `datetime` datetime NOT NULL COMMENT '日付',\n" +
-            "  `name` varchar(40) NOT NULL DEFAULT '' COMMENT 'ユーザー名',\n" +
-            "  `uuid` varchar(40) NOT NULL DEFAULT '' COMMENT 'UUID',\n" +
-            "  `bet` double DEFAULT NULL,\n" +
-            "  `win` tinyint(1) DEFAULT NULL COMMENT '勝敗',\n" +
-            "  `fighter_uuid` varchar(40) NOT NULL DEFAULT '' COMMENT 'UUID',\n" +
-            "  `fighter_name` varchar(40) NOT NULL DEFAULT '' COMMENT 'ユーザー名',\n" +
-            "  `odds` double DEFAULT NULL COMMENT 'オッズ',\n" +
-            "  `profit` double DEFAULT NULL COMMENT '収益',\n" +
-            "  PRIMARY KEY (`id`)\n" +
-            ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
-    String sqlCreateFightProTable = "CREATE TABLE `mfcpro_fight` (\n" +
-            "  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,\n" +
-            "  `datetime` datetime NOT NULL COMMENT '日付',\n" +
-            "  `kit` varchar(40) NOT NULL DEFAULT '',\n" +
-            "  `stage` varchar(40) NOT NULL DEFAULT '',\n" +
-            "  `uuid1` varchar(40) NOT NULL COMMENT 'UUID',\n" +
-            "  `uuid2` varchar(40) NOT NULL DEFAULT '' COMMENT 'UUID',\n" +
-            "  `player1` varchar(40) NOT NULL DEFAULT '' COMMENT 'UUID',\n" +
-            "  `player2` varchar(40) NOT NULL DEFAULT '' COMMENT 'UUID',\n" +
-            "  `odds1` double DEFAULT NULL,\n" +
-            "  `odds2` double DEFAULT NULL,\n" +
-            "  `bet1` int(11) DEFAULT NULL,\n" +
-            "  `bet2` int(11) DEFAULT NULL,\n" +
-            "  `totalbet` double DEFAULT NULL,\n" +
-            "  `prize` double DEFAULT NULL,\n" +
-            "  `result` int(11) DEFAULT NULL COMMENT '0:Cancel 1:player1 2:player2',\n" +
-            "  `winner` varchar(40) DEFAULT '' COMMENT 'UUID',\n" +
-            "  `loser` varchar(40) DEFAULT NULL COMMENT 'UUID',\n" +
-            "  `duration` float DEFAULT NULL,\n" +
-            "  PRIMARY KEY (`id`)\n" +
-            ") ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;";
-
-    String sqlCreateBetProTable = "CREATE TABLE `mfcpro_bet` (\n" +
-            "  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,\n" +
-            "  `fight_id` int(11) DEFAULT NULL,\n" +
-            "  `datetime` datetime NOT NULL COMMENT '日付',\n" +
-            "  `name` varchar(40) NOT NULL DEFAULT '' COMMENT 'ユーザー名',\n" +
-            "  `uuid` varchar(40) NOT NULL DEFAULT '' COMMENT 'UUID',\n" +
-            "  `bet` double DEFAULT NULL,\n" +
-            "  `win` tinyint(1) DEFAULT NULL COMMENT '勝敗',\n" +
-            "  `fighter_uuid` varchar(40) NOT NULL DEFAULT '' COMMENT 'UUID',\n" +
-            "  `fighter_name` varchar(40) NOT NULL DEFAULT '' COMMENT 'ユーザー名',\n" +
-            "  `odds` double DEFAULT NULL COMMENT 'オッズ',\n" +
-            "  `profit` double DEFAULT NULL COMMENT '収益',\n" +
-            "  PRIMARY KEY (`id`)\n" +
-            ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
-
 }

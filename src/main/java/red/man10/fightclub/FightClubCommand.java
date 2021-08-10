@@ -84,9 +84,7 @@ public class FightClubCommand  implements CommandExecutor {
             plugin.autoBetPrice = money;
             plugin.serverMessage("自動ベット金額を"+ Utility.getPriceString(money)+"に設定しました");
             plugin.getConfig().set("autobet",(int)plugin.autoBetPrice);
-
             plugin.saveConfig();
-
             return false;
         }
 
@@ -188,13 +186,13 @@ public class FightClubCommand  implements CommandExecutor {
 
             Player fighter = Bukkit.getPlayer(args[1]);
             if (fighter == null) {
-                p.sendMessage(ChatColor.RED + "Error: " + args[1] +" is offline!!");
+                p.sendMessage(ChatColor.RED + "Error: " + args[1] +" はオフラインです");
                 return false;
             }
 
             boolean ret = plugin.unregisterFighter(fighter.getUniqueId());
             if (ret == false){
-                p.sendMessage(ChatColor.RED + "Error: " + args[1] +" is already unregistered!");
+                p.sendMessage(ChatColor.RED + "Error: " + args[1] +" はすでに登録解除されています");
                 return false;
             }
          //   showOdds(p);
@@ -305,7 +303,7 @@ public class FightClubCommand  implements CommandExecutor {
                 return false;
             }
             if(plugin.currentStatus == FightClub.Status.Fighting){
-                p.sendMessage(plugin.prefix + "戦闘中はベットできません");
+                p.sendMessage(plugin.prefix + "試合中はベットできません");
                 return false;
             }
             double money = Double.parseDouble(args[2]);
@@ -319,7 +317,10 @@ public class FightClubCommand  implements CommandExecutor {
                 p.sendMessage(ChatColor.RED+ "残高が足りません！！");
                 return false;
             }
-
+            if(money < plugin.minBetPrice){
+                p.sendMessage(ChatColor.RED+ Utility.getPriceString(plugin.minBetPrice)+"以下のベットはできません");
+                return false;
+            }
 
             if(plugin.betFighter(fighter.getUniqueId(),money,p.getUniqueId(),buyer) == -1){
                 p.sendMessage("Error :" + args[1] +"is not on entry!");
@@ -464,8 +465,9 @@ public class FightClubCommand  implements CommandExecutor {
             int count = plugin.getFighterBetCount(info.uuid);
 
             double odds = plugin.getFighterOdds(info.uuid);
+            String ods = String.format("§b§l倍率:%.2f倍",odds);
 
-            p.sendMessage("["+i+"]:" +info.name +" Death:"+ info.isDead +"   $"+price +"  Count:"+count+"  倍率:"+odds+"倍");
+            p.sendMessage("["+i+"]:" +info.name +" Death:"+ info.isDead +"   $"+price +"  Count:"+count+" "+ods);
         }
         p.sendMessage("-------------------------");
         p.sendMessage("total: $"+plugin.getTotalBet());
