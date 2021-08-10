@@ -16,6 +16,7 @@ import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -350,6 +351,38 @@ public class KitCommand implements CommandExecutor {
         }
 
         return true;
+    }
+
+
+
+    //      キット
+    public List<String> getList() {
+
+        List<String> ret  = new ArrayList<String>();
+
+        File folder = new File(Bukkit.getServer().getPluginManager().getPlugin(pluginName).getDataFolder(), File.separator + "Kits");
+
+        File[] files = folder.listFiles();  // (a)
+        for (File f : files) {
+            if (f.isFile()){  // (c)
+                String filename = f.getName();
+
+                if(filename.substring(0,1).equalsIgnoreCase(".")){
+                    continue;
+                }
+                //      先頭に_がつくキットは除外する
+                if(filename.substring(0,1).equalsIgnoreCase("_")){
+                    continue;
+                }
+                int point = filename.lastIndexOf(".");
+                if (point != -1) {
+                    String kitName =  filename.substring(0, point);
+                    ret.add(kitName);
+                }
+            }
+        }
+
+        return ret;
     }
 
     /**

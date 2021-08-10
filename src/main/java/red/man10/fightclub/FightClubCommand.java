@@ -2,7 +2,6 @@ package red.man10.fightclub;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -10,7 +9,6 @@ import org.bukkit.entity.Player;
 import red.man10.Utility;
 
 import java.util.UUID;
-import java.util.logging.Filter;
 
 /**
  * Created by takatronix on 2017/03/01.
@@ -251,7 +249,7 @@ public class FightClubCommand  implements CommandExecutor {
         }
 
         if(args[0].equalsIgnoreCase("lobby")){
-            plugin.tpLobby(p);
+            plugin.teleportToLobby(p);
             return true;
         }
         if(args[0].equalsIgnoreCase("watch")){
@@ -526,6 +524,8 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c*/mfc autobet [money] - 自動ベットする金額");
         p.sendMessage("§c*/mfc fee [money] - register時に必要な金額");
         p.sendMessage("§c*/mfc prize [掛け率] - 賞金の比率");
+
+        plugin.kitCommand.showHelp(p);
 
        // p.sendMessage("-----------アリーナ(Console)-----------");
        // p.sendMessage("§c*/mfca tpa - 登録者全員を選択中のアリーナ(spawn)へ移動");
