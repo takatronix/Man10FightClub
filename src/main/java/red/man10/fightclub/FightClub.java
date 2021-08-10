@@ -1050,8 +1050,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
                 for(Player p :Bukkit.getOnlinePlayers()){
                     if(p != null){
-                        if(p.getWorld().getName().toString().equalsIgnoreCase(selectedArena)){
-                            titlebar.sendTitleWithSound(p,title,subTitle,20,20,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+                        if(p.getWorld().getName().toString().equalsIgnoreCase(worldName)){
+                            titlebar.sendTitleWithSound(p,title,subTitle,20,stayTick,20,Sound.ENTITY_WITHER_SPAWN,1,1);
 
                         }
                     }
