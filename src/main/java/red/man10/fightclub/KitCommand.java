@@ -439,7 +439,7 @@ public class KitCommand implements CommandExecutor {
     public boolean pop(Player p){
 
         String fileName = p.getUniqueId().toString();
-        File userdata = new File(Bukkit.getServer().getPluginManager().getPlugin("Man10Kit").getDataFolder(), File.separator + "Users");
+        File userdata = new File(Bukkit.getServer().getPluginManager().getPlugin(pluginName).getDataFolder(), File.separator + "Users");
         File f = new File(userdata, File.separator + fileName + ".yml");
         FileConfiguration data = YamlConfiguration.loadConfiguration(f);
         if (!f.exists()) {
