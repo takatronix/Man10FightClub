@@ -151,7 +151,7 @@ public class FightClubSideBar {
             s = s.substring(0,40);
         }
 
-        sideBar.setScore(s,plugin.getScore(f));
+        sideBar.setScore(s,f.getScore());
     }
 
     void addPlayer(Player p){

@@ -62,17 +62,11 @@ public class FightClubArenaCommand  implements CommandExecutor {
             plugin.setlobby(p);
             return true;
         }
-
-        //
         if(args[0].equalsIgnoreCase("settp")) {
 
             plugin.settp((Player)sender,plugin.selectedArena,args[1]);
         }
-
-
         return true;
     }
-
-
 
 }

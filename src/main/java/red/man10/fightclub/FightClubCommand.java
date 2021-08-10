@@ -1,5 +1,4 @@
 package red.man10.fightclub;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -8,7 +7,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import red.man10.Utility;
 
-import java.util.UUID;
 
 /**
  * Created by takatronix on 2017/03/01.
@@ -426,7 +424,6 @@ public class FightClubCommand  implements CommandExecutor {
 
         String target = args[2];
         Player p = Bukkit.getPlayer(target);
-        UUID uuid = p.getUniqueId();
 
         ///     追加
         if(args[1].equalsIgnoreCase("add")){
@@ -525,15 +522,8 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c*/mfc fee [money] - register時に必要な金額");
         p.sendMessage("§c*/mfc prize [掛け率] - 賞金の比率");
 
-        plugin.kitCommand.showHelp(p);
-
-       // p.sendMessage("-----------アリーナ(Console)-----------");
-       // p.sendMessage("§c*/mfca tpa - 登録者全員を選択中のアリーナ(spawn)へ移動");
-        //p.sendMessage("§c*/mfca tpu [Player] player1");
-        //p.sendMessage("§c*/mfca tpu [Player] player2");
-        //p.sendMessage("§c*/mfca tpu [Player] spawn");
-
-
+        p.sendMessage("-----------キット-----------");
+        p.sendMessage("§c*/mfckit help で詳細を確認");
 
     }
 }
