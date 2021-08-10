@@ -746,7 +746,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         // MFCはそのままゲームスタート
         if(mode == MFCModes.Free){
-            StartGameTask();
+            startGameTask();
             return 0;
         }
 
@@ -763,7 +763,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             this.fightId = data.createFight(selectedArena,selectedKit,f0.getUniqueId(),f1.getUniqueId(),o0,o1,b0,b1,getPrize(),getTotalBet());
             //  メインスレッドで再実行
             Bukkit.getScheduler().runTask(this,()->{
-                    StartGameTask();
+                    startGameTask();
             });
         });
 
@@ -775,7 +775,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     /**
      * ゲーム開始処理
      */
-    private void StartGameTask(){
+    private void startGameTask(){
 
         Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
         Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
@@ -818,15 +818,19 @@ public final class FightClub extends JavaPlugin implements Listener {
         serverMessage(title);
         serverMessage(subTitle);
 
-        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
-            tpWaiterToArena();
-        });
+        tpWaiterToArena();
 
         saveCurrentStatus();
         unregisterFighter(f0.getUniqueId());
         unregisterFighter(f1.getUniqueId());
         updateSidebar();
         sideBar.show();
+
+        f0.setGameMode(GameMode.SURVIVAL);
+        f1.setGameMode(GameMode.SURVIVAL);
+        tp(f0.getPlayer(),selectedArena,"player1");
+        tp(f1.getPlayer(),selectedArena,"player2");
+
 
         //   戦闘開始へ
         currentStatus = Fighting;
@@ -2275,23 +2279,17 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(lobby == null){
             return;
         }
-
-        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
-
-            for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                if(player.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
-                    if(player.isOp()){
-                        player.sendMessage("ロビーに招集をかけられたがOPのため無視する");
-                        continue;
-                    }
-                    player.teleport(lobby);
-                    player.setGameMode(GameMode.SURVIVAL);
-                    //fixTpBug(player);
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+            if(player.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
+                if(player.isOp()){
+                    player.sendMessage("ロビーに招集をかけられたがOPのため無視する");
+                    continue;
                 }
+                player.teleport(lobby);
+                player.setGameMode(GameMode.SURVIVAL);
+                //fixTpBug(player);
             }
-
-
-        });
+        }
     }
 
     /**
