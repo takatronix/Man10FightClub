@@ -21,6 +21,12 @@ public class FightClubSideBar {
     public FightClubSideBar(FightClub plugin) {
         this.plugin = plugin;
     }
+
+    void hide(){
+        hidden = true;
+        show();
+    }
+
     void show(){
 
 
@@ -50,7 +56,8 @@ public class FightClubSideBar {
     }
 
         if(plugin.currentStatus == Fighting) {
-           // showFighters();
+            //sideBar.remove();
+            //showFighters();
            // showToAll();
         }
     }
@@ -100,7 +107,7 @@ public class FightClubSideBar {
         showToAll();
     }
 
-
+/*
     private static String[] suffix = new String[]{"","K", "M", "B", "T"};
     private static int MAX_LENGTH = 4;
 
@@ -112,6 +119,7 @@ public class FightClubSideBar {
         }
         return r;
     }
+*/
 
 
 

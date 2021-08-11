@@ -35,7 +35,13 @@ public class FightClubData {
             ret = "mfcpro_fight";
         }
         return  ret;
-
+    }
+    public String getPlayerTable(){
+        String ret = "mfc_player";
+        if(plugin.mode == FightClub.MFCModes.Pro){
+            ret = "mfcpro_player";
+        }
+        return  ret;
     }
 
     public int killCount(UUID id){
@@ -106,6 +112,28 @@ public class FightClubData {
 
         return ret;
     }
+
+    public double totalBetted(UUID id){
+        double ret = 0;
+        String sql = "select sum(totalBet) from "+getFightTable()+" where winner='" + id.toString()+"' or loser='" + id.toString()+ "'";
+
+        ResultSet rs = mysql.query(sql);
+        try
+        {
+            while(rs.next())
+            {
+                ret = rs.getDouble("sum(totalBet)");
+            }
+            rs.close();
+        }
+        catch (SQLException e)
+        {
+            Bukkit.getLogger().info("Error executing a query: " + e.getErrorCode());
+        }
+
+        return ret;
+    }
+
 
     public int getLatestId(){
 
@@ -225,6 +253,30 @@ public class FightClubData {
                 +"','" + fighterName
                 +"'," + odds
                 +"," + profit
+                +");");
+
+
+        return ret;
+    }
+
+    public boolean savePlayerData(UUID uuid,int kill,int death,double kdr,double prize, double betted,int score){
+
+        String mcid = Bukkit.getOfflinePlayer(uuid).getName();
+
+        boolean ret;
+
+         ret = mysql.execute("delete from "+getPlayerTable()+" where uuid='"+uuid+"'");
+
+         ret = mysql.execute("insert into "+getPlayerTable()+" values(0"
+                +",now()"
+                +",'" + uuid
+                +"'," + kill
+                +"," + death
+                +"," + kdr
+                +"," + prize
+                +"," + betted
+                +",'" + mcid
+                +"'," + score
                 +");");
 
 

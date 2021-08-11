@@ -51,6 +51,7 @@ create table mfc_player
     death    int    default 0 not null,
     kdr      float  default 0 not null,
     prize    double default 0 null,
+    betted   double default 0 null,
     mcid     varchar(16)      not null,
     score    int    default 0 null,
     constraint mfc_player_id_uindex
@@ -117,6 +118,7 @@ create table mfcpro_player
     death    int    default 0 not null,
     kdr      float  default 0 not null,
     prize    double default 0 null,
+    betted   double default 0 null,
     mcid     varchar(16)      not null,
     score    int    default 0 null,
     constraint mfcpro_player_id_uindex

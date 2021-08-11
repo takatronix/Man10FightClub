@@ -100,11 +100,20 @@ public final class FightClub extends JavaPlugin implements Listener {
         int         kill;
         int         death;
         double      prize;
+        double      betted;
 
+        public double getKDR() {
+            if (this.death != 0) {
+                return (double) this.kill / (double) this.death;
+            }
+            return 0;
+        }
         public void updateKDP(FightClubData data){
             kill = data.killCount(uuid);
             death = data.deathCount(uuid);
             prize = data.totalPrize(uuid);
+            betted = data.totalBetted(uuid);
+            log("upateKDR:"+getInfo());
         }
 
         Player getPlayer(){
@@ -824,7 +833,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         unregisterFighter(f0.getUniqueId());
         unregisterFighter(f1.getUniqueId());
         updateSidebar();
-        sideBar.show();
+
 
         f0.setGameMode(GameMode.SURVIVAL);
         f1.setGameMode(GameMode.SURVIVAL);
@@ -834,10 +843,10 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //   戦闘開始へ
         currentStatus = Fighting;
-        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-            public void run() {
-                pauseTimer = false;
-            }
+        getServer().getScheduler().scheduleSyncDelayedTask(this, ()-> {
+            sideBar.hide();
+            pauseTimer = false;
+
         }, 20*3);
 
     }
@@ -1158,9 +1167,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         PlayerInformation lf = fighters.get(loserIndex);
 
+        //////////////////////////////////////////
         //      勝負結果を保存
         double dr = fightTimerDefault - fightTimer;
         Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+            log("結果を保存中");
             //     結果を登録
             data.updateFight(fightId,fighterIndex,pf.uuid,lf.uuid,dr);
 
@@ -1168,7 +1179,11 @@ public final class FightClub extends JavaPlugin implements Listener {
             pf.updateKDP(data);
             lf.updateKDP(data);
 
+            // プレーヤ情報を保存
+            data.savePlayerData(pf.uuid,pf.kill,pf.death,pf.getKDR(),pf.prize,pf.betted,pf.getScore());
+            data.savePlayerData(lf.uuid,lf.kill,lf.death,lf.getKDR(),lf.prize,lf.betted,lf.getScore());
 
+            log("結果を保存完了");
         });
 
 
@@ -1258,21 +1273,10 @@ public final class FightClub extends JavaPlugin implements Listener {
         betTimer = betTimerDefault;
     }
 
-    void _showLifeBarToAll(){
-        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-            lifebar.addPlayer(player);
-
-        }
-
-    }
-
     void showLifeBar(){
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-
             lifebar.addPlayer(player);
-
         }
-
     }
 
 
@@ -1325,6 +1329,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
 
+    /**
+     * 上部のInfoバーの設定
+     */
     public void updateInfoBar(){
 
         if(currentStatus == Entry){
@@ -1367,7 +1374,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             lifebar.setVisible(true);
         }
         if(currentStatus == Fighting){
-            lifebar.setInfoName(getModeText() + " 対戦中! §b"+selectedArena + "§f/§a"+selectedKit+" §e§l"+Utility.getPriceString( getPrize())+"§4§l Time:"+fightTimer);
+            lifebar.setInfoName(getModeText() + " 対戦中! §b"+selectedArena + "§f/§a"+selectedKit+" §e§l勝者の賞金: "+Utility.getPriceString( getPrize())+"§4§l Time:"+fightTimer);
             double d = (double)fightTimer / (double)fightTimerDefault;
             lifebar.setInfoBar(d);
         }
