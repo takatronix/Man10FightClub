@@ -154,7 +154,7 @@ public class FightClubSideBar {
         String name = String.format("%-10s",f.name);
         String shortString = name.substring(0, Math.min(name.length(), 10));
 
-        String s= shortString + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l"+Utility.getJpBal(f.prize)+"円";
+        String s= shortString + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l"+Utility.getJpBal(f.total_prize)+"円";
         if(s.length() > 40){
             s = s.substring(0,40);
         }

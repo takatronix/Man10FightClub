@@ -99,7 +99,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         //
         int         kill;
         int         death;
-        double      prize;
+        double      total_prize;
+        double      max_prize;
         double      betted;
 
         public double getKDR() {
@@ -111,7 +112,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         public void updateKDP(FightClubData data){
             kill = data.killCount(uuid);
             death = data.deathCount(uuid);
-            prize = data.totalPrize(uuid);
+            total_prize = data.totalPrize(uuid);
+            max_prize = data.maxPrize(uuid);
             betted = data.totalBetted(uuid);
             log("upateKDR:"+getInfo());
         }
@@ -125,14 +127,13 @@ public final class FightClub extends JavaPlugin implements Listener {
          * @return
          */
         int getScore(){
-            double d = this.prize /  (double)(this.kill + this.death) * 0.001;
+            double d = this.total_prize /  (double)(this.kill + this.death) * 0.01;
             return (int)d;
         }
 
         String getInfo(){
-            String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§f/ "+ Utility.getPriceString(this.prize);
+            String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§f/ "+ Utility.getPriceString(this.total_prize);
             return s;
-
         }
     }
 
@@ -384,7 +385,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
 
-        String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " "+ Utility.getPriceString(playerInfo.prize) + " 総プレイ数:"+play + " KDR:"+kdrs;
+        String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " "+ Utility.getPriceString(playerInfo.total_prize) + " 総プレイ数:"+play + " KDR:"+kdrs;
         serverMessage(name + "は参加を申し込んだ");
         serverMessage(his);
 
@@ -995,14 +996,14 @@ public final class FightClub extends JavaPlugin implements Listener {
         getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
             String title1 = "§4§l"+f0.name ;
             //String subTitle = "Kill :1234 / Death 3444 / KDR:1.5 / 総獲得賞金 $1234567";
-            String subTitle1 = "§9§lKill:"+f0.kill+" §c§lDeath:"+f0.death+" §e§l総獲得賞金 "+ Utility.getPriceString(f0.prize);
+            String subTitle1 = "§9§lKill:"+f0.kill+" §c§lDeath:"+f0.death+" §e§l総獲得賞金 "+ Utility.getPriceString(f0.total_prize);
             sendTitleToAllWithSound(title1, subTitle1,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
             serverMessage(title1 + "§f: "+ subTitle1);
            // serverMessage("§f§lユーザー情報はここをクリック！ => §b§l§nhttp://man10.red/u?"+f0.name);
         }, 100);
        getServer().getScheduler().scheduleSyncDelayedTask(this, () -> {
            String title12 = "§1§l"+f1.name;
-           String subTitle12 = "§9§lKill:"+f1.kill+" §c§lDeath:"+f1.death+" §e§l総獲得賞金 "+Utility.getPriceString(f1.prize);
+           String subTitle12 = "§9§lKill:"+f1.kill+" §c§lDeath:"+f1.death+" §e§l総獲得賞金 "+Utility.getPriceString(f1.total_prize);
            sendTitleToAllWithSound(title12, subTitle12,40,100,40,Sound.ENTITY_WITHER_SPAWN,1,1);
            serverMessage(title12 + "§f: "+ subTitle12);
           // serverMessage("§f§lユーザー情報はここをクリック! => §b§l§nhttp://man10.red/u?"+f1.name);
@@ -1142,6 +1143,7 @@ public final class FightClub extends JavaPlugin implements Listener {
      */
     public int endGame(int fighterIndex){
 
+        sideBar.hidden = false;
         if (fighterIndex == -1){
             return cancelGame();
         }
@@ -1180,8 +1182,8 @@ public final class FightClub extends JavaPlugin implements Listener {
             lf.updateKDP(data);
 
             // プレーヤ情報を保存
-            data.savePlayerData(pf.uuid,pf.kill,pf.death,pf.getKDR(),pf.prize,pf.betted,pf.getScore());
-            data.savePlayerData(lf.uuid,lf.kill,lf.death,lf.getKDR(),lf.prize,lf.betted,lf.getScore());
+            data.savePlayerData(pf.uuid,pf.kill,pf.death,pf.getKDR(),pf.total_prize,pf.max_prize,pf.betted,pf.getScore());
+            data.savePlayerData(lf.uuid,lf.kill,lf.death,lf.getKDR(),lf.total_prize,lf.max_prize,lf.betted,lf.getScore());
 
             log("結果を保存完了");
         });

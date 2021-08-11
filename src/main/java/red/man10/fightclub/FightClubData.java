@@ -112,6 +112,26 @@ public class FightClubData {
 
         return ret;
     }
+    public double maxPrize(UUID id){
+        double ret = 0;
+        String sql = "select max(prize) from "+getFightTable()+" where winner='" + id.toString()+"';";
+
+        ResultSet rs = mysql.query(sql);
+        try
+        {
+            while(rs.next())
+            {
+                ret = rs.getDouble("max(prize)");
+            }
+            rs.close();
+        }
+        catch (SQLException e)
+        {
+            Bukkit.getLogger().info("Error executing a query: " + e.getErrorCode());
+        }
+
+        return ret;
+    }
 
     public double totalBetted(UUID id){
         double ret = 0;
@@ -157,23 +177,6 @@ public class FightClubData {
         return ret;
     }
 
-
-    public boolean createScore(UUID id,int kill,int death,double totalPrize,String table){
-
-        String name = Bukkit.getOfflinePlayer(id).getName();
-
-
-        boolean ret = mysql.execute("insert into "+table+"(0"
-                +",'" + name
-                +"','" + id.toString()
-                +"'," + kill
-                +"," + death
-                +"," + totalPrize
-                +",'" + currentTime()
-                +"');");
-
-        return  ret;
-    }
 
 
 
@@ -259,7 +262,7 @@ public class FightClubData {
         return ret;
     }
 
-    public boolean savePlayerData(UUID uuid,int kill,int death,double kdr,double prize, double betted,int score){
+    public boolean savePlayerData(UUID uuid,int kill,int death,double kdr,double total_prize,double max_prize, double betted,int score){
 
         String mcid = Bukkit.getOfflinePlayer(uuid).getName();
 
@@ -273,7 +276,8 @@ public class FightClubData {
                 +"'," + kill
                 +"," + death
                 +"," + kdr
-                +"," + prize
+                +"," + total_prize
+                 +"," + max_prize
                 +"," + betted
                 +",'" + mcid
                 +"'," + score
