@@ -30,6 +30,10 @@ public class FightClubCommand  implements CommandExecutor {
         }
 
         if(args[0].equalsIgnoreCase("help")){
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
             showHelp(p);
             return true;
         }
