@@ -66,6 +66,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     VaultManager vault = null;
     FightClubData data = null;
 
+    boolean isFighterFreeze = false;
+
     //    Fight ID （データベースキー）OpenFightでアップデートされる
     int fightId = -1;
 
@@ -844,10 +846,11 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         //   戦闘開始へ
         currentStatus = Fighting;
+        isFighterFreeze = true;
         getServer().getScheduler().scheduleSyncDelayedTask(this, ()-> {
             sideBar.hide();
             pauseTimer = false;
-
+            isFighterFreeze = false;
         }, 20*3);
 
     }
@@ -1084,18 +1087,27 @@ public final class FightClub extends JavaPlugin implements Listener {
         return false;
         // コマンドが実行されなかった場合は、falseを返して当メソッドを抜ける。
     }
+
+    /**
+     * プレイヤーをフリーズするか　
+     * @param player
+     * @return
+     */
     boolean CheckFreezed(Player player){
-        return false;
-        /*
-        if(currentStatus == Opened){
-            for(int i= 0;i < fighters.size();i++){
-                if(fighters.get(i).uuid == player.getUniqueId()){
-                    return true;
-                }
+
+        // MFCワールド以外は対応しない
+        if(!isInMFCWorld(player))
+            return false;
+
+        if(!isFighterFreeze)
+            return false;
+
+        for(int i= 0;i < fighters.size();i++){
+            if(fighters.get(i).uuid == player.getUniqueId()){
+                return true;
             }
         }
         return false;
-        */
     }
 
 
