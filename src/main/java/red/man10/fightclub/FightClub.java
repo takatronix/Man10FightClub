@@ -127,7 +127,7 @@ public final class FightClub extends JavaPlugin implements Listener {
          * @return
          */
         int getScore(){
-            double d = this.total_prize /  (double)(this.kill + this.death) * 0.01;
+            double d = this.total_prize /  (double)(this.kill + this.death) * 0.001;
             return (int)d;
         }
 
@@ -1354,7 +1354,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         if(currentStatus == Opened){
-            lifebar.setInfoName(getModeText()+"§f§lベット受付中! §b"+selectedArena + "§f/§a"+selectedKit+" §4§l Time:"+betTimer+ " §e§l賞金:"+ Utility.getPriceString( getPrize()));
+            lifebar.setInfoName(getModeText()+"§f§lベット受付中! §b"+selectedArena + "§f/§a"+selectedKit+" §4§l Time:"+betTimer+ " §e§l勝者の賞金:"+ Utility.getPriceString( getPrize()));
             double d = (double)betTimer / (double)betTimerDefault;
             if(d < 0){
                 d = 0;
