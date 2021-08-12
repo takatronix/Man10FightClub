@@ -1146,11 +1146,12 @@ public final class FightClub extends JavaPlugin implements Listener {
      */
     public int endGame(int fighterIndex){
 
+        clearEntity();
+
         sideBar.hidden = false;
         if (fighterIndex == -1){
             return cancelGame();
         }
-
         if(mode == MFCModes.Free){
             unregisterFighter(fighters.get(0).uuid);
             unregisterFighter(fighters.get(1).uuid);

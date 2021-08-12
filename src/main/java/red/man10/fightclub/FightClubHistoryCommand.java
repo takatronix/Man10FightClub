@@ -103,14 +103,14 @@ public class FightClubHistoryCommand  implements CommandExecutor {
 
             if(isPro){
                 sender.sendMessage("§6§l========= §c§lPro MFCスコアランキング  §6§l===========");
-                sender.sendMessage("§6§lMFC Proでお金をかけると一番お得なプレイヤー(人気x強さランキング)");
+                sender.sendMessage("§6§l人気ランキング)");
             }else{
                 sender.sendMessage("§c§l====== MFCスコア ランキング  ======");
-                sender.sendMessage("§6§lお金をかけると一番お得なプレイヤー(人気x強さランキング)");
+                sender.sendMessage("§6§l人気ランキング");
             }
             int no = 1;
             for (var p:result) {
-                sender.sendMessage("§7§l"+no+".§c§l"+p.name+"§8§l : §d§l最高獲得:"+ Utility.getPriceString(p.max_prize) + " §b§lScore:"+p.getScore());
+                sender.sendMessage("§7§l"+no+".§c§l"+p.name+"§8§l : §d§l最高獲得金額:"+ Utility.getPriceString(p.max_prize) + " §b§lScore:"+p.getScore());
                 no++;
             }
         });
