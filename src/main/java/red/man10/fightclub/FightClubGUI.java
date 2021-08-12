@@ -34,19 +34,9 @@ public class FightClubGUI {
 
     public void clickItem(InventoryClickEvent e) {
        Player p = (Player) e.getWhoClicked();
-       if(plugin.currentStatus == FightClub.Status.Opened) {
-           if (p.getName().equalsIgnoreCase(plugin.fighters.get(0).name) || p.getName().equalsIgnoreCase(plugin.fighters.get(1).name)) {
-               if (e.getClickedInventory().getType() == InventoryType.PLAYER) {
-                   if (e.getCurrentItem().getType() == Material.AIR) {
-                       return;
-                   }
-                   p.sendMessage(prefix + "選手はインベントリを編集できません");
-                   e.setCancelled(true);
-                   return;
-               }
-               e.setCancelled(true);
-           }
-       }
+
+
+
         //try {
         /*
         if(e.getClickedInventory().getTitle().equals("§9§lプレイヤーを登録する")){

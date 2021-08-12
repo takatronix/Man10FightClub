@@ -378,7 +378,10 @@ public class FightClubData {
         var sql = "select * from "+tableName+" where uuid='"+uuid+"'";
         var result =  getPlayerData(sql);
         if(result.size() <= 0) {
-            return new PlayerInformation();
+            var pi =  new PlayerInformation();
+            pi.uuid = uuid;
+            pi.name = Bukkit.getPlayer(uuid).getName();
+            return pi;
         }
         return result.get(0);
     }
@@ -394,7 +397,7 @@ public class FightClubData {
         if(isPro)
             tableName = "mfcpro_player";
 
-        var sql = "select * from "+tableName+" by totalprize desc limit " + limit + " offset " + offset;
+        var sql = "select * from "+tableName+" order by totalprize desc limit " + limit + " offset " + offset;
         var result =  getPlayerData(sql);
         return result;
     }
@@ -410,7 +413,7 @@ public class FightClubData {
         if(isPro)
             tableName = "mfcpro_player";
 
-        var sql = "select * from "+tableName+" by kdr desc limit " + limit + " offset " + offset;
+        var sql = "select *,`kill`+death from mfc_player where `kill`+death >=" + plugin.newbiePlayableCount + " order by kdr desc limit "+ limit +" offset " + offset;
         var result =  getPlayerData(sql);
         return result;
     }
@@ -425,7 +428,7 @@ public class FightClubData {
         if(isPro)
             tableName = "mfcpro_player";
 
-        var sql = "select * from "+tableName+" by score desc limit " + limit + " offset " + offset;
+        var sql = "select * from "+tableName+" order by score desc limit " + limit + " offset " + offset;
         var result =  getPlayerData(sql);
         return result;
     }
@@ -441,7 +444,7 @@ public class FightClubData {
         if(isPro)
             tableName = "mfcpro_player";
 
-        var sql = "select * from "+tableName+" by maxprize desc limit " + limit + " offset " + offset;
+        var sql = "select * from "+tableName+" order by maxprize desc limit " + limit + " offset " + offset;
         var result =  getPlayerData(sql);
         return result;
     }

@@ -16,7 +16,7 @@ import java.util.logging.Level;
 
 public class MySQLManager {
 
-    public  Boolean debugMode = false;
+    public  Boolean debugMode = true;
     private JavaPlugin plugin;
     private String HOST = null;
     private String DB = null;
@@ -159,9 +159,6 @@ public class MySQLManager {
             Bukkit.getLogger().info("failed to open MYSQL");
             return rs;
         }
-
-
-
 
         if (debugMode){
             plugin.getLogger().info("query:" + query);

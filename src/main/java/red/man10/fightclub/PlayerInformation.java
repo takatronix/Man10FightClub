@@ -9,9 +9,9 @@ import java.util.logging.Level;
 
 //     プレイヤー情報
 public class  PlayerInformation{
-    UUID uuid;
+    UUID        uuid;
     String      name;
-    Boolean     isDead;
+    boolean     isDead = false;
     //
     int         kill;
     int         death;
@@ -38,7 +38,10 @@ public class  PlayerInformation{
     Player getPlayer(){
         return Bukkit.getPlayer(uuid);
     }
-
+    String getKDRString(){
+        var kdrs = String.format("%.2f",getKDR());
+        return kdrs;
+    }
     /**
      * MFCScore
      * @return
@@ -49,8 +52,7 @@ public class  PlayerInformation{
     }
 
     String getInfo(){
-        var kdrs = String.format("%.2f",getKDR());
-        String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§b§l("+kdrs+") §f§l総獲得賞金:"+ Utility.getPriceString(this.total_prize) + " §d§lMFCスコア"+getScore();
+        String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§b§l("+getKDRString()+") §f§l総獲得賞金:"+ Utility.getPriceString(this.total_prize) + " §d§lMFCスコア"+getScore();
         return s;
     }
 }
