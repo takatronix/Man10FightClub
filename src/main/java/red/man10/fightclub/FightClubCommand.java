@@ -289,7 +289,15 @@ public class FightClubCommand  implements CommandExecutor {
                 return false;
             }
 
-            plugin.openGame();
+            String arena = null;
+            String kit = null;
+            if( args.length >= 2){
+                arena = args[1];
+            }
+            if( args.length >= 3){
+                kit = args[2];
+            }
+            plugin.openGame(sender,arena,kit);
             p.sendMessage("MFC Opened");
             return true;
         }
@@ -551,7 +559,7 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c*/mfc kick [User]");
         p.sendMessage("-----------エントリー中有効コマンド-----------");
         p.sendMessage("§c/mfc register [Fighter]      / Register fighter(s)");
-        p.sendMessage("§c/mfc open - 投票開始");
+        p.sendMessage("§c/mfc open [arena] [kit]- 投票開始");
         p.sendMessage("-----------オープン後有効コマンド-----------");
         p.sendMessage("/mfc bet [fighter] [money]   / Bet money on fighter");
         p.sendMessage("§c/mfc fight                 / Start Fight!!");

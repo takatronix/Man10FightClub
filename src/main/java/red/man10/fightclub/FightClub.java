@@ -894,7 +894,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     String   selectedKit = "";
     //      ゲーム開始
-    public boolean openGame(){
+    public boolean openGame(CommandSender sender, String _arena,String _kit){
         if(waiters.size() < 2){
             serverMessage("二人以上いないと開催できません");
             return false;
@@ -937,6 +937,14 @@ public final class FightClub extends JavaPlugin implements Listener {
         Collections.shuffle(arenaCommand.defaultArenas);
         selectedArena = arenaCommand.defaultArenas.get(0);
 
+
+        if(_arena != null){
+            if(arenaCommand.defaultArenas.contains(_arena)){
+                sender.sendMessage(_arena+"ステージを選択しました");
+                selectedArena = _arena;
+            }
+        }
+
         //      キットの自動選択処理(2)
         List<String> defaultKits = kitCommand.getList();
         Collections.shuffle(defaultKits);
@@ -951,6 +959,14 @@ public final class FightClub extends JavaPlugin implements Listener {
             selectedKit = defaultKits.get(0);
             log("デフォルトキットを選択:"+selectedArena);
         }
+
+        if(_kit != null){
+            if(defaultKits.contains(_kit)){
+                sender.sendMessage(_kit+"キットを選択しました");
+                selectedKit = _kit;
+            }
+        }
+
 
 
         //     選手全員をアリーナへ移動
@@ -1403,7 +1419,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             if(waiters.size() >= 2){
                 entryTimer --;
                 if(entryTimer <= 0){
-                    openGame();
+                    openGame(null,null,null);
                 }
             }
         //    updateSidebar();
@@ -2005,7 +2021,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                         return;
                     }
 
-                    openGame();
+                    openGame(null,null,null);
                     return;
                 }
                 if (s.getLine(1).equalsIgnoreCase("Fight")) {

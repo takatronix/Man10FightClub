@@ -52,7 +52,7 @@ public class  PlayerInformation{
     }
 
     String getInfo(){
-        String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§b§l("+getKDRString()+") §f§l総獲得賞金:"+ Utility.getPriceString(this.total_prize) + " §d§lMFCスコア"+getScore();
+        String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§b§l("+getKDRString()+") §f§l総獲得賞金:"+ Utility.getPriceString(this.total_prize);
         return s;
     }
 }
