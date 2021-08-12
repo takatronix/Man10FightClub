@@ -113,7 +113,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     //
-    Status  currentStatus = Entry;
+    volatile Status  currentStatus = Entry;
 
     //      対戦まちリスト
     ArrayList<PlayerInformation> waiters = new ArrayList<>();
@@ -772,6 +772,10 @@ public final class FightClub extends JavaPlugin implements Listener {
      */
     private void startGameTask(){
 
+        //   戦闘開始へ
+        currentStatus = Fighting;
+        log("戦闘開始:currentStatus:"+currentStatus);
+
         Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
         Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
 
@@ -807,6 +811,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         showTitle("§c1",subTitle, 0.5,2);
 
         String title = "§cファイト！！ #"+fightId;
+        if(fightId == -1){
+            title = "§cファイト!";
+        }
         showTitle(title,subTitle, 1,3);
         serverMessage(title);
         serverMessage(subTitle);
@@ -824,9 +831,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         tp(f0.getPlayer(),selectedArena,"player1");
         tp(f1.getPlayer(),selectedArena,"player2");
 
-
-        //   戦闘開始へ
-        currentStatus = Fighting;
         isFighterFreeze = true;
         getServer().getScheduler().scheduleSyncDelayedTask(this, ()-> {
             sideBar.hide();
@@ -1053,7 +1057,6 @@ public final class FightClub extends JavaPlugin implements Listener {
                     if(p != null){
                         if(p.getWorld().getName().toString().equalsIgnoreCase(worldName)){
                             titlebar.sendTitleWithSound(p,title,subTitle,20,stayTick,20,Sound.ENTITY_WITHER_SPAWN,1,1);
-
                         }
                     }
                 }
@@ -1771,17 +1774,16 @@ public final class FightClub extends JavaPlugin implements Listener {
                 e.setCancelled(true);
                 return;
             }
-
             //      試合中以外はキャンセル
             if(currentStatus != Fighting){
                 log("選手ダメージキャンセル:"+currentStatus);
                 e.setCancelled(true);
                 return ;
             }
+
             log("選手がダメージをうけた");
             //  ライフバー更新
             updateLifeBar();
-
         }
 
     }
