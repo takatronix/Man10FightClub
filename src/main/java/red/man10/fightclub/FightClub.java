@@ -209,9 +209,7 @@ public final class FightClub extends JavaPlugin implements Listener {
      * @return
      */
     public boolean unregisterFighter(UUID uuid){
-        ////////////////////////////////////
-        //      すでに登録されてたらエラー
-        ////////////////////////////////////
+
         for(int i = 0;i < waiters.size();i++){
             PlayerInformation fighter = waiters.get(i);
             if(fighter.uuid == uuid){
@@ -777,7 +775,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
         Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
 
-
         tp(f0,selectedArena,"player1");
         tp(f1,selectedArena,"player2");
 
@@ -785,7 +782,6 @@ public final class FightClub extends JavaPlugin implements Listener {
         double o1 = getFighterOdds(f1.getUniqueId());
         int b0 = getFighterBetCount(f0.getUniqueId());
         int b1 = getFighterBetCount(f1.getUniqueId());
-
 
         var fi0 = fighters.get(0);
         var fi1 = fighters.get(1);
@@ -1035,8 +1031,13 @@ public final class FightClub extends JavaPlugin implements Listener {
         return true;
     }
 
-
-    boolean broadcastTitle = true;
+    /**
+     * タイトル表示
+     * @param title
+     * @param subTitle
+     * @param stay
+     * @param delay
+     */
     public void showTitle(String title,String subTitle,double stay,double delay){
 
         int stayTick = (int)(stay * 20);
@@ -1581,17 +1582,13 @@ public final class FightClub extends JavaPlugin implements Listener {
     @EventHandler
     public void onEntitySpawnEvent(EntitySpawnEvent e){
         if(currentStatus != Closed){
-            if(e.getEntity().getWorld().getName().equalsIgnoreCase("arena")){
+            if(e.getEntity().getWorld().getName().equalsIgnoreCase(worldName)){
                 Entity en = e.getEntity();
                 if(en.getType() == EntityType.PLAYER || en.getType() == EntityType.ARROW || en.getType() == EntityType.SPLASH_POTION || en.getType() == EntityType.FISHING_HOOK || en.getType() == EntityType.FALLING_BLOCK || en.getType() == EntityType.SNOWBALL || en.getType() == EntityType.EGG || en.getType() == EntityType.ENDER_PEARL){
                 }else{
                     if(currentStatus == Fighting ){
 
-
                     }
-
-
- //                   e.setCancelled(true);
                 }
             }
         }
@@ -1774,11 +1771,14 @@ public final class FightClub extends JavaPlugin implements Listener {
                 e.setCancelled(true);
                 return;
             }
+
             //      試合中以外はキャンセル
             if(currentStatus != Fighting){
+                log("選手ダメージキャンセル:"+currentStatus);
                 e.setCancelled(true);
                 return ;
             }
+            log("選手がダメージをうけた");
             //  ライフバー更新
             updateLifeBar();
 
@@ -1814,9 +1814,13 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
             //      試合中以外はキャンセル
             if(currentStatus != Fighting){
+                log("2)選手ダメージキャンセル:"+currentStatus);
+
                 e.setCancelled(true);
                 return ;
             }
+            log("2)選手ダメージ");
+
             //  ライフバー更新
             updateLifeBar();
         }

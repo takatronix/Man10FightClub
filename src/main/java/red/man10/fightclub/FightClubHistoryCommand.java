@@ -64,7 +64,7 @@ public class FightClubHistoryCommand  implements CommandExecutor {
                 sender.sendMessage("§6§lMFC Proで一番賞金をゲットしたプレイヤー");
             }else{
                 sender.sendMessage("§e§l====== MFC 合計獲得賞金ランキング  ======");
-                sender.sendMessage("§e§l一番賞金をゲットしたレイヤー");
+                sender.sendMessage("§e§l一番賞金をゲットしたプレイヤー");
             }
             int no = 1;
             for (var p:result) {

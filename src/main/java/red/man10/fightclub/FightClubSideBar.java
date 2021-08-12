@@ -75,19 +75,15 @@ public class FightClubSideBar {
             var col = "§4§l";
             if(i == 1)
                 col = "§9§l";
-            String tx = String.format("%10s 倍率:§l%3.2f倍",f.name,plugin.getFighterOdds(f.uuid));
-
+            String tx = String.format("%10s 倍率:§l%3.2f倍 KDR:%s",f.name,plugin.getFighterOdds(f.uuid),f.getKDRString());
             sideBar.setScore(col + tx,plugin.getFighterBetCount(f.uuid));
-
-         //   setFighterInfo(f);
-
         }
 
         sideBar.setScore("§d合計かけ金額："+ Utility.getPriceString(total),0);
 
 
-        sideBar.setScore("§a今回のステージ：" + plugin.selectedArena,0);
-        sideBar.setScore("§a今回のキット：" + plugin.selectedKit,0);
+        sideBar.setScore("§a今回のステージ： §b§l" + plugin.selectedArena,0);
+        sideBar.setScore("§a今回のキット： §b§l" + plugin.selectedKit,0);
 
         sideBar.setScore("§e§l勝者への賞金："+Utility.getPriceString(plugin.getPrize()),0);
         sideBar.setScore("§b==========================",0);
