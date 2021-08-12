@@ -29,6 +29,21 @@ public class FightClubCommand  implements CommandExecutor {
             return true;
         }
 
+        if(args[0].equalsIgnoreCase("retry")) {
+            this.retryChallenge(p);
+        }
+
+        if(args[0].equalsIgnoreCase("reset")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+            Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
+                this.resetUserData(sender,args[1]);
+            });
+        }
+
+
         if(args[0].equalsIgnoreCase("help")){
             if(!p.hasPermission(plugin.adminPermision)){
                 p.sendMessage("管理者権限がありません");
@@ -43,6 +58,7 @@ public class FightClubCommand  implements CommandExecutor {
                 return false;
             }
             plugin.waiters.clear();
+            p.sendMessage("街リストきめましょう");
             return true;
         }
 
@@ -463,7 +479,7 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§e=========== §d●§f●§a●§e Man10 Fight Club Odds §d●§f●§a● §e===============");
         for(int i=0;i < plugin.fighters.size();i++){
             PlayerInformation info = plugin.fighters.get(i);
-            Player fighter = Bukkit.getPlayer(info.uuid);
+         //   Player fighter = Bukkit.getPlayer(info.uuid);
 
             double price = plugin.getFighterBetMoney(info.uuid);
             int count = plugin.getFighterBetCount(info.uuid);
@@ -476,6 +492,47 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("-------------------------");
         p.sendMessage("total: $"+plugin.getTotalBet());
 
+    }
+
+    void retryChallenge(Player p){
+        Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
+            p.sendMessage("プレイヤー情報を取得中....");
+            var pi = plugin.data.getPlayerData(false,p.getUniqueId());
+            p.sendMessage(pi.getInfo());
+
+            if(pi.death == 0 ) {
+                p.sendMessage("あなたは死亡履歴がないので対象外です");
+                return;
+            }
+            if(pi.getKDR() > this.plugin.registerKDRLimit){
+                p.sendMessage("あなたはのKDRは"+this.plugin.registerKDRLimit+"以上なので、対象外です");
+                return;
+            }
+            if(!this.plugin.vault.withdraw(p.getUniqueId(),this.plugin.resetPlayerDataPrice)){
+                p.sendMessage("再チャレンジには"+Utility.getPriceString(this.plugin.resetPlayerDataPrice)+"必要です");
+                return;
+            }
+
+            resetUserData(p,p.getName());
+
+            p.sendMessage("プレイヤーデータをリセットしました。１度だけ再挑戦してKDRを上げることができます");
+        });
+    }
+
+    boolean resetUserData(CommandSender sender,String name){
+        var player = Bukkit.getPlayer(name);
+        if(player == null){
+            sender.sendMessage(name+"はオフラインです");
+            return false;
+        }
+
+        var ret = plugin.data.deletePlayerData(false,player.getUniqueId());
+        if(ret == false){
+            sender.sendMessage("削除に失敗しました");
+            return false;
+        }
+        sender.sendMessage("削除しました");
+        return true;
     }
 
 
@@ -507,6 +564,8 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c/mfc prolist list - プロリスト表示");
         p.sendMessage("§c/mfc prolist add [username] - プロリスト追加");
         p.sendMessage("§c/mfc prolist delete [username] - プロリスト削除");
+
+        p.sendMessage("§c/mfc reset [username] - ユーザー履歴を消去し、１度だけのチャンスを与える");
         p.sendMessage("-----------モード変更コマンド-----------");
         p.sendMessage("§c/mfc off - MFC停止");
         p.sendMessage("§c/mfc on - MFC開始(通常モード)");

@@ -79,6 +79,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     // Arena Command
     FightClubArenaCommand arenaCommand = new FightClubArenaCommand(this);
 
+    FightClubHistoryCommand historyCommand = new FightClubHistoryCommand(this);
+
     // MFCのモード
     public enum MFCModes {
         Off,
@@ -88,7 +90,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         Pro             //  グローバル通知あり
     }
     MFCModes           mode;
-
+    boolean IsProMode(){
+        if(mode == MFCModes.Pro)
+            return true;
+        return false;
+    }
 
     //   状態遷移 これらの状態遷移する
     public enum Status {
@@ -257,7 +263,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
 
-        //      プロモード中はプロしか登録できない
+        //      プロはノーマルには参加できない
         if( mode == MFCModes.Normal){
             if(prolist.find(uuid.toString()) != -1){
                 s.sendMessage("プロは通常モードに参加できません");
@@ -265,7 +271,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
 
-        //      プロモード中はプロしか登録できない
+        //      ホワイトリストはホワイトリストしか参加できない
         if( mode == MFCModes.WhiteList){
             if(whitelist.find(uuid.toString()) == -1){
                 s.sendMessage("あなたはホワイトリストに追加されていません");
@@ -273,23 +279,23 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
 
-        //      DBでKDR情報を取得してから処理
-        PlayerInformation playerInfo = new PlayerInformation();
-        playerInfo.uuid = uuid;
-        playerInfo.name = name;
-        playerInfo.isDead = false;
+
         if(data != null){
 
             // KDRなどの情報をスレッドで取得する(非同期) -> 取得後登録処理
             Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
-                playerInfo.updateKDP(data);
+
+                s.sendMessage("プレイヤー情報を取得中....");
+                var pi = data.getPlayerData(IsProMode(),uuid);
+                s.sendMessage(pi.getInfo());
 
                 //  メインスレッドで再実行
                 Bukkit.getScheduler().runTask(this, new Runnable() {
                     public void run() {
-                        RegisterPlayerTask(playerInfo,s, name);
+                        RegisterPlayerTask(pi,s, name);
                     }
                 });
+
             });
         }
 
@@ -337,6 +343,8 @@ public final class FightClub extends JavaPlugin implements Listener {
                     }
                     //s.sendMessage("ブラックリストに登録されているため参加できません");
                     s.sendMessage(playerInfo.name +"は、MFCに登録しようとしましたが、弱すぎるため拒否されました。KDR:"+registerKDRLimit+"以上が最低条件です");
+                    s.sendMessage(playerInfo.name +"§e§l/mfc retry §fで、プレイヤーデータを消去し１度だけKDRを上げるチャンスがもらえます");
+                    s.sendMessage(playerInfo.name +"再チャレンジ料金"+Utility.getPriceString(this.resetPlayerDataPrice)+"必要です。");
                     return -4;
                 }
             }
@@ -565,7 +573,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         serverMessage(mes);
 
         // プロは賭けられると時間延長
-        if(mode == MFCModes.Pro){
+        if(IsProMode()){
             if(price >= 10000){
                 resetBetTimer();
             }
@@ -1104,7 +1112,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             return 0;
         }
         double t = getTotalBet() * prize_ratio;
-        if(mode == MFCModes.Pro){
+        if(IsProMode()){
             t = getTotalBet() * pro_prize_ratio;
         }
 
@@ -1444,6 +1452,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         getCommand("mfc").setExecutor(new FightClubCommand(this));
         getCommand("mfca").setExecutor(arenaCommand);
         getCommand("mfckit").setExecutor(kitCommand);
+        getCommand("mfch").setExecutor(historyCommand);
 
 
         sideBar.showToAll();
@@ -1469,7 +1478,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     void loadConfig(){
         arenaCommand.loadArenaConfig();
-        loadSignes();
+        loadSigns();
 
         //      MYSQL初期化
         data = new FightClubData(this);
@@ -1995,10 +2004,12 @@ public final class FightClub extends JavaPlugin implements Listener {
                     //gui.adminMenu(e.getPlayer());
                     return;
                 }
+                /*
                 if(s.getLine(1).equalsIgnoreCase("Kit")){
                     log("Kit");
                     registerKitSign(e.getPlayer(),e.getClickedBlock().getLocation());
                   }
+*/
 
             }
 
@@ -2067,7 +2078,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         p.sendMessage("登録しました");
         return true;
     }
-    void loadSignes(){
+    void loadSigns(){
         log("signリストをよみこみちう");
 
         Object o =  getConfig().get("KitSigns");

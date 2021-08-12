@@ -376,8 +376,9 @@ public class FightClubData {
 
         var sql = "select * from "+tableName+" where uuid='"+uuid+"'";
         var result =  getPlayerData(sql);
-        if(result.size() <= 0)
-            return null;
+        if(result.size() <= 0) {
+            return new PlayerInformation();
+        }
         return result.get(0);
     }
 
