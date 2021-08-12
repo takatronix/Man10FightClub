@@ -462,7 +462,7 @@ public class FightClubCommand  implements CommandExecutor {
 
         p.sendMessage("§e=========== §d●§f●§a●§e Man10 Fight Club Odds §d●§f●§a● §e===============");
         for(int i=0;i < plugin.fighters.size();i++){
-            FightClub.PlayerInformation info = plugin.fighters.get(i);
+            PlayerInformation info = plugin.fighters.get(i);
             Player fighter = Bukkit.getPlayer(info.uuid);
 
             double price = plugin.getFighterBetMoney(info.uuid);

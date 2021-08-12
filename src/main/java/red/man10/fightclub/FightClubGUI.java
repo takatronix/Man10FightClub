@@ -584,8 +584,8 @@ public class FightClubGUI {
     void betMenu(Player p){
         Inventory bet = Bukkit.createInventory(null, 27, "§c§l         ベットメニュー");
 
-        FightClub.PlayerInformation info = plugin.fighters.get(0);
-        FightClub.PlayerInformation info1 = plugin.fighters.get(1);
+        PlayerInformation info = plugin.fighters.get(0);
+        PlayerInformation info1 = plugin.fighters.get(1);
 
         ItemStack skull = new ItemStack(Material.PLAYER_HEAD, 1);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();

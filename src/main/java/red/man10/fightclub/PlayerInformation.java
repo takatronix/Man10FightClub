@@ -1,0 +1,55 @@
+package red.man10.fightclub;
+import org.bukkit.*;
+import org.bukkit.entity.*;
+import red.man10.Utility;
+
+import java.util.Date;
+import java.util.UUID;
+import java.util.logging.Level;
+
+//     プレイヤー情報
+public class  PlayerInformation{
+    UUID uuid;
+    String      name;
+    Boolean     isDead;
+    //
+    int         kill;
+    int         death;
+    double      total_prize;
+    double      max_prize;
+    double      betted;
+    Date        datetime;
+
+    public double getKDR() {
+        if (this.death != 0) {
+            return (double) this.kill / (double) this.death;
+        }
+        return 0;
+    }
+    public void updateKDP(FightClubData data){
+        kill = data.killCount(uuid);
+        death = data.deathCount(uuid);
+        total_prize = data.totalPrize(uuid);
+        max_prize = data.maxPrize(uuid);
+        betted = data.totalBetted(uuid);
+        Bukkit.getLogger().log(Level.INFO,"updateKDR:"+name + ": "+getInfo());
+    }
+
+    Player getPlayer(){
+        return Bukkit.getPlayer(uuid);
+    }
+
+    /**
+     * MFCScore
+     * @return
+     */
+    int getScore(){
+        double d = this.total_prize /  (double)(this.kill + this.death) * 0.001;
+        return (int)d;
+    }
+
+    String getInfo(){
+        String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§f§l総獲得賞金:"+ Utility.getPriceString(this.total_prize) + "§5§lMFCスコア:"+getScore();
+        return s;
+    }
+}

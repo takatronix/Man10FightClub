@@ -70,7 +70,7 @@ public class FightClubSideBar {
         double total = plugin.getTotalBet();
 
         for(int i = 0;i < plugin.fighters.size();i++){
-            FightClub.PlayerInformation f = plugin.fighters.get(i);
+            PlayerInformation f = plugin.fighters.get(i);
 
             var col = "§4§l";
             if(i == 1)
@@ -135,7 +135,7 @@ public class FightClubSideBar {
             sideBar.setScore("§a/§lMFC§f で登録",0);
         }
         for(int i = 0;i < plugin.waiters.size();i++){
-            FightClub.PlayerInformation f = plugin.waiters.get(i);
+            PlayerInformation f = plugin.waiters.get(i);
 /*
             String s= f.name + " §9§lK"+f.kill+"§f/§c§lD"+f.death+"§f/§e§l$"+money(f.prize);
             if(s.length() > 40){
@@ -149,7 +149,7 @@ public class FightClubSideBar {
          showToAll();
     }
 
-    void setFighterInfo(FightClub.PlayerInformation f){
+    void setFighterInfo(PlayerInformation f){
 
         String name = String.format("%-10s",f.name);
         String shortString = name.substring(0, Math.min(name.length(), 10));

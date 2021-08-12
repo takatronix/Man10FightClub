@@ -142,7 +142,6 @@ public class MySQLManager {
             this.plugin.getLogger().info("[" + this.conName + "] Error executing statement: " +var3.getErrorCode() +":"+ var3.getLocalizedMessage());
             this.plugin.getLogger().info(query);
             ret = false;
-
         }
 
         this.MySQL.close(this.con);
