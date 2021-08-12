@@ -3,10 +3,12 @@ mysql:
   port: 3306
   user: root
   pass: password
-  db: man10_fightclub
+  db: man10_fight_club
 tax: 0
 prize: 0.05
+pro_prize: 0.08
 fee: 1000
+resetPlayerDataPrice: 10000
 autobet: 1000
 worldName: mfc
 newbiePlayableCount: 10

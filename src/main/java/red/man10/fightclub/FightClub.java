@@ -36,8 +36,12 @@ import static red.man10.fightclub.FightClub.Status.*;
 public final class FightClub extends JavaPlugin implements Listener {
 
     //      初期設定
-    long        entryPrice = 10000;        //  ミニマムベットプライス
-    double      prize = 0.05;
+    long        entryPrice = 1000;              //  参加費用
+    long        resetPlayerDataPrice = 10000;   // 　再チャレンジ費用
+
+    double prize_ratio = 0.05;
+    double pro_prize_ratio = 0.08;
+
     double      tax   = 0;
     int         betLimit = 1000;
     int         newbiePlayableCount = 10;
@@ -173,6 +177,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             titlebar.sendTitleToAllWithSound(mainText,subText,fadeIn,stay,fadeOut,s,volume,pitch);
             return;
         }
+        // 通常時はMFCワールドのみ配信
         for(Player p :Bukkit.getWorld(worldName).getPlayers()){
             titlebar.sendTitleWithSound(p,mainText,subText,fadeIn,stay,fadeOut,s,volume,pitch);
         }
@@ -400,21 +405,18 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      生存者数
     int getLastFighter() {
         int ret = 0;
-
         for(int i=0;i<fighters.size();i++){
-
             Player p = Bukkit.getPlayer(fighters.get(i).uuid);
             if(!p.isDead()){
                 return i;
             }
         }
-
         return -1;
     }
 
 
     /**
-     * 選手にかけれた金額を取得
+     * 選手にかけられた金額を取得
      * @param uuid
      * @return
      */
@@ -574,15 +576,26 @@ public final class FightClub extends JavaPlugin implements Listener {
         return bets.size();
     }
 
+    /**
+     * Admin権限をチェック
+     * @param sender
+     * @return
+     */
     boolean checkAdminPermission(CommandSender sender){
         if(!sender.hasPermission(adminPermision)){
-            sender.sendMessage("You don't have permission:" + adminPermision);
+            sender.sendMessage("§c§l管理者権限がありません:" + adminPermision);
             return true;
         }
         return false;
     }
 
-    //      MFC有効無効
+
+    /**
+     * MFC 有効無効設定
+     * @param sender
+     * @param enable
+     * @return
+     */
     int enableMFC(CommandSender sender,boolean enable){
 
         //      管理者権限チェック
@@ -1090,7 +1103,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(fighters.size() < 2) {
             return 0;
         }
-        double t = getTotalBet() * prize;
+        double t = getTotalBet() * prize_ratio;
+        if(mode == MFCModes.Pro){
+            t = getTotalBet() * pro_prize_ratio;
+        }
+
         double f1 = getFighterBetMoney(fighters.get(0).uuid);
         double f2 = getFighterBetMoney(fighters.get(1).uuid);
         if(t > f1){
@@ -1469,8 +1486,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         this.autoBetPrice = (double)autobet;
         this.entryPrice = fee;
 
+        this.resetPlayerDataPrice = getConfig().getInt("resetPlayerDataPrice");
+
         this.tax = getConfig().getDouble("tax",0);
-        this.prize = getConfig().getDouble("prize",0.05);
+        this.prize_ratio = getConfig().getDouble("prize",0.05);
+        this.pro_prize_ratio = getConfig().getDouble("pro_prize",0.05);
+
         this.newbiePlayableCount =  getConfig().getInt("newbiePlayableCount",10);
         this.registerKDRLimit  = getConfig().getDouble("registerKDRLimit",0.2);
 
@@ -1480,11 +1501,13 @@ public final class FightClub extends JavaPlugin implements Listener {
             this.lobby = (Location) o;
         }
 
-        serverMessage("賞金比率:"+this.prize);
+        serverMessage("賞金比率:"+this.prize_ratio);
+        serverMessage("Pro賞金比率:"+this.pro_prize_ratio);
         serverMessage("ニュービープレイ可能回数:"+this.newbiePlayableCount);
         serverMessage("KDRリミット:"+this.registerKDRLimit);
         serverMessage("自動ベット金額:"+this.autoBetPrice);
         serverMessage("エントリ金額:"+this.entryPrice);
+        serverMessage("再チャレンジ金額:"+this.resetPlayerDataPrice);
         updateSidebar();
 
         whitelist = new FightClubList("whitelist");

@@ -123,7 +123,7 @@ public class FightClubCommand  implements CommandExecutor {
             }
 
             double prize = Double.parseDouble(args[1]);
-            plugin.prize = prize;
+            plugin.prize_ratio = prize;
             plugin.getConfig().set("prize",prize);
             plugin.serverMessage("賞金を"+Utility.getPriceString(prize)+"に設定しました");
             plugin.saveConfig();
