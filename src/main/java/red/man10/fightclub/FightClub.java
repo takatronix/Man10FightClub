@@ -216,7 +216,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             PlayerInformation fighter = waiters.get(i);
             if(fighter.uuid == uuid){
                 waiters.remove(i);
-                updateSidebar();;
+                updateSidebar();
                 return true;
             }
         }
@@ -288,6 +288,8 @@ public final class FightClub extends JavaPlugin implements Listener {
                 s.sendMessage("プレイヤー情報を取得中....");
                 var pi = data.getPlayerData(IsProMode(),uuid);
                 s.sendMessage(pi.getInfo());
+                pi.uuid = uuid;
+                pi.name = name;
 
                 //  メインスレッドで再実行
                 Bukkit.getScheduler().runTask(this, new Runnable() {
@@ -322,11 +324,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             kdrs = String.format("%.2f",kdr);
         }
         if(mode != MFCModes.Free) {
-            //        登録費用
-            if (!vault.withdraw(playerInfo.uuid, entryPrice)) {
-                s.sendMessage("参加費用がありません");
-                return -3;
-            }
 
             /////////////////////////////////////
             //       参加資格チェック
@@ -342,12 +339,20 @@ public final class FightClub extends JavaPlugin implements Listener {
                         return waiters.size();
                     }
                     //s.sendMessage("ブラックリストに登録されているため参加できません");
-                    s.sendMessage(playerInfo.name +"は、MFCに登録しようとしましたが、弱すぎるため拒否されました。KDR:"+registerKDRLimit+"以上が最低条件です");
-                    s.sendMessage(playerInfo.name +"§e§l/mfc retry §fで、プレイヤーデータを消去し１度だけKDRを上げるチャンスがもらえます");
-                    s.sendMessage(playerInfo.name +"再チャレンジ料金"+Utility.getPriceString(this.resetPlayerDataPrice)+"必要です。");
+                    s.sendMessage(playerInfo.name +"は、MFCに登録しようとしましたが、弱すぎるため拒否されました。");
+                    s.sendMessage("§c§lKDR:"+registerKDRLimit+"以上が最低条件です");
+                    s.sendMessage("§e§l/mfc retry §f§lで、プレイヤーデータを消去し１度だけKDRを上げるチャンスがもらえます");
+                    s.sendMessage("§f§l再チャレンジ料金"+Utility.getPriceString(this.resetPlayerDataPrice)+"§f§l必要です。");
                     return -4;
                 }
             }
+
+            //        登録費用
+            if (!vault.withdraw(playerInfo.uuid, entryPrice)) {
+                s.sendMessage("参加費用がありません");
+                return -3;
+            }
+
         }
 
         String his = name + " Kill:"+  playerInfo.kill + " Death:"+playerInfo.death + " "+ Utility.getPriceString(playerInfo.total_prize) + " 総プレイ数:"+play + " KDR:"+kdrs;

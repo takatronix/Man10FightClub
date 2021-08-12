@@ -58,7 +58,8 @@ public class FightClubCommand  implements CommandExecutor {
                 return false;
             }
             plugin.waiters.clear();
-            p.sendMessage("街リストきめましょう");
+            p.sendMessage("待ちリストクリアしました");
+            plugin.sideBar.show();
             return true;
         }
 

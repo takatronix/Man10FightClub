@@ -49,7 +49,8 @@ public class  PlayerInformation{
     }
 
     String getInfo(){
-        String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§f§l総獲得賞金:"+ Utility.getPriceString(this.total_prize) + "§5§lMFCスコア:"+getScore();
+        var kdrs = String.format("%.2f",getKDR());
+        String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§b§l("+kdrs+") §f§l総獲得賞金:"+ Utility.getPriceString(this.total_prize) + " §d§lMFCスコア"+getScore();
         return s;
     }
 }

@@ -328,6 +328,7 @@ public class FightClubData {
             while(rs.next())
             {
                 var pi = new PlayerInformation();
+                pi.uuid = UUID.fromString(rs.getString("uuid"));
                 pi.kill = rs.getInt("kill");
                 pi.death = rs.getInt("death");
                 pi.total_prize = rs.getDouble("totalprize");
