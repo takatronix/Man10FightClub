@@ -1261,12 +1261,15 @@ public final class FightClub extends JavaPlugin implements Listener {
         unregisterFighter(fighters.get(0).uuid);
         unregisterFighter(fighters.get(1).uuid);
 
-        // 全員をロビーに戻す
-        tpaLobby();
 
-        //      終了
-        startEntry();
-        updateSidebar();
+        getServer().getScheduler().scheduleSyncDelayedTask(this, ()-> {
+            // 全員をロビーに戻す
+            tpaLobby();
+            //      終了
+            startEntry();
+            updateSidebar();
+
+        }, 20*5);
         return 0;
     }
 
@@ -1751,7 +1754,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 resetPlayerStatus(pn);
                 //command("mkit pop "+pf.name );
             }
-            tpaLobby();
+          //  tpaLobby();
             updateSidebar();
             endGame(lastIndex);
         }
