@@ -59,6 +59,9 @@ public class SidebarDisplay {
      * @param point 項目のスコア
      */
     public void setScore(String name, int point) {
+        if(name.length() > 40){
+            name = name.substring(0,40);
+        }
         Objective obj = scoreboard.getObjective(OBJECTIVE_NAME);
         Score score = obj.getScore(name);
         if (point == 0) {
