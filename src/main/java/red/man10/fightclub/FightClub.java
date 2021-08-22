@@ -135,6 +135,7 @@ public final class FightClub extends JavaPlugin implements Listener {
      */
     public  void setMFCMode(CommandSender sender,MFCModes mode){
 
+        log("setMFCMode");
         cancelGame();
         this.mode = mode;
 
@@ -150,6 +151,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             enableMFC(sender,true);
         }
         if(mode == MFCModes.Normal){
+            log("mfc start...");
             title = "§bMFC 通常モード";
             subTitle = "誰でも参加できます。KDR"+ registerKDRLimit + "以下になると参加できません";
             enableMFC(sender,true);
@@ -164,7 +166,9 @@ public final class FightClub extends JavaPlugin implements Listener {
             subTitle = "§e§l勝者を予想して、§e§n大金§e§lをゲットしよう！！！";
             enableMFC(sender,true);
         }
+        log("sendTitleToAllWithSound");
         sendTitleToAllWithSound(title,subTitle,20,140,20,Sound.ENTITY_WITHER_SPAWN,1,1);
+        log("enableMFC finished");
     }
 
     /**
@@ -616,6 +620,7 @@ public final class FightClub extends JavaPlugin implements Listener {
      */
     int enableMFC(CommandSender sender,boolean enable){
 
+        log("enableMFc");
         //      管理者権限チェック
         if(checkAdminPermission(sender)){
             return 0;
@@ -632,8 +637,11 @@ public final class FightClub extends JavaPlugin implements Listener {
             this.currentStatus = Closed;
         }
 
+        log("saveCurrentStatus");
         saveCurrentStatus();
+        log("updateSideBar");
         updateSidebar();
+        log("updateLifeBar");
         updateLifeBar();
         return 0;
     }
@@ -662,6 +670,8 @@ public final class FightClub extends JavaPlugin implements Listener {
      * @return
      */
     public int cancelGame(){
+        log("cancelGame");
+
         showTitle("試合中断!","試合はキャンセルされ返金されます",3,0);
         serverMessage("試合中断！ 試合はキャンセルされ返金されます");
 
@@ -716,7 +726,7 @@ public final class FightClub extends JavaPlugin implements Listener {
      * @return
      */
     public int startGame(){
-
+        log("startGame");
         gui.closeInMenu();
         if(fighters.size() < 2){
             serverMessage("二人以上いないと開催できませんキャンセルします");
@@ -864,6 +874,7 @@ public final class FightClub extends JavaPlugin implements Listener {
      * @return
      */
     public void startEntry(){
+        log("startEntry start");
         resetEnetryTimer();
         resetFightTimer();
         resetBetTimer();
@@ -876,6 +887,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         saveCurrentStatus();
         pauseTimer = false;
         lifebar.setInfoBar(0);
+        log("startEntry exit");
+
     }
 
     /**
@@ -895,6 +908,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     String   selectedKit = "";
     //      ゲーム開始
     public boolean openGame(CommandSender sender, String _arena,String _kit){
+        log("openGame");
+
         if(waiters.size() < 2){
             serverMessage("二人以上いないと開催できません");
             return false;
@@ -1497,6 +1512,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         Bukkit.getScheduler().runTaskTimer(this, this::onTimer, 0, 20);
         Bukkit.getScheduler().runTaskTimer(this, this::onTickTimer, 0, 1);
         showInfoBarToPlayer();
+
     }
 
     void showInfoBarToPlayer(){
@@ -1569,9 +1585,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void onDisable() {
         getLogger().info("Disabled");
         cancelGame();
+
         lifebar.clearBar();
         lifebar.clearInfoBar();
-
     }
 
 
@@ -1852,6 +1868,7 @@ public final class FightClub extends JavaPlugin implements Listener {
      * @param text
      */
     public void log(String text){
+     //   Bukkit.broadcastMessage(text);
         getLogger().info("[MFC]:"+text);
     }
 
@@ -2257,6 +2274,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(lobby == null){
             return;
         }
+
+        log("tpaLobby");
+
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
             if(player.getLocation().getWorld().getName().equalsIgnoreCase(worldName)){
                 if(player.isOp()){

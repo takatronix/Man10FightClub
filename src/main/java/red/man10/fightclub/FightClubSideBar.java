@@ -165,7 +165,7 @@ public class FightClubSideBar {
 
     void showToAll(){
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-            sideBar.setMainScoreboard(player);
+        //    sideBar.setMainScoreboard(player);
             sideBar.setShowPlayer(player);
         }
     }
