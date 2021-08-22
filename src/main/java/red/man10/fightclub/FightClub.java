@@ -1962,9 +1962,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(!isInMFCWorld(e.getPlayer()))
             return;
 
-        if(currentStatus == Closed){
-            return;
-        }
+
 
         if( e.getAction() == Action.RIGHT_CLICK_BLOCK  || e.getAction() == Action.LEFT_CLICK_BLOCK ) {
         if (e.getClickedBlock().getType() == Material.OAK_SIGN || e.getClickedBlock().getType() == Material.OAK_WALL_SIGN) {
@@ -1973,8 +1971,21 @@ public final class FightClub extends JavaPlugin implements Listener {
                     return;
                 }
 
+
+
                 Sign s = (Sign) e.getClickedBlock().getState();
                 Player p = e.getPlayer();
+                // MFCとじていてもロビーにはもどせるように
+                if (s.getLine(1).equalsIgnoreCase("Lobby")) {
+                    p.sendMessage("ロビーに戻ります");
+                    teleportToLobby(e.getPlayer());
+                    return;
+                }
+
+                if(currentStatus == Closed){
+                    return;
+                }
+
 
                 if (!s.getLine(0).equalsIgnoreCase("[MFC]")){
                     return;
@@ -2016,11 +2027,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                 return;
             }
 
-            if (s.getLine(1).equalsIgnoreCase("Lobby")) {
-                p.sendMessage("ロビーに戻ります");
-                teleportToLobby(e.getPlayer());
-                return;
-            }
+
 
             if (s.getLine(1).equalsIgnoreCase("Watch")) {
                 tp(e.getPlayer(),selectedArena,"spawn");
