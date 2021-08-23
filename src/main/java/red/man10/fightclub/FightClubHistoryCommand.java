@@ -24,7 +24,9 @@ public class FightClubHistoryCommand  implements CommandExecutor {
             p.sendMessage("§e/mfch prize        賞金ランキングを表示");
             p.sendMessage("§e/mfch kdr          強さランキングを表示");
             p.sendMessage("§e/mfch score        スコアランキングを表示");
-            p.sendMessage("§e/mfch prize.pro    PRO)獲得賞金ランキングを表示");
+            p.sendMessage("§e/mfch pro.prize    PRO 賞金ランキングを表示");
+            p.sendMessage("§e/mfch pro.kdr      PRO 強さランキングを表示");
+            p.sendMessage("§e/mfch pro.score    PRO スコアランキングを表示");
             return false;
         }
 
@@ -60,10 +62,10 @@ public class FightClubHistoryCommand  implements CommandExecutor {
             var result = plugin.data.getPrizeRanking(isPro,rankPerPage,rankPerPage * page);
 
             if(isPro){
-                sender.sendMessage("§6§l========= §c§lPro 合計獲得賞金ランキング  §6§l===========");
+                sender.sendMessage("§6§l==== §c§lPro 合計獲得賞金ランキング  §6§l ====");
                 sender.sendMessage("§6§lMFC Proで一番賞金をゲットしたプレイヤー");
             }else{
-                sender.sendMessage("§e§l====== MFC 合計獲得賞金ランキング  ======");
+                sender.sendMessage("§e§l=== MFC 合計獲得賞金ランキング ====");
                 sender.sendMessage("§e§l一番賞金をゲットしたプレイヤー");
             }
             int no = 1;
@@ -81,10 +83,10 @@ public class FightClubHistoryCommand  implements CommandExecutor {
             var result = plugin.data.getKDRRanking(isPro,rankPerPage,rankPerPage * page);
 
             if(isPro){
-                sender.sendMessage("§6§l========= §c§lPro Kill/Death Rate ランキング  §6§l===========");
+                sender.sendMessage("§6§l===== §c§lPro Kill/Death Rate ランキング  §6§l=====");
                 sender.sendMessage("§6§lMFC Proで一番強いプレイヤー");
             }else{
-                sender.sendMessage("§c§l====== MFC KDR ランキング  ======");
+                sender.sendMessage("§c§l===== MFC KDR ランキング  =====");
                 sender.sendMessage("§6§lMFCで一番強いプレイヤー");
             }
             int no = 1;
@@ -102,10 +104,10 @@ public class FightClubHistoryCommand  implements CommandExecutor {
             var result = plugin.data.getScoreRanking(isPro,rankPerPage,rankPerPage * page);
 
             if(isPro){
-                sender.sendMessage("§6§l========= §c§lPro MFCスコアランキング  §6§l===========");
+                sender.sendMessage("§6§l===== §c§lPro MFCスコアランキング  §6§l====");
                 sender.sendMessage("§6§l人気ランキング)");
             }else{
-                sender.sendMessage("§c§l====== MFCスコア ランキング  ======");
+                sender.sendMessage("§c§l===== MFCスコア ランキング  =====");
                 sender.sendMessage("§6§l人気ランキング");
             }
             int no = 1;
