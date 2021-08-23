@@ -944,8 +944,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
 
         for(PlayerInformation fi : fighters) {
-            //      装備を保存
-             command("mfckit push "+fi.name );
+            this.kitCommand.push(fi.getPlayer());
         }
 
         //      アリーナの自動選択(1)
