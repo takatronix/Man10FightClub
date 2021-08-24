@@ -104,8 +104,8 @@ public class FightClubHistoryCommand  implements CommandExecutor {
             var result = plugin.data.getScoreRanking(isPro,rankPerPage,rankPerPage * page);
 
             if(isPro){
-                sender.sendMessage("§a§l===== §c§lPro MFCスコアランキング  §6§l====");
-                sender.sendMessage("§e§l人気ランキング)");
+                sender.sendMessage("§a§l===== §a§lPro MFCスコアランキング §a§l====");
+                sender.sendMessage("§e§l人気ランキング");
             }else{
                 sender.sendMessage("§a§l===== MFCスコア ランキング  =====");
                 sender.sendMessage("§e§l人気ランキング");
