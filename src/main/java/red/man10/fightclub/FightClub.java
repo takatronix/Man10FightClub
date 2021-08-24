@@ -328,7 +328,7 @@ public final class FightClub extends JavaPlugin implements Listener {
      */
     private int RegisterPlayerTask(PlayerInformation playerInfo,CommandSender s,String name){
         if(mode != MFCModes.Free){
-            resetEnetryTimer();
+            //resetEnetryTimer();
         }
         log("RegisterPlayerTask");
 
