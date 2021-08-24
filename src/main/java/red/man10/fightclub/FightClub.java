@@ -38,6 +38,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      初期設定
     long        entryPrice = 1000;              //  参加費用
     long        resetPlayerDataPrice = 10000;   // 　再チャレンジ費用
+    long        resetBetTimerMinPrice = 10000;
 
     double prize_ratio = 0.05;
     double pro_prize_ratio = 0.08;
@@ -648,12 +649,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         String mes =  buyerName+"は"+fighters.get(index).name+"へ§e"+Utility.getPriceString(price)+"§fベットした！ -> "+ods;
         serverMessage(mes);
 
-        // プロは賭けられると時間延長
-        if(IsProMode()){
-            if(price >= 10000){
-                resetBetTimer();
-            }
-        }else{
+
+        if(price >= resetBetTimerMinPrice){
             resetBetTimer();
         }
 
