@@ -1615,7 +1615,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         this.autoBetPrice = (double)autobet;
         this.entryPrice = fee;
 
-        this.resetPlayerDataPrice = getConfig().getInt("resetPlayerDataPrice");
+        this.resetPlayerDataPrice = getConfig().getInt("resetPlayerDataPrice",10000);
+        this.resetBetTimerMinPrice = getConfig().getInt("resetBetTimerMinPrice",10000);
 
         this.tax = getConfig().getDouble("tax",0);
         this.prize_ratio = getConfig().getDouble("prize",0.05);

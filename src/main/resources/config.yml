@@ -13,3 +13,4 @@ autobet: 1000
 worldName: mfc
 newbiePlayableCount: 10
 registerKDRLimit: 0.2
+resetBetTimerMinPrice: 10000
