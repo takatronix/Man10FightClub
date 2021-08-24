@@ -34,15 +34,18 @@ public class FightClubCommand  implements CommandExecutor {
         // MFC表示を再開する
         if(args[0].equalsIgnoreCase("hide")) {
             this.plugin.addUninterested(p);
+            return true;
         }
         // MFC表示を止める
         if(args[0].equalsIgnoreCase("show")) {
             this.plugin.removeUninterested(p);
+            return true;
         }
 
         //  retry
         if(args[0].equalsIgnoreCase("retry")) {
             this.retryChallenge(p);
+            return true;
         }
 
         if(args[0].equalsIgnoreCase("reset")) {
