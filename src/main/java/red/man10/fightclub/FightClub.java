@@ -2389,6 +2389,8 @@ public final class FightClub extends JavaPlugin implements Listener {
             p.sendMessage("ロビーが未設定のためもどれません");
             return;
         }
+
+        p.setGameMode(GameMode.SURVIVAL);
         p.teleport(lobby);
     }
 
