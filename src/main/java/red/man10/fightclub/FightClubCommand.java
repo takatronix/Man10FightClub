@@ -202,7 +202,7 @@ public class FightClubCommand  implements CommandExecutor {
 
             int ret = plugin.registerFighter(p,fighter.getUniqueId(),args[1]);
             if (ret == -1){
-                p.sendMessage(ChatColor.RED + "Error: " + args[1] +" is already registered!");
+                p.sendMessage(ChatColor.RED + "Error: " + args[1] +"はすでに参加してるもしくは、興味がない");
                 return false;
             }
             showOdds(p);
