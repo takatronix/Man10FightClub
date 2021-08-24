@@ -238,10 +238,8 @@ public final class FightClub extends JavaPlugin implements Listener {
      */
     public int registerFighter(CommandSender s,UUID uuid,String name){
 
-        if(getUninterestedIndex(uuid) != -1){
-            s.sendMessage(name+"はMFCを非表示にしているために参加できません");
-            return -1;
-        }
+        // 非表示を解除
+        removeUninterested(Bukkit.getPlayer(uuid));
 
         ////////////////////////////////////
         //      すでに登録されてたらエラー
@@ -2070,6 +2068,19 @@ public final class FightClub extends JavaPlugin implements Listener {
                     guiBetMenu(p);
                     return;
                 }
+                //  非表示
+                if (s.getLine(1).equalsIgnoreCase("hide")) {
+                    this.addUninterested(p);
+                    return;
+                }
+                //  表示
+                if (s.getLine(1).equalsIgnoreCase("show")) {
+                    this.removeUninterested(p);
+                    return;
+                }
+
+
+
                 if (s.getLine(1).equalsIgnoreCase("Register")) {
                     if(!p.hasPermission(registerPermision)){
                         p.sendMessage("選手登録する権限がありません");

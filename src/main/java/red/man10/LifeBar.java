@@ -61,7 +61,7 @@ public class LifeBar {
         info.setProgress(1);
         setInfoName("");
     }
-    
+
 //life
     public void addPlayer(Player p){
         r.addPlayer(p);
