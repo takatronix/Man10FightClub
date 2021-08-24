@@ -104,11 +104,11 @@ public class FightClubHistoryCommand  implements CommandExecutor {
             var result = plugin.data.getScoreRanking(isPro,rankPerPage,rankPerPage * page);
 
             if(isPro){
-                sender.sendMessage("§6§l===== §c§lPro MFCスコアランキング  §6§l====");
-                sender.sendMessage("§6§l人気ランキング)");
+                sender.sendMessage("§a§l===== §c§lPro MFCスコアランキング  §6§l====");
+                sender.sendMessage("§e§l人気ランキング)");
             }else{
-                sender.sendMessage("§c§l===== MFCスコア ランキング  =====");
-                sender.sendMessage("§6§l人気ランキング");
+                sender.sendMessage("§a§l===== MFCスコア ランキング  =====");
+                sender.sendMessage("§e§l人気ランキング");
             }
             int no = 1;
             for (var p:result) {

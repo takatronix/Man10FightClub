@@ -694,6 +694,8 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         fighters.clear();
 
+
+
         //
         tpaLobby();
 
@@ -1261,6 +1263,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
             //      通知
             vault.deposit(bet.buyerUUID, Math.floor(playerPayout));
+            bet.bet = 0;
 
             //      データベース登録 -> 賞金
             double profit = playerPayout - bet.bet;
@@ -1270,6 +1273,8 @@ public final class FightClub extends JavaPlugin implements Listener {
                 data.createBet(fightId, bet.buyerUUID, bet.bet, true, f.uuid, odds, profit);
             });
         }
+        //　支払い情報をクリア
+        bets.clear();
 
         // 選手登録解除
         unregisterFighter(fighters.get(0).uuid);
