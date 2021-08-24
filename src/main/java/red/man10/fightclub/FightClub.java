@@ -121,6 +121,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      対戦者リスト
     ArrayList<PlayerInformation> fighters = new ArrayList<>();
 
+    //      MFCに興味がないプレイヤー
+    ArrayList<PlayerInformation> uninterested = new ArrayList<>();
+
     //      掛け金
     ArrayList<BetInformation> bets = new ArrayList<>();
 
@@ -233,6 +236,11 @@ public final class FightClub extends JavaPlugin implements Listener {
      * @return
      */
     public int registerFighter(CommandSender s,UUID uuid,String name){
+
+        if(getUninterestedIndex(uuid) != -1){
+            s.sendMessage(name+"はMFCを非表示にしているために参加できません");
+            return -1;
+        }
 
         ////////////////////////////////////
         //      すでに登録されてたらエラー
@@ -482,6 +490,60 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
         return count;
+    }
+
+    /**
+     * 興味なしリストにはいっているか　
+     * @param uuid
+     * @return
+     */
+    int getUninterestedIndex(UUID uuid) {
+        for(int i = 0;i < uninterested.size();i++){
+            if(uninterested.get(i).uuid == uuid){
+                return i;
+            }
+        }
+        return -1;
+    }
+    // MFCに興味がない？
+    boolean isUninterested(Player p){
+        for(PlayerInformation pi : this.uninterested){
+            if(pi.uuid == p.getUniqueId()){
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * 興味なしリストに追加
+     * @param p
+     */
+    void addUninterested(Player p){
+
+        if(isUninterested(p)){
+            p.sendMessage("すでに非表示にしています");
+            return;
+        }
+        var pi = new PlayerInformation();
+        pi.name = p.getName();
+        pi.uuid = p.getUniqueId();
+        this.uninterested.add(pi);
+        p.sendMessage("§d§lMFCの表示を停止しました");
+    }
+
+    /**
+     *
+     * @param p
+     */
+    void removeUninterested(Player p){
+        var index = getUninterestedIndex(p.getUniqueId());
+        if(index != -1){
+            this.uninterested.remove(index);
+            p.sendMessage("§d§lMFCの表示を再開しました");
+            return;
+        }
+        p.sendMessage("すでに表示有効にしています");
+        return ;
     }
 
     /**
@@ -1525,6 +1587,11 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
     }
     void showInfoBar(Player p){
+        // 興味ないプレーヤーには配信しない
+        if(isUninterested(p)){
+            lifebar.setVisible(false);
+            return;
+        }
         lifebar.addInfoPlayer(p);
         lifebar.setVisible(true);
     }

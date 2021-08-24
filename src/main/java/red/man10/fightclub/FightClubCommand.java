@@ -29,6 +29,18 @@ public class FightClubCommand  implements CommandExecutor {
             return true;
         }
 
+
+
+        // MFC表示を再開する
+        if(args[0].equalsIgnoreCase("show")) {
+            this.plugin.addUninterested(p);
+        }
+        // MFC表示を止める
+        if(args[0].equalsIgnoreCase("hide")) {
+            this.plugin.removeUninterested(p);
+        }
+
+        //  retry
         if(args[0].equalsIgnoreCase("retry")) {
             this.retryChallenge(p);
         }
@@ -503,6 +515,9 @@ public class FightClubCommand  implements CommandExecutor {
 
     }
 
+
+
+
     void retryChallenge(Player p){
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
             p.sendMessage("プレイヤー情報を取得中....");
@@ -554,9 +569,8 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c*/mfc stop - 停止");
         p.sendMessage("/mfc odds - Show Odds");
         p.sendMessage("/mfc bets - Show Bets");
-        p.sendMessage("§c*/mfc ban [User]");
-        p.sendMessage("§c*/mfc unban [User]");
-        p.sendMessage("§c*/mfc kick [User]");
+        p.sendMessage("/mfc hide - MFCの表示をけす");
+        p.sendMessage("/mfc show - MFCの表示を再開する");
         p.sendMessage("-----------エントリー中有効コマンド-----------");
         p.sendMessage("§c/mfc register [Fighter]      / Register fighter(s)");
         p.sendMessage("§c/mfc open [arena] [kit]- 投票開始");

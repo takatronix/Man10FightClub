@@ -29,8 +29,6 @@ public class FightClubSideBar {
 
     void show(){
 
-
-      //  plugin.log("showing sidebar");
     sideBar.remove();
     sideBar = new SidebarDisplay();
 
@@ -159,13 +157,21 @@ public class FightClubSideBar {
     }
 
     void addPlayer(Player p){
+        // 興味がない人にはスコアボードを配信しない
+        if(plugin.isUninterested(p)){
+            return;
+        }
+
         sideBar.setMainScoreboard(p);
         sideBar.setShowPlayer(p);
     }
 
     void showToAll(){
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-        //    sideBar.setMainScoreboard(player);
+            // 興味がない人にはスコアボードを配信しない
+            if(plugin.isUninterested(player)){
+                continue;
+            }
             sideBar.setShowPlayer(player);
         }
     }
