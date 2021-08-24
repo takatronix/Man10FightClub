@@ -1379,6 +1379,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     void showLifeBar(){
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+            if(isUninterested(player))
+                continue;
+
             lifebar.addPlayer(player);
         }
     }
