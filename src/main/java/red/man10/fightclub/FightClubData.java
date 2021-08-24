@@ -358,7 +358,7 @@ public class FightClubData {
         if(isPro)
             tableName = "mfcpro_player";
 
-        var ret = mysql.execute("delete from "+ tableName+ " mfc_player where uuid='"+uuid+"'");
+        var ret = mysql.execute("delete from "+ tableName+ " where uuid='"+uuid+"'");
         if(ret == false){
             plugin.log("savePlayerData delete error");
         }
