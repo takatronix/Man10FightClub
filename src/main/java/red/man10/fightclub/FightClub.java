@@ -521,7 +521,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     void addUninterested(Player p){
 
         if(isUninterested(p)){
-            p.sendMessage("すでに非表示にしています");
+            p.sendMessage("§d§lすでに非表示にしています");
             return;
         }
         var pi = new PlayerInformation();
