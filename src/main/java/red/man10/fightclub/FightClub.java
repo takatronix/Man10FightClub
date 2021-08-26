@@ -50,6 +50,9 @@ public final class FightClub extends JavaPlugin implements Listener {
     double      minBetPrice = 20;
     String      worldName = "mfc";         // MFCワールド名
 
+    String      winPlayerCommand;
+    String      losePlayerCommand;
+
     Location    lobby;
 
 
@@ -1610,6 +1613,8 @@ public final class FightClub extends JavaPlugin implements Listener {
     }
 
     void loadConfig(){
+        reloadConfig();
+
         arenaCommand.loadArenaConfig();
         loadSigns();
 
@@ -1637,6 +1642,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         this.newbiePlayableCount =  getConfig().getInt("newbiePlayableCount",10);
         this.registerKDRLimit  = getConfig().getDouble("registerKDRLimit",0.2);
+
+        this.winPlayerCommand = getConfig().getString("winPlayerCommand");
+        this.losePlayerCommand = getConfig().getString("losePlayerCommand");
 
         // ロビー情報があれば読み込み
         Object o =  getConfig().get("lobby");
@@ -1835,9 +1843,20 @@ public final class FightClub extends JavaPlugin implements Listener {
         getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             public void run() {
                 resetPlayerStatus(p);
-                command("mfckit pop " + p.getName());
+                kitCommand.pop(p);
                 resetPlayerStatus(pa);
-                command("mfckit pop " + pa.getName());
+                kitCommand.pop(pa);
+
+                //  Freeモード以外はコマンドを実行
+                if(mode != MFCModes.Free){
+                    if(!losePlayerCommand.isEmpty()){
+                        command(losePlayerCommand.replace("%player%",p.getName()));
+                    }
+                    if(!winPlayerCommand.isEmpty()){
+                        command(winPlayerCommand.replace("%player%",pa.getName()));
+                    }
+                }
+
             }
 
         }, 20);
@@ -2302,6 +2321,7 @@ public final class FightClub extends JavaPlugin implements Listener {
     //      コマンド実行　
     void command(String command){
         getServer().dispatchCommand(getServer().getConsoleSender(),command);
+        log(command);
     }
 
     String            selectedArena = "";
