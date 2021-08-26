@@ -547,13 +547,8 @@ public class FightClubCommand  implements CommandExecutor {
     }
 
     boolean resetUserData(CommandSender sender,String name){
-        var player = Bukkit.getPlayer(name);
-        if(player == null){
-            sender.sendMessage(name+"はオフラインです");
-            return false;
-        }
-
-        var ret = plugin.data.deletePlayerData(false,player.getUniqueId());
+        
+        var ret = plugin.data.deletePlayerDataByName(false,name);
         if(ret == false){
             sender.sendMessage("削除に失敗しました");
             return false;

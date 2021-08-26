@@ -364,6 +364,17 @@ public class FightClubData {
         }
         return ret;
     }
+    public boolean deletePlayerDataByName(boolean isPro ,String name){
+        var tableName = "mfc_player";
+        if(isPro)
+            tableName = "mfcpro_player";
+
+        var ret = mysql.execute("delete from "+ tableName+ " where mcid='"+name+"'");
+        if(ret == false){
+            plugin.log("savePlayerData delete error");
+        }
+        return ret;
+    }
 
     /**
      * プレイヤーデータ取得 NULLならデータなし
