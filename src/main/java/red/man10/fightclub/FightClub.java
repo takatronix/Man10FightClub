@@ -1441,7 +1441,12 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         if(currentStatus == Entry){
             if(waiters.size() == 0){
-                lifebar.setInfoName(getModeText()+ " §f§l選手登録受付中!! §e§l参加費:"+ Utility.getPriceString(entryPrice));
+                if(mode == MFCModes.Free){
+                    lifebar.setInfoName(getModeText()+ " §f§l選手登録受付中!! §e§l参加費無料！！");
+                }
+                else{
+                    lifebar.setInfoName(getModeText()+ " §f§l選手登録受付中!! §e§l参加費:"+ Utility.getPriceString(entryPrice));
+                }
             }else{
                 lifebar.setInfoName(getModeText()+ " §a§l選手登録受付中!§e§l("+waiters.size()+") §4§l Time:"+entryTimer);
             }
