@@ -738,24 +738,31 @@ public final class FightClub extends JavaPlugin implements Listener {
         for (BetInformation bet : bets) {
             vault.deposit(bet.buyerUUID, bet.bet);
         }
-
         bets.clear();
         resetBetTimer();
         resetEnetryTimer();
         resetFightTimer();
 
+
+
         for(PlayerInformation p : fighters){
             unregisterFighter(p.uuid);
             kitCommand.pop(p.getPlayer());
         }
-
         fighters.clear();
 
+        //   払い戻し処理
+        if(mode != MFCModes.Free){
+            serverMessage("参加選手に申し込み金を返金");
+            for (PlayerInformation waiter : waiters) {
+                vault.deposit(waiter.uuid,entryPrice);
+            }
+            waiters.clear();
+        }
 
 
         //
         tpaLobby();
-
         startEntry();
         return 0;
     }
