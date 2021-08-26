@@ -56,6 +56,7 @@ public class FightClubCommand  implements CommandExecutor {
             Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
                 this.resetUserData(sender,args[1]);
             });
+            return false;
         }
 
 
@@ -547,7 +548,7 @@ public class FightClubCommand  implements CommandExecutor {
     }
 
     boolean resetUserData(CommandSender sender,String name){
-        
+
         var ret = plugin.data.deletePlayerDataByName(false,name);
         if(ret == false){
             sender.sendMessage("削除に失敗しました");
