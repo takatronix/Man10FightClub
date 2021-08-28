@@ -893,7 +893,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         if(fightId == -1 || mode == MFCModes.Free){
             title = "§cファイト!";
         }
-        showTitle(title,subTitle, 0.2,3);
+        showTitle(title,subTitle, 0.2,0.1);
         serverMessage(title);
         serverMessage(subTitle);
 
