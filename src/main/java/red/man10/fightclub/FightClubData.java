@@ -442,7 +442,7 @@ public class FightClubData {
         if(isPro)
             tableName = "mfcpro_player";
 
-        var sql = "select *,`kill`+death from " + tableName + " where `kill`+death >=" + plugin.newbiePlayableCount + " order by kdr desc limit "+ limit +" offset " + offset;
+        var sql = "select *,`kill`+death from " + tableName + " where `kill`+death >=" + 20 + " order by kdr desc limit "+ limit +" offset " + offset;
         var result =  getPlayerData(sql);
         return result;
     }
