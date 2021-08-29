@@ -59,6 +59,27 @@ public class FightClubCommand  implements CommandExecutor {
             return false;
         }
 
+        if(args[0].equalsIgnoreCase("resethistrory")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+            Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
+                this.resetUserHistory(sender,args[1],false);
+            });
+            return false;
+        }
+        if(args[0].equalsIgnoreCase("resethistrory.pro")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+            Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
+                this.resetUserHistory(sender,args[1],true);
+            });
+            return false;
+
+        }
 
         if(args[0].equalsIgnoreCase("help")){
             if(!p.hasPermission(plugin.adminPermision)){
@@ -558,6 +579,24 @@ public class FightClubCommand  implements CommandExecutor {
         return true;
     }
 
+    /**
+     * 履歴データ削除
+     * @param sender
+     * @param name
+     * @return
+     */
+    boolean resetUserHistory(CommandSender sender,String name,boolean isPro){
+        var ret = plugin.data.deletePlayerDataByName(isPro,name);
+        if(ret == false){
+            sender.sendMessage("データ削除に失敗しました");
+        }
+        ret = plugin.data.deletePlayerHistoryByName(isPro,name);
+        if(ret == false){
+            sender.sendMessage("離席削除に失敗しました");
+        }
+        sender.sendMessage("ユーザーデータ削除しました");
+        return true;
+    }
 
     void showHelp(CommandSender p){
         p.sendMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
@@ -595,6 +634,10 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c/mfc whitelist - MFC開始(ホワイトリストモード)");
         p.sendMessage("§c/mfc pro - MFC開始(プロモード)");
 
+        p.sendMessage("-----------履歴削除-----------");
+        p.sendMessage("§c*/mfc reset [name] ユーザーデータ削除");
+        p.sendMessage("§c*/mfc resethistory [name] ユーザー履歴削除");
+        p.sendMessage("§c*/mfc resethistory.pro [name] ユーザー履歴削除");
 
         p.sendMessage("-----------アリーナ-----------");
         p.sendMessage("§c*/mfca create [アリーナ名]");
@@ -611,6 +654,8 @@ public class FightClubCommand  implements CommandExecutor {
 
         p.sendMessage("-----------キット-----------");
         p.sendMessage("§c*/mfckit help で詳細を確認");
+        p.sendMessage("-----------戦績-----------");
+        p.sendMessage("§c*/mfch MFC履歴");
 
     }
 }

@@ -1,6 +1,7 @@
 package red.man10.fightclub;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import red.man10.MySQLManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -208,7 +209,6 @@ public class FightClubData {
 
     }
 
-
     /**
      * ゲーム作成
      * @param stage
@@ -373,6 +373,24 @@ public class FightClubData {
         if(ret == false){
             plugin.log("savePlayerData delete error");
         }
+        return ret;
+    }
+
+    public boolean deletePlayerHistoryByName(boolean isPro ,String name){
+        var tableName = "mfc_fight";
+        if(isPro)
+            tableName = "mfcpro_fight";
+
+        var ret = mysql.execute("delete from "+ tableName+ " where player1='"+name+"'");
+        if(ret == false){
+            plugin.log("player1 delete error");
+        }
+        var ret2 = mysql.execute("delete from "+ tableName+ " where player2='"+name+"'");
+        if(ret2 == false){
+            plugin.log("player1 delete error");
+        }
+
+        plugin.log("user data"+name+"deleted");
         return ret;
     }
 
