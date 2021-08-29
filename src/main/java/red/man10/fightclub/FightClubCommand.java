@@ -86,7 +86,7 @@ public class FightClubCommand  implements CommandExecutor {
                 p.sendMessage("管理者権限がありません");
                 return false;
             }
-            p.sendMessage("データ取得中");
+            p.sendMessage("データ取得中...");
             Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
                 var pi =  this.updateUserData(sender,args[1] ,false);
                 if(pi == null){
@@ -102,7 +102,7 @@ public class FightClubCommand  implements CommandExecutor {
                 p.sendMessage("管理者権限がありません");
                 return false;
             }
-            p.sendMessage("データ取得中");
+            p.sendMessage("データ取得中...");
             Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
                 var pi =  this.updateUserData(sender,args[1] ,true);
                 if(pi == null){
@@ -115,13 +115,7 @@ public class FightClubCommand  implements CommandExecutor {
         }
 
         if(args[0].equalsIgnoreCase("data")) {
-            if(!p.hasPermission(plugin.adminPermision)){
-                p.sendMessage("管理者権限がありません");
-                return false;
-            }
-            p.sendMessage("データ取得中...");
             Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
-
                 var pi = plugin.data.getPlayerDataByName(false,args[1]);
                 if(pi == null){
                     p.sendMessage("データ取得失敗");
@@ -132,11 +126,6 @@ public class FightClubCommand  implements CommandExecutor {
             return false;
         }
         if(args[0].equalsIgnoreCase("data.pro")) {
-            if(!p.hasPermission(plugin.adminPermision)){
-                p.sendMessage("管理者権限がありません");
-                return false;
-            }
-            p.sendMessage("データ取得中...");
             Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
 
                 var pi = plugin.data.getPlayerDataByName(true,args[1]);
