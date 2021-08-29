@@ -59,7 +59,7 @@ public class FightClubCommand  implements CommandExecutor {
             return false;
         }
 
-        if(args[0].equalsIgnoreCase("resethistrory")) {
+        if(args[0].equalsIgnoreCase("resethistory")) {
             if(!p.hasPermission(plugin.adminPermision)){
                 p.sendMessage("管理者権限がありません");
                 return false;
@@ -69,7 +69,7 @@ public class FightClubCommand  implements CommandExecutor {
             });
             return false;
         }
-        if(args[0].equalsIgnoreCase("resethistrory.pro")) {
+        if(args[0].equalsIgnoreCase("resethistory.pro")) {
             if(!p.hasPermission(plugin.adminPermision)){
                 p.sendMessage("管理者権限がありません");
                 return false;
