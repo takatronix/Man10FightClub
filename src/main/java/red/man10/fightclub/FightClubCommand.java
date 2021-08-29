@@ -81,6 +81,75 @@ public class FightClubCommand  implements CommandExecutor {
 
         }
 
+        if(args[0].equalsIgnoreCase("update")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+            p.sendMessage("データ取得中");
+            Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
+                var pi =  this.updateUserData(sender,args[1] ,false);
+                if(pi == null){
+                    p.sendMessage("データ取得失敗");
+                    return;
+                }
+                p.sendMessage(pi.getDetail());
+            });
+            return false;
+        }
+        if(args[0].equalsIgnoreCase("update.pro")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+            p.sendMessage("データ取得中");
+            Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
+                var pi =  this.updateUserData(sender,args[1] ,true);
+                if(pi == null){
+                    p.sendMessage("データ取得失敗");
+                    return;
+                }
+                p.sendMessage(pi.getDetail());
+            });
+            return false;
+        }
+
+        if(args[0].equalsIgnoreCase("data")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+            p.sendMessage("データ取得中...");
+            Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
+
+                var pi = plugin.data.getPlayerDataByName(false,args[1]);
+                if(pi == null){
+                    p.sendMessage("データ取得失敗");
+                    return ;
+                }
+                p.sendMessage(pi.getDetail());
+            });
+            return false;
+        }
+        if(args[0].equalsIgnoreCase("data.pro")) {
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
+            p.sendMessage("データ取得中...");
+            Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
+
+                var pi = plugin.data.getPlayerDataByName(true,args[1]);
+                if(pi == null){
+                    p.sendMessage("データ取得失敗");
+                    return ;
+                }
+                p.sendMessage(pi.getDetail());
+            });
+            return false;
+        }
+
+
         if(args[0].equalsIgnoreCase("help")){
             if(!p.hasPermission(plugin.adminPermision)){
                 p.sendMessage("管理者権限がありません");
@@ -598,6 +667,16 @@ public class FightClubCommand  implements CommandExecutor {
         return true;
     }
 
+    PlayerInformation updateUserData(CommandSender sender,String name,boolean isPro){
+        var pi = plugin.data.getPlayerDataByName(isPro,name);
+        if(pi == null){
+            return null;
+        }
+        plugin.data.savePlayerData(pi.uuid,pi.kill,pi.death,pi.getKDR(),pi.total_prize,pi.max_prize,pi.betted,pi.getScore());
+        return pi;
+    }
+
+
     void showHelp(CommandSender p){
         p.sendMessage("§e============== §d●§f●§a●§e　Man10 Fight Club　§d●§f●§a● §e===============");
         p.sendMessage("§e  by takatronix http://man10.red");
@@ -638,6 +717,10 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c*/mfc reset [name] ユーザーデータ削除");
         p.sendMessage("§c*/mfc resethistory [name] ユーザー履歴削除");
         p.sendMessage("§c*/mfc resethistory.pro [name] ユーザー履歴削除");
+        p.sendMessage("§c*/mfc update [name] ユーザーデータ更新");
+        p.sendMessage("§c*/mfc update.pro [name] ユーザーデータ更新");
+        p.sendMessage("§c*/mfc data [name] ユーザーデータ表示");
+        p.sendMessage("§c*/mfc data.pro [name] ユーザーデータ表示");
 
         p.sendMessage("-----------アリーナ-----------");
         p.sendMessage("§c*/mfca create [アリーナ名]");

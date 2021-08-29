@@ -26,12 +26,12 @@ public class  PlayerInformation{
         }
         return 0;
     }
-    public void updateKDP(FightClubData data){
-        kill = data.killCount(uuid);
-        death = data.deathCount(uuid);
-        total_prize = data.totalPrize(uuid);
-        max_prize = data.maxPrize(uuid);
-        betted = data.totalBetted(uuid);
+    public void updateKDP(FightClubData data,boolean isPro){
+        kill = data.killCount(uuid,isPro);
+        death = data.deathCount(uuid,isPro);
+        total_prize = data.totalPrize(uuid,isPro);
+        max_prize = data.maxPrize(uuid,isPro);
+        betted = data.totalBetted(uuid,isPro);
         Bukkit.getLogger().log(Level.INFO,"updateKDR:"+name + ": "+getInfo());
     }
 
@@ -55,4 +55,10 @@ public class  PlayerInformation{
         String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§b§l("+getKDRString()+") §f§l総獲得賞金:"+ Utility.getPriceString(this.total_prize);
         return s;
     }
+
+    String getDetail(){
+        String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§b§l("+getKDRString()+") §f§l総獲得賞金:"+ Utility.getPriceString(this.total_prize) + " §f§l賭けられた金額"+Utility.getPriceString(this.betted)+ " §f§l最大獲得金額"+Utility.getPriceString(this.max_prize)  +" &f&lスコア:"+this.getScore();
+        return s;
+    }
+
 }

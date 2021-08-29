@@ -49,10 +49,14 @@ public class FightClubData {
      * @param id
      * @return
      */
-    public int killCount(UUID id){
+    public int killCount(UUID id,boolean isProMode){
+        String tableName = "mfc_fight";
+        if(isProMode){
+            tableName = "mfcpro_fight";
+        }
 
         int ret = -1;
-        String sql = "select count(*) from "+getFightTable()+" where winner='" + id.toString()+"';";
+        String sql = "select count(*) from "+tableName+" where winner='" + id.toString()+"';";
         ResultSet rs = mysql.query(sql);
         if(rs == null){
           //  Bukkit.getServer().broadcastMessage("query error");
@@ -79,10 +83,15 @@ public class FightClubData {
      * @param id
      * @return
      */
-    public int deathCount(UUID id){
+    public int deathCount(UUID id,boolean isProMode){
+
+        String tableName = "mfc_fight";
+        if(isProMode){
+            tableName = "mfcpro_fight";
+        }
 
         int ret = -1;
-        String sql = "select count(*) from "+getFightTable()+" where loser='" + id.toString()+"';";
+        String sql = "select count(*) from "+tableName+" where loser='" + id.toString()+"';";
 
         ResultSet rs = mysql.query(sql);
         try
@@ -101,9 +110,14 @@ public class FightClubData {
         return ret;
     }
 
-    public double totalPrize(UUID id){
+    public double totalPrize(UUID id,boolean isProMode){
+        String tableName = "mfc_fight";
+        if(isProMode){
+            tableName = "mfcpro_fight";
+        }
+
         double ret = 0;
-        String sql = "select sum(prize) from "+getFightTable()+" where winner='" + id.toString()+"';";
+        String sql = "select sum(prize) from "+tableName+" where winner='" + id.toString()+"';";
 
         ResultSet rs = mysql.query(sql);
         try
@@ -121,9 +135,15 @@ public class FightClubData {
 
         return ret;
     }
-    public double maxPrize(UUID id){
+    public double maxPrize(UUID id,boolean isProMode){
+
+        String tableName = "mfc_fight";
+        if(isProMode){
+            tableName = "mfcpro_fight";
+        }
+
         double ret = 0;
-        String sql = "select max(prize) from "+getFightTable()+" where winner='" + id.toString()+"';";
+        String sql = "select max(prize) from "+tableName+" where winner='" + id.toString()+"';";
 
         ResultSet rs = mysql.query(sql);
         try
@@ -142,9 +162,15 @@ public class FightClubData {
         return ret;
     }
 
-    public double totalBetted(UUID id){
+    public double totalBetted(UUID id,boolean isProMode){
+
+        String tableName = "mfc_fight";
+        if(isProMode){
+            tableName = "mfcpro_fight";
+        }
+
         double ret = 0;
-        String sql = "select sum(totalBet) from "+getFightTable()+" where winner='" + id.toString()+"' or loser='" + id.toString()+ "'";
+        String sql = "select sum(totalBet) from "+tableName+" where winner='" + id.toString()+"' or loser='" + id.toString()+ "'";
 
         ResultSet rs = mysql.query(sql);
         try
@@ -414,6 +440,19 @@ public class FightClubData {
         }
         return result.get(0);
     }
+
+    public PlayerInformation getPlayerDataByName(boolean isPro,String mcid){
+        var tableName = "mfc_player";
+        if(isPro)
+            tableName = "mfcpro_player";
+
+        var sql = "select * from "+tableName+" where mcid='"+mcid+"'";
+        var result =  getPlayerData(sql);
+        return result.get(0);
+    }
+
+
+
 
     /**
      * 総合獲得賞金ランキング

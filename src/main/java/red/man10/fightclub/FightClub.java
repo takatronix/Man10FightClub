@@ -1285,8 +1285,8 @@ public final class FightClub extends JavaPlugin implements Listener {
             data.updateFight(fightId,fighterIndex,pf.uuid,lf.uuid,dr);
 
             // KDRを再取得
-            pf.updateKDP(data);
-            lf.updateKDP(data);
+            pf.updateKDP(data,IsProMode());
+            lf.updateKDP(data,IsProMode());
 
             // プレーヤ情報を保存
             data.savePlayerData(pf.uuid,pf.kill,pf.death,pf.getKDR(),pf.total_prize,pf.max_prize,pf.betted,pf.getScore());
