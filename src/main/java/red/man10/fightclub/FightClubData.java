@@ -448,6 +448,10 @@ public class FightClubData {
 
         var sql = "select * from "+tableName+" where mcid='"+mcid+"'";
         var result =  getPlayerData(sql);
+        if(result.size() <= 0){
+            return null;
+        }
+
         return result.get(0);
     }
 
