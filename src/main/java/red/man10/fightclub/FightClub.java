@@ -1912,7 +1912,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
             //      試合中以外はキャンセル
             if(currentStatus != Fighting){
-                log("選手ダメージキャンセル:"+currentStatus);
+               // log("選手ダメージキャンセル:"+currentStatus);
                 e.setCancelled(true);
                 return ;
             }
@@ -1952,12 +1952,12 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
             //      試合中以外はキャンセル
             if(currentStatus != Fighting){
-                log("2)選手ダメージキャンセル:"+currentStatus);
+              //  log("2)選手ダメージキャンセル:"+currentStatus);
 
                 e.setCancelled(true);
                 return ;
             }
-            log("2)選手ダメージ");
+         //   log("2)選手ダメージ");
 
             //  ライフバー更新
             updateLifeBar();
