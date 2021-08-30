@@ -57,7 +57,7 @@ public class  PlayerInformation{
     }
 
     String getDetail(){
-        String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§b§l("+getKDRString()+") §f§l総獲得賞金:"+ Utility.getPriceString(this.total_prize) + " §f§l賭けられた金額"+Utility.getPriceString(this.betted)+ " §f§l最大獲得金額"+Utility.getPriceString(this.max_prize)  +" &f&lスコア:"+this.getScore();
+        String s = "§9§lK"+this.kill+"§f/§c§lD"+this.death+"§b§l("+getKDRString()+") §f§l総獲得賞金:"+ Utility.getPriceString(this.total_prize) + " §f§l賭けられた金額"+Utility.getPriceString(this.betted)+ " §f§l最大獲得金額"+Utility.getPriceString(this.max_prize)  +" §f§lスコア:"+this.getScore();
         return s;
     }
 

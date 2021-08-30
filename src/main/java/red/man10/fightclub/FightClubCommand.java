@@ -661,6 +661,7 @@ public class FightClubCommand  implements CommandExecutor {
         if(pi == null){
             return null;
         }
+        pi.updateKDP(plugin.data,isPro);
         plugin.data.savePlayerData(pi.uuid,pi.kill,pi.death,pi.getKDR(),pi.total_prize,pi.max_prize,pi.betted,pi.getScore());
         return pi;
     }
