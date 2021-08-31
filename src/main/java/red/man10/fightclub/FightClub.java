@@ -14,10 +14,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.inventory.CraftItemEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryCreativeEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
@@ -2250,6 +2247,17 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
         }
 
+        //      クラフトを禁止する
+        if(isInMFCWorld(player)){
+            var slot = e.getSlot();
+            if(e.getSlotType() == InventoryType.SlotType.CRAFTING){
+                player.sendMessage("そこ触んな、ボケ！");
+                e.setCancelled(true);
+            }
+        }
+
+
+
         if(e.getClickedInventory() == e.getWhoClicked().getInventory()){
             return;
         }
@@ -2458,8 +2466,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             p.sendMessage("MFCでクラフトは禁止されています");
         }
     }
-
-
 
 
     /**
