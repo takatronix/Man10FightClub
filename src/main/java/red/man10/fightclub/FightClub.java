@@ -232,6 +232,15 @@ public final class FightClub extends JavaPlugin implements Listener {
         return false;
     }
 
+
+    boolean isWaiter(UUID uuid){
+        for(PlayerInformation waiter : this.waiters){
+            if(waiter.uuid == uuid){
+                return true;
+            }
+        }
+        return false;
+    }
     /**
      * 選手登録
      * @param s
@@ -247,12 +256,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         ////////////////////////////////////
         //      すでに登録されてたらエラー
         ////////////////////////////////////
-        for(PlayerInformation waiter : this.waiters){
-            if(waiter.uuid == uuid){
-                //  登録済みエラー表示
-                s.sendMessage("すでに登録ずみです");
-                return -1;
-            }
+        if(isWaiter(uuid)){
+            s.sendMessage("すでに登録ずみです");
+            return -1;
         }
 
         if(mode != MFCModes.Free){
@@ -329,6 +335,12 @@ public final class FightClub extends JavaPlugin implements Listener {
      * @return
      */
     private int RegisterPlayerTask(PlayerInformation playerInfo,CommandSender s,String name){
+
+        if(isWaiter(playerInfo.uuid)){
+            s.sendMessage("すでに登録ずみです");
+            return -1;
+        }
+
         if(mode != MFCModes.Free){
             //resetEnetryTimer();
         }
@@ -365,6 +377,7 @@ public final class FightClub extends JavaPlugin implements Listener {
                     return -4;
                 }
             }
+
 
             //        登録費用
             if (!vault.withdraw(playerInfo.uuid, entryPrice)) {
@@ -817,6 +830,13 @@ public final class FightClub extends JavaPlugin implements Listener {
         showLifeBar();
         resetFightTimer();
 
+        Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
+        Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
+        if(f0.getUniqueId() == f1.getUniqueId()){
+            serverMessage("異常検出のため中断");
+            cancelGame();
+            return 0;
+        }
 
         // MFCはそのままゲームスタート
         if(mode == MFCModes.Free){
@@ -824,12 +844,13 @@ public final class FightClub extends JavaPlugin implements Listener {
             return 0;
         }
 
-        Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
-        Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
+
         double o0 = getFighterOdds(f0.getUniqueId());
         double o1 = getFighterOdds(f1.getUniqueId());
         int b0 = getFighterBetCount(f0.getUniqueId());
         int b1 = getFighterBetCount(f1.getUniqueId());
+
+
 
 
         // ゲーム開始処理 DB登録後
