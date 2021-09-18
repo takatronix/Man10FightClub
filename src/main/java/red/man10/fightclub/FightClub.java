@@ -1639,9 +1639,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         //      MYSQL初期化
         data = new FightClubData(this);
 
+
         boolean flag = getConfig().getBoolean("Disabled");
         if(flag){
             currentStatus = Closed;
+        }else{
+            this.mode = MFCModes.Normal;
         }
 
         int fee = getConfig().getInt("fee");
