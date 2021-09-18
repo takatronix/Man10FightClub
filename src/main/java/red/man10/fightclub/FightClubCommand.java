@@ -263,6 +263,22 @@ public class FightClubCommand  implements CommandExecutor {
             return false;
         }
 
+        ////////////////////////////////////
+        //        アリーナ強制
+        ////////////////////////////////////
+        if(args[0].equalsIgnoreCase("arena")) {
+
+            if (args.length != 2) {
+                this.plugin.serverMessage("自動設定アリーナを初期化");
+                this.plugin.fixedArena = "";
+                return false;
+            }
+            this.plugin.fixedArena = args[1];
+            this.plugin.serverMessage("強制アリーナ設定:"+this.plugin.fixedArena);
+            return false;
+        }
+
+
         if(args[0].equalsIgnoreCase("register")){
             if(!p.hasPermission(plugin.adminPermision)){
                 p.sendMessage("管理者権限がありません");
@@ -315,6 +331,7 @@ public class FightClubCommand  implements CommandExecutor {
             plugin.updateSidebar();
             return true;
         }
+
 
 
         ////////////////////////////////////
@@ -702,6 +719,11 @@ public class FightClubCommand  implements CommandExecutor {
         p.sendMessage("§c/mfc free - MFC開始(フリーモード)");
         p.sendMessage("§c/mfc whitelist - MFC開始(ホワイトリストモード)");
         p.sendMessage("§c/mfc pro - MFC開始(プロモード)");
+
+        p.sendMessage("§c/mfc arena [KitName] - アリーナを固定");
+
+
+
 
         p.sendMessage("-----------履歴削除-----------");
         p.sendMessage("§c*/mfc reset [name] ユーザーデータ削除");

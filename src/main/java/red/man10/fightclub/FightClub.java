@@ -53,6 +53,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
     Location    lobby;
 
+    String fixedArena = "";
 
     // 自動BET設定
     double autoBetPrice = 0;
@@ -1044,11 +1045,18 @@ public final class FightClub extends JavaPlugin implements Listener {
         selectedArena = arenaCommand.defaultArenas.get(0);
 
 
+
+
         if(_arena != null){
             if(arenaCommand.defaultArenas.contains(_arena)){
                 sender.sendMessage(_arena+"ステージを選択しました");
                 selectedArena = _arena;
             }
+        }
+
+        if(!fixedArena.isEmpty()){
+            selectedArena = fixedArena;
+            serverMessage("強制アリーナモード："+fixedArena);
         }
 
         //      キットの自動選択処理(2)
