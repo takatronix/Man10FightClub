@@ -990,7 +990,7 @@ public final class FightClub extends JavaPlugin implements Listener {
 
         }
 
-        getConfig().set("mode",this.mode);
+        getConfig().set("mode",this.mode.toString());
         saveConfig();
     }
 
@@ -1660,7 +1660,8 @@ public final class FightClub extends JavaPlugin implements Listener {
         this.mode = MFCModes.Normal;
         var modeString = getConfig().getString("mode");
         if(modeString != null){
-            this.mode = MFCModes.valueOf(modeString);
+            if(modeString != "off")
+                this.mode = MFCModes.valueOf(modeString);
         }
 
         boolean flag = getConfig().getBoolean("Disabled");
