@@ -1558,7 +1558,21 @@ public final class FightClub extends JavaPlugin implements Listener {
             fightTimer--;
             if(fightTimer <= 0){
                 serverMessage("タイムアウト！！！");
-                cancelGame();
+
+                var h1 = fighters.get(0).getPlayer().getHealth();
+                var h2 = fighters.get(1).getPlayer().getHealth();
+                if(h1 > h2){
+                    serverMessage(fighters.get(0).name+"の判定勝ち");
+                    endGame(0);
+                }
+                else if(h1 < h2){
+                    serverMessage(fighters.get(1).name+"の判定勝ち");
+                    endGame(1);
+                }else{
+                    serverMessage("ドロー!!!");
+                    cancelGame();
+                }
+
             }
             updateLifeBar();
         }
