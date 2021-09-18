@@ -1859,7 +1859,12 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         log("MfCプレーヤ死亡:"+fighters.get(index).name);
 
-      //  PlayerInformation f = fighters.get(index);      //  死亡者
+        if(getAliveFighterCount() <= 1){
+            serverMessage("すでにゲームは終了してるので終了処理はしない");
+            return;
+        }
+
+        //  死亡者として登録する
         fighters.get(index).isDead = true;
 
         serverMessage("死亡!!!:"+p.getDisplayName());
