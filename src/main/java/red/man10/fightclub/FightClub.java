@@ -170,6 +170,7 @@ public final class FightClub extends JavaPlugin implements Listener {
             subTitle = "§e§l勝者を予想して、§e§n大金§e§lをゲットしよう！！！";
             enableMFC(sender,true);
         }
+
         log("sendTitleToAllWithSound");
         sendTitleToAllWithSound(title,subTitle,20,140,20,Sound.ENTITY_WITHER_SPAWN,1,1);
         log("enableMFC finished");
@@ -988,6 +989,8 @@ public final class FightClub extends JavaPlugin implements Listener {
             getConfig().set("Disabled",false);
 
         }
+
+        getConfig().set("mode",this.mode);
         saveConfig();
     }
 
@@ -1639,12 +1642,16 @@ public final class FightClub extends JavaPlugin implements Listener {
         //      MYSQL初期化
         data = new FightClubData(this);
 
+        // モードの保存
+        this.mode = MFCModes.Normal;
+        var modeString = getConfig().getString("mode");
+        if(modeString != null){
+            this.mode = MFCModes.valueOf(modeString);
+        }
 
         boolean flag = getConfig().getBoolean("Disabled");
         if(flag){
             currentStatus = Closed;
-        }else{
-            this.mode = MFCModes.Normal;
         }
 
         int fee = getConfig().getInt("fee");
