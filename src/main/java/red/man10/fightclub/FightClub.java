@@ -18,6 +18,7 @@ import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.projectiles.ProjectileSource;
 import red.man10.*;
 import red.man10.Utility;
@@ -975,6 +976,7 @@ public final class FightClub extends JavaPlugin implements Listener {
         saveCurrentStatus();
         pauseTimer = false;
         lifebar.setInfoBar(0);
+        isFighterFreeze = false;
         log("startEntry exit");
 
     }
@@ -1375,7 +1377,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             //      終了
             startEntry();
             updateSidebar();
-
         }, 20*5);
         return 0;
     }
@@ -1563,10 +1564,37 @@ public final class FightClub extends JavaPlugin implements Listener {
                 var h2 = fighters.get(1).getPlayer().getHealth();
                 if(h1 > h2){
                     serverMessage(fighters.get(0).name+"の判定勝ち");
+                    var p1 = Bukkit.getPlayer(fighters.get(0).uuid);
+                    p1.addPotionEffect(new PotionEffect(
+                                    PotionEffectType.DAMAGE_RESISTANCE,
+                                    20* 5,
+                                    4)
+                            ,true);
+                    var p2 = Bukkit.getPlayer(fighters.get(1).uuid);
+                    p2.addPotionEffect(new PotionEffect(
+                                    PotionEffectType.DAMAGE_RESISTANCE,
+                                    20* 5,
+                                    4)
+                            ,true);
+
+
                     endGame(0);
                 }
                 else if(h1 < h2){
                     serverMessage(fighters.get(1).name+"の判定勝ち");
+                    var p1 = Bukkit.getPlayer(fighters.get(0).uuid);
+                    p1.addPotionEffect(new PotionEffect(
+                                    PotionEffectType.DAMAGE_RESISTANCE,
+                                    20* 5,
+                                    4)
+                            ,true);
+                    var p2 = Bukkit.getPlayer(fighters.get(1).uuid);
+                    p2.addPotionEffect(new PotionEffect(
+                                    PotionEffectType.DAMAGE_RESISTANCE,
+                                    20* 5,
+                                    4)
+                            ,true);
+
                     endGame(1);
                 }else{
                     serverMessage("ドロー!!!");
@@ -1859,6 +1887,15 @@ public final class FightClub extends JavaPlugin implements Listener {
             return;
         }
         log("MfCプレーヤ死亡:"+fighters.get(index).name);
+
+        var p1 = Bukkit.getPlayer(fighters.get(index).uuid);
+
+        p1.addPotionEffect(new PotionEffect(
+                        PotionEffectType.DAMAGE_RESISTANCE,
+                        20* 5,
+                        4)
+                ,true);
+
 
         if(getAliveFighterCount() <= 1){
             serverMessage("すでにゲームは終了してるので終了処理はしない");
