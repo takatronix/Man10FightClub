@@ -1568,42 +1568,45 @@ public final class FightClub extends JavaPlugin implements Listener {
             if(fightTimer <= 0){
                 serverMessage("タイムアウト！！！");
 
+                var p1 = fighters.get(0).getPlayer();
+                var p2 = fighters.get(1).getPlayer();
                 var h1 = fighters.get(0).getPlayer().getHealth();
                 var h2 = fighters.get(1).getPlayer().getHealth();
+                var f1Index = getFighterIndex(fighters.get(0).uuid);
+                var f2Index = getFighterIndex(fighters.get(1).uuid);
+
+                ///////////////////////////////////////////
+                //  両者にポーションエフェクトをかける
+                p1.addPotionEffect(new PotionEffect(
+                                PotionEffectType.DAMAGE_RESISTANCE,
+                                20* 5,
+                                4)
+                        ,true);
+                p2.addPotionEffect(new PotionEffect(
+                                PotionEffectType.DAMAGE_RESISTANCE,
+                                20* 5,
+                                4)
+                        ,true);
+
+                //////////////////////////////////////////////////
+                //      遅延実行で装備をリセット
+                getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+                    public void run() {
+                        resetPlayerStatus(p1);
+                        kitCommand.pop(p1);
+                        resetPlayerStatus(p2);
+                        kitCommand.pop(p2);
+                    }
+                }, 20);
+
+
                 if(h1 > h2){
                     serverMessage(fighters.get(0).name+"の判定勝ち");
-                    var p1 = Bukkit.getPlayer(fighters.get(0).uuid);
-                    p1.addPotionEffect(new PotionEffect(
-                                    PotionEffectType.DAMAGE_RESISTANCE,
-                                    20* 5,
-                                    4)
-                            ,true);
-                    var p2 = Bukkit.getPlayer(fighters.get(1).uuid);
-                    p2.addPotionEffect(new PotionEffect(
-                                    PotionEffectType.DAMAGE_RESISTANCE,
-                                    20* 5,
-                                    4)
-                            ,true);
-
-
-                    endGame(0);
+                    endGame(f1Index);
                 }
                 else if(h1 < h2){
                     serverMessage(fighters.get(1).name+"の判定勝ち");
-                    var p1 = Bukkit.getPlayer(fighters.get(0).uuid);
-                    p1.addPotionEffect(new PotionEffect(
-                                    PotionEffectType.DAMAGE_RESISTANCE,
-                                    20* 5,
-                                    4)
-                            ,true);
-                    var p2 = Bukkit.getPlayer(fighters.get(1).uuid);
-                    p2.addPotionEffect(new PotionEffect(
-                                    PotionEffectType.DAMAGE_RESISTANCE,
-                                    20* 5,
-                                    4)
-                            ,true);
-
-                    endGame(1);
+                    endGame(f2Index);
                 }else{
                     serverMessage("ドロー!!!");
                     cancelGame();
@@ -1611,6 +1614,9 @@ public final class FightClub extends JavaPlugin implements Listener {
 
             }
             updateLifeBar();
+
+            // エントリモードへ遷移
+            currentStatus = Entry;
         }
     }
 
@@ -1871,6 +1877,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         }
         return false;
     }
+
+
+
 
     /////////////////////////////////
     //      デスイベント
