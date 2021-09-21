@@ -32,6 +32,10 @@ public class LifeBar {
         return infoname;
     }
     public void setInfoBar(double d){
+        if(d < 0)
+            d = 0;
+        if(d > 1.0)
+            d = 1.0;
         info.setProgress(d);
     }
     public double getInfoBar(){
