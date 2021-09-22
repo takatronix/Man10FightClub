@@ -1612,11 +1612,12 @@ public final class FightClub extends JavaPlugin implements Listener {
                     cancelGame();
                 }
 
+                // エントリモードへ遷移
+                currentStatus = Entry;
             }
             updateLifeBar();
 
-            // エントリモードへ遷移
-            currentStatus = Entry;
+
         }
     }
 
