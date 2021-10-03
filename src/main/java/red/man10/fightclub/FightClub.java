@@ -879,6 +879,9 @@ public final class FightClub extends JavaPlugin implements Listener {
         Player f0 = Bukkit.getPlayer(fighters.get(0).uuid);
         Player f1 = Bukkit.getPlayer(fighters.get(1).uuid);
 
+        f0.setSaturation(0);
+        f1.setSaturation(0);
+
         tp(f0,selectedArena,"player1");
         tp(f1,selectedArena,"player2");
 
