@@ -109,6 +109,10 @@ public class FightClubList {
         return true;
     }
     Boolean delete(CommandSender s, Player p) {
+        if(p == null){
+            s.sendMessage("§2指定したユーザーはオフラインか存在しません");
+            return false;
+        }
         if(!delete(p.getUniqueId().toString())){
             s.sendMessage("§2" + p.getName() + "は'" + name + "'に登録されていません");
             return false;
