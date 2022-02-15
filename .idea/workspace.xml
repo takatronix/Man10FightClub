@@ -9,16 +9,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="test commit">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.0/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.0/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Man10FightClub_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Man10FightClub_jar.xml" afterDir="false" />
+    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,6 +105,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -250,7 +244,7 @@
       <recent name="C:\Users\sho-pc\Desktop\pro\man10fightclub\lib" />
     </key>
   </component>
-  <component name="RunManager" selected="JAR アプリケーション.CustomSkullAPI_v1.0.1.jar">
+  <component name="RunManager" selected="JAR Application.CustomSkullAPI_v1.0.1.jar">
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -302,12 +296,6 @@
       <option name="JAR_PATH" value="$PROJECT_DIR$/libs/CustomSkullAPI_v1.0.1.jar" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Man10FightClub build" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -353,7 +341,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JAR アプリケーション.CustomSkullAPI_v1.0.1.jar" />
+      <item itemvalue="JAR Application.CustomSkullAPI_v1.0.1.jar" />
       <item itemvalue="Maven.Man10FightClub build" />
     </list>
   </component>

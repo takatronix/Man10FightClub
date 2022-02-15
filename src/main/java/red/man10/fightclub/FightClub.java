@@ -2320,6 +2320,22 @@ public final class FightClub extends JavaPlugin implements Listener {
         gui.removeInMenu((Player) e.getPlayer());
     }
 
+    @EventHandler
+    public void dragItem(InventoryDragEvent e){
+
+        HumanEntity player = e.getWhoClicked();
+
+        if (!(player instanceof Player))return;
+
+        //      クラフトを禁止する
+        if(isInMFCWorld((Player) player)){
+            if(e.getInventory().getType() == InventoryType.CRAFTING){
+                player.sendMessage("そこ触んな、ボケ！");
+                e.setCancelled(true);
+            }
+        }
+
+    }
 
     @EventHandler
     public void clickItem(InventoryClickEvent e) {
