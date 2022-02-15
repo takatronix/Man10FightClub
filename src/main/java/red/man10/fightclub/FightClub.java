@@ -2124,6 +2124,12 @@ public final class FightClub extends JavaPlugin implements Listener {
     public void playerChangeWorldEvent(PlayerChangedWorldEvent e){
         if(currentStatus != Closed){
             Player p = e.getPlayer();
+
+            if (currentStatus == Fighting && isFighter(p.getUniqueId())){
+                cancelGame();
+                return;
+            }
+
             if(isFighter(p.getUniqueId())){
                 p.sendMessage(prefix + "選手はワールド変更できません");
                 teleportToLobby(p);

@@ -9,9 +9,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="ドラッグでクラフトタブにアイテムを置ける問題修正">
       <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -362,13 +360,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00209" summary="パーミッション設定&#10;autobetオフ">
-      <created>1489692799324</created>
-      <option name="number" value="00209" />
-      <option name="presentableId" value="LOCAL-00209" />
-      <option name="project" value="LOCAL" />
-      <updated>1489692799325</updated>
-    </task>
     <task id="LOCAL-00210" summary="パーミッション設定&#10;autobetオフ">
       <created>1489694456441</created>
       <option name="number" value="00210" />
@@ -705,7 +696,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628427198748</updated>
     </task>
-    <option name="localTasksCounter" value="258" />
+    <task id="LOCAL-00258" summary="ドラッグでクラフトタブにアイテムを置ける問題修正">
+      <created>1644948069624</created>
+      <option name="number" value="00258" />
+      <option name="presentableId" value="LOCAL-00258" />
+      <option name="project" value="LOCAL" />
+      <updated>1644948069625</updated>
+    </task>
+    <option name="localTasksCounter" value="259" />
     <servers />
   </component>
   <component name="TodoView">
@@ -797,7 +795,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="clearコマンドの追加" />
     <MESSAGE value="ログアウト時にメッセージが出る問題" />
     <MESSAGE value="無限増殖対策" />
     <MESSAGE value="無限増殖対策(2)" />
@@ -822,7 +819,8 @@
     <MESSAGE value="1.17対応" />
     <MESSAGE value="test commit" />
     <MESSAGE value="man10kit MultiWorldを依存するように" />
-    <option name="LAST_COMMIT_MESSAGE" value="man10kit MultiWorldを依存するように" />
+    <MESSAGE value="ドラッグでクラフトタブにアイテムを置ける問題修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="ドラッグでクラフトタブにアイテムを置ける問題修正" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
