@@ -2140,14 +2140,6 @@ public final class FightClub extends JavaPlugin implements Listener {
                 teleportToLobby(p);
             }
 
-            for (PlayerInformation fighter : fighters) {
-                if (fighter.uuid == p.getUniqueId()) {
-                    serverMessage(p.getName() + "はワールド移動したため、試合をキャンセルします");
-                    cancelGame();
-                    return;
-                }
-            }
-
             if(p.getGameMode() == GameMode.SPECTATOR){
                 p.setGameMode(GameMode.SURVIVAL);
                 p.sendMessage(prefix + "ワールド変更されたため、観戦を終了しました");
@@ -2155,6 +2147,15 @@ public final class FightClub extends JavaPlugin implements Listener {
                     teleportToLobby(p);
                 }
             }
+
+            for (PlayerInformation fighter : fighters) {
+                if (fighter.isDead)return;
+            }
+            if (isFighter(p.getUniqueId())){
+                serverMessage(p.getName() + "は試合中にワールド移動したため、試合をキャンセルします");
+                cancelGame();
+            }
+
         }
     }
     @EventHandler

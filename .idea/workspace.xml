@@ -9,11 +9,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="バグ修正">
+    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="MFC持ち出し対策">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/red/man10/fightclub/FightClub.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -363,13 +360,6 @@
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
     </task>
-    <task id="LOCAL-00212" summary="登録時のKDRチェック">
-      <created>1489734620823</created>
-      <option name="number" value="00212" />
-      <option name="presentableId" value="LOCAL-00212" />
-      <option name="project" value="LOCAL" />
-      <updated>1489734620823</updated>
-    </task>
     <task id="LOCAL-00213" summary="登録時のKDRチェック">
       <created>1489734980964</created>
       <option name="number" value="00213" />
@@ -706,7 +696,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645251505670</updated>
     </task>
-    <option name="localTasksCounter" value="261" />
+    <task id="LOCAL-00261" summary="MFC持ち出し対策">
+      <created>1645253698271</created>
+      <option name="number" value="00261" />
+      <option name="presentableId" value="LOCAL-00261" />
+      <option name="project" value="LOCAL" />
+      <updated>1645253698271</updated>
+    </task>
+    <option name="localTasksCounter" value="262" />
     <servers />
   </component>
   <component name="TodoView">
@@ -798,7 +795,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="無限増殖対策(2)" />
     <MESSAGE value="無限増殖対策(3)" />
     <MESSAGE value="TPバグ対策&#10;カウントはじまたｔらもう一度TP" />
     <MESSAGE value="TPバグの修正のバグの修正ｗ" />
@@ -823,7 +819,8 @@
     <MESSAGE value="ドラッグでクラフトタブにアイテムを置ける問題修正" />
     <MESSAGE value="ワールド移動で増殖できる問題修正" />
     <MESSAGE value="バグ修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="バグ修正" />
+    <MESSAGE value="MFC持ち出し対策" />
+    <option name="LAST_COMMIT_MESSAGE" value="MFC持ち出し対策" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
