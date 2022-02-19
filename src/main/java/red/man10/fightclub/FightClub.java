@@ -745,6 +745,11 @@ public final class FightClub extends JavaPlugin implements Listener {
     public int cancelGame(){
         log("cancelGame");
 
+        //インベを開いてたら閉じさせる
+        for (PlayerInformation fighter : fighters) {
+            fighter.getPlayer().closeInventory();
+        }
+
         showTitle("試合中断!","試合はキャンセルされ返金されます",3,0);
         serverMessage("試合中断！ 試合はキャンセルされ返金されます");
 
@@ -775,7 +780,6 @@ public final class FightClub extends JavaPlugin implements Listener {
             }
             waiters.clear();
         }
-
 
         //
         tpaLobby();
@@ -1284,6 +1288,12 @@ public final class FightClub extends JavaPlugin implements Listener {
     public int endGame(int fighterIndex){
 
         clearEntity();
+
+        //インベを開いてたら閉じさせる
+        for (PlayerInformation fighter : fighters) {
+            fighter.getPlayer().closeInventory();
+        }
+
 
         sideBar.hidden = false;
         if (fighterIndex == -1){
@@ -2330,22 +2340,22 @@ public final class FightClub extends JavaPlugin implements Listener {
         gui.removeInMenu((Player) e.getPlayer());
     }
 
-    @EventHandler
-    public void dragItem(InventoryDragEvent e){
-
-        HumanEntity player = e.getWhoClicked();
-
-        if (!(player instanceof Player))return;
-
-        //      クラフトを禁止する
-        if(isInMFCWorld((Player) player)){
-            if(e.getInventory().getType() == InventoryType.CRAFTING){
-                player.sendMessage("そこ触んな、ボケ！");
-                e.setCancelled(true);
-            }
-        }
-
-    }
+//    @EventHandler
+//    public void dragItem(InventoryDragEvent e){
+//
+//        HumanEntity player = e.getWhoClicked();
+//
+//        if (!(player instanceof Player))return;
+//
+//        //      クラフトを禁止する
+//        if(isInMFCWorld((Player) player)){
+//            if(e.getInventory().getType() == InventoryType.CRAFTING){
+//                player.sendMessage("そこ触んな、ボケ！");
+//                e.setCancelled(true);
+//            }
+//        }
+//
+//    }
 
     @EventHandler
     public void clickItem(InventoryClickEvent e) {
