@@ -267,7 +267,10 @@ public class FightClubCommand  implements CommandExecutor {
         //        アリーナ強制
         ////////////////////////////////////
         if(args[0].equalsIgnoreCase("arena")) {
-
+            if(!p.hasPermission(plugin.adminPermision)){
+                p.sendMessage("管理者権限がありません");
+                return false;
+            }
             if (args.length != 2) {
                 this.plugin.serverMessage("自動設定アリーナを初期化");
                 this.plugin.fixedArena = "";
