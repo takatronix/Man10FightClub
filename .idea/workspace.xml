@@ -9,8 +9,15 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="バグ修正">
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/red/man10/fightclub/FightClub.class" afterDir="false" />
+    <list default="true" id="8da2a7f7-e820-459d-88b0-2dc6c503a9af" name="Default" comment="mfc arenaの権限問題を修正">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Man10FightClub.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Man10FightClub.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +51,6 @@
         </projects_view>
       </state>
     </system>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="Man10FightClub" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -154,6 +158,9 @@
       </list>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -207,21 +214,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="Downloaded.Files.Path.Enabled" value="true" />
-    <property name="Repository.Attach.JavaDocs" value="true" />
-    <property name="Repository.Attach.Sources" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="fight&#9;PSI&#9;JAVA://red.man10.fightclub.FightClub" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="アーティファクト" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.30149597" />
-    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="red.man10.fightclub" />
@@ -358,13 +357,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1488234364552</updated>
-    </task>
-    <task id="LOCAL-00214" summary="MFC Autobet コマンド">
-      <created>1489735589373</created>
-      <option name="number" value="00214" />
-      <option name="presentableId" value="LOCAL-00214" />
-      <option name="project" value="LOCAL" />
-      <updated>1489735589373</updated>
     </task>
     <task id="LOCAL-00215" summary="autobet / fee">
       <created>1489736488254</created>
@@ -702,7 +694,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645255856225</updated>
     </task>
-    <option name="localTasksCounter" value="263" />
+    <task id="LOCAL-00263" summary="mfc arenaの権限問題を修正">
+      <created>1646725389743</created>
+      <option name="number" value="00263" />
+      <option name="presentableId" value="LOCAL-00263" />
+      <option name="project" value="LOCAL" />
+      <updated>1646725389744</updated>
+    </task>
+    <option name="localTasksCounter" value="264" />
     <servers />
   </component>
   <component name="TodoView">
@@ -790,12 +789,9 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="無限増殖対策(3)" />
-    <MESSAGE value="TPバグ対策&#10;カウントはじまたｔらもう一度TP" />
     <MESSAGE value="TPバグの修正のバグの修正ｗ" />
     <MESSAGE value="ボスバー表示はMFCPRO以外は、グローバル表示しない" />
     <MESSAGE value="ログはPRO以外はグローバル表示しない" />
@@ -819,7 +815,9 @@
     <MESSAGE value="ワールド移動で増殖できる問題修正" />
     <MESSAGE value="MFC持ち出し対策" />
     <MESSAGE value="バグ修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="バグ修正" />
+    <MESSAGE value="mfc arenaの権限がついてない問題を修正" />
+    <MESSAGE value="mfc arenaの権限問題を修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="mfc arenaの権限問題を修正" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

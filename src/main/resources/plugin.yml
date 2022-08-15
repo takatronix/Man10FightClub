@@ -8,7 +8,7 @@ website: http://man10.red
 depend:
    - MultiWorld
    - Man10Kit
-api-version: 1.16
+api-version: 1.19
 commands:
    mfckit:
       description: Man10 Fight club Minecraft PvP Gambling system
