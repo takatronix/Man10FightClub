@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MCPluginDebuggerConfig">
+    <option name="serverJarFile" value="C:\Projects\minecraft\paper\paper.jar" />
+    <option name="pluginJarFile" value="C:\Projects\minecraft\paper\plugins\Man10FightClub.jar" />
+    <option name="pluginName" value="Man10FightClub.jar" />
+    <option name="host" value="localhost" />
+    <option name="port" value="9000" />
+  </component>
+</project>

@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="Man10FightClub:jar">
-    <output-path>$PROJECT_DIR$/../../paper/plugins/</output-path>
-    <root id="archive" name="Man10FightClub.jar">
-      <element id="module-output" name="Man10FightClub.main" />
-      <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
-    </root>
-  </artifact>
-</component>

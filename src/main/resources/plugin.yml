@@ -1,28 +1,11 @@
 name: Man10FightClub
-version: 2.0
-main: red.man10.fightclub.FightClub
-prefix: Man10FightClub
-authors: [takatornix,forest611]
-description: Man10 Fight Club Plugin
-website: http://man10.red
-depend:
-   - MultiWorld
-   - Man10Kit
+version: '${version}'
+main: red.man10.fightclub.Main
 api-version: 1.19
+prefix: MFC
+authors: [takatronix]
+description: Minecraft Gambling PvP System
+website: https://man10.red
 commands:
-   mfckit:
-      description: Man10 Fight club Minecraft PvP Gambling system
-      permission: man10.fightclub.mfckit
-      permission-message: You don't have <permission>
-   mfc:
-      description: Man10 Fight club Minecraft PvP Gambling system
-      permission: man10.fightclub
-      permission-message: You don't have <permission>
-   mfca:
-      description: Man10 Fight club Minecraft PvP Gambling system
-      permission: man10.fightclub.admin
-      permission-message: You don't have <permission>
-   mfch:
-      description: Man10 Fight club Minecraft PvP Gambling system
-      permission: man10.fightclub.history
-      permission-message: You don't have <permission>
+  mfc:
+    default: op
