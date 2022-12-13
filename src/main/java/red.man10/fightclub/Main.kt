@@ -6,8 +6,8 @@ package red.man10.fightclub
 class Main : JavaPlugin() {
     override fun onEnable() {
 
-        // Plugin startup logic
-        getCommand("mfc")!!.setExecutor(Command)
+        getCommand("mfc")!!.setExecutor(CommandMFC)
+
     }
 
         override fun onDisable() {
