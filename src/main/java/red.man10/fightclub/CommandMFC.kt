@@ -12,9 +12,9 @@ import red.man10.man10itembank.util.Utility.sendError
 import red.man10.man10itembank.util.Utility.sendMsg
 
 object CommandMFC : CommandExecutor {
-    override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
+            override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
 
 
-        return false
+                return false
     }
 }

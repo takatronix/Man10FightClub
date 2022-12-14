@@ -7,11 +7,9 @@ class Main : JavaPlugin() {
     override fun onEnable() {
 
         getCommand("mfc")!!.setExecutor(CommandMFC)
-
     }
 
         override fun onDisable() {
-        // Plugin shutdown logic
 
             logger.info("test")
     }

@@ -3,14 +3,14 @@
     <output-path>$PROJECT_DIR$/../paper/plugins</output-path>
     <root id="archive" name="Man10FightClub.jar">
       <element id="module-output" name="Man10FightClub.main" />
-      <element id="library" level="project" name="Gradle: org.mongodb:mongodb-driver:3.6.3" />
-      <element id="library" level="project" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0-RC" />
-      <element id="library" level="project" name="Gradle: org.mongodb:mongodb-driver-core:3.6.3" />
-      <element id="library" level="project" name="Gradle: org.mongodb:bson:3.6.3" />
-      <element id="library" level="project" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0-RC" />
-      <element id="library" level="project" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.8.0-RC" />
-      <element id="library" level="project" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.0-RC" />
-      <element id="library" level="project" name="Gradle: org.jetbrains:annotations:13.0" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.8.0-RC/37e5dd045f0a828a592107b3d79e9b76132da8c/kotlin-stdlib-common-1.8.0-RC.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.8.0-RC/e831a5b4676e777fba137ee1740cdb34d8682a12/kotlin-stdlib-jdk7-1.8.0-RC.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.8.0-RC/28723de1d973029ea16c267e0e66414a4876d68a/kotlin-stdlib-jdk8-1.8.0-RC.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.8.0-RC/a7cf122e1037864db5d2dcf416b14726547c0cad/kotlin-stdlib-1.8.0-RC.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mongodb/bson/3.6.3/6c85ddf1fc96eb8776213bef6665d005a564ecd3/bson-3.6.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mongodb/mongodb-driver-core/3.6.3/f2c41ad5349cdb65a6f7bde16f5ebae9a0dbe5f5/mongodb-driver-core-3.6.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mongodb/mongodb-driver/3.6.3/d462fcc4640ac69b35e7cd2491e992c6bdf82862/mongodb-driver-3.6.3.jar" path-in-jar="/" />
       <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
     </root>
   </artifact>

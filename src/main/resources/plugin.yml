@@ -1,11 +1,13 @@
 name: Man10FightClub
-version: '${version}'
+version: '2.0'
 main: red.man10.fightclub.Main
 api-version: 1.19
 prefix: MFC
 authors: [takatronix]
-description: Minecraft Gambling PvP System
+description: Minecraft Gamble PvP System
 website: https://man10.red
 commands:
   mfc:
     default: op
+softdepend:
+  - Man10Bank

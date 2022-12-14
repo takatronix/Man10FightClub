@@ -58,4 +58,9 @@ compileTestKotlin {
 }
 jar {
     duplicatesStrategy= DuplicatesStrategy.EXCLUDE
+    from {
+        configurations.compileClasspath.collect { // .jarファイルに含める
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
 }
